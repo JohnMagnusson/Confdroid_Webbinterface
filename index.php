@@ -1,4 +1,10 @@
 <?php
+if(isset($_GET["name"]))
+{
+    $hej = $_GET["name"];
+    echo $hej;
+}
+
 
 
 ?>
@@ -21,19 +27,22 @@
     <form>
 
         <input type="text" name="text" id="name"><br>
-        <input type="button" name="btn" onclick="helloWorld()" value="Hello world">
+        <input type="button" name="btn" onclick="helloWorld()" value="Hello world"><br><br>
+
+    </form>
+
+    <!-- Test with php -->
+    <form action="<?php $_PHP_SELF ?>" method="get">
+
+        <input type="text" name="name" id="nameSearch"><br>
+        <input type="button" onclick="checkFields()" value="Skicka"><br>
 
     </form>
 
 </div>
 
-<script>
+<script src="javascript/Server_Communication.js">
 
-    function helloWorld()
-    {
-        var name = document.getElementById("name").value;
-        alert("Hello " + name + " and HELLO WORLD!");
-    }
 
 </script>
 

@@ -1,0 +1,20 @@
+body{
+
+}
+#container{
+    width: 500px;
+    height: 250px;
+    margin: auto;
+    background-color: aliceblue;
+    /*text-align: center;*/
+}
+#loginContainer{
+    width: 250px;
+    height: 150px;
+    margin: auto;
+
+}
+.text_align_center{
+    text-align: center;
+}
+
