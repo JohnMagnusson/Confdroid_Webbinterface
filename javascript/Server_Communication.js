@@ -2,31 +2,11 @@
  * Sends commands to the API to retrieve desired information.
  */
 
-// function helloWorld()
-// {
-//     var name = document.getElementById("name").value;
-//     alert("Hello " + name + " and HELLO WORLD!");
-// }
-//
-// function searchName()
-// {
-//     var name = document.getElementById("name").value;
-// }
-//
-// function checkFields() {
-//
-//     alert("g");
-//     if (document.getElementById("username").value == '') {
-//         document.getElementById("username").onfocus();
-//         document.getElementById("LoginErrorTex").innerHTML = "Username field is empty";
-//     }
-//     if (document.getElementById("password").value == '') {
-//         document.getElementById("password").onfocus();
-//         document.getElementById("LoginErrorTex").innerHTML = "Password field is empty";
-//     }
-
-// }
-
+/**
+ * Logs in the administrator with password and username.
+ * Returns on fail: Failed to login
+ * Returns on succes: authToken in JSON
+ */
 $('document').ready(function(){
     $("#login").click(function(){
        var username=$("#username").val();
@@ -35,15 +15,17 @@ $('document').ready(function(){
             type: "POST",
             url: "http://confdroid.localhost/api/admin/login.json",
             data: "username="+username+"&password="+password,
-            success: function(html){
-                console.log(html);
+            success: function(json){
+                console.log(json);
+                var user = JSON.parse(json);
 
-                if(html!="\"Failed login\"")
+                console.log(user.Token);
+
+                if(user.Token!="Failed")
                 {
                     $("#add_err").html("right username or password");
                     $("#add_err").css('display', 'inline', 'important');
-                    var token = html.split("\"");
-                    window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Admin_Interface.php?authToken="+token[1]);
+                    window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Admin_Interface.php?authToken="+user.Token+"&id="+user.id);
                 }
                 else
                 {
@@ -55,3 +37,26 @@ $('document').ready(function(){
         return false;
     });
 });
+
+/**
+ * Sends id and authToken to api so it can check in the database that the current token is alive and not used.
+ * @param authToken
+ * @param id
+ */
+function authorizeCheck(authToken, id)
+{
+    $.ajax({
+        type: "POST",
+        url: "http://confdroid.localhost/api/admin/authorize.json",
+        data: "authToken="+authToken+"&id="+id,
+        success: function(json){
+            console.log(json);
+            var userAuthorized = JSON.parse(json);
+
+            console.log(userAuthorized);
+
+            if(!userAuthorized["auth"])
+                window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Login.php?timedout=true");
+        }
+    });
+}
