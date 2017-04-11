@@ -1,6 +1,8 @@
 <!-- Login class. The Administrator enter username and password. -->
 <?php
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,20 +21,22 @@
 
         <div id="loginContainer">
 
-        <p id="LoginErrorTex"></p>
-        <form action="http://confdroid.localhost/api/admin/login.json" method="post">
+            <p id="add_err"></p>
+            <form action="./" method="post">
 
-            Username<br>
-            <input type="text" name="username" ><br><br>
-            Password<br>
-            <input type="password" name="password"><br>
-            <input type="submit" name="login" value="Login" >
+                Username<br>
+                <input type="text" name="username" id="username"><br><br>
+                Password<br>
+                <input type="password" name="password" id="password"><br>
+                <input type="hidden" name="mysession" id="mysession">
+                <input type="button" name="login" value="login" id="login" >
 
-        </form>
-
+            </form>
         </div>
 
     </div>
+<script src="javascript/jquery-3.2.0.min.js"></script>
+<script src="javascript/Server_Communication.js"></script>
 
 
 </body>

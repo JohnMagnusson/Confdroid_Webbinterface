@@ -17,4 +17,6 @@ body{
 .text_align_center{
     text-align: center;
 }
-
+#add_err{
+    display: none;
+}
