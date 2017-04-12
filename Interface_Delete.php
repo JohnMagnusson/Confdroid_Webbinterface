@@ -1,7 +1,6 @@
-
 <?php
 /**
- * Interface for the admin to manage the system.
+ * The admin can delete things. Maybe not needed
  */
 if (isset($_GET['authToken']) && isset($_GET['id']))
 {
@@ -13,6 +12,8 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
 else
     header("Location: http://localhost:63342/Confdroid_Webbinterface/Login.php");
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@ else
 <body onload="authorizeCheck(token,id)">
 
 <header>
-    <h1 class="text_align_center">Admin interface</h1>
+    <h1 class="text_align_center"><a href="Admin_Interface.php" id="adminLink">Admin interface</a></h1>
 </header>
 
 <nav>
@@ -35,7 +36,7 @@ else
 
         <li><a href="Interface_Add.php" id="addLink">Add</a></li>
 
-        <li><a href="Interface_Delete.php" id="deleteLink">Delete</a></li>
+        <li><a href="Interface_Delete.php" id="deleteLink" class="current">Delete</a></li>
     </ul>
 </nav>
 <div id="container">
@@ -52,6 +53,4 @@ else
 </body>
 
 </html>
-
-
 

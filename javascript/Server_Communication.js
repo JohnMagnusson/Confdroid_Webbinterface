@@ -1,8 +1,4 @@
 /**
- * Sends commands to the API to retrieve desired information.
- */
-
-/**
  * Logs in the administrator with password and username.
  * Returns on fail: Failed to login
  * Returns on succes: authToken in JSON
@@ -38,25 +34,3 @@ $('document').ready(function(){
     });
 });
 
-/**
- * Sends id and authToken to api so it can check in the database that the current token is alive and not used.
- * @param authToken
- * @param id
- */
-function authorizeCheck(authToken, id)
-{
-    $.ajax({
-        type: "POST",
-        url: "http://confdroid.localhost/api/admin/authorize.json",
-        data: "authToken="+authToken+"&id="+id,
-        success: function(json){
-            console.log(json);
-            var userAuthorized = JSON.parse(json);
-
-            console.log(userAuthorized);
-
-            if(!userAuthorized["auth"])
-                window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Login.php?timedout=true");
-        }
-    });
-}
