@@ -18,10 +18,10 @@ function authorizeCheck(authToken, id)
 
             console.log(userAuthorized);
 
-            if(!userAuthorized["auth"])
-                window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Login.php?timedout=true");
-            else
-                updateLinks(authToken,id);      //Updates the link with the current authToken and id in the url
+            // if(!userAuthorized["auth"])
+                //window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Login.php?timedout=true");
+            // else
+            //     updateLinks(authToken,id);      //Updates the link with the current authToken and id in the url
         }
     });
 }

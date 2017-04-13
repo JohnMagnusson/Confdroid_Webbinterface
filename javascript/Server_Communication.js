@@ -21,7 +21,7 @@ $('document').ready(function(){
                 {
                     $("#add_err").html("right username or password");
                     $("#add_err").css('display', 'inline', 'important');
-                    window.location.replace("http://localhost:63342/Confdroid_Webbinterface/Admin_Interface.php?authToken="+user.Token+"&id="+user.id);
+                    window.location.replace("http://web.localhost/Admin_Interface.php?authToken="+user.Token+"&id="+user.id);
                 }
                 else
                 {
