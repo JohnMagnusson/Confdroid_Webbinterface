@@ -11,7 +11,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-    header("Location: http://localhost:63342/Confdroid_Webbinterface/Login.php");
+    header("Location: http://confdroid.localhost/Confdroid_Webbinterface/Login.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@ else
 <body onload="authorizeCheck(token,id)">
 
 <header>
-    <h1 class="text_align_center">Admin interface</h1>
+    <h1 class="text_align_center"><a href="Admin_Interface.php" id="adminLink">Admin interface</a></h1>
 </header>
 
 <nav>

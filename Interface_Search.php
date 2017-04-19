@@ -11,7 +11,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-    header("Location: http://localhost:63342/Confdroid_Webbinterface/Login.php");
+    header("http://confdroid.localhost/Confdroid_Webbinterface/Login.php");
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +23,7 @@ else
     <link rel="stylesheet" type="text/css" href="css/Interface_Search.css">       <!-- Special css for search page -->
     <script src="javascript/jquery-3.2.0.min.js"></script>
     <script src="javascript/Admin_Interface.js"></script>
+    <script src="javascript/Interface_Search.js"></script>                        <!-- Javascript file that contains search functions-->
 </head>
 
 <body onload="authorizeCheck(token,id)">
@@ -54,7 +55,7 @@ else
                 <option>Application</option>
             </select>
 
-            <input type="search" name="search" placeholder="Search.." class="input">
+            <input type="search" id="searchValue" name="searchValue" placeholder="Search.." class="input">
 
             <input type="button" name="searchBtn" value="Search" onclick="search()">
 
@@ -62,7 +63,26 @@ else
 
     </div>  <!-- End searchContainer-->
 
-    
+    <div id="resultContainer">
+
+        <div id="userCotainer">
+
+        </div>
+
+        <div id="deviceContainer">
+
+        </div>
+
+        <div id="appContainer">
+
+        </div>
+
+        <div id="appSettingsContainer">
+
+        </div>
+
+
+    </div>
 
 </div>
 
