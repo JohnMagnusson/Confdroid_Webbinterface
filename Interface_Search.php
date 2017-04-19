@@ -24,6 +24,14 @@ else
     <script src="javascript/jquery-3.2.0.min.js"></script>
     <script src="javascript/Admin_Interface.js"></script>
     <script src="javascript/Interface_Search.js"></script>                        <!-- Javascript file that contains search functions-->
+    <!-- Model files for javascript is now loaded-->
+    <script src="javascript/model/Application.js"></script>
+    <script src="javascript/model/Device.js"></script>
+    <script src="javascript/model/DeviceManagementPolicy.js"></script>
+    <script src="javascript/model/Group.js"></script>
+    <script src="javascript/model/SQL_Setting.js"></script>
+    <script src="javascript/model/User.js"></script>
+    <script src="javascript/model/XML_Setting.js"></script>
 </head>
 
 <body onload="authorizeCheck(token,id)">

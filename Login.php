@@ -36,7 +36,7 @@
 
     </div>
 <script src="javascript/jquery-3.2.0.min.js"></script>
-<script src="javascript/Server_Communication.js"></script>
+<script src="javascript/Login.js"></script>
 
 
 </body>
