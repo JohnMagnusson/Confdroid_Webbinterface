@@ -39,16 +39,15 @@ function search(authToken, id)
 function storeData(data)
 {
     console.log(data);
-    var user = [];
+    var users = [];
     for(i = 0; i < data.length; i++)
     {
-        user[i] = new User(data[i]["id"],data[i]["name"],data[i]["email"],null,null,data[i]["authToken"],data[i]["dateCreated"]);
+        //Ledsen mattias dags att spara in allt igen. GL hf ;))))))
+        users[i] = new User(data[i]["id"],data[i]["name"],data[i]["email"],null,null,data[i]["authToken"],data[i]["dateCreated"]);
     }
-    // var user = new User(data[0]["id"],data[0]["name"],data[0]["email"],null,null,data[0]["authToken"],data[0]["dateCreated"]);
 
 
-    //Backup code
-
+    //Backup code for show at meeting
     for(i = 0; i < data.length; i++) {
         document.getElementById("userContainer").innerHTML += "id: " + data[i]["id"] + "<br>name: " + data[i]["name"] + " <br>email: " + data[i]["email"]
             + "<br>authToken: " + data[i]["authToken"] + "<br>date created: " + data[i]["dateCreated"] + "<br><br>";
