@@ -7,7 +7,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
-    echo "var id ='" . $_GET["id"] . "';";
+    echo "var adminId='" . $_GET["id"] . "';";
     echo "</script>";
 }
 else
@@ -34,7 +34,7 @@ else
     <script src="javascript/model/XML_Setting.js"></script>
 </head>
 
-<body onload="authorizeCheck(token,id)">
+<body onload="authorizeCheck(token,adminId)">
 
 <header>
     <h1 class="text_align_center"><a href="Admin_Interface.php" id="adminLink">Admin interface</a></h1>
@@ -65,7 +65,7 @@ else
 
             <input type="search" id="searchValue" name="searchValue" placeholder="Search.." class="input">
 
-            <input type="button" name="searchBtn" value="Search" onclick="search()">
+            <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
 
         </form>
 

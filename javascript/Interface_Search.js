@@ -4,6 +4,7 @@
 
 function search(authToken, id)
 {
+    document.getElementById("userCotainer").innerHTML = "";
     var searchType = document.getElementById("searchDropDown").value;
     var searchValue = document.getElementById("searchValue").value;
     $.ajax({
@@ -13,9 +14,20 @@ function search(authToken, id)
         success: function(json){
             console.log(json);
             var data = JSON.parse(json);
-            storeData(data);
+            if(data[0] == "Failed")
+            {
+                console.log("Didn't get any users");
 
-
+            }
+            else if(data[0] == "Not Authorized")
+            {
+                console.log("Not authorized");
+            }
+            else
+            {
+                console.log(data);
+                storeData(data);
+            }
         }
     });
 }
@@ -27,12 +39,19 @@ function search(authToken, id)
 function storeData(data)
 {
     console.log(data);
-    var user = new User("john","emaidl","device","group");
+    var user = [];
+    for(i = 0; i < data.length; i++)
+    {
+        user[i] = new User(data[i]["id"],data[i]["name"],data[i]["email"],null,null,data[i]["authToken"],data[i]["dateCreated"]);
+    }
+    // var user = new User(data[0]["id"],data[0]["name"],data[0]["email"],null,null,data[0]["authToken"],data[0]["dateCreated"]);
 
 
     //Backup code
-    document.getElementById("userCotainer").innerHTML = "id: " + data[0]["id"] + "<br>name: " + data[0]["name"] + " <br>email: " + data[0]["email"]
-        + "<br>authToken: " + data[0]["authToken"] + "<br>date created: " + data[0]["dateCreated"];
 
-    document.getElementById("deviceContainer").innerHTML = "Device name: " + data[0]["devices"][0]["name"];
+    for(i = 0; i < data.length; i++) {
+        document.getElementById("userCotainer").innerHTML += "id: " + data[i]["id"] + "<br>name: " + data[i]["name"] + " <br>email: " + data[i]["email"]
+            + "<br>authToken: " + data[i]["authToken"] + "<br>date created: " + data[i]["dateCreated"] + "<br><br>";
+    }
+    // document.getElementById("deviceContainer").innerHTML = "Device name: " + data[0]["devices"][0]["name"];
 }
