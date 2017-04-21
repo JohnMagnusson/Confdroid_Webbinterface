@@ -18,12 +18,13 @@ input[type=search]:focus {
     width: 100%;
     height: 90%;
 }
-#userCotainer{
+#userContainer{
     width: 25%;
     height: 100%;
     border-right: thin solid black;
     position: relative;
     float: left;
+    overflow-y: auto;
     /*background-color: blue;*/
 }
 #deviceContainer{

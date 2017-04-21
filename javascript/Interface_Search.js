@@ -4,7 +4,7 @@
 
 function search(authToken, id)
 {
-    document.getElementById("userCotainer").innerHTML = "";
+    document.getElementById("userContainer").innerHTML = " ";
     var searchType = document.getElementById("searchDropDown").value;
     var searchValue = document.getElementById("searchValue").value;
     $.ajax({
@@ -50,7 +50,7 @@ function storeData(data)
     //Backup code
 
     for(i = 0; i < data.length; i++) {
-        document.getElementById("userCotainer").innerHTML += "id: " + data[i]["id"] + "<br>name: " + data[i]["name"] + " <br>email: " + data[i]["email"]
+        document.getElementById("userContainer").innerHTML += "id: " + data[i]["id"] + "<br>name: " + data[i]["name"] + " <br>email: " + data[i]["email"]
             + "<br>authToken: " + data[i]["authToken"] + "<br>date created: " + data[i]["dateCreated"] + "<br><br>";
     }
     // document.getElementById("deviceContainer").innerHTML = "Device name: " + data[0]["devices"][0]["name"];

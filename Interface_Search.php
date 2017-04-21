@@ -73,7 +73,7 @@ else
 
     <div id="resultContainer">
 
-        <div id="userCotainer">
+        <div id="userContainer">
 
         </div>
 

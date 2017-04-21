@@ -18,7 +18,7 @@ $('document').ready(function(){
 
                 if(user.Token!="Failed")
                 {
-                    $("#add_err").html("right username or password");
+                    $("#add_err").html("Correct username or password");
                     $("#add_err").css('display', 'inline', 'important');
                     window.location.replace("/Confdroid_Webbinterface/Admin_Interface.php?authToken="+user.Token+"&id="+user.id);
                 }
