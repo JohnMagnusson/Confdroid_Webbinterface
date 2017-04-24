@@ -21,6 +21,7 @@ function search(authToken, id)
         url: "http://confdroid.localhost/Confdroid_Api/api/admin/search.json",
         data: "authToken="+authToken+"&id="+id+"&searchType="+searchType+"&searchValue="+searchValue,
         success: function(json){
+            console.log(json);
             var data = JSON.parse(json);
             if(data[0] == "Failed")
             {
@@ -47,11 +48,18 @@ function search(authToken, id)
 function storeData(data)
 {
     console.log(data);
-    var user = new User("john","emaidl","device","group");
+    var users = [];
+    for(i = 0; i < data.length; i++)
+    {
+        //Ledsen mattias dags att spara in allt igen. GL hf ;))))))
+        users[i] = new User(data[i]["id"],data[i]["name"],data[i]["email"],null,null,data[i]["authToken"],data[i]["dateCreated"]);
+    }
 
-    //Backup code
-    document.getElementById("userCotainer").innerHTML = "id: " + data[0]["id"] + "<br>name: " + data[0]["name"] + " <br>email: " + data[0]["email"]
-        + "<br>authToken: " + data[0]["authToken"] + "<br>date created: " + data[0]["dateCreated"];
 
-    document.getElementById("deviceContainer").innerHTML = "Device name: " + data[0]["devices"][0]["name"];
+    //Backup code for show at meeting
+    for(i = 0; i < data.length; i++) {
+        document.getElementById("userContainer").innerHTML += "id: " + data[i]["id"] + "<br>name: " + data[i]["name"] + " <br>email: " + data[i]["email"]
+            + "<br>authToken: " + data[i]["authToken"] + "<br>date created: " + data[i]["dateCreated"] + "<br><br>";
+    }
+    // document.getElementById("deviceContainer").innerHTML = "Device name: " + data[0]["devices"][0]["name"];
 }

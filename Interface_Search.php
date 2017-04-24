@@ -7,11 +7,11 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
-    echo "var adminId ='" . $_GET["id"] . "';";
+    echo "var adminId='" . $_GET["id"] . "';";
     echo "</script>";
 }
 else
-    header("Location: Login.php?timeOut=true");
+    header("Location: Login.php");
 ?>
 
 <!DOCTYPE html>
@@ -63,9 +63,9 @@ else
                 <option>Application</option>
             </select>
 
-            <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
+            <input type="search" id="searchValue" name="searchValue" placeholder="Search.." class="input">
 
-            <input type="button" name="searchBtn" value="Search" onclick="search(token, adminId)">
+            <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
 
         </form>
 
@@ -73,7 +73,7 @@ else
 
     <div id="resultContainer">
 
-        <div id="userCotainer">
+        <div id="userContainer">
 
         </div>
 
