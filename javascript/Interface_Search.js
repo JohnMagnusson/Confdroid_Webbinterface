@@ -2,18 +2,9 @@
  * Javascript function for the search page.
  */
 
-$(document).ready(function(){
-    document.getElementById('searchValue').addEventListener('keydown', function(e) {
-        if(e.keyCode == 13)
-        {
-            e.preventDefault();
-            search(token, adminId);
-        }
-    }, false);
-});
-
 function search(authToken, id)
 {
+    document.getElementById("userContainer").innerHTML = " ";
     var searchType = document.getElementById("searchDropDown").value;
     var searchValue = document.getElementById("searchValue").value;
     $.ajax({
