@@ -10,7 +10,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-    header("Location:http://web.localhost/Login.php");
+    header("Location: Login.php");
 ?>
 
 

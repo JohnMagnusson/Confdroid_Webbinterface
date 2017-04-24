@@ -11,7 +11,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-    header("Location: http://confdroid.localhost/Confdroid_Webbinterface/Login.php");
+    header("Location: Login.php");
 ?>
 <!DOCTYPE html>
 <html>

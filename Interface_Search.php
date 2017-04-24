@@ -7,11 +7,11 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
-    echo "var id ='" . $_GET["id"] . "';";
+    echo "var adminId ='" . $_GET["id"] . "';";
     echo "</script>";
 }
 else
-    header("http://confdroid.localhost/Confdroid_Webbinterface/Login.php");
+    header("Location: Login.php?timeOut=true");
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +24,17 @@ else
     <script src="javascript/jquery-3.2.0.min.js"></script>
     <script src="javascript/Admin_Interface.js"></script>
     <script src="javascript/Interface_Search.js"></script>                        <!-- Javascript file that contains search functions-->
+    <!-- Model files for javascript is now loaded-->
+    <script src="javascript/model/Application.js"></script>
+    <script src="javascript/model/Device.js"></script>
+    <script src="javascript/model/DeviceManagementPolicy.js"></script>
+    <script src="javascript/model/Group.js"></script>
+    <script src="javascript/model/SQL_Setting.js"></script>
+    <script src="javascript/model/User.js"></script>
+    <script src="javascript/model/XML_Setting.js"></script>
 </head>
 
-<body onload="authorizeCheck(token,id)">
+<body onload="authorizeCheck(token,adminId)">
 
 <header>
     <h1 class="text_align_center"><a href="Admin_Interface.php" id="adminLink">Admin interface</a></h1>
@@ -55,9 +63,9 @@ else
                 <option>Application</option>
             </select>
 
-            <input type="search" id="searchValue" name="searchValue" placeholder="Search.." class="input">
+            <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
 
-            <input type="button" name="searchBtn" value="Search" onclick="search()">
+            <input type="button" name="searchBtn" value="Search" onclick="search(token, adminId)">
 
         </form>
 

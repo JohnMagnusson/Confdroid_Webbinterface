@@ -1,7 +1,4 @@
 /**
- * Created by johnv on 2017-04-11.
- */
-/**
  * Sends id and authToken to api so it can check in the database that the current token is alive and not used.
  * @param authToken
  * @param id
@@ -10,7 +7,7 @@ function authorizeCheck(authToken, id)
 {
     $.ajax({
         type: "POST",
-        url: "http://confdroid.localhost/api/admin/authorize.json",
+        url: "http://confdroid.localhost/Confdroid_Api/api/admin/authorize.json",
         data: "authToken="+authToken+"&id="+id,
         success: function(json){
             console.log(json);
@@ -18,8 +15,8 @@ function authorizeCheck(authToken, id)
 
             console.log(userAuthorized);
 
-            if(!userAuthorized["auth"])
-                window.location.replace("http://confdroid.localhost/Confdroid_Webbinterface/Login.php?timedout=true");
+            if(!userAuthorized)
+                window.location.replace("Login.php?timedout=true");
             else
                 updateLinks(authToken,id);      //Updates the link with the current authToken and id in the url
         }
@@ -34,8 +31,8 @@ function authorizeCheck(authToken, id)
  */
 function updateLinks(authToken, id)
 {
-    document.getElementById('searchLink').setAttribute('href', 'http://confdroid.localhost/Confdroid_Webbinterface/Interface_search.php?authToken='+authToken+'&id='+id);
-    document.getElementById('addLink').setAttribute('href', 'http://confdroid.localhost/Confdroid_Webbinterface/Interface_Add.php?authToken='+authToken+'&id='+id);
-    document.getElementById('deleteLink').setAttribute('href', 'http://confdroid.localhost/Confdroid_Webbinterface/Interface_Delete.php?authToken='+authToken+'&id='+id);
-    document.getElementById('adminLink').setAttribute('href', 'http://confdroid.localhost/Confdroid_Webbinterface/Admin_Interface.php?authToken='+authToken+'&id='+id);
+    document.getElementById('searchLink').setAttribute('href', 'Interface_search.php?authToken='+authToken+'&id='+id);
+    document.getElementById('addLink').setAttribute('href', 'Interface_Add.php?authToken='+authToken+'&id='+id);
+    document.getElementById('deleteLink').setAttribute('href', 'Interface_Delete.php?authToken='+authToken+'&id='+id);
+    document.getElementById('adminLink').setAttribute('href', ' Admin_Interface.php?authToken='+authToken+'&id='+id);
 }

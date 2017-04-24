@@ -2,6 +2,16 @@
  * Javascript function for the search page.
  */
 
+$(document).ready(function(){
+    document.getElementById('searchValue').addEventListener('keydown', function(e) {
+        if(e.keyCode == 13)
+        {
+            e.preventDefault();
+            search(token, adminId);
+        }
+    }, false);
+});
+
 function search(authToken, id)
 {
     var searchType = document.getElementById("searchDropDown").value;
@@ -24,9 +34,24 @@ function search(authToken, id)
             else
             {
                 console.log(data);
-                document.getElementById("userCotainer").innerHTML = data;
+                storeData(data);
             }
-
         }
     });
+}
+
+/**
+ * The data received from the server is split into objects.
+ * @param data
+ */
+function storeData(data)
+{
+    console.log(data);
+    var user = new User("john","emaidl","device","group");
+
+    //Backup code
+    document.getElementById("userCotainer").innerHTML = "id: " + data[0]["id"] + "<br>name: " + data[0]["name"] + " <br>email: " + data[0]["email"]
+        + "<br>authToken: " + data[0]["authToken"] + "<br>date created: " + data[0]["dateCreated"];
+
+    document.getElementById("deviceContainer").innerHTML = "Device name: " + data[0]["devices"][0]["name"];
 }
