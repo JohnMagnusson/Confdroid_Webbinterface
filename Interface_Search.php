@@ -55,12 +55,13 @@ else
 
         <form id="searchForm">              <!-- Dont need post or action. We are using ajax to post-->
 
-            <p>Search for user, device or application</p>
+            <p>Search for User, Device, Application or Group</p>
 
             <select name="searchDropDown" id="searchDropDown">  <!-- Use the id to get the value from the select-->
                 <option>User</option>
                 <option>Device</option>
                 <option>Application</option>
+                <option>Group</option>
             </select>
 
             <input type="search" id="searchValue" name="searchValue" placeholder="Search.." class="input">
