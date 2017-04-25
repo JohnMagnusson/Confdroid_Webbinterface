@@ -22,7 +22,7 @@ function search(authToken, id)
         url: "http://confdroid.localhost/Confdroid_Api/api/admin/search.json",
         data: "authToken="+authToken+"&id="+id+"&searchType="+searchType+"&searchValue="+searchValue,
         success: function(json){
-            console.log(json);
+            // console.log(json);
             var data = JSON.parse(json);
             if(data[0] == "Failed")
             {
@@ -62,19 +62,31 @@ function printGroups(groups)
     }
 }
 
-function printData(users)
+function printUsers(users)
 {
-    //Prints user
-    for(i = 0; i < users.length; i++)
+    for(var i = 0; i < users.length; i++)
     {
-        document.getElementById("userContainer").innerHTML += '<div id="i" style="background-color: red">';
-
-        document.getElementById("userContainer").innerHTML += "id: " + users[i]["id"] + "<br>name: " + users[i]["name"] + " <br>email: " + users[i]["email"]
-            + "<br>authToken: " + users[i]["authToken"] + "<br>date created: " + users[i]["dateCreated"] + "<br><br>";
-
-        document.getElementById("userContainer").innerHTML += '</div>';
+       var div = document.createElement('div');
+       div.id= "u"+i;
+       div.onclick = function(e){printUserDevices(users[$(e.target).attr("jsid")]);};
+       document.getElementById("userContainer").appendChild(div);
+       document.getElementById("u"+i).innerHTML = users[i]["name"];
+       $("#u"+i).attr("jsid", i);
+       $("#u"+i).addClass("clickable");
     }
+}
 
+function printUserDevices(user)
+{
+    // // alert(user);
+    console.log(user);
+    // for(var i = 0; i < User["devices"].length; i++)
+    // {
+    //     var div = document.createElement('div');
+    //     div.id = "deviceDiv"+i;
+    //     document.getElementById("deviceContainer").appendChild(div);
+    //     document.getElementById("deviceDiv"+i).innerHTML = User["devices"][i];
+    // }
 }
 
 
