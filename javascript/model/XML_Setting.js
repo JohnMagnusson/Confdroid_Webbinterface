@@ -2,24 +2,29 @@
  * XML_Setting stores the xml setting for an app.
  */
 
-function XML_Setting(xmlLocation, xmlQuery)
+function XML_Setting(fileLocation, ragexp, replaceWith)
 {
-    this.xmlLocation = xmlLocation;
-    this.xmlQuery = xmlQuery;
+    this.fileLocation = fileLocation;
+    this.ragexp = ragexp;
+    this.replaceWith = replaceWith;
 }
 
 /**
  * @returns String
  */
-function getXmlLocation()
+function getFileLocation()
 {
-    return this.xmlLocation;
+    return this.fileLocation;
 }
 
 /**
  * @returns String
  */
-function getXmlQuery()
+function getRagexp()
 {
-    return this.xmlQuery;
+    return this.ragexp;
+}
+function getReplaceWith()
+{
+    return this.replaceWith;
 }

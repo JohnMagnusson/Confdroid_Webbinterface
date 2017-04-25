@@ -2,10 +2,11 @@
  * User can be in groups and have different settings depending on the groups set standard.
  */
 
-function Groups(groupName, groupId)
+function Group(groupId, groupName, priority)
 {
-    this.groupName = groupName;
     this.groupId = groupId;
+    this.groupName = groupName;
+    this.priority = priority;
 }
 
 function setGroupName(name)
@@ -21,4 +22,9 @@ function getGroupName()
 function getGroupId()
 {
     return this.groupId;
+}
+
+function getPriority()
+{
+    return this.priority;
 }

@@ -3,10 +3,27 @@
  * The device have applications on it and policies that it should follow.
  */
 
-function Device()
+function Device(name, imei, dateCreated, applications)
 {
-    this.applications = new Array();
-    this.policies = new Array();
+    this.name = name;
+    this.imei = imei;
+    this.dateCreated = dateCreated;
+    this.applications = applications;
+}
+
+function getName()
+{
+    return this.name;
+}
+
+function getImei()
+{
+    return this.imei;
+}
+
+function getDateCreated()
+{
+    return this.dateCreated;
 }
 
 function getApplications()
@@ -14,7 +31,3 @@ function getApplications()
     return this.applications;
 }
 
-function getPolicies()
-{
-    return this.policies;
-}

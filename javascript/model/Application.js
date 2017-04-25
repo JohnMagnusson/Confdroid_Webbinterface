@@ -3,11 +3,11 @@
  * Settings, if it should be force installed, data directory, apk name and apk url.
  */
 
-function Application(sql_setting, xml_setting, force_install, dataDir, apkName, apkUrl)
+function Application(sqlSetting, xmlSetting, forceInstall, dataDir, apkName, apkUrl)
 {
-    this.sql_setting = sql_setting;
-    this.xml_setting = xml_setting;
-    this.force_install = force_install;
+    this.sqlSetting = sqlSetting;
+    this.xmlSetting = xmlSetting;
+    this.forceInstall = forceInstall;
     this.dataDir = dataDir;
     this.apkName = apkName;
     this.apkUrl = apkUrl;
@@ -16,19 +16,19 @@ function Application(sql_setting, xml_setting, force_install, dataDir, apkName, 
 /**
  * @return SQL_Setting
  */
- function getSql_setting() {
+ function getSqlSetting() {
     return sql_setting;
 }
 /**
  * @return XML_Setting
  */
-function getXml_setting() {
+function getXmlSetting() {
     return xml_setting;
 }
 /**
  * @return boolean
  */
-function isForce_install() {
+function isForceInstall() {
     return force_install;
 }
 /**
