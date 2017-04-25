@@ -17,19 +17,19 @@ function Application(sqlSetting, xmlSetting, forceInstall, dataDir, apkName, apk
  * @return SQL_Setting
  */
  function getSqlSetting() {
-    return sql_setting;
+    return sqlSetting;
 }
 /**
  * @return XML_Setting
  */
 function getXmlSetting() {
-    return xml_setting;
+    return xmlSetting;
 }
 /**
  * @return boolean
  */
 function isForceInstall() {
-    return force_install;
+    return forceInstall;
 }
 /**
  * @return String

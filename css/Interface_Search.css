@@ -54,3 +54,8 @@ input[type=search]:focus {
 .clickable{
     cursor: pointer;
 }
+
+.txtArea{
+    width: 100%;
+    height: 15%;
+}
