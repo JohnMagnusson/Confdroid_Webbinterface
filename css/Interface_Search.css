@@ -62,3 +62,7 @@ input[type=search]:focus {
 .inner{
     margin-left:8%;
 }
+.txtArea{
+    width: 100%;
+    height: 15%;
+}
