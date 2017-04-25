@@ -38,41 +38,59 @@ function search(authToken, id)
                 console.log(data);
                 if(searchType == "User") {
                     var users = returnUsers(data);
-                    printData(users);
+                    printUsers(users, "userContainer", "outer");
                 }
                 else if(searchType == "Group")
                 {
-                    printGroups(data);
+                    printGroups(data, "userContainer", "outer");
                 }
             }
         }
     });
 }
 
-function test()
+function getUsersFromGroup(group)
 {
-    // var button = document.getElementById("groupButton").value;
-    console.log("hej");
+    var users = [];
+    for(i = 0; i < 2; i++)
+    {
+        users[i] = new User(i, "Elias"+i, "Eli", null, null, i, i);
+    }
+    return users;
 }
 
-function printGroups(groups)
+function createClickableDivOnParent(divId, parentId, jsid, cssClassName)
 {
-    for(i = 0; i < groups.length; i++) {
-        document.getElementById("userContainer").innerHTML += "id: " + groups[i]["id"] + "<br>name: <div id='groupButton' onclick='test()'>" + groups[i]["name"] + "</div> <br>Prio: " + groups[i]["prio"] + "<br><br>";
+    var div = document.createElement('div');
+    div.id = divId;
+    document.getElementById(parentId).appendChild(div);
+    $("#"+divId).attr("jsid", jsid);
+    $("#"+divId).addClass("clickable");
+    $("#"+divId).addClass(cssClassName);
+    if(cssClassName == "outer")
+        $('.outer').css({"border":"none"});
+    return div;
+}
+
+function printGroups(groups, parentId, cssClassName)
+{
+    for(var i = 0; i < groups.length; i++) {
+        var div = createClickableDivOnParent("group"+i,parentId, i, cssClassName);
+        div.onclick = function(e){
+            $(e.target).css({"border":"thin solid black"});
+            printUsers(getUsersFromGroup(groups[i]), this.id, "inner");
+        }
+        div.innerHTML = groups[i]["name"];
     }
 }
 
-function printUsers(users)
+function printUsers(users, parentId, cssClassName)
 {
     for(var i = 0; i < users.length; i++)
     {
-       var div = document.createElement('div');
-       div.id= "u"+i;
+       var div = createClickableDivOnParent("user"+i, parentId, i, cssClassName);
        div.onclick = function(e){printUserDevices(users[$(e.target).attr("jsid")]);};
-       document.getElementById("userContainer").appendChild(div);
-       document.getElementById("u"+i).innerHTML = users[i]["name"];
-       $("#u"+i).attr("jsid", i);
-       $("#u"+i).addClass("clickable");
+       div.innerHTML = users[i]["name"];
     }
 }
 

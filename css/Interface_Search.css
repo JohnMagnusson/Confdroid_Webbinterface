@@ -54,3 +54,11 @@ input[type=search]:focus {
 .clickable{
     cursor: pointer;
 }
+
+.outer{
+    border:thin solid black;
+}
+
+.inner{
+    margin-left:8%;
+}

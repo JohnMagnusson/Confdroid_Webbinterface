@@ -3,25 +3,25 @@
  * @param authToken
  * @param id
  */
-function authorizeCheck(authToken, id)
-{
-    $.ajax({
-        type: "POST",
-        url: "http://confdroid.localhost/Confdroid_Api/api/admin/authorize.json",
-        data: "authToken="+authToken+"&id="+id,
-        success: function(json){
-            console.log(json);
-            var userAuthorized = JSON.parse(json);
-
-            console.log(userAuthorized);
-
-            if(!userAuthorized)
-                window.location.replace("Login.php?timedout=true");
-            else
-                updateLinks(authToken,id);      //Updates the link with the current authToken and id in the url
-        }
-    });
-}
+// function authorizeCheck(authToken, id)
+// {
+//     $.ajax({
+//         type: "POST",
+//         url: "http://confdroid.localhost/Confdroid_Api/api/admin/authorize.json",
+//         data: "authToken="+authToken+"&id="+id,
+//         success: function(json){
+//             console.log(json);
+//             var userAuthorized = JSON.parse(json);
+//
+//             console.log(userAuthorized);
+//
+//             if(!userAuthorized)
+//                 window.location.replace("Login.php?timedout=true");
+//             else
+//                 updateLinks(authToken,id);      //Updates the link with the current authToken and id in the url
+//         }
+//     });
+// }
 
 /**
  * Updates the link so the authToken and id is in the url and the admin wont get kicked out from the page

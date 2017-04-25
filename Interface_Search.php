@@ -34,7 +34,7 @@ else
     <script src="javascript/model/XML_Setting.js"></script>
 </head>
 
-<body onload="authorizeCheck(token,adminId)">
+<body>
 
 <header>
     <h1 class="text_align_center"><a href="Admin_Interface.php" id="adminLink">Admin interface</a></h1>

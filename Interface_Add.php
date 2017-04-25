@@ -24,7 +24,7 @@ else
     <script src="javascript/Admin_Interface.js"></script>
 </head>
 
-<body onload="authorizeCheck(token,id)">
+<body onload="updateLinks(token,id)">
 
 <header>
     <h1 class="text_align_center"><a href="Admin_Interface.php" id="adminLink">Admin interface</a></h1>
