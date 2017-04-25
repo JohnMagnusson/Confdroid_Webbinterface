@@ -26,7 +26,7 @@ function search(authToken, id)
             var data = JSON.parse(json);
             if(data[0] == "Failed")
             {
-                console.log("Didn't get any users");
+                console.log("Didn't get any match");
 
             }
             else if(data[0] == "Not Authorized")
@@ -36,11 +36,30 @@ function search(authToken, id)
             else
             {
                 console.log(data);
-                var users = returnUsers(data);
-                printData(users);
+                if(searchType == "User") {
+                    var users = returnUsers(data);
+                    printData(users);
+                }
+                else if(searchType == "Group")
+                {
+                    printGroups(data);
+                }
             }
         }
     });
+}
+
+function test()
+{
+    // var button = document.getElementById("groupButton").value;
+    console.log("hej");
+}
+
+function printGroups(groups)
+{
+    for(i = 0; i < groups.length; i++) {
+        document.getElementById("userContainer").innerHTML += "id: " + groups[i]["id"] + "<br>name: <div id='groupButton' onclick='test()'>" + groups[i]["name"] + "</div> <br>Prio: " + groups[i]["prio"] + "<br><br>";
+    }
 }
 
 function printData(users)
