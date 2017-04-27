@@ -71,26 +71,7 @@ else
 
     </div>  <!-- End searchContainer-->
 
-    <div id="resultContainer">
 
-        <div id="userContainer">
-
-        </div>
-
-        <div id="deviceContainer">
-
-        </div>
-
-        <div id="appContainer">
-
-        </div>
-
-        <div id="appSettingsContainer">
-
-        </div>
-
-
-    </div>
 
 </div>
 
