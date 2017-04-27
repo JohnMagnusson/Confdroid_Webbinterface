@@ -53,7 +53,6 @@ function search(authToken, id)
  * If a name is clicked on then the devices are shown.
  * @param users
  */
-function printUsers(users)
 function getUsersFromGroup(group)
 {
     var users = [];
