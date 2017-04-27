@@ -21,7 +21,7 @@ function search(authToken, id)
         url: "http://confdroid.localhost/Confdroid_Api/api/admin/search.json",
         data: "authToken="+authToken+"&id="+id+"&searchType="+searchType+"&searchValue="+searchValue,
         success: function(json){
-            // console.log(json);
+            console.log(json);
             var data = JSON.parse(json);
             if(data[0] == "Failed")
             {
@@ -48,27 +48,17 @@ function search(authToken, id)
     });
 }
 
-/**
- * Prints the searched users in the user table.
- * If a name is clicked on then the devices are shown.
- * @param users
- */
-function printUsers(users)
 function getUsersFromGroup(group)
 {
-    var users = [];
-    for(i = 0; i < 2; i++)
-    {
-       var div = document.createElement('div');
-       div.id= "userId"+i;
-       div.onclick = function(e){printUserDevices(users[$(e.target).attr("jsid")]);};
-       document.getElementById("userContainer").appendChild(div);
-       document.getElementById("userId"+i).innerHTML = users[i]["name"];
-       $("#userId"+i).attr("jsid", i);
-       $("#userId"+i).addClass("clickable");
-        users[i] = new User(i, "Elias"+i, "Eli", null, null, i, i);
-    }
-    return users;
+    $.ajax({
+        type: "POST",
+        url: "http://confdroid.localhost/Confdroid_Api/api/admin/search.json",
+        data: "authToken="+authToken+"&id="+id+"&searchType=userFromGroup"+"&searchValue="+group["id"],
+        success: function(json){
+            console.log(json);
+            var data = JSON.parse(json);
+        }
+    });
 }
 
 function createClickableDivOnParent(divId, parentId, jsid, cssClassName)
@@ -90,12 +80,23 @@ function printGroups(groups, parentId, cssClassName)
         var div = createClickableDivOnParent("group"+i,parentId, i, cssClassName);
         div.onclick = function(e){
             $(e.target).css({"border":"thin solid black"});
+            var test = $(e.target)[0].childNodes;
+            var m = test.length;
+            for(var i = m-1; i >= 1; i--)
+            {
+                test[i].remove();
+            }
             printUsers(getUsersFromGroup(groups[i]), this.id, "inner");
         }
         div.innerHTML = groups[i]["name"];
     }
 }
 
+/**
+ * Prints the searched users in the user table.
+ * If a name is clicked on then the devices are shown.
+ * @param users
+ */
 function printUsers(users, parentId, cssClassName)
 {
     for(var i = 0; i < users.length; i++)
@@ -122,13 +123,9 @@ function printUserDevices(user)
         document.getElementById("deviceContainer").innerHTML = "";      //Clears the container from old info.
     for(var i = 0; i < user["devices"].length; i++)
     {
-        var div = document.createElement('div');
-        div.id = "deviceId"+i;                                           //creates a div that contains the info.
+        var div = createClickableDivOnParent("deviceId"+i, "deviceContainer", i, "outer");
         div.onclick = function(e){printApplicationFromDevice(user["devices"][$(e.target).attr("jsid")]);};
-        document.getElementById("deviceContainer").appendChild(div);     //Places the new div in deviceContainer
-        document.getElementById("deviceId"+i).innerHTML = user["devices"][i]["name"];
-        $("#deviceId"+i).attr("jsid", i);                                //Adds value to the div. The value is the index in the user devices.
-        $("#deviceId"+i).addClass("clickable");                          //Adds css class to the div tag.
+        div.innerHTML = user["devices"][i]["name"];
     }
 }
 
@@ -140,15 +137,13 @@ function printApplicationFromDevice(device)
         document.getElementById("appContainer").innerHTML = "No applications registered on device.";
         return;
     }
+    else
+        document.getElementById("appContainer").innerHTML = "";      //Clears the container from old info.
     for(var i = 0; i < device["applications"].length; i++)
     {
-        var div = document.createElement('div');
-        div.id = "applicationId"+i;                                           //creates a div that contains the info.
+        var div = createClickableDivOnParent("applicationId"+i, "appContainer", i, "outer");
         div.onclick = function(e){printSqlFromApp(device["applications"][$(e.target).attr("jsid")]);};
-        document.getElementById("appContainer").appendChild(div);             //Places the new div in applicationContainer
-        document.getElementById("applicationId"+i).innerHTML = device["applications"][i]["apkName"];
-        $("#applicationId"+i).attr("jsid", i);                                //Adds value to the div. The value is the index of the application in the device..
-        $("#applicationId"+i).addClass("clickable");                          //Adds css class to the div tag.
+        div.innerHTML = device["applications"][i]["apkName"];
     }
 }
 
