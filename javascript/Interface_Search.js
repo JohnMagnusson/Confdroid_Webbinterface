@@ -37,6 +37,7 @@ function search(authToken, id)
                 console.log(data);
                 var users = returnUsers(data);
                 printUsers(users);
+                console.log(users);
             }
         }
     });
@@ -68,13 +69,14 @@ function printUsers(users)
  */
 function printUserDevices(user)
 {
+    $('#deviceContainer').empty();                                        //Clears device
+    $('#appContainer').empty();                                           //Clears app
+    $('#appSettingsContainer').empty();                                   //Clears settings
     if(user["devices"].length == 0)
     {
         document.getElementById("deviceContainer").innerHTML = "No device registered on user.";
         return;
     }
-    else
-        document.getElementById("deviceContainer").innerHTML = "";      //Clears the container from old info.
     for(var i = 0; i < user["devices"].length; i++)
     {
         var div = document.createElement('div');
@@ -89,7 +91,8 @@ function printUserDevices(user)
 
 function printApplicationFromDevice(device)
 {
-    document.getElementById("appSettingsContainer").innerHTML = "";
+    $('#appContainer').empty();                                           //Clears app
+    $('#appSettingsContainer').empty();                                   //Clears settings
     if(device["applications"].length == 0)
     {
         document.getElementById("appContainer").innerHTML = "No applications registered on device.";
@@ -99,29 +102,80 @@ function printApplicationFromDevice(device)
     {
         var div = document.createElement('div');
         div.id = "applicationId"+i;                                           //creates a div that contains the info.
-        div.onclick = function(e){printSqlFromApp(device["applications"][$(e.target).attr("jsid")]);};
+        div.onclick = function(e){printSqlFromApp(device["applications"][$(e.target).attr("jsid")]);printXmlFromApp(device["applications"][$(e.target).attr("jsid")]);};
         document.getElementById("appContainer").appendChild(div);             //Places the new div in applicationContainer
         document.getElementById("applicationId"+i).innerHTML = device["applications"][i]["apkName"];
         $("#applicationId"+i).attr("jsid", i);                                //Adds value to the div. The value is the index of the application in the device..
         $("#applicationId"+i).addClass("clickable");                          //Adds css class to the div tag.
     }
-}
+}//
 
+/**
+ * Shows sql window where the admin can change settings.
+ * @param application
+ */
 function printSqlFromApp(application)
 {
-    document.getElementById("appSettingsContainer").innerHTML = "";
+    $('#appSettingsContainer').empty();                                               //Clears settings
+    if( application["sqlSetting"].length == 0)
+    {
+        var txtArea = document.createElement('textarea');
+        txtArea.id = "sqlId"+i;                                                   //Creates a textarea that contains the sql setting.
+        document.getElementById("appSettingsContainer").appendChild(txtArea);     //Places the new textarea in appsettingcontainer
+        document.getElementById("sqlId"+i).innerHTML = "DB location:\n"+"(Enter database url here.)"+ "\n\nDB Query:\n"+"(Enter SQL query here.)";
+        $("#sqlId"+i).attr("jsid", i);                                            //Adds the setting to the textarea.
+        $("#sqlId"+i).addClass("txtArea");                                        //Adds css class to the div tag.
+    }
     for(var i = 0; i < application["sqlSetting"].length; i++)
     {
         var txtArea = document.createElement('textarea');
         txtArea.id = "sqlId"+i;                                                   //Creates a textarea that contains the sql setting.
         document.getElementById("appSettingsContainer").appendChild(txtArea);     //Places the new textarea in appsettingcontainer
-        document.getElementById("sqlId"+i).innerHTML = application["sqlSetting"][i]["dbLocation"];
-        document.getElementById("sqlId"+i).innerHTML = application["sqlSetting"][i]["dbQueries"];
+        document.getElementById("sqlId"+i).innerHTML = "DB location:\n"+application["sqlSetting"][i]["dbLocation"];
+        document.getElementById("sqlId"+i).innerHTML += "\n\nDB Query:\n"+application["sqlSetting"][i]["dbQueries"];
         $("#sqlId"+i).attr("jsid", i);                                            //Adds the setting to the textarea.
         $("#sqlId"+i).addClass("txtArea");                                        //Adds css class to the div tag.
     }
+    var btn = document.createElement("button");
+    var t = document.createTextNode("Save SQL");
+    btn.appendChild(t);
+    btn.onclick = function(){alert("Implement save function here");};
+    document.getElementById("appSettingsContainer").appendChild(btn);
 }
 
+/**
+ * Shows xml window where the admin can change settings.
+ * @param application
+ */
+function printXmlFromApp(application)
+{
+    console.log(application);
+    if(application["xmlSetting"].length == 0)
+    {
+        var txtArea = document.createElement('textarea');
+        txtArea.id = "xmlId"+i;                                                   //Creates a textarea that contains the sql setting.
+        document.getElementById("appSettingsContainer").appendChild(txtArea);     //Places the new textarea in appsettingcontainer
+        document.getElementById("xmlId"+i).innerHTML += "File location:\n"+"(Enter where file is stored here.)"+ "\n\nRegularexp:\n"+"(Enter here.)" + "\n\nReplace with:\n(Enter what it should replace with)";
+        $("#xmlId"+i).attr("jsid", i);                                            //Adds the setting to the textarea.
+        $("#xmlId"+i).addClass("txtArea");                                        //Adds css class to the div tag.
+    }
+    for(var i = 0; i < application["xmlSetting"].length; i++)
+    {
+        var txtArea = document.createElement('textarea');
+        txtArea.id = "xmlId"+i;
+        document.getElementById("appSettingsContainer").appendChild(txtArea);
+        document.getElementById("xmlId"+i).innerHTML  = "File location:\n"+application["xmlSetting"][i]["fileLocation"];
+        document.getElementById("xmlId"+i).innerHTML += "\n\nDB Query:\n"+application["xmlSetting"][i]["ragexp"];
+        document.getElementById("xmlId"+i).innerHTML += "\n\nDB Query:\n"+application["xmlSetting"][i]["replaceWith"];
+        $("#xmlId"+i).attr("jsid", i);
+        $("#xmlId"+i).addClass("txtArea");
+    }
+    var btn = document.createElement("button");
+    var t = document.createTextNode("Save XML");
+    btn.appendChild(t);
+    btn.onclick = function(){alert("Implement save function here");};
+    document.getElementById("appSettingsContainer").appendChild(btn);
+}
 
 
 /**
@@ -131,7 +185,7 @@ function printSqlFromApp(application)
 function returnUsers(data)
 {
     var users = [];
-    for(i = 0; i < data.length; i++)
+    for(var i = 0; i < data.length; i++)
     {
         var groups = returnUserGroups(data[i]);
         var devices = returnUserDevices(data[i]);
@@ -182,8 +236,8 @@ function returnDeviceApplications(deviceData)
     var applications = [];
     for(var i = 0; i < deviceData["applications"].length; i++)
     {
-        var sqlSettings = returnApplicationSqlSettings(deviceData["applications"][i]);
-        var xmlSettings = returnApplicationXmlSettings(deviceData["applications"][i]);
+        var sqlSettings = returnApplicationSqlSettings(deviceData["applications"][i]["SQL_settings"]);
+        var xmlSettings = returnApplicationXmlSettings(deviceData["applications"][i]["XML_settings"]);
         applications[i] = new Application(sqlSettings,xmlSettings,deviceData["applications"][i]["forceInstall"],deviceData["applications"][i]["dataDir"],deviceData["applications"][i]["apkName"],deviceData["applications"][i]["apkURL"]);
     }
     return applications;
@@ -191,30 +245,30 @@ function returnDeviceApplications(deviceData)
 
 /**
  * Returns an array with sql settings. Data taken from the api.
- * @param applicationData
+ * @param sqlData
  * @returns {Array}
  */
-function returnApplicationSqlSettings(applicationData)
+function returnApplicationSqlSettings(sqlData)
 {
     var sqlSettings = [];
-    for(var i = 0; i < applicationData["SQL_settings"].length; i++)
+    for(var i = 0; i < sqlData.length; i++)
     {
-        sqlSettings[i] = new SQL_Setting(applicationData["SQL_settings"][i]["dblocation"],applicationData["SQL_settings"][i]["query"]);
+        sqlSettings[i] = new SQL_Setting(sqlData[i]["dblocation"],sqlData[i]["query"]);
     }
     return sqlSettings;
 }
 
 /**
  * Returns an array with xml settings. Data is taken from the api.
- * @param applicationData
+ * @param xmlData
  * @returns {Array}
  */
-function returnApplicationXmlSettings(applicationData)
+function returnApplicationXmlSettings(xmlData)
 {
     var xmlSettings = [];
-    for(var i = 0; i < applicationData["XML_settings"].length; i++)
+    for(var i = 0; i < xmlData.length; i++)
     {
-        xmlSettings = new XML_Setting(applicationData["fileLocation"],applicationData["regexp"], applicationData["replaceWith"]);
+        xmlSettings[i] = new XML_Setting(xmlData[i]["fileLocation"],xmlData[i]["regexp"], xmlData[i]["replaceWith"]);
     }
     return xmlSettings;
 }
