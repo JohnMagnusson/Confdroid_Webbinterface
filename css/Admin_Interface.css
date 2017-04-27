@@ -6,9 +6,7 @@ body{
     color: black;
 }
 header{
-    height: 9%;
-    width: 100%;
-    border-bottom: solid thin black;
+    height: 3.5em;
 }
 a{
     color: black;
@@ -19,39 +17,50 @@ a:visited{
 }
 #headerTitle{
     font-family: "Arial Black";
-    font-size: 32px;
-    margin-left: 3%;
-    margin-top: 0.3%;
+    font-size: 2em;
+    margin-left: 1em;
+    margin-top: 0.2em;
     float: left;
 }
 #searchField{
-    width: 250px;
-    height: 23px;
     float: left;
-    margin-top: 1.5%;
-    margin-left: 2%;
+    margin-top: 1.3em;
+    margin-left: 2em;
+}
+#usernameDisplay{
+    float: right;
+    margin-top: 1.55em;
+    margin-right: 2em;
+}
+#logout{
+    float: right;
+    margin-top: -2.50em;
+    margin-right: 4.2em;
 }
 nav{
-    width: 100%;
-    height: 4.1%;
+    height: 1.7em;
     border-bottom: solid thick black;
 }
-
 li{
     display: inline;
-    /*text-decoration: underline;*/
-    font-size: 22px;
-    margin-right: 4%;
-    border-bottom: thin black solid;
+    font-size: 1.4em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    margin-right: 1.65em;
+    margin-left: -1em;
+}
+li:hover{
+    padding-bottom: 0.13em;
+    border-bottom: solid yellow thick;
 }
 .activeNav{
+    padding-bottom: 0.13em;
     border-bottom: solid red thick;
 }
 #container{
-    width: 80%;
-    height: 70%;
     margin: auto;
-    /*border: thin solid black;*/
+    height: 100em;
+    border: thick solid black;
 }
 
 

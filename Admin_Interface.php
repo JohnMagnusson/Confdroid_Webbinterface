@@ -36,17 +36,14 @@ else
 <!--<body onload="updateLinks(token,id)">-->
 
 <header>
-
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 
     <div id="searchField">
-
-        <input type="search" id="searchValue" name="searchValue" placeholder="Search.." class="input">
+        <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
 
         <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
-
     </div>
-
+    <div id="usernameDisplay">UsernameHolder</div>
 </header>
 
 <nav>
@@ -56,29 +53,12 @@ else
         <li>Device</li>
         <li>Application</li>
     </ul>
+    <input type="button" id="logout" name="logoutBtn" value="Logout">
 </nav>
 
 <div id="container">
 
-    <div id="resultContainer">
 
-        <div id="userContainer">
-
-        </div>
-
-        <div id="deviceContainer">
-
-        </div>
-
-        <div id="appContainer">
-
-        </div>
-
-        <div id="appSettingsContainer">
-
-        </div>
-
-    </div>
 </div>
 
 </body>
