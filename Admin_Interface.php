@@ -7,7 +7,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
-    echo "var id ='" . $_GET["id"] . "';";
+    echo "var adminId ='" . $_GET["id"] . "';";
     echo "</script>";
 }
 else
@@ -30,9 +30,10 @@ else
     <script src="javascript/model/SQL_Setting.js"></script>
     <script src="javascript/model/User.js"></script>
     <script src="javascript/model/XML_Setting.js"></script>
+    <script src="javascript/ResultTemplate.js"></script>
 </head>
 
-<body onload="updateLinks(token,id)">
+<!--<body onload="updateLinks(token,id)">-->
 
 <header>
 

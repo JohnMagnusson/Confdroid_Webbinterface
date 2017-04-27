@@ -14,7 +14,7 @@ $(document).ready(function(){
 function search(authToken, id)
 {
     document.getElementById("userContainer").innerHTML = " ";
-    var searchType = document.getElementById("searchDropDown").value;
+    var searchType = document.getElementById("menu").value;
     var searchValue = document.getElementById("searchValue").value;
     $.ajax({
         type: "POST",
@@ -35,138 +35,27 @@ function search(authToken, id)
             else
             {
                 console.log(data);
-                if(searchType == "User") {
-                    var users = returnUsers(data);
-                    printUsers(users, "userContainer", "outer");
-                }
-                else if(searchType == "Group")
-                {
-                    printGroups(data, "userContainer", "outer");
-                }
+                // if(searchType == "User") {
+                //     var users = returnUsers(data);
+                //     printUsers(users);
+                // }
+                // else if(searchType == "Group")
+                // {
+                    console.log("ok");
+                    printUsers(data);
+                // }
             }
         }
     });
 }
 
-/**
- * Prints the searched users in the user table.
- * If a name is clicked on then the devices are shown.
- * @param users
- */
-function getUsersFromGroup(group)
+function printUsers(users)
 {
-    var users = [];
-    for(i = 0; i < 2; i++)
-    {
-       var div = document.createElement('div');
-       div.id= "userId"+i;
-       div.onclick = function(e){printUserDevices(users[$(e.target).attr("jsid")]);};
-       document.getElementById("userContainer").appendChild(div);
-       document.getElementById("userId"+i).innerHTML = users[i]["name"];
-       $("#userId"+i).attr("jsid", i);
-       $("#userId"+i).addClass("clickable");
-        users[i] = new User(i, "Elias"+i, "Eli", null, null, i, i);
-    }
-    return users;
+    var aa = new ResultTemplate("Groups", users);
+    console.log(":");
+    // console.log(aa.getTitle());
+    document.getElementById("resultContainer").appendChild(aa.getDiv());
 }
-
-function createClickableDivOnParent(divId, parentId, jsid, cssClassName)
-{
-    var div = document.createElement('div');
-    div.id = divId;
-    document.getElementById(parentId).appendChild(div);
-    $("#"+divId).attr("jsid", jsid);
-    $("#"+divId).addClass("clickable");
-    $("#"+divId).addClass(cssClassName);
-    if(cssClassName == "outer")
-        $('.outer').css({"border":"none"});
-    return div;
-}
-
-function printGroups(groups, parentId, cssClassName)
-{
-    for(var i = 0; i < groups.length; i++) {
-        var div = createClickableDivOnParent("group"+i,parentId, i, cssClassName);
-        div.onclick = function(e){
-            $(e.target).css({"border":"thin solid black"});
-            printUsers(getUsersFromGroup(groups[i]), this.id, "inner");
-        }
-        div.innerHTML = groups[i]["name"];
-    }
-}
-
-function printUsers(users, parentId, cssClassName)
-{
-    for(var i = 0; i < users.length; i++)
-    {
-       var div = createClickableDivOnParent("user"+i, parentId, i, cssClassName);
-       div.onclick = function(e){printUserDevices(users[$(e.target).attr("jsid")]);};
-       div.innerHTML = users[i]["name"];
-    }
-}
-
-/**
- * Prints the devices that the clicked user have.
- * If a device is clicked the the application of the device is showed.
- * @param user
- */
-function printUserDevices(user)
-{
-    if(user["devices"].length == 0)
-    {
-        document.getElementById("deviceContainer").innerHTML = "No device registered on user.";
-        return;
-    }
-    else
-        document.getElementById("deviceContainer").innerHTML = "";      //Clears the container from old info.
-    for(var i = 0; i < user["devices"].length; i++)
-    {
-        var div = document.createElement('div');
-        div.id = "deviceId"+i;                                           //creates a div that contains the info.
-        div.onclick = function(e){printApplicationFromDevice(user["devices"][$(e.target).attr("jsid")]);};
-        document.getElementById("deviceContainer").appendChild(div);     //Places the new div in deviceContainer
-        document.getElementById("deviceId"+i).innerHTML = user["devices"][i]["name"];
-        $("#deviceId"+i).attr("jsid", i);                                //Adds value to the div. The value is the index in the user devices.
-        $("#deviceId"+i).addClass("clickable");                          //Adds css class to the div tag.
-    }
-}
-
-function printApplicationFromDevice(device)
-{
-    document.getElementById("appSettingsContainer").innerHTML = "";
-    if(device["applications"].length == 0)
-    {
-        document.getElementById("appContainer").innerHTML = "No applications registered on device.";
-        return;
-    }
-    for(var i = 0; i < device["applications"].length; i++)
-    {
-        var div = document.createElement('div');
-        div.id = "applicationId"+i;                                           //creates a div that contains the info.
-        div.onclick = function(e){printSqlFromApp(device["applications"][$(e.target).attr("jsid")]);};
-        document.getElementById("appContainer").appendChild(div);             //Places the new div in applicationContainer
-        document.getElementById("applicationId"+i).innerHTML = device["applications"][i]["apkName"];
-        $("#applicationId"+i).attr("jsid", i);                                //Adds value to the div. The value is the index of the application in the device..
-        $("#applicationId"+i).addClass("clickable");                          //Adds css class to the div tag.
-    }
-}
-
-function printSqlFromApp(application)
-{
-    document.getElementById("appSettingsContainer").innerHTML = "";
-    for(var i = 0; i < application["sqlSetting"].length; i++)
-    {
-        var txtArea = document.createElement('textarea');
-        txtArea.id = "sqlId"+i;                                                   //Creates a textarea that contains the sql setting.
-        document.getElementById("appSettingsContainer").appendChild(txtArea);     //Places the new textarea in appsettingcontainer
-        document.getElementById("sqlId"+i).innerHTML = application["sqlSetting"][i]["dbLocation"];
-        document.getElementById("sqlId"+i).innerHTML = application["sqlSetting"][i]["dbQueries"];
-        $("#sqlId"+i).attr("jsid", i);                                            //Adds the setting to the textarea.
-        $("#sqlId"+i).addClass("txtArea");                                        //Adds css class to the div tag.
-    }
-}
-
-
 
 /**
  * Return users from the search data from the api.

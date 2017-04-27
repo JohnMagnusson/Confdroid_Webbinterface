@@ -1,18 +1,15 @@
 /**
  * Created by Elias on 2017-04-27.
  */
-/**
- * User have a name and email.
- */
 
 function ResultTemplate(title, data)
 {
     this.title = title;
     this.data = data;
-    createDiv();
+    this.createDiv();
 }
 
-function getTitle()
+ResultTemplate.prototype.getTitle = function()
 {
     return this.title;
 }
@@ -32,22 +29,24 @@ function setTitle(title)
     this.title = title;
 }
 
-function createDiv()
+ResultTemplate.prototype.createDiv = function()
 {
     this.div = document.createElement('div');
     this.div.id = "Template";
-    this.div.addClass("clickable");
     this.div.innerHTML = this.title;
     var dataDiv = document.createElement('div');
-    dataDiv.addClass("outer");
+    dataDiv.id = "dataDiv";
+    // $('#'+dataDiv.id).addClass("outer");
     this.div.appendChild(dataDiv);
+    console.log("h");
+    // console.log(this.data);
     for(var i = 0; i < this.data.length; i++)
     {
-        dataDiv.innerHTML += data[i]["name"];
+        dataDiv.innerHTML += this.data[i]["name"];
     }
 }
 
-function getDiv()
+ResultTemplate.prototype.getDiv = function()
 {
     return this.div;
 }
