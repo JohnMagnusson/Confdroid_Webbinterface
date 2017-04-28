@@ -21,7 +21,6 @@ else
     <link rel="stylesheet" type="text/css" href="css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="javascript/jquery-3.2.0.min.js"></script>
     <script src="javascript/Admin_Interface.js"></script>
-    <script src="javascript/Interface_Search.js"></script>                        <!-- Javascript file that contains search functions-->
     <!-- Model files for javascript is now loaded-->
     <script src="javascript/model/Application.js"></script>
     <script src="javascript/model/Device.js"></script>
@@ -32,8 +31,6 @@ else
     <script src="javascript/model/XML_Setting.js"></script>
     <script src="javascript/ResultTemplate.js"></script>
 </head>
-
-<!--<body onload="updateLinks(token,id)">-->
 
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>

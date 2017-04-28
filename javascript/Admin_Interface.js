@@ -13,15 +13,13 @@ $(document).ready(function(){
 
 function search(authToken, id)
 {
-    var searchType = document.getElementById("menu").value;
+    var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
+    console.log(authToken);
     $.ajax({
-        type: "POST",
-        url: "http://confdroid.localhost/Confdroid_Api/api/admin/search.json",
-        data: "authToken="+authToken+"&id="+id+"&searchType="+searchType+"&searchValue="+searchValue,
-        success: function(json){
-            // console.log(json);
-            var data = JSON.parse(json);
+        type: "GET",
+        url: "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue,
+        success: function(data){
             if(data[0] == "Failed")
             {
                 console.log("Didn't get any match");
@@ -34,25 +32,16 @@ function search(authToken, id)
             else
             {
                 console.log(data);
-                // if(searchType == "User") {
-                //     var users = returnUsers(data);
-                //     printUsers(users);
-                // }
-                // else if(searchType == "Group")
-                // {
-                printUsers(data);
-                // }
+                printData(data, searchType);
             }
         }
     });
 }
 
-function printUsers(users)
+function printData(users, searchType)
 {
-    var aa = new ResultTemplate("Groups", users);
-    document.getElementById("container").appendChild(aa.getDiv());
-    var aa2 = new ResultTemplate("Waaat", users);
-    document.getElementById("container").appendChild(aa2.getDiv());
+    var aa = new ResultTemplate(searchType, users);
+    document.getElementById("resultContainer").appendChild(aa.getDiv());
 }
 
 /**

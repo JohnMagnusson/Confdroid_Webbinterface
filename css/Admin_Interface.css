@@ -59,7 +59,6 @@ li:hover{
 }
 #container{                         /*Holds together all the templates*/
     font-family: helvetica,arial,sans-serif;
-#container{
     clear:both;
     margin: auto;
     height: 140em;
@@ -83,14 +82,15 @@ li:hover{
     border: thin black solid;
 }
 .optionTitle{                       /*Title of the option that the user can see */
-    text-align: left;
-    margin-left: 10%;
+    text-align: center;
     font-size: 1.5em;
 }
 
 .template{
     height:100%;
     width:20%;
+    float:left;
+    margin-left:-1px;
 }
 
 .dataDiv{
@@ -105,6 +105,8 @@ li:hover{
 .templateText{
     font-size: 120%;
     cursor:pointer;
+    margin-left:5%;
+    margin-top:1%;
 }
 
 .templateText:hover>img
@@ -113,6 +115,8 @@ li:hover{
 }
 
 .img{
-    width:10%;
+    float:right;
+    margin-top:2%;
+    margin-right:2%;
     visibility: hidden;
 }

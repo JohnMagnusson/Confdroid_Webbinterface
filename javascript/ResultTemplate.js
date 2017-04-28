@@ -33,7 +33,7 @@ ResultTemplate.prototype.createDiv = function()
 {
     this.div = document.createElement('div');
     this.div.id = "template";
-    this.div.innerHTML = "<p class='templateTitle'>"+this.title+"</p>";
+    this.div.innerHTML = "<h2 class='optionTitle'>"+this.title+"</h2>";
     this.div.classList.add("template");
     var dataDiv = document.createElement('div');
     dataDiv.id = "dataDiv";
@@ -42,6 +42,9 @@ ResultTemplate.prototype.createDiv = function()
     for(var i = 0; i < this.data.length; i++)
     {
         dataDiv.innerHTML += "<p class='templateText'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'></p>";
+        // console.log("o");
+        // console.log(this.data[0]["groups"]);
+        // dataDiv.onclick = function(e){printData(this.data[0]["groups"], "groups")};
     }
 }
 
