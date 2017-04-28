@@ -1,5 +1,5 @@
 *{
-    margin: 0px;
+    margin: 0;
 }
 body{
     overflow: hidden;
@@ -15,29 +15,29 @@ a{
 a:visited{
     color: black;
 }
-#headerTitle{
-    font-family: "Arial Black";
+#headerTitle{                       /*Title of the website*/
+    font-family: Arial Black;
     font-size: 2em;
     margin-left: 1em;
     margin-top: 0.2em;
     float: left;
 }
-#searchField{
+#searchField{                       /*Search field contains search bar and button*/
     float: left;
     margin-top: 1.3em;
     margin-left: 2em;
 }
-#usernameDisplay{
+#usernameDisplay{                   /*Div tag to show the logged in username*/
     float: right;
     margin-top: 1.55em;
     margin-right: 2em;
 }
-#logout{
+#logout{                            /*Logout button div tag*/
     float: right;
     margin-top: -2.50em;
     margin-right: 4.2em;
 }
-nav{
+nav{                                /*Navigation field */
     height: 1.7em;
     border-bottom: solid thick black;
 }
@@ -53,14 +53,39 @@ li:hover{
     padding-bottom: 0.13em;
     border-bottom: solid yellow thick;
 }
-.activeNav{
+.activeNav{                         /*Shows which type the user want to see */
     padding-bottom: 0.13em;
-    border-bottom: solid red thick;
+    border-bottom: solid green thick;
 }
+#container{                         /*Holds together all the templates*/
+    font-family: helvetica,arial,sans-serif;
 #container{
     clear:both;
     margin: auto;
-    height: 100em;
+    height: 140em;
+}
+#resultContainer{                   /*Holds the templates that the information will be shown in */
+    float: left;
+    margin-top:3%;
+    margin-left: 2%;
+    height: 100%;
+    width: 75.5%;
+}
+#infoContainer{                     /*Static container that always on the right side*/
+    float: left;
+    margin-top:3%;
+    width: 20%;
+    height: 100%;
+}
+#infoHolder{                        /*Inside the infoContainer and displays information of the chosen entity */
+    height: 100%;
+    margin-top: 0.5%;
+    border: thin black solid;
+}
+.optionTitle{                       /*Title of the option that the user can see */
+    text-align: left;
+    margin-left: 10%;
+    font-size: 1.5em;
 }
 
 .template{
