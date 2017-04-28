@@ -9,12 +9,10 @@ $('document').ready(function(){
         var password=$("#password").val();
         $.ajax({
             type: "POST",
-            url: "http://confdroid.localhost/Confdroid_Api/api/admin/login.json",
+            url: "https://confdroid.tutus.se/api/admin/login.json",
             data: "username="+username+"&password="+password,
-            success: function(json){
-                console.log(json);
-                var user = JSON.parse(json);
-                console.log(user.id);
+            success: function(user){
+                console.log(user);
 
                 if(user.Token!="Failed")
                 {
