@@ -32,17 +32,16 @@ function setTitle(title)
 ResultTemplate.prototype.createDiv = function()
 {
     this.div = document.createElement('div');
-    this.div.id = "Template";
-    this.div.innerHTML = this.title;
+    this.div.id = "template";
+    this.div.innerHTML = "<p class='templateTitle'>"+this.title+"</p>";
+    this.div.classList.add("template");
     var dataDiv = document.createElement('div');
     dataDiv.id = "dataDiv";
-    // $('#'+dataDiv.id).addClass("outer");
+    dataDiv.classList.add("dataDiv");
     this.div.appendChild(dataDiv);
-    console.log("h");
-    // console.log(this.data);
     for(var i = 0; i < this.data.length; i++)
     {
-        dataDiv.innerHTML += this.data[i]["name"];
+        dataDiv.innerHTML += "<p class='templateText'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'></p>";
     }
 }
 

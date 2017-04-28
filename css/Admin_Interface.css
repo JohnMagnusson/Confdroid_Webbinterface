@@ -58,9 +58,36 @@ li:hover{
     border-bottom: solid red thick;
 }
 #container{
+    clear:both;
     margin: auto;
     height: 100em;
-    border: thick solid black;
 }
 
+.template{
+    height:100%;
+    width:20%;
+}
 
+.dataDiv{
+    height:100%;
+    border:thin solid black;
+}
+
+.templateTitle{
+    font-size: 200%;
+}
+
+.templateText{
+    font-size: 120%;
+    cursor:pointer;
+}
+
+.templateText:hover>img
+{
+    visibility: visible;
+}
+
+.img{
+    width:10%;
+    visibility: hidden;
+}
