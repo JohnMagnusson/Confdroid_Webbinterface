@@ -59,7 +59,6 @@ li:hover{
 }
 #container{                         /*Holds together all the templates*/
     font-family: helvetica,arial,sans-serif;
-#container{
     clear:both;
     margin: auto;
     height: 140em;
