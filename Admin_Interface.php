@@ -57,6 +57,18 @@ else
 
 <div id="container">
 
+    <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
+
+
+    </div>
+
+    <div id="infoContainer">            <!-- Static info container -->
+        <h2 class="optionTitle">Information</h2>
+        <div id="infoHolder">           <!-- All info is printed inside this div -->
+
+        </div>
+
+    </div>
 
 </div>
 
