@@ -120,3 +120,9 @@ li:hover{
     margin-right:2%;
     visibility: hidden;
 }
+
+.addIcon{
+    position:fixed;
+    bottom:0;
+    right:84%;
+}
