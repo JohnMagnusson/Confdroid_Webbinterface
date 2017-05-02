@@ -11,13 +11,14 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-    header("Location: Login.php");
+    header("Location: Login.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
+    <link rel="icon" href="images/BrowserIcon2.ico">
     <link rel="stylesheet" type="text/css" href="css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="javascript/jquery-3.2.0.min.js"></script>
     <script src="javascript/Admin_Interface.js"></script>
@@ -46,12 +47,12 @@ else
 
 <nav>
     <ul id="menu">
-        <li class="activeNav">User</li>
-        <li>Group</li>
-        <li>Device</li>
-        <li>Application</li>
+        <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
+        <li id="liGroup"  onclick="updateNav('liGroup')">Group</li>
+        <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
+        <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
     </ul>
-    <input type="button" id="logout" name="logoutBtn" value="Logout">
+    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut(token,adminId)">
 </nav>
 
 <div id="container">
