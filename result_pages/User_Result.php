@@ -1,0 +1,106 @@
+
+<?php
+/**
+ * Interface for the admin to manage the system.
+ */
+if (isset($_GET['authToken']) && isset($_GET['id']))
+{
+    echo "<script>";
+    echo "var token='" . $_GET["authToken"] . "';";
+    echo "var adminId ='" . $_GET["id"] . "';";
+    echo "</script>";
+}
+else
+//    header("Location: Login.php?timedout=true");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="icon" href="images/BrowserIcon2.ico">
+    <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
+    <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
+    <script src="../javascript/jquery-3.2.0.min.js"></script>
+    <script src="../javascript/Admin_Interface.js"></script>
+    <!-- Model files for javascript is now loaded-->
+    <script src="../javascript/model/Application.js"></script>
+    <script src="../javascript/model/Device.js"></script>
+    <script src="../javascript/model/DeviceManagementPolicy.js"></script>
+    <script src="../javascript/model/Group.js"></script>
+    <script src="../javascript/model/SQL_Setting.js"></script>
+    <script src="../javascript/model/User.js"></script>
+    <script src="../javascript/model/XML_Setting.js"></script>
+    <script src="../javascript/ResultTemplate.js"></script>
+</head>
+
+<header>
+    <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
+
+    <div id="searchField">
+        <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
+
+        <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
+    </div>
+    <div id="usernameDisplay">UsernameHolder</div>
+</header>
+
+<nav>
+    <ul id="menu">
+        <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
+        <li id="liGroup"  onclick="updateNav('liGroup')">Group</li>
+        <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
+        <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
+    </ul>
+    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut(token,adminId)">
+</nav>
+
+<div id="container">
+
+    <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
+
+        <div id="templateContainer">
+            <h2 class="optionTitle">Previous</h2>
+            <div id="prevDiv" class="infoTemplate">
+
+            </div>
+        </div>
+
+        <div id="templateContainer">
+            <h2 class="optionTitle">Groups</h2>
+            <div id="groupDiv" class="infoTemplate">
+
+            </div>
+
+        </div>
+
+        <div id="templateContainer">
+            <h2 class="optionTitle">Devices</h2>
+            <div id="deviceDiv" class="infoTemplate">
+
+            </div>
+        </div>
+
+        <div id="templateContainer">
+            <h2 class="optionTitle">Applications</h2>
+            <div id="applicationDiv" class="infoTemplate extraRightBorder">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="infoContainer">            <!-- Static info container -->
+        <h2 class="optionTitle">Information</h2>
+        <div id="infoHolder">           <!-- All info is printed inside this div -->
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
