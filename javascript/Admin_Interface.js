@@ -49,11 +49,12 @@ function search(authToken, id)
 
 function printData(users, searchType)
 {
-    $("#resultContainer").empty();
-    var aa = new DisplayedResult();
-    aa.template1.setTemplate(searchType, users);
-    aa.template1.createDiv();
-    document.getElementById("resultContainer").appendChild(aa.template1.div);
+    $("#previousInfo").empty();
+    document.getElementById("previousTitle").innerHTML = searchType;
+    for(var i = 0; i < users.length; i++)
+    {
+        document.getElementById("previousInfo").innerHTML += "<p class='templateText' onclick='window.location.replace(\"result_pages/User_Result.php\")'>"+users[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
+    }
 }
 
 /**

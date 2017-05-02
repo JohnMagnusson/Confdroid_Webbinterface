@@ -27,7 +27,7 @@ ResultTemplate.prototype.createDiv = function()
     {
         dataDiv.innerHTML += "<p class='templateText'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
         dataDiv.addEventListener('click', function(e){
-            window.location.replace("resultPages/GroupResult.php");
+            window.location.replace("result_pages/Group_Result.php");
         });
     }
     dataDiv.innerHTML += "<img src='images/Add-icon.png' class='addIcon'>";

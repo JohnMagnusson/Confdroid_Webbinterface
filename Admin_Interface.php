@@ -31,7 +31,6 @@ else
     <script src="javascript/model/User.js"></script>
     <script src="javascript/model/XML_Setting.js"></script>
     <script src="javascript/ResultTemplate.js"></script>
-    <script src="javascript/DisplayedResult.js"></script>
 </head>
 
 <header>
@@ -59,7 +58,7 @@ else
 
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
         <div id="previousContainer">
-            <h2 class="optionTitle">Previous</h2>
+            <h2 id="previousTitle" class="optionTitle">Previous</h2>
             <div id="previousInfo">
 
             </div>
