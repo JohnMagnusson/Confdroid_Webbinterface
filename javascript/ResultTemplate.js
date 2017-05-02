@@ -6,27 +6,11 @@ function ResultTemplate(title, data)
 {
     this.title = title;
     this.data = data;
-    this.createDiv();
 }
 
-ResultTemplate.prototype.getTitle = function()
-{
-    return this.title;
-}
-
-function getData()
-{
-    return this.data;
-}
-
-function setData(data)
-{
-    this.data = data;
-}
-
-function setTitle(title)
-{
+ResultTemplate.prototype.setTemplate = function (title, data) {
     this.title = title;
+    this.data = data;
 }
 
 ResultTemplate.prototype.createDiv = function()
@@ -41,16 +25,13 @@ ResultTemplate.prototype.createDiv = function()
     this.div.appendChild(dataDiv);
     for(var i = 0; i < this.data.length; i++)
     {
-        dataDiv.innerHTML += "<p class='templateText'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'></p>";
-        // console.log("o");
-        // console.log(this.data[0]["groups"]);
-        // dataDiv.onclick = function(e){printData(this.data[0]["groups"], "groups")};
+        dataDiv.innerHTML += "<p class='templateText' onclick='printData(this.data, \"groups\")'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
+        // dataDiv.addEventListener('click', function(e){
+        //     console.log("i");
+        //     printData(this.data[0]["groups"], "groups")
+        // });
     }
-}
-
-ResultTemplate.prototype.getDiv = function()
-{
-    return this.div;
+    dataDiv.innerHTML += "<img src='images/Add-icon.png' class='addIcon'>";
 }
 
 function removeDiv() {

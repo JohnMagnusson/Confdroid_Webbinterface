@@ -49,8 +49,11 @@ function search(authToken, id)
 
 function printData(users, searchType)
 {
-    var aa = new ResultTemplate(searchType, users);
-    document.getElementById("resultContainer").appendChild(aa.getDiv());
+    $("#resultContainer").empty();
+    var aa = new DisplayedResult();
+    aa.template1.setTemplate(searchType, users);
+    aa.template1.createDiv();
+    document.getElementById("resultContainer").appendChild(aa.template1.div);
 }
 
 /**

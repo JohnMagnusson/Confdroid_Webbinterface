@@ -31,6 +31,7 @@ else
     <script src="javascript/model/User.js"></script>
     <script src="javascript/model/XML_Setting.js"></script>
     <script src="javascript/ResultTemplate.js"></script>
+    <script src="javascript/DisplayedResult.js"></script>
 </head>
 
 <header>
