@@ -15,7 +15,6 @@ function search(authToken, id)
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
-    console.log(authToken);
     $.ajax({
         type: "GET",
         url: "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue,
@@ -34,7 +33,17 @@ function search(authToken, id)
                 console.log(data);
                 printData(data, searchType);
             }
+        },
+        error: function( jqXHR, textStatus, errorThrown) {
+            switch(jqXHR["status"])
+            {
+                case 403:
+                    window.location.replace("Admin_Interface.php?timedout=true");
+                default:
+                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown);
+            }
         }
+
     });
 }
 
@@ -51,7 +60,7 @@ function printData(users, searchType)
 function returnUsers(data)
 {
     var users = [];
-    for(i = 0; i < data.length; i++)
+    for(var i = 0; i < data.length; i++)
     {
         var groups = returnUserGroups(data[i]);
         var devices = returnUserDevices(data[i]);
@@ -137,4 +146,30 @@ function returnApplicationXmlSettings(applicationData)
         xmlSettings = new XML_Setting(applicationData["fileLocation"],applicationData["regexp"], applicationData["replaceWith"]);
     }
     return xmlSettings;
+}
+
+/**
+ * Updates the activeClass on menu items.
+ * @param liId
+ */
+function updateNav(liId)
+{
+    $("li").removeClass("activeNav");
+    $( '#'+liId).last().addClass( "activeNav" );
+}
+
+/**
+ * Logs out the administrator.
+ * @param authToken
+ * @param id
+ */
+function logOut(authToken,id)
+{
+    $.ajax({
+        type: "DELETE",
+        url: "https://confdroid.tutus.se/api/admin/login.json?authToken="+authToken+"&id="+id,
+        success: function(data, textStatus, xhr){
+            window.location.replace("Admin_Interface.php?loggedOut=true");
+        }
+    });
 }

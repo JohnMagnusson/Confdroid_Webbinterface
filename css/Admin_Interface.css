@@ -52,6 +52,10 @@ li{
 li:hover{
     padding-bottom: 0.13em;
     border-bottom: solid yellow thick;
+    cursor: hand;
+}
+li:active{
+    color: grey;
 }
 .activeNav{                         /*Shows which type the user want to see */
     padding-bottom: 0.13em;
