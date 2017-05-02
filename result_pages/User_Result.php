@@ -3,11 +3,12 @@
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_GET['authToken']) && isset($_GET['id']))
+if (isset($_GET['authToken']) && isset($_GET['id']) && isset($_GET['userId']))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
     echo "var adminId ='" . $_GET["id"] . "';";
+    echo "var userId ='" . $_GET["userId"] . "';";
     echo "</script>";
 }
 else
@@ -32,8 +33,9 @@ else
     <script src="../javascript/model/User.js"></script>
     <script src="../javascript/model/XML_Setting.js"></script>
     <script src="../javascript/ResultTemplate.js"></script>
+    <script src="../javascript/User_Result.js"></script>
 </head>
-
+<body>
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 

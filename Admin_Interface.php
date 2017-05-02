@@ -33,7 +33,7 @@ else
     <script src="javascript/ResultTemplate.js"></script>
     <script src="javascript/DisplayedResult.js"></script>
 </head>
-
+<body>
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 
@@ -59,7 +59,7 @@ else
 
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
         <div id="previousContainer">
-            <h2 class="optionTitle">Previous</h2>
+            <h2 class="optionTitle">Searched</h2>
             <div id="previousInfo">
 
             </div>

@@ -33,7 +33,7 @@ else
     <script src="../javascript/model/XML_Setting.js"></script>
     <script src="../javascript/ResultTemplate.js"></script>
 </head>
-
+<body>
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 

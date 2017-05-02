@@ -11,13 +11,32 @@ $(document).ready(function(){
     }, false);
 });
 
+/**
+ * Search
+ * @param authToken
+ * @param id
+ */
 function search(authToken, id)
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
+    var data = getData(authToken,id,searchType, searchValue);
+    printData(data, searchType);
+}
+
+/**
+ * Get data the data with dataType and dataValue
+ * @param authToken
+ * @param id
+ * @param dataType
+ * @param dataValue
+ */
+function getData(authToken, id, dataType, dataValue)
+{
+
     $.ajax({
         type: "GET",
-        url: "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue,
+        url: "https://confdroid.tutus.se/api/"+dataType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+dataValue,
         success: function(data){
             if(data[0] == "Failed")
             {
@@ -31,7 +50,8 @@ function search(authToken, id)
             else
             {
                 console.log(data);
-                printData(data, searchType);
+                return data;
+                // printData(data, searchType);
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
