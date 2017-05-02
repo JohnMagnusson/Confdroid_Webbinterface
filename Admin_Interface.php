@@ -58,8 +58,12 @@ else
 <div id="container">
 
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
+        <div id="previousContainer">
+            <h2 class="optionTitle">Previous</h2>
+            <div id="previousInfo">
 
-
+            </div>
+        </div>
     </div>
 
     <div id="infoContainer">            <!-- Static info container -->

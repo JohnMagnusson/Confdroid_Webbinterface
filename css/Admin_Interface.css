@@ -67,6 +67,16 @@ li:active{
     margin: auto;
     height: 140em;
 }
+#previousContainer{
+    float:left;
+    height:100%;
+    width:20%;
+}
+#previousInfo{
+    height: 100%;
+    margin-top:  0.5%;
+    border: thin black solid;
+}
 #resultContainer{                   /*Holds the templates that the information will be shown in */
     float: left;
     margin-top:3%;
@@ -82,7 +92,7 @@ li:active{
 }
 #infoHolder{                        /*Inside the infoContainer and displays information of the chosen entity */
     height: 100%;
-    margin-top: 0.5%;
+    margin-top:  0.5%;
     border: thin black solid;
 }
 .optionTitle{                       /*Title of the option that the user can see */

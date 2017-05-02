@@ -25,11 +25,10 @@ ResultTemplate.prototype.createDiv = function()
     this.div.appendChild(dataDiv);
     for(var i = 0; i < this.data.length; i++)
     {
-        dataDiv.innerHTML += "<p class='templateText' onclick='printData(this.data, \"groups\")'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
-        // dataDiv.addEventListener('click', function(e){
-        //     console.log("i");
-        //     printData(this.data[0]["groups"], "groups")
-        // });
+        dataDiv.innerHTML += "<p class='templateText'>"+this.data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
+        dataDiv.addEventListener('click', function(e){
+            window.location.replace("resultPages/GroupResult.php");
+        });
     }
     dataDiv.innerHTML += "<img src='images/Add-icon.png' class='addIcon'>";
 }
