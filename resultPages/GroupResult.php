@@ -11,7 +11,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-    header("Location: Login.php?timedout=true");
+//    header("Location: ../Login.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,23 +19,24 @@ else
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="icon" href="images/BrowserIcon2.ico">
-    <link rel="stylesheet" type="text/css" href="css/Admin_Interface.css">        <!-- Adds css file -->
-    <script src="javascript/jquery-3.2.0.min.js"></script>
-    <script src="javascript/Admin_Interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
+    <link rel="stylesheet" type="text/css" href="../css/GroupResult.css">        <!-- Adds css file -->
+    <script src="../javascript/jquery-3.2.0.min.js"></script>
+    <script src="../javascript/Admin_Interface.js"></script>
     <!-- Model files for javascript is now loaded-->
-    <script src="javascript/model/Application.js"></script>
-    <script src="javascript/model/Device.js"></script>
-    <script src="javascript/model/DeviceManagementPolicy.js"></script>
-    <script src="javascript/model/Group.js"></script>
-    <script src="javascript/model/SQL_Setting.js"></script>
-    <script src="javascript/model/User.js"></script>
-    <script src="javascript/model/XML_Setting.js"></script>
-    <script src="javascript/ResultTemplate.js"></script>
-    <script src="javascript/DisplayedResult.js"></script>
+    <script src="../javascript/model/Application.js"></script>
+    <script src="../javascript/model/Device.js"></script>
+    <script src="../javascript/model/DeviceManagementPolicy.js"></script>
+    <script src="../javascript/model/Group.js"></script>
+    <script src="../javascript/model/SQL_Setting.js"></script>
+    <script src="../javascript/model/User.js"></script>
+    <script src="../javascript/model/XML_Setting.js"></script>
+    <script src="../javascript/ResultTemplate.js"></script>
+    <script src="../javascript/DisplayedResult.js"></script>
 </head>
 
 <header>
-    <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
+    <h1 id="headerTitle"><a href="../Admin_Interface.php">Confdroid</a></h1>
 
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
@@ -63,6 +64,9 @@ else
             <div id="previousInfo">
 
             </div>
+        </div>
+        <div id="users">
+
         </div>
     </div>
 
