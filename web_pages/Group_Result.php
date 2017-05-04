@@ -44,7 +44,7 @@ else
 
         <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
     </div>
-    <div id="usernameDisplay"><?php echo $_COOKIE["username"];?></div>
+    <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
 </header>
 
 <nav>
