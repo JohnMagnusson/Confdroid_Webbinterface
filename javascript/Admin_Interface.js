@@ -11,30 +11,23 @@ $(document).ready(function(){
     }, false);
 });
 
-/**
- * Search
- * @param authToken
- * @param id
- */
 function search(authToken, id)
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
-    getData(authToken,id,searchType, searchValue);
+    search2(authToken, id, searchType, searchValue, function(users, searchType, authToken, id){printData(users, searchType, authToken, id)});
 }
 
-/**
- * Get data the data with dataType and dataValue
- * @param authToken
- * @param id
- * @param dataType
- * @param dataValue
- */
-function getData(authToken, id, dataType, dataValue)
+function search2(authToken, id, searchType, searchValue, callback)
 {
+    var url;
+    if(searchValue == null)
+        url = "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
+    else
+        url = "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue;
     $.ajax({
         type: "GET",
-        url: "https://confdroid.tutus.se/api/"+dataType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+dataValue,
+        url: url,
         success: function(data){
             if(data[0] == "Failed")
             {
@@ -47,13 +40,7 @@ function getData(authToken, id, dataType, dataValue)
             }
             else
             {
-                this.data2 = data;
-                console.log(navigator.cookieEnabled);
-
-                document.cookie = JSON.stringify(data);
-                // $.cookie("test-Cookie", JSON.stringify($(data).data()));
-                // console.log($.cookie("test"));
-                // return data;
+                callback(data, searchType, authToken, id);
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
@@ -67,20 +54,35 @@ function getData(authToken, id, dataType, dataValue)
         }
 
     });
-
 }
 
-function getData2()
+function printData(data, searchType, authToken, id)
 {
-    return this.data2;
+    // switch(searchType)
+    // {
+    //     case "User":
+    //
+    // }
+    var url = "result_pages/"+searchType+"_Result.php?authToken="+authToken+"&id="+id+"&userId=";
+    createPTagsForData("previousInfo", data, url);
 }
-function printData(users, searchType)
+
+function changeLocation(url)
 {
-    $("#previousInfo").empty();
-    document.getElementById("previousTitle").innerHTML = searchType;
-    for(var i = 0; i < users.length; i++)
+    window.location.href = url;
+}
+
+function createPTagsForData(infoParentId, data, url)
+{
+    $("#"+infoParentId).empty();
+    for(var i = 0; i < data.length; i++)
     {
-        document.getElementById("previousInfo").innerHTML += "<p class='templateText' onclick='window.location.replace(\"result_pages/User_Result.php\")'>"+users[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
+        var p = document.createElement("p");
+        p.id = i;
+        p.innerHTML = data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'>";
+        p.classList.add("templateText");
+        document.getElementById(infoParentId).appendChild(p);
+        p.onclick = function(e){url+=data[e.target.id]["authToken"];changeLocation(url)};
     }
 }
 

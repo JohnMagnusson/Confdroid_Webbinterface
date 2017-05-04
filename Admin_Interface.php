@@ -1,12 +1,13 @@
- <?php
+
+<?php
 /**
  * Interface for the admin to manage the system.
  */
-if(isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
+if (isset($_GET['authToken']) && isset($_GET['id']))
 {
     echo "<script>";
-    echo "var token='" . $_COOKIE["authCookie"] . "';";
-    echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
+    echo "var token='" . $_GET["authToken"] . "';";
+    echo "var adminId ='" . $_GET["id"] . "';";
     echo "</script>";
 }
 else
@@ -19,20 +20,19 @@ else
     <title>Welcome</title>
     <link rel="icon" href="images/BrowserIcon2.ico">
     <link rel="stylesheet" type="text/css" href="css/Admin_Interface.css">        <!-- Adds css file -->
-    <script type="text/javascript" src="javascript/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="javascript/jquery.cookie.js"></script>
-    <script type="text/javascript" src="javascript/Admin_Interface.js"></script>
+    <script src="javascript/jquery-3.2.0.min.js"></script>
+    <script src="javascript/Admin_Interface.js"></script>
     <!-- Model files for javascript is now loaded-->
-    <script type="text/javascript" src="javascript/model/Application.js"></script>
-    <script type="text/javascript" src="javascript/model/Device.js"></script>
-    <script type="text/javascript" src="javascript/model/DeviceManagementPolicy.js"></script>
-    <script type="text/javascript" src="javascript/model/Group.js"></script>
-    <script type="text/javascript" src="javascript/model/SQL_Setting.js"></script>
-    <script type="text/javascript" src="javascript/model/User.js"></script>
-    <script type="text/javascript" src="javascript/model/XML_Setting.js"></script>
-    <script type="text/javascript" src="javascript/ResultTemplate.js"></script>
+    <script src="javascript/model/Application.js"></script>
+    <script src="javascript/model/Device.js"></script>
+    <script src="javascript/model/DeviceManagementPolicy.js"></script>
+    <script src="javascript/model/Group.js"></script>
+    <script src="javascript/model/SQL_Setting.js"></script>
+    <script src="javascript/model/User.js"></script>
+    <script src="javascript/model/XML_Setting.js"></script>
+    <script src="javascript/ResultTemplate.js"></script>
 </head>
-<body>
+
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 
