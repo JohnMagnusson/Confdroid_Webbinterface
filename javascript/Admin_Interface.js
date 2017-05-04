@@ -195,15 +195,19 @@ function updateNav(liId)
 
 /**
  * Logs out the administrator.
+ * Removes cookies and reloacte the user to login screen.
  * @param authToken
  * @param id
  */
-function logOut(authToken,id)
+function logOut()
 {
     $.ajax({
         type: "DELETE",
-        url: "https://confdroid.tutus.se/api/admin/login.json?authToken="+authToken+"&id="+id,
+        url: "https://confdroid.tutus.se/api/admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCooikie"),
         success: function(data, textStatus, xhr){
+            $.removeCookie("authCookie");
+            $.removeCookie("adminIdCookie");
+            $.removeCookie("userName");
             window.location.replace("Admin_Interface.php?loggedOut=true");
         }
     });

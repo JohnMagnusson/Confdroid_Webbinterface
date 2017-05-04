@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Interface for the admin to manage the system.
@@ -42,7 +41,7 @@ else
 
         <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
     </div>
-    <div id="usernameDisplay">UsernameHolder</div>
+    <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
 </header>
 
 <nav>
@@ -52,7 +51,7 @@ else
         <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
         <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
     </ul>
-    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut(token,adminId)">
+    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
 </nav>
 
 <div id="container">
