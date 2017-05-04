@@ -20,7 +20,7 @@ $('document').ready(function(){
                     $("#add_err").css('display', 'inline', 'important');
                     $.cookie("authCookie", admin.Token);
                     $.cookie("adminIdCookie", admin.id);
-                    window.location.replace("/Confdroid_Webbinterface/Admin_Interface.php");
+                    window.location.replace("/Confdroid_Webbinterface/web_pages/Admin_Interface.php");
                 }
                 else
                 {

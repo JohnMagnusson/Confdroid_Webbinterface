@@ -40,14 +40,14 @@ function search2(authToken, id, searchType, searchValue, callback)
             }
             else
             {
-                callback(data, searchType, authToken, id);
+                callback(data, searchType);
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
             switch(jqXHR["status"])
             {
                 case 403:
-                    window.location.replace("Admin_Interface.php?timedout=true");
+                    window.location.replace("/web_pages/Admin_Interface.php?timedout=true");
                 default:
                     console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown);
             }
@@ -56,26 +56,26 @@ function search2(authToken, id, searchType, searchValue, callback)
     });
 }
 
-function printData(data, searchType, authToken, id)
+function printData(data, searchType)
 {
     var url;
     var urlvar;
     switch(searchType)
     {
         case "User":
-            url = "result_pages/User_Result.php?authToken="+authToken+"&id="+id+"&userAuth=";
+            url = "User_Result.php?data=";
             urlvar = "authToken";
             break;
         case "Group":
-            url = "result_pages/Group_Result.php?authToken="+authToken+"&id="+id+"&groupId=";
-            urlvar = "authToken";
+            url = "Group_Result.php?data=";
+            urlvar = "id";
             break;
         case "Device":
-            url = "result_pages/User_Result.php?authToken="+authToken+"&id="+id+"&userId=";
-            urlvar = "authToken";
+            url = "Device_Result.php?data=";
+            urlvar = "imei";
             break;
     }
-    createPTagsForData("previousInfo", data, url);
+    createPTagsForData("previousInfo", data, url, urlvar);
 }
 
 function changeLocation(url)
@@ -83,17 +83,17 @@ function changeLocation(url)
     window.location.href = url;
 }
 
-function createPTagsForData(infoParentId, data, url)
+function createPTagsForData(infoParentId, data, url, type)
 {
     $("#"+infoParentId).empty();
     for(var i = 0; i < data.length; i++)
     {
         var p = document.createElement("p");
         p.id = i;
-        p.innerHTML = data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'>";
+        p.innerHTML = data[i]["name"] + "<img src='../images/trash-can-icon.png' class='img'><img src='../images/settings-icon.png' class='img'>";
         p.classList.add("templateText");
         document.getElementById(infoParentId).appendChild(p);
-        p.onclick = function(e){url+=data[e.target.id]["authToken"];changeLocation(url)};
+        p.onclick = function(e){url+=data[e.target.id][type];changeLocation(url)};
     }
 }
 
