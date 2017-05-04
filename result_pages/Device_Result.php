@@ -3,7 +3,7 @@
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_GET['authToken']) && isset($_GET['id']))
+if(isset($_COOKIE["authCookie"]))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
@@ -11,7 +11,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-//    header("Location: Login.php?timedout=true");
+    header("Location: Login.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@ else
     <script src="../javascript/model/XML_Setting.js"></script>
     <script src="../javascript/ResultTemplate.js"></script>
 </head>
-
+<body>
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 
