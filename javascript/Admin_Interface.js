@@ -15,9 +15,19 @@ function search(authToken, id)
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
+    search2(authToken, id, searchType, searchValue, function(users, searchType, authToken, id){printData(users, searchType, authToken, id)});
+}
+
+function search2(authToken, id, searchType, searchValue, callback)
+{
+    var url;
+    if(searchValue == null)
+        url = "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
+    else
+        url = "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue;
     $.ajax({
         type: "GET",
-        url: "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue,
+        url: url,
         success: function(data){
             if(data[0] == "Failed")
             {
@@ -30,8 +40,7 @@ function search(authToken, id)
             }
             else
             {
-                console.log(data);
-                printData(data, searchType);
+                callback(data, searchType, authToken, id);
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
@@ -47,13 +56,33 @@ function search(authToken, id)
     });
 }
 
-function printData(users, searchType)
+function printData(data, searchType, authToken, id)
 {
-    $("#previousInfo").empty();
-    document.getElementById("previousTitle").innerHTML = searchType;
-    for(var i = 0; i < users.length; i++)
+    // switch(searchType)
+    // {
+    //     case "User":
+    //
+    // }
+    var url = "result_pages/"+searchType+"_Result.php?authToken="+authToken+"&id="+id+"&userId=";
+    createPTagsForData("previousInfo", data, url);
+}
+
+function changeLocation(url)
+{
+    window.location.href = url;
+}
+
+function createPTagsForData(infoParentId, data, url)
+{
+    $("#"+infoParentId).empty();
+    for(var i = 0; i < data.length; i++)
     {
-        document.getElementById("previousInfo").innerHTML += "<p class='templateText' onclick='window.location.replace(\"result_pages/User_Result.php\")'>"+users[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
+        var p = document.createElement("p");
+        p.id = i;
+        p.innerHTML = data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'>";
+        p.classList.add("templateText");
+        document.getElementById(infoParentId).appendChild(p);
+        p.onclick = function(e){url+=data[e.target.id]["authToken"];changeLocation(url)};
     }
 }
 

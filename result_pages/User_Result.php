@@ -3,11 +3,12 @@
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_GET['authToken']) && isset($_GET['id']))
+if (isset($_GET['authToken']) && isset($_GET['id']) && isset($_GET["userId"]))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
     echo "var adminId ='" . $_GET["id"] . "';";
+    echo "var userId ='" . $_GET["userId"] . "';";
     echo "</script>";
 }
 else
@@ -23,6 +24,7 @@ else
     <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
+    <script src="../javascript/User_Result.js"></script>
     <!-- Model files for javascript is now loaded-->
     <script src="../javascript/model/Application.js"></script>
     <script src="../javascript/model/Device.js"></script>
