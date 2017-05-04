@@ -3,11 +3,11 @@
 /**
  * Interface for the admin to manage the system.
  */
-if(isset($_COOKIE["authCookie"]))
+if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
-    echo "var token='" . $_GET["authToken"] . "';";
-    echo "var adminId ='" . $_GET["id"] . "';";
+    echo "var token='" . $_COOKIE["authCookie"] . "';";
+    echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
     echo "</script>";
 }
 else
@@ -22,6 +22,7 @@ else
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
     <!-- Model files for javascript is now loaded-->
     <script src="../javascript/model/Application.js"></script>
@@ -67,16 +68,22 @@ else
         </div>
 
         <div id="templateContainer">
-            <h2 class="optionTitle">Applications</h2>
-            <div id="applicationDiv" class="infoTemplate">
+            <h2 class="optionTitle">Groups</h2>
+            <div id="groupDiv" class="infoTemplate">
 
             </div>
-
         </div>
 
         <div id="templateContainer">
-            <h2 class="optionTitle">User</h2>
-            <div id="userDiv" class="infoTemplate extraRightBorder">
+            <h2 class="optionTitle">Users</h2>
+            <div id="userDiv" class="infoTemplate">
+
+            </div>
+        </div>
+
+        <div id="templateContainer">
+            <h2 class="optionTitle">Devices</h2>
+            <div id="deviceDiv" class="infoTemplate extraRightBorder">
 
             </div>
         </div>

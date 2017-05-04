@@ -1,13 +1,13 @@
-
 <?php
 /**
  * Interface for the admin to manage the system.
  */
-if(isset($_COOKIE["authCookie"]))
+if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($_GET["data"]))
 {
     echo "<script>";
-    echo "var token='" . $_GET["authToken"] . "';";
-    echo "var adminId ='" . $_GET["id"] . "';";
+    echo "var token='" . $_COOKIE["authCookie"] . "';";
+    echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
+    echo "var data ='" . $_GET["data"] . "';";
     echo "</script>";
 }
 else
@@ -22,7 +22,9 @@ else
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
+    <script src="../javascript/User_Result.js"></script>
     <!-- Model files for javascript is now loaded-->
     <script src="../javascript/model/Application.js"></script>
     <script src="../javascript/model/Device.js"></script>
@@ -33,7 +35,7 @@ else
     <script src="../javascript/model/XML_Setting.js"></script>
     <script src="../javascript/ResultTemplate.js"></script>
 </head>
-<body>
+
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
 
@@ -71,21 +73,24 @@ else
             <div id="groupDiv" class="infoTemplate">
 
             </div>
-        </div>
 
-        <div id="templateContainer">
-            <h2 class="optionTitle">Users</h2>
-            <div id="userDiv" class="infoTemplate">
-
-            </div>
         </div>
 
         <div id="templateContainer">
             <h2 class="optionTitle">Devices</h2>
-            <div id="deviceDiv" class="infoTemplate extraRightBorder">
+            <div id="deviceDiv" class="infoTemplate">
 
             </div>
         </div>
+
+        <div id="templateContainer">
+            <h2 class="optionTitle">Applications</h2>
+            <div id="applicationDiv" class="infoTemplate extraRightBorder">
+
+            </div>
+
+        </div>
+
     </div>
 
     <div id="infoContainer">            <!-- Static info container -->
