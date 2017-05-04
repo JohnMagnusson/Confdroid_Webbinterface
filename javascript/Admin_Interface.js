@@ -20,8 +20,7 @@ function search(authToken, id)
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
-    var data = getData(authToken,id,searchType, searchValue);
-    printData(data, searchType);
+    getData(authToken,id,searchType, searchValue);
 }
 
 /**
@@ -33,7 +32,6 @@ function search(authToken, id)
  */
 function getData(authToken, id, dataType, dataValue)
 {
-
     $.ajax({
         type: "GET",
         url: "https://confdroid.tutus.se/api/"+dataType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+dataValue,
@@ -49,9 +47,13 @@ function getData(authToken, id, dataType, dataValue)
             }
             else
             {
-                console.log(data);
-                return data;
-                // printData(data, searchType);
+                this.data2 = data;
+                console.log(navigator.cookieEnabled);
+
+                document.cookie = JSON.stringify(data);
+                // $.cookie("test-Cookie", JSON.stringify($(data).data()));
+                // console.log($.cookie("test"));
+                // return data;
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
@@ -65,15 +67,21 @@ function getData(authToken, id, dataType, dataValue)
         }
 
     });
+
 }
 
+function getData2()
+{
+    return this.data2;
+}
 function printData(users, searchType)
 {
-    $("#resultContainer").empty();
-    var aa = new DisplayedResult();
-    aa.template1.setTemplate(searchType, users);
-    aa.template1.createDiv();
-    document.getElementById("resultContainer").appendChild(aa.template1.div);
+    $("#previousInfo").empty();
+    document.getElementById("previousTitle").innerHTML = searchType;
+    for(var i = 0; i < users.length; i++)
+    {
+        document.getElementById("previousInfo").innerHTML += "<p class='templateText' onclick='window.location.replace(\"result_pages/User_Result.php\")'>"+users[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'></p>";
+    }
 }
 
 /**

@@ -35,10 +35,9 @@
         </div>
 
     </div>
+
 <script src="javascript/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="javascript/jquery.cookie.js"></script>
 <script src="javascript/Login.js"></script>
-
-
 </body>
-
 </html>

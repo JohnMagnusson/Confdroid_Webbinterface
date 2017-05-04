@@ -1,18 +1,16 @@
-
 <?php
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_GET['authToken']) && isset($_GET['id']) && isset($_GET['userId']))
+if(isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
     echo "var adminId ='" . $_GET["id"] . "';";
-    echo "var userId ='" . $_GET["userId"] . "';";
     echo "</script>";
 }
 else
-//    header("Location: Login.php?timedout=true");
+    header("Location: Login.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>

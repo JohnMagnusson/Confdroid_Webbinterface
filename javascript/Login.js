@@ -11,14 +11,16 @@ $('document').ready(function(){
             type: "POST",
             url: "https://confdroid.tutus.se/api/admin/login.json",
             data: "username="+username+"&password="+password,
-            success: function(user){
-                console.log(user);
+            success: function(admin){
+                console.log(admin);
 
-                if(user.Token!="Failed")
+                if(admin.Token!="Failed")
                 {
-                    $("#add_err").html("Correct username or password");
+                    $("#add_err").html("Correct username and password");
                     $("#add_err").css('display', 'inline', 'important');
-                    window.location.replace("/Confdroid_Webbinterface/Admin_Interface.php?authToken="+user.Token+"&id="+user.id);
+                    $.cookie("authCookie", admin.Token);
+                    $.cookie("adminIdCookie", admin.id);
+                    window.location.replace("/Confdroid_Webbinterface/Admin_Interface.php");
                 }
                 else
                 {

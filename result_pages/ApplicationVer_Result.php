@@ -3,7 +3,7 @@
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_GET['authToken']) && isset($_GET['id']))
+if(isset($_COOKIE["authCookie"]))
 {
     echo "<script>";
     echo "var token='" . $_GET["authToken"] . "';";
@@ -11,7 +11,7 @@ if (isset($_GET['authToken']) && isset($_GET['id']))
     echo "</script>";
 }
 else
-//    header("Location: Login.php?timedout=true");
+    header("Location: Login.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
