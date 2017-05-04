@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Interface for the admin to manage the system.
@@ -18,19 +17,20 @@ else
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="icon" href="../images/BrowserIcon2.ico">
-    <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
-    <script src="../javascript/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-    <script src="../javascript/Admin_Interface.js"></script>
+    <link rel="icon" href="images/BrowserIcon2.ico">
+    <link rel="stylesheet" type="text/css" href="css/Admin_Interface.css">        <!-- Adds css file -->
+    <script src="javascript/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="javascript/jquery.cookie.js"></script>
+    <script src="javascript/Admin_Interface.js"></script>
     <!-- Model files for javascript is now loaded-->
-    <script src="../javascript/model/Application.js"></script>
-    <script src="../javascript/model/Device.js"></script>
-    <script src="../javascript/model/DeviceManagementPolicy.js"></script>
-    <script src="../javascript/model/Group.js"></script>
-    <script src="../javascript/model/SQL_Setting.js"></script>
-    <script src="../javascript/model/User.js"></script>
-    <script src="../javascript/model/XML_Setting.js"></script>
+    <script src="javascript/model/Application.js"></script>
+    <script src="javascript/model/Device.js"></script>
+    <script src="javascript/model/DeviceManagementPolicy.js"></script>
+    <script src="javascript/model/Group.js"></script>
+    <script src="javascript/model/SQL_Setting.js"></script>
+    <script src="javascript/model/User.js"></script>
+    <script src="javascript/model/XML_Setting.js"></script>
+    <script src="javascript/ResultTemplate.js"></script>
 </head>
 
 <header>
@@ -41,7 +41,7 @@ else
 
         <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
     </div>
-    <div id="usernameDisplay">UsernameHolder</div>
+    <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
 </header>
 
 <nav>
@@ -51,7 +51,7 @@ else
         <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
         <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
     </ul>
-    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut(token,adminId)">
+    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
 </nav>
 
 <div id="container">

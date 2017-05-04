@@ -18,6 +18,7 @@ $('document').ready(function(){
                 {
                     $("#add_err").html("Correct username and password");
                     $("#add_err").css('display', 'inline', 'important');
+                    $.cookie("userName",username);
                     $.cookie("authCookie", admin.Token);
                     $.cookie("adminIdCookie", admin.id);
                     window.location.replace("/Confdroid_Webbinterface/web_pages/Admin_Interface.php");

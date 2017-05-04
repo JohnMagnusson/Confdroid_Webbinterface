@@ -31,6 +31,9 @@ a:visited{
     float: right;
     margin-top: 1.55em;
     margin-right: 2em;
+    width: 8%;
+    /*height: 20px;*/
+    text-align: center;
 }
 #logout{                            /*Logout button div tag*/
     float: right;
