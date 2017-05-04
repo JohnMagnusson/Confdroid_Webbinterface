@@ -58,12 +58,23 @@ function search2(authToken, id, searchType, searchValue, callback)
 
 function printData(data, searchType, authToken, id)
 {
-    // switch(searchType)
-    // {
-    //     case "User":
-    //
-    // }
-    var url = "result_pages/"+searchType+"_Result.php?authToken="+authToken+"&id="+id+"&userId=";
+    var url;
+    var urlvar;
+    switch(searchType)
+    {
+        case "User":
+            url = "result_pages/User_Result.php?authToken="+authToken+"&id="+id+"&userAuth=";
+            urlvar = "authToken";
+            break;
+        case "Group":
+            url = "result_pages/Group_Result.php?authToken="+authToken+"&id="+id+"&groupId=";
+            urlvar = "authToken";
+            break;
+        case "Device":
+            url = "result_pages/User_Result.php?authToken="+authToken+"&id="+id+"&userId=";
+            urlvar = "authToken";
+            break;
+    }
     createPTagsForData("previousInfo", data, url);
 }
 
