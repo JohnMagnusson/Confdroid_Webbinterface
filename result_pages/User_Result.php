@@ -1,18 +1,17 @@
-
 <?php
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_GET['authToken']) && isset($_GET['id']) && isset($_GET["userId"]))
+if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($_COOKIE["dataCookie"]))
 {
     echo "<script>";
-    echo "var token='" . $_GET["authToken"] . "';";
-    echo "var adminId ='" . $_GET["id"] . "';";
-    echo "var userId ='" . $_GET["userId"] . "';";
+    echo "var token='" . $_COOKIE["authCookie"] . "';";
+    echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
+//    echo "var userId ='" . $_COOKIE["dataCookie"] . "';";
     echo "</script>";
 }
 else
-//    header("Location: Login.php?timedout=true");
+    header("Location: Login.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,6 +22,7 @@ else
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
     <script src="../javascript/User_Result.js"></script>
     <!-- Model files for javascript is now loaded-->

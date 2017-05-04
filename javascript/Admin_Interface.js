@@ -63,8 +63,9 @@ function printData(data, searchType, authToken, id)
     //     case "User":
     //
     // }
-    var url = "result_pages/"+searchType+"_Result.php?authToken="+authToken+"&id="+id+"&userId=";
-    createPTagsForData("previousInfo", data, url);
+
+    var url = "result_pages/"+searchType+"_Result.php";
+    createPTagsForData("previousInfo", data, url,"authToken");
 }
 
 function changeLocation(url)
@@ -72,7 +73,7 @@ function changeLocation(url)
     window.location.href = url;
 }
 
-function createPTagsForData(infoParentId, data, url)
+function createPTagsForData(infoParentId, data, url,type)
 {
     $("#"+infoParentId).empty();
     for(var i = 0; i < data.length; i++)
@@ -82,7 +83,8 @@ function createPTagsForData(infoParentId, data, url)
         p.innerHTML = data[i]["name"] + "<img src='images/trash-can-icon.png' class='img'><img src='images/settings-icon.png' class='img'>";
         p.classList.add("templateText");
         document.getElementById(infoParentId).appendChild(p);
-        p.onclick = function(e){url+=data[e.target.id]["authToken"];changeLocation(url)};
+        console.log(type);
+        p.onclick = function(e){$.cookie("dataCookie",data[e.target.id][type]);changeLocation(url)};
     }
 }
 

@@ -2,15 +2,15 @@
  * Created by Elias on 2017-05-02.
  */
 $(document).ready(function () {
-    search2(token, adminId, "User/"+userId, null, function(data, searchType, authToken, id){printUserInfo(data, authToken, id)});
+    search2(token, adminId, "User/"+$.cookie("dataCookie"), null, function(data, searchType, authToken, id){printUserInfo(data, authToken, id)});
 });
 
 function printUserInfo(user, authToken, id)
 {
-    var url = "Group_Result.php?authToken="+authToken+"&id="+id+"&groupId=";
-    createPTagsForData("groupDiv", user[0]["groups"], url);
-    url = "Device_Result.php?authToken="+authToken+"&id="+id+"&deviceImei=";
-    createPTagsForData("deviceDiv", user[0]["devices"], url);
+    var url = "Group_Result.php";
+    createPTagsForData("groupDiv", user[0]["groups"], url,"id");
+    url = "Device_Result.php";
+    createPTagsForData("deviceDiv", user[0]["devices"], url,"imei");
 
     // for(var i = 0; i < groups.length; i++)
     // {
