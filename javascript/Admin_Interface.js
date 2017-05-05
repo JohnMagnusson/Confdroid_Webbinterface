@@ -40,7 +40,7 @@ function search(authToken, id)
             // console.log(name);
             searchValue = name[1].split("=")[1];
             searchType = name[2].split("=")[1];
-            history.pushState({}, null, "Admin_Interface.php");
+            history.pushState({}, null, "Admin_Interface.php?activeType="+activeType);
         }
         search2(authToken, id, searchType, searchValue, function (users, searchType, authToken, id) {
             printData(users, searchType, authToken, id)
@@ -80,7 +80,7 @@ function search2(authToken, id, searchType, searchValue, callback)
             switch(jqXHR["status"])
             {
                 case 403:
-                    window.location.replace("/web_pages/Admin_Interface.php?timedout=true");
+                    window.location.replace("Login.php?timedout=true");
                 default:
                     console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown);
             }
@@ -236,7 +236,9 @@ function updateNav(liId)
     $( '#'+liId).last().addClass( "activeNav" );
     var url=window.location.href.split('/');
     var name=url[url.length-1];
-
+    var activeType = liId.split("li");
+    url = url[url.length-1].split("=")[0]+"="+activeType[1];
+    history.pushState({}, null, url);
     if(name.indexOf("Admin_Interface.php") >= 0)
     {
         search(token, adminId);
