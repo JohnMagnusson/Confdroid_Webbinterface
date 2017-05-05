@@ -7,6 +7,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
     echo "<script>";
     echo "var token='" . $_COOKIE["authCookie"] . "';";
     echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
+    echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
 }
 else
@@ -63,14 +64,6 @@ else
             </div>
         </div>
     </div>
-
-<!--    <div id="infoContainer">            <!-- Static info container -->
-<!--        <h2 class="optionTitle">Information</h2>-->
-<!--        <div id="infoHolder">           <!-- All info is printed inside this div -->
-<!---->
-<!--        </div>-->
-<!---->
-<!--    </div>-->
 
 </div>
 

@@ -21,7 +21,7 @@ $('document').ready(function(){
                     $.cookie("userName",username);
                     $.cookie("authCookie", admin.Token);
                     $.cookie("adminIdCookie", admin.id);
-                    window.location.replace("/Confdroid_Webbinterface/web_pages/Admin_Interface.php");
+                    window.location.replace("/Confdroid_Webbinterface/web_pages/Admin_Interface.php?activeType=User");
                 }
                 else
                 {

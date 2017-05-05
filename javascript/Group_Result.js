@@ -8,8 +8,8 @@ $(document).ready(function () {
 function printUserInfo(group)
 {
     // console.log(group);
-    // var url = "User_Result.php?data=";
+    // var url = "User_Result.php?activeType=User&data=";
     // createPTagsForData("userDiv", group[0]["users"], url,"authToken");
-    // url = "Device_Result.php?data=";
+    // url = "Device_Result.php?activeType=Device&data=";
     // createPTagsForData("deviceDiv", group[0]["devices"], url,"imei");
 }

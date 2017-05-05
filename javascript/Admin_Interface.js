@@ -2,8 +2,11 @@
  * Javascript function for the search page.
  */
 $(document).ready(function(){
+
     var url=window.location.href.split('/');
     var name=url[url.length-1];
+    $("li").removeClass("activeNav");
+    $( '#li'+activeType).last().addClass( "activeNav" );
     document.getElementById('searchValue').addEventListener('keydown', function(e) {
         if(e.keyCode == 13)
         {
@@ -11,7 +14,11 @@ $(document).ready(function(){
             search(token, adminId);
         }
     }, false);
-    if(name.indexOf("?searchValue") >= 0)
+    if(name.indexOf("searchValue") >= 0)
+    {
+        search(token, adminId);
+    }
+    else if(name.indexOf("Admin_Interface.php") >= 0)
     {
         search(token, adminId);
     }
@@ -24,14 +31,15 @@ function search(authToken, id)
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     if(name.indexOf("Admin_Interface.php") < 0)
-        window.location.href = "Admin_Interface.php?searchValue="+searchValue+"&searchType="+searchType;
+        window.location.href = "Admin_Interface.php?activeType="+activeType+"&searchValue="+searchValue+"&searchType="+searchType;
     else {
-        if(name.indexOf("?searchValue") >= 0)
+        if(name.indexOf("searchValue") >= 0)
         {
             name = name.split("?")[1];
             name = name.split("&");
-            searchValue = name[0].split("=")[1];
-            searchType = name[1].split("=")[1];
+            // console.log(name);
+            searchValue = name[1].split("=")[1];
+            searchType = name[2].split("=")[1];
             history.pushState({}, null, "Admin_Interface.php");
         }
         search2(authToken, id, searchType, searchValue, function (users, searchType, authToken, id) {
@@ -43,6 +51,8 @@ function search(authToken, id)
 function search2(authToken, id, searchType, searchValue, callback)
 {
     var url;
+    console.log(searchType);
+    console.log(searchValue);
     if(searchValue == null)
         url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
     else
@@ -51,6 +61,7 @@ function search2(authToken, id, searchType, searchValue, callback)
         type: "GET",
         url: url,
         success: function(data){
+            console.log(data);
             if(data[0] == "Failed")
             {
                 console.log("Didn't get any match");
@@ -66,7 +77,6 @@ function search2(authToken, id, searchType, searchValue, callback)
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
             switch(jqXHR["status"])
             {
                 case 403:
@@ -86,15 +96,15 @@ function printData(data, searchType)
     switch(searchType)
     {
         case "User":
-            url = "User_Result.php?data=";
+            url = "User_Result.php?activeType=User&data=";
             urlvar = "authToken";
             break;
         case "Group":
-            url = "Group_Result.php?data=";
+            url = "Group_Result.php?activeType=Group&data=";
             urlvar = "id";
             break;
         case "Device":
-            url = "Device_Result.php?data=";
+            url = "Device_Result.php?activeType=Device&data=";
             urlvar = "imei";
             break;
     }
@@ -221,8 +231,16 @@ function returnApplicationXmlSettings(applicationData)
  */
 function updateNav(liId)
 {
+    document.getElementById("searchValue").value = "";
     $("li").removeClass("activeNav");
     $( '#'+liId).last().addClass( "activeNav" );
+    var url=window.location.href.split('/');
+    var name=url[url.length-1];
+
+    if(name.indexOf("Admin_Interface.php") >= 0)
+    {
+        search(token, adminId);
+    }
 }
 
 /**
