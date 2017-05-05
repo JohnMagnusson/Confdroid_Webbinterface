@@ -30,7 +30,6 @@ else
     <script src="../javascript/model/SQL_Setting.js"></script>
     <script src="../javascript/model/User.js"></script>
     <script src="../javascript/model/XML_Setting.js"></script>
-    <script src="javascript/ResultTemplate.js"></script>
 </head>
 
 <header>
@@ -58,20 +57,20 @@ else
 
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
         <div id="previousContainer">
-            <h2 id="previousTitle" class="optionTitle">Previous</h2>
+            <h2 id="previousTitle" class="optionTitle">Search Result</h2>
             <div id="previousInfo">
 
             </div>
         </div>
     </div>
 
-    <div id="infoContainer">            <!-- Static info container -->
-        <h2 class="optionTitle">Information</h2>
-        <div id="infoHolder">           <!-- All info is printed inside this div -->
-
-        </div>
-
-    </div>
+<!--    <div id="infoContainer">            <!-- Static info container -->
+<!--        <h2 class="optionTitle">Information</h2>-->
+<!--        <div id="infoHolder">           <!-- All info is printed inside this div -->
+<!---->
+<!--        </div>-->
+<!---->
+<!--    </div>-->
 
 </div>
 
