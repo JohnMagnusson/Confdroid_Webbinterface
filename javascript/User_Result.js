@@ -11,4 +11,7 @@ function printUserInfo(user)
     createPTagsForData("groupDiv", user[0]["groups"], url, "id");
     url = "Device_Result.php?data=";
     createPTagsForData("deviceDiv", user[0]["devices"], url,"imei");
+    console.log(user);
+    $("name").text("Name: ss" + user[0]["id"]);
+    $("name").text("Name: ss" + user[0]["name"]);
 }

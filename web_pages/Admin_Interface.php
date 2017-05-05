@@ -30,7 +30,6 @@ else
     <script src="../javascript/model/SQL_Setting.js"></script>
     <script src="../javascript/model/User.js"></script>
     <script src="../javascript/model/XML_Setting.js"></script>
-    <script src="javascript/ResultTemplate.js"></script>
 </head>
 
 <header>

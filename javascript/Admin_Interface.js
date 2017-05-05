@@ -22,9 +22,9 @@ function search2(authToken, id, searchType, searchValue, callback)
 {
     var url;
     if(searchValue == null)
-        url = "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
+        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
     else
-        url = "https://confdroid.tutus.se/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue;
+        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue;
     $.ajax({
         type: "GET",
         url: url,
@@ -49,7 +49,7 @@ function search2(authToken, id, searchType, searchValue, callback)
                 case 403:
                     window.location.replace("/web_pages/Admin_Interface.php?timedout=true");
                 default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown);
+                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"]);
             }
         }
 
@@ -210,9 +210,10 @@ function updateNav(liId)
  */
 function logOut()
 {
+    alert("Not implemented yet");
     $.ajax({
         type: "DELETE",
-        url: "https://confdroid.tutus.se/api/admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCooikie"),
+        url: "https://confdroid.brainstorm-labs.net/api/admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCooikie"),
         success: function(data, textStatus, xhr){
             $.removeCookie("authCookie");
             $.removeCookie("adminIdCookie");

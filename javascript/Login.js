@@ -9,7 +9,7 @@ $('document').ready(function(){
         var password=$("#password").val();
         $.ajax({
             type: "POST",
-            url: "https://confdroid.tutus.se/api/admin/login.json",
+            url: "https://confdroid.brainstorm-labs.net/api/admin/login.json",
             data: "username="+username+"&password="+password,
             success: function(admin){
                 console.log(admin);

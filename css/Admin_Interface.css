@@ -97,6 +97,10 @@ li:active{
     height: 100%;
     margin-top:  0.5%;
     border: thin black solid;
+    overflow-y: auto;
+    word-wrap: break-word;
+    padding-top: 1%;
+    padding-left: 3%;
 }
 .optionTitle{                       /*Title of the option that the user can see */
     text-align: center;

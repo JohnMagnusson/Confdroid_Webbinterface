@@ -96,6 +96,14 @@ else
         <h2 class="optionTitle">Information</h2>
         <div id="infoHolder">           <!-- All info is printed inside this div -->
 
+            <p id="name">Name: </p>
+            <p id="email">Email: </p>
+            <p id="nrOfDevces">Nr devices: </p>
+            <p id="nrOfGroups">Groups in: </p>
+            <p id="createdDate">Joined: </p>
+            <p id="id">Id: </p>
+            <p id="authToken">AuthToken: </p>
+
         </div>
 
     </div>
