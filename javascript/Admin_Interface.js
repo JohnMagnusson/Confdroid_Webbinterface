@@ -2,6 +2,8 @@
  * Javascript function for the search page.
  */
 $(document).ready(function(){
+    var url=window.location.href.split('/');
+    var name=url[url.length-1];
     document.getElementById('searchValue').addEventListener('keydown', function(e) {
         if(e.keyCode == 13)
         {
@@ -9,13 +11,33 @@ $(document).ready(function(){
             search(token, adminId);
         }
     }, false);
+    if(name.indexOf("?searchValue") >= 0)
+    {
+        search(token, adminId);
+    }
 });
 
 function search(authToken, id)
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
-    search2(authToken, id, searchType, searchValue, function(users, searchType, authToken, id){printData(users, searchType, authToken, id)});
+    var url=window.location.href.split('/');
+    var name=url[url.length-1];
+    if(name.indexOf("Admin_Interface.php") < 0)
+        window.location.href = "Admin_Interface.php?searchValue="+searchValue+"&searchType="+searchType;
+    else {
+        if(name.indexOf("?searchValue") >= 0)
+        {
+            name = name.split("?")[1];
+            name = name.split("&");
+            searchValue = name[0].split("=")[1];
+            searchType = name[1].split("=")[1];
+            history.pushState({}, null, "Admin_Interface.php");
+        }
+        search2(authToken, id, searchType, searchValue, function (users, searchType, authToken, id) {
+            printData(users, searchType, authToken, id)
+        });
+    }
 }
 
 function search2(authToken, id, searchType, searchValue, callback)
@@ -44,6 +66,7 @@ function search2(authToken, id, searchType, searchValue, callback)
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.responseText);
             switch(jqXHR["status"])
             {
                 case 403:
