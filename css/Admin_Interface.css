@@ -95,12 +95,12 @@ li:active{
 }
 #infoHolder{                        /*Inside the infoContainer and displays information of the chosen entity */
     height: 100%;
-    margin-top:  0.5%;
     border: thin black solid;
     overflow-y: auto;
     word-wrap: break-word;
     padding-top: 1%;
-    padding-left: 3%;
+    padding-left: 1%;
+    font-size: 90%;
 }
 .optionTitle{                       /*Title of the option that the user can see */
     text-align: center;
@@ -112,6 +112,7 @@ li:active{
     width:20%;
     float:left;
     margin-left:-1px;
+    word-wrap: break-word;
 }
 
 .dataDiv{

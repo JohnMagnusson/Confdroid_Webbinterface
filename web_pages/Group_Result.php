@@ -94,7 +94,9 @@ else
     <div id="infoContainer">            <!-- Static info container -->
         <h2 class="optionTitle">Information</h2>
         <div id="infoHolder">           <!-- All info is printed inside this div -->
-
+            <p id="name"></p>
+            <p id="prio"></p>
+            <p id="id"></p>
         </div>
     </div>
 </div>
