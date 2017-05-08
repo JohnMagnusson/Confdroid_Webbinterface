@@ -8,6 +8,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($
     echo "var token='" . $_COOKIE["authCookie"] . "';";
     echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
     echo "var data ='" . $_GET["data"] . "';";
+    echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
 }
 else
@@ -48,7 +49,7 @@ else
 
 <nav>
     <ul id="menu">
-        <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
+        <li id="liUser" onclick="updateNav('liUser')">User</li>
         <li id="liGroup"  onclick="updateNav('liGroup')">Group</li>
         <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
         <li id="liApplication" onclick="updateNav('liApplication')">Application</li>

@@ -8,6 +8,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
     echo "<script>";
     echo "var token='" . $_COOKIE["authCookie"] . "';";
     echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
+    echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
 }
 else

@@ -7,14 +7,9 @@ $(document).ready(function () {
 
 function printUserInfo(group)
 {
-    console.log(group)
-    // console.log(group);
-    // var url = "User_Result.php?data=";
-    // createPTagsForData("userDiv", group[0]["users"], url,"authToken");
-    // url = "Device_Result.php?data=";
-    // createPTagsForData("deviceDiv", group[0]["devices"], url,"imei");
-    /*Display all vital information about the user in the infoDiv */
-    $("#name").html('<b>Name:</b> ' + group[0]["name"]);
-    $("#prio").html('<b>Prio:</b> ' + group[0]["prio"]);
-    $("#id").html('<b>Id:</b> ' + group[0]["id"]);
+    console.log(group);
+    var url = "User_Result.php?activeType=User&data=";
+    createPTagsForData("userDiv", group["users"], url,"authToken");
+    url = "Application_Result.php?activeType=Application&data=";
+    createPTagsForData("applicationDiv", group["applications"], url,"imei");
 }
