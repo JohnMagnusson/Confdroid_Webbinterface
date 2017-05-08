@@ -51,8 +51,8 @@ function search(authToken, id)
 function search2(authToken, id, searchType, searchValue, callback)
 {
     var url;
-    console.log(searchType);
-    console.log(searchValue);
+    // console.log(searchType);
+    // console.log(searchValue);
     if(searchValue == null)
         url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
     else

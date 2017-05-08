@@ -1,3 +1,8 @@
-/**
- * Created by johnv on 2017-05-05.
- */
+$(document).ready(function () {
+    search2(token, adminId, "Device/"+data, null, function(data, searchType){printUserInfo(data)});
+});
+
+function printUserInfo(device)
+{
+    console.log(device);
+}

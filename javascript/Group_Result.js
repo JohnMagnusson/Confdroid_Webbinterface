@@ -12,4 +12,8 @@ function printUserInfo(group)
     createPTagsForData("userDiv", group["users"], url,"authToken");
     url = "Application_Result.php?activeType=Application&data=";
     createPTagsForData("applicationDiv", group["applications"], url,"imei");
+    /*Updates information */
+    $("#name").html('<b>Name:</b> ' + group["name"]);
+    $("#prio").html('<b>Prio:</b> ' + group["prio"]);
+    $("#id").html('<b>Id:</b> ' + group["id"]);
 }

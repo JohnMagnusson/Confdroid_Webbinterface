@@ -11,4 +11,12 @@ function printUserInfo(user)
     createPTagsForData("groupDiv", user["groups"], url, "id");
     url = "Device_Result.php?activeType=Device&data=";
     createPTagsForData("deviceDiv", user["devices"], url,"imei");
+    /*Display all vital information about the user in the infoDiv */
+    $("#name").html('<b>Name:</b> ' + user["name"]);
+    $("#email").html('<b>Email:</b> ' + user["email"]);
+    $("#nrOfDevces").html('<b>Nr devices:</b> ' + user["devices"].length);
+    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + user["groups"].length);
+    $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
+    $("#id").html('<b>Id:</b> ' + user["id"]);
+    $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
 }

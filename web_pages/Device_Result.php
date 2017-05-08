@@ -63,14 +63,17 @@ else
         <div id="templateContainer">
             <h2 class="optionTitle">Previous</h2>
             <div id="prevDiv" class="infoTemplate">
-
+            </div>
+            <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
             </div>
         </div>
 
         <div id="templateContainer">
             <h2 class="optionTitle">Applications</h2>
             <div id="applicationDiv" class="infoTemplate">
-
+                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                    <img src="../images/Add-icon.png" alt="Add-icon">
+                </div>
             </div>
 
         </div>
@@ -78,7 +81,9 @@ else
         <div id="templateContainer">
             <h2 class="optionTitle">User</h2>
             <div id="userDiv" class="infoTemplate extraRightBorder">
-
+            </div>
+            <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                <img src="../images/Add-icon.png" alt="Add-icon">
             </div>
         </div>
     </div>
@@ -86,9 +91,19 @@ else
     <div id="infoContainer">            <!-- Static info container -->
         <h2 class="optionTitle">Information</h2>
         <div id="infoHolder">           <!-- All info is printed inside this div -->
-
+            <p id="name"> </p>
+            <p id="email"></p>
+            <p id="nrOfDevces"></p>
+            <p id="nrOfGroups"></p>
+            <p id="createdDate"></p>
+            <p id="id"></p>
+            <p id="authToken"></p>
         </div>
-
+        <div id="settingsContainer" class="settingContainer">
+            <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">
+            <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg">
+            <img src="../images/Add-icon-big.png" alt="Add-icon-big" class="infoImg">
+        </div>
     </div>
 
 </div>

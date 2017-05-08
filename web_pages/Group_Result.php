@@ -65,22 +65,26 @@ else
         <div id="templateContainer">
             <h2 class="optionTitle">Previous</h2>
             <div id="prevDiv" class="infoTemplate">
-
+            </div>
+            <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
             </div>
         </div>
 
         <div id="templateContainer">
             <h2 class="optionTitle">Users</h2>
             <div id="userDiv" class="infoTemplate">
-
             </div>
-
+            <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                <img src="../images/Add-icon.png" alt="Add-icon">
+            </div>
         </div>
 
         <div id="templateContainer">
             <h2 class="optionTitle">Applications</h2>
             <div id="applicationDiv" class="infoTemplate extraRightBorder">
-
+            </div>
+            <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                <img src="../images/Add-icon.png" alt="Add-icon">
             </div>
         </div>
     </div>
@@ -91,6 +95,11 @@ else
             <p id="name"></p>
             <p id="prio"></p>
             <p id="id"></p>
+        </div>
+        <div id="settingsContainer" class="settingContainer">
+            <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">
+            <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg">
+            <img src="../images/Add-icon-big.png" alt="Add-icon-big" class="infoImg">
         </div>
     </div>
 </div>

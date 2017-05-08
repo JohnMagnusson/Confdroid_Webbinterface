@@ -1,18 +1,2 @@
 /*Css for USerResult */
 
-#templateContainer{
-    float: left;
-    width: 23%;
-    height: 100%;
-}
-
-.infoTemplate{
-    height: 100%;
-    margin-top: 0.5%;
-    border-left: solid black thin;
-    border-top: solid black thin;
-    border-bottom: solid black thin;
-}
-.extraRightBorder{
-    border-right: solid thin black;
-}
