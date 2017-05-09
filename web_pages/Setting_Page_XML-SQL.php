@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../css/Setting_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../javascript/Setting_Page.js"></script>
+    <script type="text/javascript" src="../javascript/Setting_Page_XmlSql.js"></script>
 </head>
 <body>
 
@@ -22,17 +22,28 @@
 
 <nav>
     <ul id="menu">
-        <li><a href="Setting_Page_Info_User.php">Information</a></li>
+        <li><a href="Setting_Page_Info.php">Information</a></li>
         <li class="activeLi"><a href="Setting_Page_XML-SQL.php">SQL/XML Settings</a></li>
     </ul>
 </nav>
 
-<div id="container">
+<div id="sqlAndXmlMenu">                    <!--sqlAndXmlMenu meunu-->
+    <ul>
+        <li id="liSQL">SQL</li>
+        <li id="liXML">XML</li>
+    </ul>
+</div>
+<div id="container">                            <!--Contains all-->
+    <div id="settingMenu">                      <!--Displays button that controls which setting that should be shown -->W
 
-    <form>
+    </div>
 
-        <input type="textfield">
-    </form>
+    <div id="textAreaContainer">                <!--TextArea container-->
+        <textarea id="textArea"></textarea>
+    </div><div id="settingMenuBtnDiv">
+        <input type="button" value="Save">
+    </div>
+
 
 </div>
 
