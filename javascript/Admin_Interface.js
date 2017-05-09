@@ -2,7 +2,6 @@
  * Javascript function for the search page.
  */
 $(document).ready(function(){
-
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     $("li").removeClass("activeNav");
@@ -345,10 +344,21 @@ function logOut()
     });
 }
 /**
- * Open new page
+ * Open new setting page.
  */
-function openSettingPage()
+function openSettingPage(data, dataType)
 {
-    myRef = window.open('Setting_Page_Info_User.php','Setting','left=200,top=0,width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
+    data = JSON.stringify(data);
+    $.ajax({
+        type: "POST",
+        url: "Setting_Pages/Session_Page.php",
+        data: "dataObject="+data+"&dataType="+dataType,
+        success: function(response){
+            console.log(response);
+        }
+    });
+    // sessionStorage.dataObject = JSON.stringify(data);             /*Stores the incomming object in a session that can be read in the pop up page*/
+    // sessionStorage.dataType = dataType;                           /*Stores the dataType*/
+    href = window.open('Setting_Page_Info_User.php','Setting','left=200,top=0,width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
         'resizable=1, status = 0, menubar = 0, location=0');
 }
