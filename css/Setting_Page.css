@@ -1,0 +1,73 @@
+/**
+* Css for the setting page
+*/
+*{
+    margin: 0px;
+}
+body{
+    overflow: hidden;
+    color: black;
+}
+header{                                 /*header is the top of the page contains the logo*/
+    height: 2.3em;
+    text-align: center;
+}
+nav{                                    /*Nav is the navigation menu*/
+    border-bottom: thin solid black;
+    height: 2.5em;
+    width: 100%;
+    text-align: center;
+}
+ul{
+    text-decoration: none;
+}
+li{
+    position: relative;
+    top:1em;
+    display: inline;
+    font-size: 120%;
+    padding-left: 2.5%;
+    padding-top: 1%;
+    padding-right: 2.5%;
+    border-left: thin solid black;
+    border-top: thin solid black;
+    border-right: thin solid black;
+    background-color: grey;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+li:hover{
+    border-bottom: thin solid white;
+    background-color: rgba(188,188,199,0.98);
+}
+.activeLi{
+    border-bottom: thin solid white;
+    padding-left: 3%;
+    padding-top: 1.2%;
+    padding-right: 3%;
+    background-color: rgba(188,188,199,0.98);
+}
+
+#container{                 /*Big rectangular div that all the elements except header and nav is put in */
+    width: 80%;
+    height: 20em;
+    margin: auto;
+    border: thin solid black;
+    margin-top: 5%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#manageableData{
+    float: left;
+    width: 48%;
+    height: 20%;
+    border: thin solid black;
+}
+#staticData{
+    float: right;
+    width: 48%;
+    height: 80%;
+    border: thin solid black;
+}

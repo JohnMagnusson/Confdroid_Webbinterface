@@ -332,3 +332,11 @@ function logOut()
         }
     });
 }
+/**
+ * Open new page
+ */
+function openSettingPage()
+{
+    myRef = window.open('Setting_Page_Info_User.php','Setting','left=200,top=0,width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
+        'resizable=1, status = 0, menubar = 0, location=0');
+}
