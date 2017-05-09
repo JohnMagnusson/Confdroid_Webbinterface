@@ -149,7 +149,7 @@ li:active{
 {
     visibility: visible;
 }
-.templateText:active{
+.templateText>p:active{
     color:rgba(218,218,229,0.98);
 }
 .img{
@@ -158,7 +158,10 @@ li:active{
     margin-right:2%;
     visibility: hidden;
 }
-
+.img:hover
+{
+    opacity: 0.7;
+}
 .addIcon{
     position:fixed;
     bottom:0;

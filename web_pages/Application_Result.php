@@ -6,8 +6,7 @@
 if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
-    echo "var token='" . $_COOKIE["authCookie"] . "';";
-    echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
+    echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
 }
 else
@@ -35,7 +34,7 @@ else
 </head>
 <body>
 <header>
-    <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
+    <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
 
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">

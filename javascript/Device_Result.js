@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    search2(token, adminId, "Device/"+data, null, function(data, searchType){printUserInfo(data)});
+    getDataFromAPI("Device/"+data, null, function(data, searchType){printUserInfo(data)});
 });
 
 function printUserInfo(device)
 {
-    console.log(device);
+    var url = "Application_Result.php?activeType=App&data=";
+    createPTagsForData("applicationDiv", device["applications"], url, "id");
 }
