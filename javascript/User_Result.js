@@ -22,7 +22,7 @@ function printUserInfo(user)
     $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + user["id"]);
     $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", 'Setting_Page_Info_User.php');};
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", 'Setting_Page_Info.php');};
     for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
 
         document.getElementsByClassName("addIcon")[i].onclick = function () {
