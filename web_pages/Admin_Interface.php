@@ -9,6 +9,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
     echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
     echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
+    session_start();
 }
 else
     header("Location: Login.php?timedout=true");

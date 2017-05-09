@@ -3,6 +3,18 @@
  * Displays all the setting for either device, user, application
  * Also be able to change information.
  */
+/*Starts session if not already started */
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
+{
+//    var_dump($_SESSION["dataObject"]["name"]);
+//    var_dump($_SESSION["dataObject"]);
+//    var_dump($_SESSION["dataType"]);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -30,22 +42,7 @@
 </nav>
 
 <div id="container">
-    <div id="manageableData">
-        <form id="formData">
-            <p>Name:</p>
-            <input type="text" id="name"><br>
-            <p>E-mail:</p>
-            <input type="text" id="email"><br>
-            <input type="button" value="Save">
-        </form>
-    </div>
-    <div id="staticData">
-        <p id="nrDevices">Nr of devices registred:</p>
-        <p id="nrGroups">Nr of groups in:</p>
-        <p id="dateJoined">Date joined:</p>
-        <p id="id">Id:</p>
-        <p id="authToken">Authtoken:</p>
-    </div>
+    <?php include 'Setting_Pages/User_Setting.php';?>
 </div>
 
 </body>

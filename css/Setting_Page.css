@@ -61,13 +61,17 @@ a{
 }
 #manageableData{
     float: left;
-    width: 48%;
-    height: 20%;
-    border: thin solid black;
+    width: 47%;
+    height: 80%;
+    /*border: thin solid black;*/
+    padding-left: 1%;
+    padding-top: 0.5%;
 }
 #staticData{
     float: right;
-    width: 48%;
+    width: 47%;
     height: 80%;
-    border: thin solid black;
+    /*border: thin solid black;*/
+    padding-left: 1%;
+    padding-top: 0.5%;
 }

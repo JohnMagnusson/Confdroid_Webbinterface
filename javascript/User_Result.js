@@ -19,4 +19,5 @@ function printUserInfo(user)
     $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + user["id"]);
     $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User");};
 }
