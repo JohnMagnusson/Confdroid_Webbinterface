@@ -71,11 +71,10 @@ else
         <div id="templateContainer">
             <h2 class="optionTitle">Applications</h2>
             <div id="applicationDiv" class="infoTemplate">
-                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                    <img src="../images/Add-icon.png" alt="Add-icon">
-                </div>
             </div>
-
+            <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                <img src="../images/Add-icon.png" alt="Add-icon">
+            </div>
         </div>
 
         <div id="templateContainer">

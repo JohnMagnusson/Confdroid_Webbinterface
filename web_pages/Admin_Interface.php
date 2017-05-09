@@ -60,7 +60,6 @@ else
         <div id="previousContainer">
             <h2 id="previousTitle" class="optionTitle">Search Result</h2>
             <div id="previousInfo">
-
             </div>
         </div>
     </div>
