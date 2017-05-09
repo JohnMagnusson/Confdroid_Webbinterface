@@ -31,7 +31,7 @@ function search()
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     if(name.indexOf("Admin_Interface.php") < 0)
-        window.location.href = "Admin_Interface.php?activeType="+activeType+"&searchValue="+searchValue+"&searchType="+searchType;
+        window.location.href = "Admin_Interface.php?activeType="+$("#menu").find(".activeNav")[0].innerText+"&searchValue="+searchValue+"&searchType="+searchType;
     else {
         if(name.indexOf("searchValue") >= 0)
         {
@@ -79,7 +79,7 @@ function getDataFromAPI(searchType, searchValue, callback)
                 case 403:
                     window.location.replace("Login.php?timedout=true");
                 default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"]);
+                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
             }
         }
 
@@ -89,7 +89,7 @@ function getDataFromAPI(searchType, searchValue, callback)
 function deleteAndPutData(type, putOrDelete)
 {
     var url = "https://confdroid.brainstorm-labs.net/api/"+type.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
-
+    console.log(url);
     $.ajax({
         type: putOrDelete,
         url: url,
@@ -104,6 +104,7 @@ function deleteAndPutData(type, putOrDelete)
             {
                 console.log("Not authorized");
             }
+            location.reload();
         },
         error: function( jqXHR, textStatus, errorThrown) {
             switch(jqXHR["status"])
@@ -180,16 +181,27 @@ function createPTagsForData(infoParentId, data, url, type)
     }
 }
 
-function deleteElement(e, data, type)
+function deleteElement(e, data, uniqueValueForData)
 {
     if(confirm("Are you sure you want to delete " + data[e.target.id]["name"] +"?"))
     {
-        console.log(document.getElementById("objectType"));
-        if(document.getElementById("objectType") == null)
-            console.log(activeType);
-        else
-            console.log(document.getElementById("objectType").innerHTML);
-        console.log("Deleted!");
+        var stype;
+        if(document.getElementById("objectType") != null) {
+            stype = document.getElementById("objectType").innerHTML;
+            stype += "/";
+            stype += urlData;
+            stype += "/";
+            stype += e.target.parentNode.parentNode.parentNode.firstChild.nextSibling.innerHTML.slice(0, -1);
+            stype += "/";
+            stype += data[e.target.id][uniqueValueForData];
+        }
+        else {
+            stype = activeType;
+            stype += "/";
+            stype += data[e.target.id][uniqueValueForData];
+        }
+
+        deleteAndPutData(stype, "DELETE");
     }
     else
     {
@@ -304,7 +316,7 @@ function updateNav(liId)
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     var activeType = liId.split("li");
-    url = url[url.length-1].split("=")[0]+"="+activeType[1];
+    url = url[url.length-1].split("=")[0]+"="+activeType[1]+"&"+url[url.length-1].split("&")[1];
     history.pushState({}, null, url);
     if(name.indexOf("Admin_Interface.php") >= 0)
     {

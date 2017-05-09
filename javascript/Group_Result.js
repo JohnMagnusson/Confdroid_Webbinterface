@@ -2,7 +2,7 @@
  * Created by Elias on 2017-05-04.
  */
 $(document).ready(function () {
-    getDataFromAPI("Group/"+data, null, function(data, searchType){printUserInfo(data)});
+    getDataFromAPI("Group/"+urlData, null, function(data){printUserInfo(data)});
 });
 
 function printUserInfo(group)

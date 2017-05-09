@@ -2,7 +2,7 @@
  * Created by Elias on 2017-05-02.
  */
 $(document).ready(function () {
-    getDataFromAPI("User/"+data, null, function(data, searchType){printUserInfo(data)});
+    getDataFromAPI("User/"+urlData, null, function(data){printUserInfo(data)});
 });
 
 function printUserInfo(user)
@@ -12,7 +12,7 @@ function printUserInfo(user)
     url = "Device_Result.php?activeType=Device&data=";
     createPTagsForData("deviceDiv", user["devices"], url,"imei");
     // url = "Application_Result.php?activeType=Application&data=";
-    // createPTagsForData("applicationDiv", , url,"imei");
+    // createPTagsForData("applicationDiv", user["applications"], url,"id");
     /*Display all vital information about the user in the infoDiv */
     $("#objectType").html("User");
     $("#name").html('<b>Name:</b> ' + user["name"]);

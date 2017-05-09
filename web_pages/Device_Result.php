@@ -7,7 +7,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
     echo "var activeType ='" . $_GET["activeType"] . "';";
-    echo "var data ='" . $_GET["data"] . "';";
+    echo "var urlData ='" . $_GET["data"] . "';";
     echo "</script>";
 }
 else
@@ -92,12 +92,10 @@ else
         <div id="infoHolder">           <!-- All info is printed inside this div -->
             <h2 id="objectType" style="text-align:center"></h2>
             <p id="name"> </p>
-            <p id="email"></p>
-            <p id="nrOfDevces"></p>
-            <p id="nrOfGroups"></p>
+            <p id="nrOfApplications"></p>
             <p id="createdDate"></p>
             <p id="id"></p>
-            <p id="authToken"></p>
+            <p id="imei"></p>
         </div>
         <div id="settingsContainer" class="settingContainer">
             <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">

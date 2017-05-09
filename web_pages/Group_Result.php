@@ -6,7 +6,7 @@
 if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
-    echo "var data ='" . $_GET["data"] . "';";
+    echo "var urlData ='" . $_GET["data"] . "';";
     echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
 }
