@@ -36,13 +36,26 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 
 <nav>
     <ul id="menu">
-        <li class="activeLi"><a href="Setting_Page_Info_User.php">Information</a></li>
+        <li class="activeLi"><a href="Setting_Page_Info.php">Information</a></li>
         <li><a href="Setting_Page_XML-SQL.php">SQL/XML Settings</a></li>
     </ul>
 </nav>
-
+<div id="sqlAndXmlMenu"></div>
 <div id="container">
-    <?php include 'Setting_Pages/User_Setting.php';?>
+    <?php
+        switch ($_SESSION["dataType"])                   /*Depending of the dataType then shall the page look diffrent. DataType is decided when the user clicks the setting icon.*/
+        {
+            case "User";
+                include 'Setting_Pages/User_Setting.php';
+                break;
+            case "Device";
+                include 'Setting_Pages/Device_Setting.php';
+                break;
+            case "Group";
+                include 'Setting_Pages/Group_Setting.php';
+                break;
+        }
+    ?>
 </div>
 
 </body>

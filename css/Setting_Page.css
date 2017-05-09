@@ -5,7 +5,6 @@
     margin: 0px;
 }
 body{
-    overflow: hidden;
     color: black;
 }
 header{                                 /*header is the top of the page contains the logo*/
@@ -18,12 +17,12 @@ nav{                                    /*Nav is the navigation menu*/
     width: 100%;
     text-align: center;
 }
-ul{
+nav ul{
     text-decoration: none;
 }
-li{
+nav li{
     position: relative;
-    top:1em;
+    top:0.96em;
     display: inline;
     font-size: 120%;
     padding-left: 2.5%;
@@ -36,12 +35,13 @@ li{
     margin-left: 5%;
     margin-right: 5%;
 }
-li:hover{
-    border-bottom: thin solid white;
+nav li:hover{
     background-color: rgba(188,188,199,0.98);
 }
+nav li:active{
+    color: white;
+}
 .activeLi{
-    border-bottom: thin solid white;
     padding-left: 3%;
     padding-top: 1.2%;
     padding-right: 3%;
@@ -49,29 +49,86 @@ li:hover{
 }
 
 #container{                 /*Big rectangular div that all the elements except header and nav is put in */
-    width: 80%;
+    width: 87%;
     height: 20em;
     margin: auto;
     border: thin solid black;
-    margin-top: 5%;
+    margin-top: 0%;
 }
 a{
     text-decoration: none;
     color: black;
 }
-#manageableData{
+#manageableData{            /*Container where all the data that the admin shall be able to change is displayed */
     float: left;
     width: 47%;
     height: 80%;
-    /*border: thin solid black;*/
     padding-left: 1%;
     padding-top: 0.5%;
 }
-#staticData{
+#staticData{                /*Static data that the admin cannot change */
     float: right;
     width: 47%;
     height: 80%;
-    /*border: thin solid black;*/
     padding-left: 1%;
     padding-top: 0.5%;
+}
+#sqlAndXmlMenu{             /*Div that manages the menu for either sql or xml settings */
+    width: 100%;
+    height: 2em;
+}
+#sqlAndXmlMenu ul{
+    text-decoration: none;
+}
+.activeSqlXml{              /*Display the menu the uer is currently in */
+    background-color: red;
+    padding-left: 1.75%;
+    padding-top: 0.4%;
+    padding-right: 1.75%;
+}
+#sqlAndXmlMenu li{          /*Li in the sqlAndXMlMenu*/
+    position: relative;
+    top:0.89em;
+    left: 5%;
+    display: inline;
+    font-size: 100%;
+    padding-left: 1.5%;
+    padding-top: 0.25%;
+    padding-right: 1.5%;
+    border-left: thin solid black;
+    border-top: thin solid black;
+    border-right: thin solid black;
+    background-color: grey;
+    margin-left: 5%;
+    margin-right:0%;
+}
+#sqlAndXmlMenu li:hover {
+    background-color: rgba(188, 188, 199, 0.98);
+    cursor: pointer;
+}
+#sqlAndXmlMenu li:active{
+    color: white;
+}
+#settingMenu{                       /*Menu to the left where the user can choose which sql or xml to display in the textarea*/
+    width: 10%;
+    height: 90%;
+    border-right: thin solid black;
+    float: left;
+    overflow: auto;
+}
+#settingMenuBtnDiv{                 /*Div that position the button in the left menu */
+    float: left;
+    width: 10%;
+    height: 10%;
+    border-right: thin solid black;
+    text-align: center;
+}
+#textAreaContainer{                 /*Manages the textArea */
+    width: 89%;
+    height: 100%;
+    float: right;
+}
+textarea{
+    width: 99.4%;
+    height: 98.4%;
 }
