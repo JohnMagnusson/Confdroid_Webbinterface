@@ -1,8 +1,16 @@
 $(document).ready(function () {
-    search2(token, adminId, "Device/"+data, null, function(data, searchType){printUserInfo(data)});
+    getDataFromAPI("Device/"+urlData, null, function(data){printUserInfo(data)});
 });
 
 function printUserInfo(device)
 {
-    console.log(device);
+    var url = "Application_Result.php?activeType=Application&data=";
+    createPTagsForData("applicationDiv", device["applications"], url, "id");
+
+    $("#objectType").html("Device");
+    $("#name").html('<b>Name:</b> ' + device["name"]);
+    $("#nrOfApplications").html('<b>Nr applications:</b> ' + device["applications"].length);
+    $("#createdDate").html('<b>Date created:</b> ' + device["dateCreated"]);
+    $("#id").html('<b>Id:</b> ' + device["id"]);
+    $("#imei").html('<b>Imei:</b> ' + device["imei"]);
 }

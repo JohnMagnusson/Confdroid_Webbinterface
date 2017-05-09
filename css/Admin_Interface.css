@@ -116,7 +116,7 @@ li:active{
     margin-left: 3%;
 }
 .infoImg:hover{
-    opacity: 0.9;
+    opacity: 0.7;
 }
 .infoImg:active{
     opacity: 1;
@@ -146,7 +146,7 @@ li:active{
     font-size: 120%;
     cursor:pointer;
     margin-left:5%;
-    margin-top:1%;
+    margin-top:3%;
 }
 .templateText:hover{
     color: rgba(138,138,142,0.98);
@@ -155,7 +155,7 @@ li:active{
 {
     visibility: visible;
 }
-.templateText:active{
+.templateText>p:active{
     color:rgba(218,218,229,0.98);
 }
 .img{
@@ -164,7 +164,10 @@ li:active{
     margin-right:2%;
     visibility: hidden;
 }
-
+.img:hover
+{
+    opacity: 0.7;
+}
 .addIcon{
     position:fixed;
     bottom:0;

@@ -10,50 +10,49 @@ $(document).ready(function(){
         if(e.keyCode == 13)
         {
             e.preventDefault();
-            search(token, adminId);
+            search();
         }
     }, false);
     if(name.indexOf("searchValue") >= 0)
     {
-        search(token, adminId);
+        search();
     }
     else if(name.indexOf("Admin_Interface.php") >= 0)
     {
-        search(token, adminId);
+        search();
     }
 });
 
-function search(authToken, id)
+function search()
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
     var searchValue = document.getElementById("searchValue").value;
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     if(name.indexOf("Admin_Interface.php") < 0)
-        window.location.href = "Admin_Interface.php?activeType="+activeType+"&searchValue="+searchValue+"&searchType="+searchType;
+        window.location.href = "Admin_Interface.php?activeType="+$("#menu").find(".activeNav")[0].innerText+"&searchValue="+searchValue+"&searchType="+searchType;
     else {
         if(name.indexOf("searchValue") >= 0)
         {
             name = name.split("?")[1];
             name = name.split("&");
-            // console.log(name);
             searchValue = name[1].split("=")[1];
             searchType = name[2].split("=")[1];
             history.pushState({}, null, "Admin_Interface.php?activeType="+activeType);
         }
-        search2(authToken, id, searchType, searchValue, function (users, searchType, authToken, id) {
-            printData(users, searchType, authToken, id)
+        getDataFromAPI(searchType, searchValue, function (users, searchType) {
+            printData(users, searchType)
         });
     }
 }
 
-function search2(authToken, id, searchType, searchValue, callback)
+function getDataFromAPI(searchType, searchValue, callback)
 {
     var url;
     if(searchValue == null)
-        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id;
+        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
     else
-        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+authToken+"&id="+id+"&searchValue="+searchValue;
+        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie")+"&searchValue="+searchValue;
     $.ajax({
         type: "GET",
         url: url,
@@ -72,6 +71,39 @@ function search2(authToken, id, searchType, searchValue, callback)
             {
                 callback(data, searchType);
             }
+        },
+        error: function( jqXHR, textStatus, errorThrown) {
+            switch(jqXHR["status"])
+            {
+                case 403:
+                    window.location.replace("Login.php?timedout=true");
+                default:
+                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
+            }
+        }
+
+    });
+}
+
+function deleteAndPutData(type, putOrDelete)
+{
+    var url = "https://confdroid.brainstorm-labs.net/api/"+type.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
+    console.log(url);
+    $.ajax({
+        type: putOrDelete,
+        url: url,
+        success: function(data){
+            console.log(data);
+            if(data[0] == "Failed")
+            {
+                console.log("Didn't get any match");
+
+            }
+            else if(data[0] == "Not Authorized")
+            {
+                console.log("Not authorized");
+            }
+            location.reload();
         },
         error: function( jqXHR, textStatus, errorThrown) {
             switch(jqXHR["status"])
@@ -118,12 +150,61 @@ function createPTagsForData(infoParentId, data, url, type)
     $("#"+infoParentId).empty();
     for(var i = 0; i < data.length; i++)
     {
+        var div = document.createElement("div");
+        div.id = "dataDiv"+i;
         var p = document.createElement("p");
+        var trashCan = document.createElement("img");
+        trashCan.id = i;
+        trashCan.src = "../images/trash-can-icon.png";
+        trashCan.classList.add("img");
+        var settings = document.createElement("img");
+        settings.id = i;
+        settings.src = "../images/settings-icon.png";
+        settings.classList.add("img");
         p.id = i;
-        p.innerHTML = data[i]["name"] + "<img src='../images/trash-can-icon.png' class='img'><img src='../images/settings-icon.png' class='img'>";
-        p.classList.add("templateText");
-        document.getElementById(infoParentId).appendChild(p);
-        p.onclick = function(e){url+=data[e.target.id][type];changeLocation(url)};
+        p.innerHTML = data[i]["name"];
+        div.appendChild(trashCan);
+        div.appendChild(settings);
+        div.appendChild(p);
+        div.classList.add("templateText");
+        document.getElementById(infoParentId).appendChild(div);
+        trashCan.onclick = function (e)
+        {
+            deleteElement(e, data, type);
+        }
+        p.onclick = function(e)
+        {
+            url+=data[e.target.id][type];
+            changeLocation(url)
+        };
+    }
+}
+
+function deleteElement(e, data, uniqueValueForData)
+{
+    if(confirm("Are you sure you want to delete " + data[e.target.id]["name"] +"?"))
+    {
+        var stype;
+        if(document.getElementById("objectType") != null) {
+            stype = document.getElementById("objectType").innerHTML;
+            stype += "/";
+            stype += urlData;
+            stype += "/";
+            stype += e.target.parentNode.parentNode.parentNode.firstChild.nextSibling.innerHTML.slice(0, -1);
+            stype += "/";
+            stype += data[e.target.id][uniqueValueForData];
+        }
+        else {
+            stype = activeType;
+            stype += "/";
+            stype += data[e.target.id][uniqueValueForData];
+        }
+
+        deleteAndPutData(stype, "DELETE");
+    }
+    else
+    {
+        console.log("Cancelled!");
     }
 }
 
@@ -234,11 +315,11 @@ function updateNav(liId)
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     var activeType = liId.split("li");
-    url = url[url.length-1].split("=")[0]+"="+activeType[1];
+    url = url[url.length-1].split("=")[0]+"="+activeType[1]+"&"+url[url.length-1].split("&")[1];
     history.pushState({}, null, url);
     if(name.indexOf("Admin_Interface.php") >= 0)
     {
-        search(token, adminId);
+        search();
     }
 }
 

@@ -5,8 +5,6 @@
 if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
-    echo "var token='" . $_COOKIE["authCookie"] . "';";
-    echo "var adminId ='" . $_COOKIE["adminIdCookie"] . "';";
     echo "var activeType ='" . $_GET["activeType"] . "';";
     echo "</script>";
     session_start();
@@ -35,12 +33,12 @@ else
 </head>
 
 <header>
-    <h1 id="headerTitle"><a href="Admin_Interface.php">Confdroid</a></h1>
+    <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
 
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
 
-        <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
+        <input type="button" name="searchBtn" value="Search" onclick="search()">
     </div>
     <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
 </header>
