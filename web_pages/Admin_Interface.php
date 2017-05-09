@@ -31,39 +31,39 @@ else
     <script src="../javascript/model/User.js"></script>
     <script src="../javascript/model/XML_Setting.js"></script>
 </head>
+<body>
+    <header>
+        <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
 
-<header>
-    <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
+        <div id="searchField">
+            <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
 
-    <div id="searchField">
-        <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
+            <input type="button" name="searchBtn" value="Search" onclick="search()">
+        </div>
+        <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
+    </header>
 
-        <input type="button" name="searchBtn" value="Search" onclick="search()">
-    </div>
-    <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
-</header>
+    <nav>
+        <ul id="menu">
+            <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
+            <li id="liGroup"  onclick="updateNav('liGroup')">Group</li>
+            <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
+            <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
+        </ul>
+        <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
+    </nav>
 
-<nav>
-    <ul id="menu">
-        <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
-        <li id="liGroup"  onclick="updateNav('liGroup')">Group</li>
-        <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
-        <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
-    </ul>
-    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
-</nav>
+    <div id="container">
 
-<div id="container">
-
-    <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
-        <div id="previousContainer">
-            <h2 id="previousTitle" class="optionTitle">Search Result</h2>
-            <div id="previousInfo">
+        <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
+            <div id="previousContainer">
+                <h2 id="previousTitle" class="optionTitle">Search Result</h2>
+                <div id="previousInfo">
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 </body>
 

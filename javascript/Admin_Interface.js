@@ -6,6 +6,14 @@ $(document).ready(function(){
     var name=url[url.length-1];
     $("li").removeClass("activeNav");
     $( '#li'+activeType).last().addClass( "activeNav" );
+    $(window).bind("pageshow", function(event) {
+        if (event.originalEvent.persisted) {
+            window.location.reload()
+        }
+    });
+    window.onpopstate = function(event) {
+        history.back();
+    };
     document.getElementById('searchValue').addEventListener('keydown', function(e) {
         if(e.keyCode == 13)
         {
@@ -331,22 +339,21 @@ function updateNav(liId)
  */
 function logOut()
 {
-    alert("Not implemented yet");
     $.ajax({
         type: "DELETE",
-        url: "https://confdroid.brainstorm-labs.net/api/admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCooikie"),
+        url: "https://confdroid.brainstorm-labs.net/api/admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
         success: function(data, textStatus, xhr){
             $.removeCookie("authCookie");
             $.removeCookie("adminIdCookie");
             $.removeCookie("userName");
-            window.location.replace("Admin_Interface.php?loggedOut=true");
+            window.location.replace("Login.php?loggedOut=true");
         }
     });
 }
 /**
  * Open new setting page.
  */
-function openSettingPage(data, dataType)
+function openSettingPage(data, dataType, phpPageToOpen)
 {
     data = JSON.stringify(data);
     $.ajax({
@@ -359,6 +366,6 @@ function openSettingPage(data, dataType)
     });
     // sessionStorage.dataObject = JSON.stringify(data);             /*Stores the incomming object in a session that can be read in the pop up page*/
     // sessionStorage.dataType = dataType;                           /*Stores the dataType*/
-    href = window.open('Setting_Page_Info_User.php','Setting','left=200,top=0,width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
+    href = window.open(phpPageToOpen,'Setting','left=200,top=0,width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
         'resizable=1, status = 0, menubar = 0, location=0');
 }

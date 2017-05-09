@@ -73,7 +73,7 @@ else
             <div id="userDiv" class="infoTemplate">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                <img src="../images/Add-icon.png" alt="Add-icon">
+                <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
 
@@ -82,7 +82,7 @@ else
             <div id="applicationDiv" class="infoTemplate extraRightBorder">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                <img src="../images/Add-icon.png" alt="Add-icon">
+                <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
     </div>

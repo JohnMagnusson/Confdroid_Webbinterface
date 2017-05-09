@@ -7,6 +7,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
     echo "var activeType ='" . $_GET["activeType"] . "';";
+    echo "var urlData ='" . $_GET["data"] . "';";
     echo "</script>";
 }
 else
@@ -23,6 +24,7 @@ else
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
+    <script src="../javascript/Application_Result.js"></script>
     <!-- Model files for javascript is now loaded-->
     <script src="../javascript/model/Application.js"></script>
     <script src="../javascript/model/Device.js"></script>
@@ -71,7 +73,7 @@ else
             <div id="groupDiv" class="infoTemplate">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                <img src="../images/Add-icon.png" alt="Add-icon">
+                <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
 
@@ -80,7 +82,7 @@ else
             <div id="userDiv" class="infoTemplate">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                <img src="../images/Add-icon.png" alt="Add-icon">
+                <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
 
@@ -89,7 +91,7 @@ else
             <div id="deviceDiv" class="infoTemplate extraRightBorder">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                <img src="../images/Add-icon.png" alt="Add-icon">
+                <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
     </div>

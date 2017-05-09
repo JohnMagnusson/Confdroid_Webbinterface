@@ -1,14 +1,15 @@
 /**
- * Created by Elias on 2017-05-02.
+ * Created by Elias on 2017-05-09.
  */
 $(document).ready(function () {
-    getDataFromAPI("User/"+urlData, null, function(data){printUserInfo(data)});
+    getDataFromAPI("Application/"+urlData, null, function(data){printApplicationInfo(data)});
 });
 
-function printUserInfo(user)
+function printApplicationInfo(application)
 {
+    console.log(application);
     var url = "Group_Result.php?activeType=Group&data=";
-    createPTagsForData("groupDiv", user["groups"], url, "id");
+    createPTagsForData("groupDiv", application["groups"], url, "id");
     url = "Device_Result.php?activeType=Device&data=";
     createPTagsForData("deviceDiv", user["devices"], url,"imei");
     url = "Application_Result.php?activeType=Application&data=";
@@ -22,11 +23,5 @@ function printUserInfo(user)
     $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + user["id"]);
     $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", 'Setting_Page_Info_User.php');};
-    for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
-
-        document.getElementsByClassName("addIcon")[i].onclick = function () {
-            openSettingPage(user, "User", "Add_Page_Info.php");
-        }
-    }
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User");};
 }

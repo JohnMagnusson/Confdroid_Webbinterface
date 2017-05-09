@@ -1,0 +1,40 @@
+/**
+* Css for the add page
+*/
+*{
+    margin: 0px;
+}
+body{
+    overflow: hidden;
+    color: black;
+}
+header{                                 /*header is the top of the page contains the logo*/
+    height: 2.3em;
+    text-align: center;
+}
+
+#searchField{                       /*Search field contains search bar and button*/
+    float: left;
+    margin-top: 1.3em;
+    margin-left: 7em;
+}
+
+#container{                 /*Big rectangular div that all the elements except header is put in */
+    width: 80%;
+    height: 20em;
+    margin: auto;
+    border: thin solid black;
+    margin-top: 5%;
+}
+#previousContainer{
+    float:left;
+    height:100%;
+    width:25%;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+#previousInfo{
+    height: 85%;
+    margin-top:  0.5%;
+    border: thin black solid;
+}

@@ -170,8 +170,12 @@ li:active{
 }
 .addIcon{
     position:fixed;
-    bottom:0;
-    right:84%;
+    bottom:2%;
+    margin-left:15%;
+}
+
+.addIcon:hover{
+    opacity: 0.8;
 }
 
 #templateContainer{                     /*Container that have title and infoTemplate */
