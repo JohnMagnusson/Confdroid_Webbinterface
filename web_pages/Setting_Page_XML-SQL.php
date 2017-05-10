@@ -40,15 +40,7 @@ if(!isset($_GET["settingType"]))            /*If the settingType is not set some
     <link rel="stylesheet" type="text/css" href="../css/Setting_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-
     <script type="text/javascript" src="../javascript/Setting_Page_XmlSql.js"></script>
-
-    <script>
-        function hej() {
-            console.log(dataObject);
-        }
-
-    </script>
 </head>
 <body>
 
