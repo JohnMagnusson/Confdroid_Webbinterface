@@ -7,21 +7,17 @@ $(document).ready(function () {
 
 function printApplicationInfo(application)
 {
-    console.log(application);
     var url = "Group_Result.php?activeType=Group&data=";
     createPTagsForData("groupDiv", application["groups"], url, "id");
     url = "Device_Result.php?activeType=Device&data=";
-    createPTagsForData("deviceDiv", user["devices"], url,"imei");
-    url = "Application_Result.php?activeType=Application&data=";
-    createPTagsForData("applicationDiv", user["applications"], url,"id");
-    /*Display all vital information about the user in the infoDiv */
-    $("#objectType").html("User");
-    $("#name").html('<b>Name:</b> ' + user["name"]);
-    $("#email").html('<b>Email:</b> ' + user["email"]);
-    $("#nrOfDevces").html('<b>Nr devices:</b> ' + user["devices"].length);
-    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + user["groups"].length);
-    $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
-    $("#id").html('<b>Id:</b> ' + user["id"]);
-    $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User");};
+    createPTagsForData("deviceDiv", application["devices"], url,"imei");
+    $("#objectType").html("Application");
+    $("#name").html('<b>Name:</b> ' + application["name"]);
+    $("#apkName").html('<b>Apk Name:</b> ' + application["apkName"]);
+    $("#packageName").html('<b>Package Name:</b> ' + application["packageName"]);
+    $("#nrOfDevices").html('<b>Nr devices:</b> ' + application["devices"].length);
+    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + application["groups"].length);
+    $("#nrOfUsers").html('<b>Nr groups in:</b> ' + application["users"].length);
+    $("#id").html('<b>Id:</b> ' + application["id"]);
+    // document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User");};
 }

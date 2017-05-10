@@ -6,26 +6,26 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-    /**
-     * Creates a javascriptObject from PhpJsonObject
-     * @param $jsVarName
-     * @param $phpObject
-     */
-    function printJSONtoJS($jsVarName, $phpObject)
-    {
-        echo "<script>";
-        $javascriptJson = json_encode($phpObject);
-        $javascriptJson = str_replace( "\0", "\\u0000", addcslashes( $javascriptJson, "\t\r\n\"\\" ) );
-        echo "var decodedData = '" . $javascriptJson . "';\n";
-        echo "var $jsVarName =JSON.parse(decodedData);\n";
-        echo "</script>";
-    }
+/**
+ * Creates a javascriptObject from PhpJsonObject
+ * @param $jsVarName
+ * @param $phpObject
+ */
+function printJSONtoJS($jsVarName, $phpObject)
+{
+    echo "<script>";
+    $javascriptJson = json_encode($phpObject);
+    $javascriptJson = str_replace( "\0", "\\u0000", addcslashes( $javascriptJson, "\t\r\n\"\\" ) );
+    echo "var decodedData = '" . $javascriptJson . "';\n";
+    echo "var $jsVarName =JSON.parse(decodedData);\n";
+    echo "</script>";
+}
 
-    if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
-    {
-        printJSONtoJS("dataObject",$_SESSION["dataObject"]);
-        echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
-    }
+if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
+{
+    printJSONtoJS("dataObject",$_SESSION["dataObject"]);
+    echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
+}
 ?>
 <!DOCTYPE html>
 <html>

@@ -43,6 +43,16 @@ nav li:hover{
 nav li:active{
     color: white;
 }
+.activeLi{
+    padding-left: 3%;
+    padding-top: 1.2%;
+    padding-right: 3%;
+    background-color: rgba(188,188,199,0.98);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
 
 #searchField{                       /*Search field contains search bar and button*/
     float: left;
@@ -66,6 +76,7 @@ nav li:active{
     height: 85%;
     margin-top:  0.5%;
     border: thin black solid;
+    overflow:auto;
 }
 #infoContainer{                     /*Static container that always on the right side*/
     float: left;

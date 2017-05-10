@@ -2,13 +2,15 @@
  * Created by Elias on 2017-05-09.
  */
 $(document).ready(function(){
-    document.getElementById('searchValue').addEventListener('keydown', function(e) {
-        if(e.keyCode == 13)
-        {
-            e.preventDefault();
-            addSearch();
-        }
-    }, false);
+    document.getElementById(currentPage).classList.add("activeLi");
+    if(document.getElementById('searchValue') != null) {
+        document.getElementById('searchValue').addEventListener('keydown', function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                addSearch();
+            }
+        }, false);
+    }
 });
 
 function addSearch()
@@ -21,9 +23,29 @@ function addSearch()
 
 function add()
 {
-    // "user/authtoken/group/id"
-    var type = dataType;
-    type += "/";
+    var uniqueValue;
+    switch(dataTypeToAdd)
+    {
+        case "Group":
+            uniqueValue = "id";
+            break;
+        case "Device":
+            uniqueValue = "imei";
+            break;
+    }
+    if(document.getElementById(uniqueValue) == null)
+        alert("Select!");
+    else {
+        var type = dataType;
+        type += "/";
+        type += dataObject["authToken"];
+        type += "/";
+        type += dataTypeToAdd;
+        type += "/";
+        type += document.getElementById(uniqueValue).innerText.split(" ")[1];
+        console.log(type);
+        deletePostAndPutData(type, "POST");
+    }
 }
 
 function showData(infoParentId, data)
@@ -59,16 +81,13 @@ function printInfoOfObject(data, e)
     var p = document.createElement("p");
     p.id = "name";
     document.getElementById("information").appendChild(p);
-    $("#objectType").html(dataType);
+    $("#objectType").html(dataTypeToAdd);
     $("#name").html('<b>Name:</b> ' + data[e.target.id]["name"]);
 
-    switch(dataType)
+    switch(dataTypeToAdd)
     {
-        case "User":
-            printUserInformation(data, e);
-            break;
         case "Group":
-            printGroupInformation(data, e)
+            printGroupInformation(data, e);
             break;
         case "Device":
             printDeviceInformation(data, e);
@@ -86,22 +105,6 @@ function printGroupInformation(data, e)
     document.getElementById("information").appendChild(p);
     $("#prio").html('<b>Prio:</b> ' + data[e.target.id]["prio"]);
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
-}
-
-function printUserInformation(data, e)
-{
-    var p = document.createElement("p");
-    p.id = "email";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "nrOfDevices";
-    document.getElementById("information").appendChild(p);
-    $("#email").html('<b>Email:</b> ' + user["email"]);
-    $("#nrOfDevices").html('<b>Nr devices:</b> ' + user["devices"].length);
-    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + user["groups"].length);
-    $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
-    $("#id").html('<b>Id:</b> ' + user["id"]);
-    $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
 }
 
 function printDeviceInformation(data, e)

@@ -61,6 +61,9 @@ else
                 <h2 id="previousTitle" class="optionTitle">Search Result</h2>
                 <div id="previousInfo">
                 </div>
+                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                    <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
+                </div>
             </div>
         </div>
 
