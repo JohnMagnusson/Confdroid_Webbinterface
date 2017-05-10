@@ -13,28 +13,93 @@ header{                                 /*header is the top of the page contains
     text-align: center;
 }
 
-#searchField{                       /*Search field contains search bar and button*/
-    float: left;
-    margin-top: 1.3em;
-    margin-left: 7em;
+nav{                                    /*Nav is the navigation menu*/
+    border-bottom: thin solid black;
+    height: 2.5em;
+    width: 100%;
+    text-align: center;
+}
+nav ul{
+    text-decoration: none;
+}
+nav li{
+    position: relative;
+    top:0.96em;
+    display: inline;
+    font-size: 120%;
+    padding-left: 2.5%;
+    padding-top: 1%;
+    padding-right: 2.5%;
+    border-left: thin solid black;
+    border-top: thin solid black;
+    border-right: thin solid black;
+    background-color: grey;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+nav li:hover{
+    background-color: rgba(188,188,199,0.98);
+}
+nav li:active{
+    color: white;
 }
 
+#searchField{                       /*Search field contains search bar and button*/
+    float: left;
+    margin-top: -2em;
+}
 #container{                 /*Big rectangular div that all the elements except header is put in */
     width: 80%;
-    height: 20em;
+    height: 25em;
     margin: auto;
     border: thin solid black;
-    margin-top: 5%;
+    margin-top: 6%;
 }
-#previousContainer{
+#searchResultContainer{
     float:left;
     height:100%;
     width:25%;
     margin-left: 1%;
     margin-top: 1%;
 }
-#previousInfo{
+#searchResult{
     height: 85%;
     margin-top:  0.5%;
     border: thin black solid;
+}
+#infoContainer{                     /*Static container that always on the right side*/
+    float: left;
+    margin-top:1%;
+    margin-left:1%;
+    width: 25%;
+    height: 100%;
+}
+#information{                        /*Inside the infoContainer and displays information of the chosen entity */
+    height: 85%;
+    border: black solid thin;
+    overflow-y: auto;
+    word-wrap: break-word;
+    padding-top: 1%;
+    padding-left: 1%;
+    font-size: 90%;
+}
+
+.templateText:hover{
+    opacity: 0.7;
+    cursor:pointer;
+}
+
+.templateText{
+    margin-top:1%;
+}
+
+.addButton{
+    position:fixed;
+    bottom: 10%;
+    right: 12%;
+}
+
+.selected{
+    font-weight: bold;
+    font-size:130%;
 }

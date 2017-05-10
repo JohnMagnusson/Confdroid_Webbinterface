@@ -1,36 +1,6 @@
 /**
  * Javascript function for the search page.
  */
-$(document).ready(function(){
-    var url=window.location.href.split('/');
-    var name=url[url.length-1];
-    $("li").removeClass("activeNav");
-    $( '#li'+activeType).last().addClass( "activeNav" );
-    $(window).bind("pageshow", function(event) {
-        if (event.originalEvent.persisted) {
-            window.location.reload()
-        }
-    });
-    window.onpopstate = function(event) {
-        history.back();
-    };
-    document.getElementById('searchValue').addEventListener('keydown', function(e) {
-        if(e.keyCode == 13)
-        {
-            e.preventDefault();
-            search();
-        }
-    }, false);
-    if(name.indexOf("searchValue") >= 0)
-    {
-        search();
-    }
-    else if(name.indexOf("Admin_Interface.php") >= 0)
-    {
-        search();
-    }
-});
-
 function search()
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
@@ -353,13 +323,16 @@ function logOut()
 /**
  * Open new setting page.
  */
-function openSettingPage(data, dataType, phpPageToOpen)
+function openSettingPage(data, dataType, dataTypeToAdd, phpPageToOpen)
 {
     data = JSON.stringify(data);
+    var dataToSend = "dataObject="+data+"&dataType="+dataType;
+    if(dataTypeToAdd != null)
+        dataToSend += "&dataTypeToAdd="+dataTypeToAdd;
     $.ajax({
         type: "POST",
         url: "Setting_Pages/Session_Page.php",
-        data: "dataObject="+data+"&dataType="+dataType,
+        data: dataToSend,
         success: function(response){
             console.log(response);
         }

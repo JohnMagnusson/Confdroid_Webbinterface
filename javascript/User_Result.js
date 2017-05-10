@@ -22,11 +22,11 @@ function printUserInfo(user)
     $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + user["id"]);
     $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", 'Setting_Page_Info.php');};
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", null, 'Setting_Page_Info.php');};
     for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
 
-        document.getElementsByClassName("addIcon")[i].onclick = function () {
-            openSettingPage(user, "User", "Add_Page_Info.php");
+        document.getElementsByClassName("addIcon")[i].onclick = function (e) {
+            openSettingPage(user, "User", e.target.parentNode.parentNode.firstChild.nextSibling.innerHTML.slice(0, -1), "Add_Page_Info.php");
         }
     }
 }

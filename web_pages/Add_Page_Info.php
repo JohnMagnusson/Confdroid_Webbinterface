@@ -12,9 +12,12 @@ if(!isset($_SESSION))
 }
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
-//    var_dump($_SESSION["dataObject"]["name"]);
-//    var_dump($_SESSION["dataObject"]);
-//    var_dump($_SESSION["dataType"]);
+    $_SESSION["dataObject"] = json_encode($_SESSION["dataObject"]);
+    echo "<script>";
+    echo "var dataType ='" . $_SESSION["dataType"] . "';";
+    echo "var dataTypeToAdd ='" . $_SESSION["dataTypeToAdd"] . "';";
+    echo "var dataObject ='" . $_SESSION["dataObject"] . "';";
+    echo "</script>";
 }
 
 
@@ -29,21 +32,24 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script type="text/javascript" src="../javascript/Add_Page.js"></script>
+    <script type="text/javascript" src="../javascript/Admin_Interface.js"></script>
 </head>
 <body>
 
-<header>
-    <h1>Confdroid Settings</h1>
-    <div id="searchField">
-        <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
+    <header>
+        <h1>Confdroid Settings</h1>
+    </header>
 
-        <input type="button" name="searchBtn" value="Search" onclick="search()">
+    <nav>
+        <ul id="menu">
+            <li class="activeLi"><a href="Add_Page_Info.php">Add existing <?php print_r($_SESSION["dataTypeToAdd"]." to ".$_SESSION["dataType"])?></a></li>
+            <li><a href="Setting_Page_XML-SQL.php">Add new <?php print_r($_SESSION["dataTypeToAdd"]." to ".$_SESSION["dataType"])?></a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
+        <?php include 'Setting_Pages/Add.php';?>
     </div>
-</header>
-
-<div id="container">
-    <?php include 'Setting_Pages/Add.php';?>
-</div>
 
 </body>
 
