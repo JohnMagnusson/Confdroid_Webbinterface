@@ -177,6 +177,7 @@ li:active{
 
 .addIcon:hover{
     opacity: 0.8;
+    cursor: pointer;
 }
 
 #templateContainer{                     /*Container that have title and infoTemplate */
