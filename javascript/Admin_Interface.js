@@ -336,6 +336,7 @@ function logOut()
 function openSettingPage(data, dataType, dataTypeToAdd, phpPageToOpen)
 {
     data = JSON.stringify(data);
+    console.log(phpPageToOpen);
     var dataToSend = "dataObject="+data+"&dataType="+dataType;
     if(dataTypeToAdd != null)
         dataToSend += "&dataTypeToAdd="+dataTypeToAdd;

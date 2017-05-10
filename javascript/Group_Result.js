@@ -16,5 +16,5 @@ function printUserInfo(group)
     $("#name").html('<b>Name:</b> ' + group["name"]);
     $("#prio").html('<b>Prio:</b> ' + group["prio"]);
     $("#id").html('<b>Id:</b> ' + group["id"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(group, "Group", "Setting_Page_Info.php?settingType=SQL");};
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(group, "Group", null, "Setting_Page_Info.php?settingType=SQL");};
 }
