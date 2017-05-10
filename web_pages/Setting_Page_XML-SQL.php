@@ -20,18 +20,22 @@ function printJSONtoJS($jsVarName, $phpObject)
     echo "var $jsVarName =JSON.parse(decodedData);\n";
     echo "</script>";
 }
-
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
     echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
+    echo "<script>var settingType ='" . $_GET["settingType"] . "';\n</script>";
 }
+else
+    echo "<script>window.close();</script>";
+if(!isset($_GET["settingType"]))            /*If the settingType is not set something is wrong and closes the popup */
+    echo "<script>window.close();</script>";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Setting Page</title>
     <link rel="icon" href="../images/BrowserIcon2.ico">
     <link rel="stylesheet" type="text/css" href="../css/Setting_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
@@ -46,7 +50,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 
     </script>
 </head>
-<body onload="hej()">
+<body>
 
 <header>
     <h1>Confdroid Settings</h1>
@@ -54,15 +58,14 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 
 <nav>
     <ul id="menu">
-        <li><a href="Setting_Page_Info.php">Information</a></li>
-        <li class="activeLi"><a href="Setting_Page_XML-SQL.php">SQL/XML Settings</a></li>
+        <a href="Setting_Page_Info.php"><li>Information</li></a>
+        <a href="Setting_Page_XML-SQL.php"><li class="activeLi">SQL/XML Settings</li></a>
     </ul>
 </nav>
-
-<div id="sqlAndXmlMenu">                    <!--sqlAndXmlMenu meunu-->
+<div id="sqlAndXmlMenu">                    <!--sqlAndXmlMenu menu-->
     <ul>
-        <li id="liSQL" class="activeSqlXml">SQL</li>
-        <li id="liXML">XML</li>
+        <a href="Setting_Page_XML-SQL.php?settingType=SQL"><li id="liSQL">SQL</li></a>
+        <a href="Setting_Page_XML-SQL.php?settingType=XML"><li id="liXML">XML</li></a>
     </ul>
 </div>
 <div id="container">                            <!--Contains all-->
@@ -73,8 +76,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
                 {
                     for ($i = 0; $i < sizeof($_SESSION["dataObject"]["applications"]); $i++)
                     {
-                        echo '<p id="appName' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(\'SQL\',dataObject["applications"])">';
-//                        echo '<p id="appName' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(\'SQL\','.$_SESSION["dataObject"]["applications"][$i].')">';
+                        echo '<p id="appName' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject[\'applications\']['.$i.'])">';
                         echo $_SESSION["dataObject"]["applications"][$i]["name"];
                         echo '</p>';
                     }
@@ -86,21 +88,23 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
             ?>
         </div>
         <div id="settingContainer">             <!--Which setting to choose -->
-
         </div>
     </div>
-
     <div id="textAreaContainer">                <!--TextArea container-->
-        <textarea id="textArea"></textarea>
-    </div><div id="settingMenuBtnDiv">
+        <?php
+            if($_GET["settingType"] == "SQL")   /*Includes diffrent forms depending on which settingType the user want*/
+            {
+                include 'Setting_Pages/Sql_Sestting.php';
+            }
+            else
+                include 'Setting_Pages/Xml_Setting.php';
+        ?>
+    </div>
+    <div id="settingMenuBtnDiv">                <!--Container for the save button -->
         <input type="button" value="Save">
     </div>
-
-
 </div>
-
 </body>
-
 </html>
 
 
