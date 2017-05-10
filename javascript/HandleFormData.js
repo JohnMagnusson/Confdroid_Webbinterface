@@ -17,7 +17,7 @@ function handleForm()
 
 function createGroup()
 {
-    
+
 }
 
 function addGroupToObject()
