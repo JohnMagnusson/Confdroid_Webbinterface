@@ -150,7 +150,39 @@ a{
     height: 100%;
     float: right;
 }
+/*The different textArea divs that decides the size of the textAreas*/
 textarea{
-    width: 99.4%;
-    height: 98.4%;
+    width: 97%;
+}
+/*SQL teaxtareas*/
+#dbLocationTxt{
+    height: 20%;
+}
+#queryTxt{
+    height: 68%;
+}
+/*XML textAreas*/
+#fileLocationTxt{
+    height: 10%;
+}
+#regexpTxt{
+    height:35%;
+}
+#replaceWithTxt{
+    height: 39%;
+}
+/*End teaxtAreas */
+.trashCanImg{
+    float: right;
+}
+.trashCanImg:hover{
+    opacity: 0.7;
+}
+/*Puts bold on the selected app*/
+.selectedApp{
+    font-weight: bold;
+}
+/*Puts bold on selected app*/
+.selectedSetting{
+    font-weight: bold;
 }
