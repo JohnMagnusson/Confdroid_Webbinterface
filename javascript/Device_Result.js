@@ -13,5 +13,5 @@ function printUserInfo(device)
     $("#createdDate").html('<b>Date created:</b> ' + device["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + device["id"]);
     $("#imei").html('<b>Imei:</b> ' + device["imei"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(device, "Device");};
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(device, "Device","Setting_Page_Info.php");};
 }

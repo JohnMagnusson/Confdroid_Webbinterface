@@ -50,7 +50,7 @@ nav li:active{
 
 #container{                 /*Big rectangular div that all the elements except header and nav is put in */
     width: 87%;
-    height: 20em;
+    height: 24em;
     margin: auto;
     border: thin solid black;
     margin-top: 0%;
@@ -80,12 +80,6 @@ a{
 #sqlAndXmlMenu ul{
     text-decoration: none;
 }
-.activeSqlXml{              /*Display the menu the uer is currently in */
-    background-color: red;
-    padding-left: 1.75%;
-    padding-top: 0.4%;
-    padding-right: 1.75%;
-}
 #sqlAndXmlMenu li{          /*Li in the sqlAndXMlMenu*/
     position: relative;
     top:0.89em;
@@ -109,22 +103,50 @@ a{
 #sqlAndXmlMenu li:active{
     color: white;
 }
+#sqlAndXmlMenu .activeSqlXml{              /*Display the menu the uer is currently in */
+    background-color: rgba(188,188,199,0.98);;
+    padding-left: 1.75%;
+    padding-top: 0.4%;
+    padding-right: 1.75%;
+}
 #settingMenu{                       /*Menu to the left where the user can choose which sql or xml to display in the textarea*/
-    width: 10%;
+    width: 15%;
     height: 90%;
     border-right: thin solid black;
     float: left;
+}
+#applicationContainer{              /*Displays the applications with xml or sql setting */
+    width: 95%;
+    height: 49%;
+    overflow: auto;
+    border-bottom: thin solid black;
+}
+#settingContainer{                  /*Display which setting to choose*/
+    width: 95%;
+    height: 49%;
     overflow: auto;
 }
+/*Text class for items in the settingContainer */
+.textSettingMenu{
+
+}
+.textSettingMenu:hover{
+    color: rgba(138,138,142,0.98);
+    cursor: pointer;
+}
+.textSettingMenu:active{
+    color:rgba(218,218,229,0.98);
+}
+/*End textSettingMenu */
 #settingMenuBtnDiv{                 /*Div that position the button in the left menu */
     float: left;
-    width: 10%;
+    width: 15%;
     height: 10%;
     border-right: thin solid black;
     text-align: center;
 }
 #textAreaContainer{                 /*Manages the textArea */
-    width: 89%;
+    width: 84%;
     height: 100%;
     float: right;
 }
