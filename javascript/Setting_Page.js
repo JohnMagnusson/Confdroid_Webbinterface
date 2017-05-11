@@ -63,7 +63,7 @@ function updateDeviceInfo(device)
     device["name"] = name;
     device["imei"] = imei;
 
-    // device = JSON.stringify(device);
+    /*Updates the php session */
     var dataToSend = "dataObject="+JSON.stringify(device)+"&dataType=Device";
     $.ajax({
         type: "POST",
@@ -73,8 +73,7 @@ function updateDeviceInfo(device)
             console.log(response);
         }
     });
-    console.log(imei);
-    console.log(device["imei"]);
+    /*Updates the value in the database */
     $.ajax({
         type: "PUT",
         url: "https://confdroid.brainstorm-labs.net/api/device/"+device["imei"]+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
