@@ -24,7 +24,7 @@ function createGroup()
     data["prio"] = document.getElementById("prio").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    // deletePostAndPutData("Group", "POST", myJson);
+    deletePostAndPutData("Group", "POST", myJson);
 }
 
 function addGroupToObject()
