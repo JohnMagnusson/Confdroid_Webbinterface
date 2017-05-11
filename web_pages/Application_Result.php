@@ -42,7 +42,7 @@ else
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
 
-        <input type="button" name="searchBtn" value="Search" onclick="search(token,adminId)">
+        <input type="button" name="searchBtn" value="Search" onclick="search()">
     </div>
     <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
 </header>
@@ -54,7 +54,7 @@ else
         <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
         <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
     </ul>
-    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut(token,adminId)">
+    <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
 </nav>
 
 <div id="container">
@@ -110,9 +110,9 @@ else
             <p id="id"></p>
         </div>
         <div id="settingsContainer" class="settingContainer">
-            <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">
-            <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg">
             <img src="../images/Add-icon-big.png" alt="Add-icon-big" class="infoImg">
+            <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg">
+            <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">
         </div>
     </div>
 

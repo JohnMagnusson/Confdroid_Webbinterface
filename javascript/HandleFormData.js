@@ -8,19 +8,36 @@ function handleForm()
     {
         case "Group":
             createGroup();
-            addGroupToObject();
+            // addGroupToObject();
+            break;
+        case "User":
+            createUser();
+            // addGroupToObject();
             break;
     }
-    console.log("First Add Group");
-    console.log("Then add group to user");
 }
 
 function createGroup()
 {
-
+    var data = {};
+    data["name"] = document.getElementById("name").value;
+    data["prio"] = document.getElementById("prio").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    deletePostAndPutData("Group", "POST", myJson);
 }
 
 function addGroupToObject()
 {
 
+}
+
+function createUser()
+{
+    var data = {};
+    data["name"] = document.getElementById("name").value;
+    data["email"] = document.getElementById("email").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    deletePostAndPutData("User", "POST", myJson);
 }

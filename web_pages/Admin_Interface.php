@@ -55,7 +55,6 @@ else
     </nav>
 
     <div id="container">
-
         <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
             <div id="previousContainer">
                 <h2 id="previousTitle" class="optionTitle">Search Result</h2>

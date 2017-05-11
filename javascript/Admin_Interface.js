@@ -1,6 +1,15 @@
 /**
  * Javascript function for the search page.
  */
+$(document).ready(function () {
+    var url=window.location.href.split('/');
+    var name=url[url.length-1];
+    if(name.indexOf("Admin_Interface.php") >= 0) {
+        document.getElementsByClassName("addIcon")[0].onclick = function (e) {
+            openSettingPage(null, null, activeType, "Add_Page.php?pageName=Add_New&hidden=hide");
+        }
+    }
+});
 function search()
 {
     var searchType = $("#menu").find(".activeNav")[0].innerText;
@@ -8,7 +17,10 @@ function search()
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     if(name.indexOf("Admin_Interface.php") < 0)
-        window.location.href = "Admin_Interface.php?activeType="+$("#menu").find(".activeNav")[0].innerText+"&searchValue="+searchValue+"&searchType="+searchType;
+    {
+        var url2 = "Admin_Interface.php?activeType="+$("#menu").find(".activeNav")[0].innerText+"&searchValue="+encodeURIComponent(searchValue)+"&searchType="+searchType;
+        window.location.href = url2;
+    }
     else {
         if(name.indexOf("searchValue") >= 0)
         {
@@ -80,7 +92,7 @@ function deletePostAndPutData(type, deletePostOrPut, postData)
                     alert("Success!");
                     break;
             }
-            // location.reload();
+            location.reload();
         },
         error: function( jqXHR, textStatus, errorThrown) {
             switch(jqXHR["status"])
@@ -107,18 +119,22 @@ function printData(data, searchType)
     {
         case "User":
             url = "User_Result.php?activeType=User&data=";
+            activeType = "User";
             urlvar = "authToken";
             break;
         case "Group":
             url = "Group_Result.php?activeType=Group&data=";
+            activeType = "Group";
             urlvar = "id";
             break;
         case "Device":
             url = "Device_Result.php?activeType=Device&data=";
+            activeType = "Device";
             urlvar = "imei";
             break;
         case "Application":
             url = "Application_Result.php?activeType=Application&data=";
+            activeType = "Application";
             urlvar = "id";
             break;
     }

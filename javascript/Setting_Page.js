@@ -24,6 +24,9 @@ function changeObjectData()
 function updateUserInfo(user){
     var name=$("#name").val();
     var email=$("#email").val();
+    var newValues = {};
+    newValues["name"] = name;
+    newValues["imei"] = imei;
     console.log(user);
     user["name"] = name;
     user["email"] = email;
@@ -31,7 +34,7 @@ function updateUserInfo(user){
     $.ajax({
         type: "PUT",
         url: "https://confdroid.brainstorm-labs.net/api/user/"+user["authToken"]+".json",
-        data: user,
+        data: JSON.stringify(newValues),
         success: function(result){
             console.log(result);
             document.getElementById("errorField").innerText = "User information updated";

@@ -54,6 +54,10 @@ a{
     color: black;
 }
 
+.hide{
+    visibility: hidden;
+}
+
 #searchField{                       /*Search field contains search bar and button*/
     float: left;
     margin-top: -2em;
