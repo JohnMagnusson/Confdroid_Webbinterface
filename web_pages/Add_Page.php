@@ -33,6 +33,13 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     echo "var currentPage ='" . $_GET["pageName"] . "';";
     echo "</script>";
 }
+else if(isset($_GET["pageName"]) && isset($_SESSION["dataTypeToAdd"]))
+{
+    echo "<script>";
+    echo "var dataTypeToAdd ='" . $_SESSION["dataTypeToAdd"] . "';";
+    echo "var currentPage ='" . $_GET["pageName"] . "';";
+    echo "</script>";
+}
 
 
 ?>
@@ -56,7 +63,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     </header>
 
     <nav>
-        <ul id="menu">
+        <ul id="menu" class="<?php print_r($_GET["hidden"])?>">
             <a href="Add_Page.php?pageName=Add_Existing"><li id="Add_Existing">Add existing <?php print_r($_SESSION["dataTypeToAdd"]." to ".$_SESSION["dataObject"]["name"])?></li></a>
             <a href="Add_Page.php?pageName=Add_New"><li id="Add_New">Add new <?php print_r($_SESSION["dataTypeToAdd"]." to ".$_SESSION["dataObject"]["name"])?></li></a>
         </ul>

@@ -2,6 +2,7 @@
  * Created by Elias on 2017-05-09.
  */
 $(document).ready(function(){
+    console.log(dataTypeToAdd);
     document.getElementById(currentPage).classList.add("activeLi");
     if(document.getElementById('searchValue') != null) {
         document.getElementById('searchValue').addEventListener('keydown', function (e) {
