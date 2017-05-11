@@ -158,7 +158,9 @@ function createPTagsForData(infoParentId, data, url, type)
             deleteElement(e, data, type);
         }
         settings.onclick = function (e) {
-
+            getDataFromAPI(url.split("_")[0]+"/"+data[e.target.id]["id"],null,function (data, searchType) {     /*Gets data from the clicked element, then searches on the clicked element and uses a callback function to call on openSettingPage*/
+                openSettingPage(data,searchType.split("/")[0], null,"Setting_Page_Info.php?settingType=SQL");
+            });
         }
         p.onclick = function(e)
         {
@@ -337,12 +339,12 @@ function logOut()
  * Open setting page.
  * @param data, The dataObject that the admin wants to change the setting on
  * @param dataType, What kind of type the dataObject is.
+ * @param dataTypeToAdd
  * @param phpPageToOpen, The Php page to open.
  */
 function openSettingPage(data, dataType, dataTypeToAdd, phpPageToOpen)
 {
     data = JSON.stringify(data);
-    console.log(phpPageToOpen);
     var dataToSend = "dataObject="+data+"&dataType="+dataType;
     if(dataTypeToAdd != null)
         dataToSend += "&dataTypeToAdd="+dataTypeToAdd;

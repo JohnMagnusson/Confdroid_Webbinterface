@@ -58,13 +58,13 @@ else
     <?php
     switch ($_SESSION["dataType"])                   /*Depending of the dataType then shall the page look diffrent. DataType is decided when the user clicks the setting icon.*/
     {
-        case "User";
+        case"User";
             include 'Setting_Pages/User_Setting.php';
             break;
-        case "Device";
+        case"Device";
             include 'Setting_Pages/Device_Setting.php';
             break;
-        case "Group";
+        case"Group";
             include 'Setting_Pages/Group_Setting.php';
             break;
     }
