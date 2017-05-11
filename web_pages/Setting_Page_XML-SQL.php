@@ -26,10 +26,10 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
     echo "<script>var settingType ='" . $_GET["settingType"] . "';\n</script>";
 }
-else
-    echo "<script>window.close();</script>";
-if(!isset($_GET["settingType"]))            /*If the settingType is not set something is wrong and closes the popup */
-    echo "<script>window.close();</script>";
+//else
+//    echo "<script>window.close();</script>";
+//if(!isset($_GET["settingType"]))            /*If the settingType is not set something is wrong and closes the popup */
+//    echo "<script>window.close();</script>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +51,7 @@ if(!isset($_GET["settingType"]))            /*If the settingType is not set some
 <nav>
     <ul id="menu">
         <a href="Setting_Page_Info.php"><li>Information</li></a>
-        <a href="Setting_Page_XML-SQL.php"><li class="activeLi">SQL/XML Settings</li></a>
+        <a href="Setting_Page_XML-SQL.php?settingType=SQL"><li class="activeLi">SQL/XML Settings</li></a>
     </ul>
 </nav>
 <div id="sqlAndXmlMenu">                    <!--sqlAndXmlMenu menu-->
@@ -68,7 +68,7 @@ if(!isset($_GET["settingType"]))            /*If the settingType is not set some
                 {
                     for ($i = 0; $i < sizeof($_SESSION["dataObject"]["applications"]); $i++)
                     {
-                        echo '<p id="appName' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject[\'applications\']['.$i.'])">';
+                        echo '<p id="app' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject[\'applications\']['.$i.'])">';
                         echo $_SESSION["dataObject"]["applications"][$i]["name"];
                         echo '</p>';
                     }
@@ -93,7 +93,8 @@ if(!isset($_GET["settingType"]))            /*If the settingType is not set some
         ?>
     </div>
     <div id="settingMenuBtnDiv">                <!--Container for the save button -->
-        <input type="button" value="Save">
+        <p id="errorField"></p>
+        <input type="button" value="Save" onclick="updateSetting()">
     </div>
 </div>
 </body>
