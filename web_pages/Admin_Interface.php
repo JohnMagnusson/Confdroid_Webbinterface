@@ -21,6 +21,7 @@ else
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
+    <script src="../javascript/Document_Ready.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
     <!-- Model files for javascript is now loaded-->
     <script src="../javascript/model/Application.js"></script>
@@ -59,6 +60,9 @@ else
             <div id="previousContainer">
                 <h2 id="previousTitle" class="optionTitle">Search Result</h2>
                 <div id="previousInfo">
+                </div>
+                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                    <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
                 </div>
             </div>
         </div>

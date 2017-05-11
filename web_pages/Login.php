@@ -29,7 +29,7 @@
                 Password<br>
                 <input type="password" name="password" id="password"><br>
                 <input type="hidden" name="mysession" id="mysession">
-                <input type="button" name="login" value="login" id="login" >
+                <input type="button" name="login" value="Login" id="login" >
 
             </form>
         </div>

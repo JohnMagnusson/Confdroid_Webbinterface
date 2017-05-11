@@ -86,7 +86,7 @@ if(!isset($_GET["settingType"]))            /*If the settingType is not set some
         <?php
             if($_GET["settingType"] == "SQL")   /*Includes diffrent forms depending on which settingType the user want*/
             {
-                include 'Setting_Pages/Sql_Sestting.php';
+                include 'Setting_Pages/Sql_Setting.php';
             }
             else
                 include 'Setting_Pages/Xml_Setting.php';

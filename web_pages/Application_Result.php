@@ -18,11 +18,12 @@ else
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="icon" href="images/BrowserIcon2.ico">
+    <link rel="icon" href="../images/BrowserIcon2.ico">
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
+    <script src="../javascript/Document_Ready.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
     <script src="../javascript/Application_Result.js"></script>
     <!-- Model files for javascript is now loaded-->
@@ -99,6 +100,14 @@ else
     <div id="infoContainer">            <!-- Static info container -->
         <h2 class="optionTitle">Information</h2>
         <div id="infoHolder">           <!-- All info is printed inside this div -->
+            <h2 id="objectType" style="text-align:center"></h2>
+            <p id="name"> </p>
+            <p id="apkName"> </p>
+            <p id="packageName"> </p>
+            <p id="nrOfDevices"></p>
+            <p id="nrOfGroups"></p>
+            <p id="nrOfUsers"></p>
+            <p id="id"></p>
         </div>
         <div id="settingsContainer" class="settingContainer">
             <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">

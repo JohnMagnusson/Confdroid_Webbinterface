@@ -23,6 +23,7 @@ else
     <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
+    <script src="../javascript/Document_Ready.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
     <script src="../javascript/Device_Result.js"></script>
     <!-- Model files for javascript is now loaded-->
