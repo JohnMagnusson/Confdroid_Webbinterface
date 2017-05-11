@@ -2,8 +2,6 @@
 /*Updates the textArea with the clicked elements SQL or xml setting depending on the settingType*/
 
 $('document').ready(function(){
-    // $("li").removeClass("#sqlAndXmlMenu .activeSqlXml");
-    // $( '#li'+settingType).last().addClass( "#sqlAndXmlMenu .activeSqlXml" );
     document.getElementById("li"+settingType).classList.add("activeSqlXml");
 });
 /**
@@ -77,7 +75,6 @@ function createPTagsForData(parentId, data, name)
     document.getElementById(parentId).appendChild(div);
     trashCan.onclick = function (e)
     {
-        // deleteElement(e, data, type);
         alert("Clicked trashcan");
     }
     p.onclick = function(e)
