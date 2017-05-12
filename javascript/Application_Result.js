@@ -1,5 +1,5 @@
 /**
- * Created by Elias on 2017-05-09.
+ * Class used to display Applicaiton result on search.
  */
 $(document).ready(function () {
     getDataFromAPI("Application/"+urlData, null, function(data){printApplicationInfo(data)});
@@ -8,11 +8,11 @@ $(document).ready(function () {
 function printApplicationInfo(application)
 {
     var url = "Group_Result.php?activeType=Group&data=";
-    createPTagsForData("groupDiv", application["groups"], url, "id");
+    createsContainerContent("groupDiv", application["groups"], url);
     url = "Device_Result.php?activeType=Device&data=";
-    createPTagsForData("deviceDiv", application["devices"], url,"imei");
+    createsContainerContent("deviceDiv", application["devices"], url);
     url = "User_Result.php?activeType=User&data=";
-    createPTagsForData("userDiv", application["users"], url,"authToken");
+    createsContainerContent("userDiv", application["users"], url);
     $("#objectType").html("Application");
     $("#name").html('<b>Name:</b> ' + application["name"]);
     $("#apkName").html('<b>Apk Name:</b> ' + application["apkName"]);

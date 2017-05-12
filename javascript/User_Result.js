@@ -8,11 +8,11 @@ $(document).ready(function () {
 function printUserInfo(user)
 {
     var url = "Group_Result.php?activeType=Group&data=";
-    createPTagsForData("groupDiv", user["groups"], url, "id");
+    createsContainerContent("groupDiv", user["groups"], url);
     url = "Device_Result.php?activeType=Device&data=";
-    createPTagsForData("deviceDiv", user["devices"], url,"imei");
+    createsContainerContent("deviceDiv", user["devices"], url);
     url = "Application_Result.php?activeType=Application&data=";
-    createPTagsForData("applicationDiv", user["applications"], url,"id");
+    createsContainerContent("applicationDiv", user["applications"], url);
     /*Display all vital information about the user in the infoDiv */
     $("#objectType").html("User");
     $("#name").html('<b>Name:</b> ' + user["name"]);

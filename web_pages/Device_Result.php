@@ -18,22 +18,14 @@ else
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="icon" href="../images/BrowserIcon2.ico">
+    <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
-    <link rel="stylesheet" type="text/css" href="../css/UserResult.css">             <!-- Unique css for this page-->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-    <script src="../javascript/Document_Ready.js"></script>
+    <script src="../javascript/General_Functions.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
     <script src="../javascript/Device_Result.js"></script>
-    <!-- Model files for javascript is now loaded-->
-    <script src="../javascript/model/Application.js"></script>
-    <script src="../javascript/model/Device.js"></script>
-    <script src="../javascript/model/DeviceManagementPolicy.js"></script>
-    <script src="../javascript/model/Group.js"></script>
-    <script src="../javascript/model/SQL_Setting.js"></script>
-    <script src="../javascript/model/User.js"></script>
-    <script src="../javascript/model/XML_Setting.js"></script>
+    <script type="text/javascript" src="../javascript/Api_Calls.js"></script>
 </head>
 <body>
     <header>
@@ -60,14 +52,6 @@ else
     <div id="container">
 
         <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
-
-            <div id="templateContainer">
-                <h2 class="optionTitle">Previous</h2>
-                <div id="prevDiv" class="infoTemplate">
-                </div>
-                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
-                </div>
-            </div>
 
             <div id="templateContainer">
                 <h2 class="optionTitle">Applications</h2>

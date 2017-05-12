@@ -48,13 +48,14 @@ else if(isset($_GET["pageName"]) && isset($_SESSION["dataTypeToAdd"]))
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="icon" href="../images/BrowserIcon2.ico">
+    <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Add_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script type="text/javascript" src="../javascript/Add_Page.js"></script>
     <script type="text/javascript" src="../javascript/HandleFormData.js"></script>
     <script type="text/javascript" src="../javascript/Admin_Interface.js"></script>
+    <script type="text/javascript" src="../javascript/Api_Calls.js"></script>
 </head>
 <body>
 

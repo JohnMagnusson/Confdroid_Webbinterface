@@ -35,11 +35,12 @@ else
 <head>
     <meta charset="UTF-8">
     <title>Setting Page</title>
-    <link rel="icon" href="../images/BrowserIcon2.ico">
+    <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Setting_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../javascript/Setting_Page.js"></script>
+    <script type="text/javascript" src="../javascript/Setting_Page_Info.js"></script>
+    <script type="text/javascript" src="../javascript/Api_Calls.js"></script>
 </head>
 <body>
 

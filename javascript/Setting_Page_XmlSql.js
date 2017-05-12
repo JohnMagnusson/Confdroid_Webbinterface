@@ -110,12 +110,6 @@ function updateSetting()
     var setting = document.getElementsByClassName("selectedSetting")[0].id;
     var settingId = setting.substr(3);
     var settingType = setting.substr(0,3);
-    console.log(settingId);
-    console.log(settingType);
-
-
-
-    console.log(dataObject);
     if(settingType == "SQL")
     {
         updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
@@ -152,7 +146,7 @@ function updateSqlSetting(sqlSettings, applicationId, settingId)
             console.log(response);
         }
     });
-
+    console.log(JSON.stringify(newSqlSetting));
     $.ajax({
         type: "PUT",
         url: "https://confdroid.brainstorm-labs.net/api/sqlsetting/"+sqlSettings[settingId]["id"]+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),

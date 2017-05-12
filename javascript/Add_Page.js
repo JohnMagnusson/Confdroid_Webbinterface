@@ -45,7 +45,7 @@ function add()
         type += "/";
         type += document.getElementById(uniqueValue).innerText.split(" ")[1];
         console.log(type);
-        deletePostAndPutData(type, "POST");
+        apiChangeData(type, "POST");
     }
 }
 

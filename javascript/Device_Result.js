@@ -1,11 +1,14 @@
+/**
+ * Class used to display Device result on search.
+ */
 $(document).ready(function () {
-    getDataFromAPI("Device/"+urlData, null, function(data){printUserInfo(data)});
+    getDataFromAPI("Device/"+urlData, null, function(data){printDeviceInfo(data)});
 });
 
-function printUserInfo(device)
+function printDeviceInfo(device)
 {
     var url = "Application_Result.php?activeType=Application&data=";
-    createPTagsForData("applicationDiv", device["applications"], url, "id");
+    createsContainerContent("applicationDiv", device["applications"], url);
 
     $("#objectType").html("Device");
     $("#name").html('<b>Name:</b> ' + device["name"]);
