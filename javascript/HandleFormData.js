@@ -24,7 +24,7 @@ function createGroup()
     data["prio"] = document.getElementById("prio").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    deletePostAndPutData("Group", "POST", myJson);
+    apiChangeData("Group", "POST", myJson);
 }
 
 function addGroupToObject()
@@ -39,5 +39,5 @@ function createUser()
     data["email"] = document.getElementById("email").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    deletePostAndPutData("User", "POST", myJson);
+    apiChangeData("User", "POST", myJson);
 }

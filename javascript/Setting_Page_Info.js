@@ -26,7 +26,7 @@ function updateUserInfo(user){
     var email=$("#email").val();
     var newValues = {};
     newValues["name"] = name;
-    newValues["imei"] = imei;
+    newValues["email"] = email;
     console.log(user);
     user["name"] = name;
     user["email"] = email;
@@ -77,24 +77,7 @@ function updateDeviceInfo(device)
         }
     });
     /*Updates the value in the database */
-    $.ajax({
-        type: "PUT",
-        url: "https://confdroid.brainstorm-labs.net/api/device/"+device["imei"]+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
-        data: JSON.stringify(newValues),
-        success: function(result){
-            console.log(result);
-            document.getElementById("errorField").innerText = "Device information updated";
-        },
-        error: function( jqXHR, textStatus, errorThrown) {
-            switch(jqXHR["status"])
-            {
-                default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
-                    document.getElementById("errorField").innerText = "Something went wrong test again";
-                    break;
-            }
-        }
-    });
+    apiChangeData("device/"+device["id"],"PUT",JSON.stringify(newValues));
 }
 /**
  * Updates the group with values from textBoxes on the site.

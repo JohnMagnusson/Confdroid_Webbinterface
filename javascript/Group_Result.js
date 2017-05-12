@@ -1,16 +1,16 @@
 /**
- * Created by Elias on 2017-05-04.
+ * Class used to display group result on search.
  */
 $(document).ready(function () {
-    getDataFromAPI("Group/"+urlData, null, function(data){printUserInfo(data)});
+    getDataFromAPI("Group/"+urlData, null, function(data){printGroupInfo(data)});
 });
 
-function printUserInfo(group)
+function printGroupInfo(group)
 {
     var url = "User_Result.php?activeType=User&data=";
-    createPTagsForData("userDiv", group["users"], url,"authToken");
+    createsContainerContent("userDiv", group["users"], url);
     url = "Application_Result.php?activeType=Application&data=";
-    createPTagsForData("applicationDiv", group["applications"], url,"id");
+    createsContainerContent("applicationDiv", group["applications"], url);
     /*Updates information */
     $("#objectType").html("Group");
     $("#name").html('<b>Name:</b> ' + group["name"]);

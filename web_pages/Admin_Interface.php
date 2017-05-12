@@ -17,20 +17,13 @@ else
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="icon" href="../images/BrowserIcon2.ico">
+    <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-    <script src="../javascript/Document_Ready.js"></script>
+    <script src="../javascript/General_Functions.js"></script>
     <script src="../javascript/Admin_Interface.js"></script>
-    <!-- Model files for javascript is now loaded-->
-    <script src="../javascript/model/Application.js"></script>
-    <script src="../javascript/model/Device.js"></script>
-    <script src="../javascript/model/DeviceManagementPolicy.js"></script>
-    <script src="../javascript/model/Group.js"></script>
-    <script src="../javascript/model/SQL_Setting.js"></script>
-    <script src="../javascript/model/User.js"></script>
-    <script src="../javascript/model/XML_Setting.js"></script>
+    <script type="text/javascript" src="../javascript/Api_Calls.js"></script>
 </head>
 <body>
     <header>
