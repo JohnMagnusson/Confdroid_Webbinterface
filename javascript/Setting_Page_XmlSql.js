@@ -18,6 +18,7 @@ function updateSqlXmlMenu(e, settingType, application)
     e.target.classList.add("selectedApp");
 
     $("#settingContainer").empty();
+    console.log(application);
     if(application[settingType+ "_settings"].length >= 1)                   //Checks if the object have settings fo the application. If not displays a message.
     {
         for(var i = 0; i < application[settingType+ "_settings"].length; i++)

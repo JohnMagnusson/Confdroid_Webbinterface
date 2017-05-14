@@ -57,7 +57,7 @@ else
                 <h2 class="optionTitle">Applications</h2>
                 <div id="applicationDiv" class="infoTemplate">
                 </div>
-                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                <div id="imgContainerGroup" class="divImgAdd">
                     <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
                 </div>
             </div>
