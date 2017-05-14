@@ -70,12 +70,12 @@ li:active{
     margin: auto;
     height: 100%;
 }
-#previousContainer{
+#searchContainer{
     float:left;
     height:100%;
-    width:25%;
+    width: 30%;
 }
-#previousInfo{
+#searchInfo{
     height: 100%;
     margin-top:  0.5%;
     border: thin black solid;
@@ -85,12 +85,12 @@ li:active{
     margin-top:3%;
     margin-left: 2%;
     height: 100%;
-    width: 75.5%;
+    width: 68%;
 }
 #infoContainer{                     /*Static container that always on the right side*/
     float: left;
     margin-top:3%;
-    width: 20%;
+    width: 27%;
     height: 100%;
 }
 #infoHolder{                        /*Inside the infoContainer and displays information of the chosen entity */
@@ -182,8 +182,9 @@ li:active{
 
 #templateContainer{                     /*Container that have title and infoTemplate */
     float: left;
-    width: 23%;
+    width: 30%;
     height: 100%;
+    word-wrap: break-word;
 }
 
 .infoTemplate{                          /*Info teamplate displays all data */

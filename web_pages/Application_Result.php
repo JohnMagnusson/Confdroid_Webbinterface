@@ -87,7 +87,10 @@ else
             <h2 id="objectType" style="text-align:center"></h2>
             <p id="name"> </p>
             <p id="apkName"> </p>
+            <p id="apkURL"> </p>
             <p id="packageName"> </p>
+            <p id="dataDir"> </p>
+            <p id="forceInstall"> </p>
             <p id="nrOfDevices"></p>
             <p id="nrOfGroups"></p>
             <p id="nrOfUsers"></p>
@@ -95,13 +98,10 @@ else
         </div>
         <div id="settingsContainer" class="settingContainer">
             <img src="../images/Add-icon-big.png" alt="Add-icon-big" class="infoImg">
-            <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg">
+            <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg" id="settingBtnInfo">
             <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">
         </div>
     </div>
-
 </div>
-
 </body>
-
 </html>

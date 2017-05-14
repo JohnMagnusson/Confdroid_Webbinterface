@@ -112,6 +112,7 @@ function updateSetting()
     var settingType = setting.substr(0,3);
     if(settingType == "SQL")
     {
+        console.log(dataType);
         updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
     }
     else
@@ -130,40 +131,17 @@ function updateSqlSetting(sqlSettings, applicationId, settingId)
 {
     var dbLocation = $("#dbLocationTxt").val();
     var query = $("#queryTxt").val();
-    var newSqlSetting = {};
-    newSqlSetting["dbLocation"] = dbLocation;
-    newSqlSetting["query"] = query;
-
     /*Updates the php session */
-    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["dbLocation"] = dbLocation;
+    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["dblocation"] = dbLocation;
     dataObject["applications"][applicationId][settingType+"_settings"][settingId]["query"] = query;
     var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType;
-    $.ajax({
-        type: "POST",
-        url: "Setting_Pages/Session_Page.php",
-        data: dataToSend,
-        success: function(response){
-            console.log(response);
-        }
-    });
-    console.log(JSON.stringify(newSqlSetting));
-    $.ajax({
-        type: "PUT",
-        url: "https://confdroid.brainstorm-labs.net/api/sqlsetting/"+sqlSettings[settingId]["id"]+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
-        data: JSON.stringify(newSqlSetting),
-        success: function(result){
-            console.log(result);
-            document.getElementById("errorField").innerText = "SQL setting updated";
-        },
-        error: function( jqXHR, textStatus, errorThrown) {
-            switch(jqXHR["status"])
-            {
-                default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
-                    document.getElementById("errorField").innerText = "Something went wrong test again";
-                    break;
-            }
-        }
+    objectToSessionObject(dataToSend);
+    /*Updates the value in the database */
+    var newSqlSetting = {};
+    newSqlSetting["dblocation"] = dbLocation;
+    newSqlSetting["query"] = query;
+    apiChangeData("sqlsetting/"+sqlSettings[settingId]["id"],"PUT",JSON.stringify(newSqlSetting),function (status) {
+        printStatus(status, "SQL");
     });
 }
 
@@ -172,42 +150,52 @@ function updateXmlSetting(xmlSettings,applicationId, settingId)
     var fileLocation = $("#fileLocationTxt").val();
     var regexp = $("#regexpTxt").val();
     var replaceWith = $("#replaceWithTxt").val();
-
-    var newXmlSetting = {};
-    newXmlSetting["fileLocation"] = fileLocation;
-    newXmlSetting["regexp"] = regexp;
-    newXmlSetting["replaceWith"] = replaceWith;
-
     /*Updates the php session */
     dataObject["applications"][applicationId][settingType+"_settings"][settingId]["fileLocation"] = fileLocation;
     dataObject["applications"][applicationId][settingType+"_settings"][settingId]["regexp"] = regexp;
     dataObject["applications"][applicationId][settingType+"_settings"][settingId]["replaceWith"] = replaceWith;
     var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType;
+    objectToSessionObject(dataToSend);
+    /*Updates the value in the database */
+    var newXmlSetting = {};
+    newXmlSetting["fileLocation"] = fileLocation;
+    newXmlSetting["regexp"] = regexp;
+    newXmlSetting["replaceWith"] = replaceWith;
+    apiChangeData("xmlsetting/"+xmlSettings[settingId]["id"], "PUT",JSON.stringify(newXmlSetting),function (status) {
+        printStatus(status, "XML");
+    });
+}
+
+/**
+ * Post data to Session_Page.php that converts the post object to session object.
+ * The data is split and stored in $_Session["dataObject"] and $_Session["dataType"].
+ * @param dataToSend
+ */
+function objectToSessionObject(dataToSend)
+{
     $.ajax({
         type: "POST",
         url: "Setting_Pages/Session_Page.php",
         data: dataToSend,
         success: function(response){
-            console.log(response);
+            // console.log(response);
         }
     });
+}
 
-    $.ajax({
-        type: "PUT",
-        url: "https://confdroid.brainstorm-labs.net/api/xmlsetting/"+xmlSettings[settingId]["id"]+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
-        data: JSON.stringify(newXmlSetting),
-        success: function(result){
-            console.log(result);
-            document.getElementById("errorField").innerText = "XML updated";
-        },
-        error: function( jqXHR, textStatus, errorThrown) {
-            switch(jqXHR["status"])
-            {
-                default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
-                    document.getElementById("errorField").innerText = "Something went wrong test again";
-                    break;
-            }
-        }
-    });
+/**
+ * Prints status of apiCalls in way that is suited for the page.
+ * @param status
+ */
+function printStatus(status, dataType)
+{
+    switch(status)
+    {
+        case 200:
+            document.getElementById("errorField").innerText = dataType + " updated";
+            break;
+        default:
+            document.getElementById("errorField").value = "Error, try again";
+            break;
+    }
 }

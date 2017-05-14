@@ -41,6 +41,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script type="text/javascript" src="../javascript/Setting_Page_XmlSql.js"></script>
+    <script type="text/javascript" src="../javascript/Api_Calls.js"></script>
 </head>
 <body>
 
@@ -64,12 +65,19 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     <div id="settingMenu">                      <!--Contains left side which is setting side-->
         <div id="applicationContainer">         <!--All application is displayed here-->
             <?php
-                if(sizeof($_SESSION["dataObject"]["applications"]) >= 1)        /*Checks if the object have applications */
+                if($_SESSION["dataType"] == "Application")
+                    $dataObject = $_SESSION["dataObject"];
+                else
+                    $dataObject = $_SESSION["dataObject"]["applications"];
+
+                if(sizeof($dataObject) >= 1)        /*Checks if the object have applications */
                 {
-                    for ($i = 0; $i < sizeof($_SESSION["dataObject"]["applications"]); $i++)
+                    for ($i = 0; $i < sizeof($dataObject); $i++)
                     {
                         echo '<p id="app' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject[\'applications\']['.$i.'])">';
-                        echo $_SESSION["dataObject"]["applications"][$i]["name"];
+//                        var_dump($dataObject);
+//                        echo$dataObject["name"];
+                        echo sizeof($dataObject);
                         echo '</p>';
                     }
                 }

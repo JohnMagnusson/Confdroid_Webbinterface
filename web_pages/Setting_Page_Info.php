@@ -68,8 +68,12 @@ else
         case"Group";
             include 'Setting_Pages/Group_Setting.php';
             break;
+        case"Application";
+            include 'Setting_Pages/Application_Setting.php';
+            break;
     }
     ?>
+
 </div>
 </body>
 </html>

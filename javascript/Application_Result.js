@@ -16,10 +16,13 @@ function printApplicationInfo(application)
     $("#objectType").html("Application");
     $("#name").html('<b>Name:</b> ' + application["name"]);
     $("#apkName").html('<b>Apk Name:</b> ' + application["apkName"]);
+    $("#apkURL").html('<b>APK Url:</b> ' + application["apkURL"]);
     $("#packageName").html('<b>Package Name:</b> ' + application["packageName"]);
+    $("#dataDir").html('<b>Data dir:</b> ' + application["dataDir"]);
+    $("#forceInstall").html('<b>Force install:</b> ' + application["forceInstall"]);
     $("#nrOfDevices").html('<b>Nr devices:</b> ' + application["devices"].length);
     $("#nrOfGroups").html('<b>Nr groups in:</b> ' + application["groups"].length);
     $("#nrOfUsers").html('<b>Nr users in:</b> ' + application["users"].length);
     $("#id").html('<b>Id:</b> ' + application["id"]);
-    // document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User");};
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(application, "Application", null, "Setting_Page_Info.php?settingType=SQL");};
 }
