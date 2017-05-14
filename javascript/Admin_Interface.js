@@ -38,7 +38,7 @@ function printData(data, searchType)
             activeType = "Application";
             break;
     }
-    createsContainerContent("previousInfo", data, url);
+    createsContainerContent("searchInfo", data, url);
 }
 /**
  * Changes the window location based on the param url.

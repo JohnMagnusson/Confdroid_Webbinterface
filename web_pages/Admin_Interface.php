@@ -49,9 +49,9 @@ else
 
     <div id="container">
         <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
-            <div id="previousContainer">
+            <div id="searchContainer">
                 <h2 id="previousTitle" class="optionTitle">Search Result</h2>
-                <div id="previousInfo">
+                <div id="searchInfo">
                 </div>
                 <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
                     <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">

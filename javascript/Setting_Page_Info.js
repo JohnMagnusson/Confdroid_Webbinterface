@@ -13,7 +13,7 @@ function changeObjectData()
             updateGroupInfo(dataObject);
             break;
          case"Application":
-            alert("Application not implemented yet");
+             updateApplicationInfo(dataObject);
             break;
     }
 }
@@ -25,29 +25,18 @@ function updateUserInfo(user){
     var name=$("#name").val();
     var email=$("#email").val();
     var newValues = {};
-    newValues["name"] = name;
-    newValues["email"] = email;
-    console.log(user);
+
+    /*Updates the php session */
     user["name"] = name;
     user["email"] = email;
-    console.log(user);
-    $.ajax({
-        type: "PUT",
-        url: "https://confdroid.brainstorm-labs.net/api/user/"+user["authToken"]+".json",
-        data: JSON.stringify(newValues),
-        success: function(result){
-            console.log(result);
-            document.getElementById("errorField").innerText = "User information updated";
-        },
-        error: function( jqXHR, textStatus, errorThrown) {
-            switch(jqXHR["status"])
-            {
-                default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
-                    document.getElementById("errorField").innerText = "Something went wrong test again";
-                    break;
-            }
-        }
+    var dataToSend = "dataObject="+JSON.stringify(user)+"&dataType=User";
+    objectToSessionObject(dataToSend);
+    /*Updates the value in the database */
+    newValues["name"] = name;
+    newValues["email"] = email;
+    console.log(JSON.stringify(newValues));
+    apiChangeData("user/"+user["id"],"PUT",JSON.stringify(newValues), function (status) {
+        printStatus(status);
     });
 }
 /**
@@ -58,26 +47,19 @@ function updateDeviceInfo(device)
 {
     var name=$("#name").val();
     var imei=$("#imei").val();
-    var newValues = {};
-    newValues["name"] = name;
-    newValues["imei"] = imei;
-
     /*Updates the Php session that stores the object*/
     device["name"] = name;
     device["imei"] = imei;
 
-    /*Updates the php session */
     var dataToSend = "dataObject="+JSON.stringify(device)+"&dataType=Device";
-    $.ajax({
-        type: "POST",
-        url: "Setting_Pages/Session_Page.php",
-        data: dataToSend,
-        success: function(response){
-            console.log(response);
-        }
-    });
+    objectToSessionObject(dataToSend);
     /*Updates the value in the database */
-    apiChangeData("device/"+device["id"],"PUT",JSON.stringify(newValues));
+    var newValues = {};
+    newValues["name"] = name;
+    newValues["imei"] = imei;
+    apiChangeData("device/"+device["id"],"PUT",JSON.stringify(newValues),function (status) {
+        printStatus(status);
+    });
 }
 /**
  * Updates the group with values from textBoxes on the site.
@@ -87,27 +69,87 @@ function updateGroupInfo(group)
 {
     var name=$("#name").val();
     var prio=$("#prio").val();
+
+    /*Updates the php session */
     group["name"] = name;
     group["prio"] = prio;
-    console.log(group);
+    console.log(JSON.stringify(group));
+    var dataToSend = "dataObject="+JSON.stringify(group)+"&dataType=Group";
+    objectToSessionObject(dataToSend);
+    /*Updates the value in the database */
+    var newValues = {};
+    newValues["name"] = name;
+    newValues["prio"] = prio;
+    apiChangeData("group/"+group["id"],"PUT",JSON.stringify(newValues),function (status) {
+        printStatus(status);
+    });
+}
+
+/**
+ * Updates the group with values from textBoxes on the site.
+ * @param application
+ */
+function updateApplicationInfo(application)
+{
+    var name=$("#name").val();
+    var apkName=$("#apkName").val();
+    var apkURL=$("#apkURL").val();
+    var packageName=$("#packageName").val();
+    var dataDir=$("#dataDir").val();
+    var forceInstall=$("#forceInstall").val();
+
+    /*Updates the php session */
+    application["name"] = name;
+    application["apkName"] = apkName;
+    application["apkURL"] = apkURL;
+    application["packageName"] = packageName;
+    application["dataDir"] = dataDir;
+    application["forceInstall"] = forceInstall;
+    var dataToSend = "dataObject="+JSON.stringify(application)+"&dataType=application";
+    objectToSessionObject(dataToSend);
+    /*Updates the value in the database */
+    var newValues = {};
+    newValues["name"] = name;
+    newValues["apkName"] = apkName;
+    newValues["apkURL"] = apkURL;
+    newValues["packageName"] = packageName;
+    newValues["dataDir"] = dataDir;
+    newValues["forceInstall"] = forceInstall;
+    apiChangeData("application/"+application["id"],"PUT",JSON.stringify(newValues),function (status) {
+        printStatus(status);
+    });
+}
+
+/**
+ * Post data to Session_Page.php that converts the post object to session object.
+ * The data is split and stored in $_Session["dataObject"] and $_Session["dataType"].
+ * @param dataToSend
+ */
+function objectToSessionObject(dataToSend)
+{
     $.ajax({
-        type: "PUT",
-        url: "https://confdroid.brainstorm-labs.net/api/Group/"+group["id"]+".json",
-        data: group,
-        success: function(result){
-            console.log(result);
-        },
-        error: function( jqXHR, textStatus, errorThrown) {
-            switch(jqXHR["status"])
-            {
-                case 200:
-                    document.getElementById("errorField").innerText = "Group information updated";
-                    break;
-                default:
-                    console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
-                    document.getElementById("errorField").innerText = "Something went wrong test again";
-                    break;
-            }
+        type: "POST",
+        url: "Setting_Pages/Session_Page.php",
+        data: dataToSend,
+        success: function(response){
+            // console.log(response);
         }
     });
+}
+
+/**
+ * Pritns status of apiCalls in way that is suited for the page.
+ * @param status
+ */
+function printStatus(status)
+{
+    switch(status)
+    {
+        case 200:
+            document.getElementById("errorField").innerText = "Updated successful";
+            break;
+        default:
+            document.getElementById("errorField").value = "Error, try again";
+            break;
+    }
 }

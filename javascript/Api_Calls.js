@@ -55,7 +55,7 @@ function getDataFromAPI(searchType, searchValue, callback)
  * @param restMethod
  * @param data
  */
-function apiChangeData(apiType, restMethod, data)
+function apiChangeData(apiType, restMethod, data, printStatus)
 {
     var url = "https://confdroid.brainstorm-labs.net/api/"+apiType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
     console.log(url);
@@ -64,10 +64,15 @@ function apiChangeData(apiType, restMethod, data)
         url: url,
         data: data,
         success: function(data, textStatus, XHR){
+            console.log(XHR["responseText"]);
             console.log(data);
             console.log(XHR["status"]);
+            console.log(textStatus);
             switch(XHR["status"])
             {
+                case 200:
+                    printStatus(200);
+                    break;
                 case 201:
                     alert("Success!");
                     break;
@@ -75,6 +80,10 @@ function apiChangeData(apiType, restMethod, data)
             // location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR["responseText"]);
+            // console.log(data);
+            console.log(textStatus);
+
             switch(jqXHR["status"])
             {
                 case 403:

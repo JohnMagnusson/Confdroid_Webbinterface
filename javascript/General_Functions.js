@@ -184,7 +184,7 @@ function openSettingPage(data, dataType, dataTypeToAdd, phpPageToOpen)
         url: "Setting_Pages/Session_Page.php",
         data: dataToSend,
         success: function(response){
-            console.log(response);
+            // console.log(response);
         }
     });
     href = window.open(phpPageToOpen,'Setting','left='+(parseInt(window.innerWidth) * 0.1)+',top='+(parseInt(window.innerHeight) * 0.05)+',width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+

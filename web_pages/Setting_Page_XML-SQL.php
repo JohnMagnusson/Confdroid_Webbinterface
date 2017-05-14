@@ -23,6 +23,7 @@ function printJSONtoJS($jsVarName, $phpObject)
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
+    echo "<script>console.log(dataObject);</script>";
     echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
     echo "<script>var settingType ='" . $_GET["settingType"] . "';\n</script>";
 }
@@ -41,6 +42,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
     <script type="text/javascript" src="../javascript/Setting_Page_XmlSql.js"></script>
+    <script type="text/javascript" src="../javascript/Api_Calls.js"></script>
 </head>
 <body>
 
@@ -64,18 +66,27 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
     <div id="settingMenu">                      <!--Contains left side which is setting side-->
         <div id="applicationContainer">         <!--All application is displayed here-->
             <?php
-                if(sizeof($_SESSION["dataObject"]["applications"]) >= 1)        /*Checks if the object have applications */
+                if($_SESSION["dataType"] == "Application")
                 {
-                    for ($i = 0; $i < sizeof($_SESSION["dataObject"]["applications"]); $i++)
-                    {
-                        echo '<p id="app' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject[\'applications\']['.$i.'])">';
-                        echo $_SESSION["dataObject"]["applications"][$i]["name"];
-                        echo '</p>';
-                    }
+                    echo '<p id="app0" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject)">';
+                    echo $_SESSION["dataObject"]["name"];
+                    echo '</p>';
                 }
                 else
                 {
-                    echo "This "; echo $_SESSION["dataType"]; echo  " have no applications";
+                    if (sizeof($_SESSION["dataObject"]["applications"]) >= 1)        /*Checks if the object have applications */ {
+                        for ($i = 0; $i < sizeof($_SESSION["dataObject"]["applications"]); $i++) {
+                            echo '<p id="app' . $i . '" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \'' . $_GET["settingType"] . '\',dataObject[\'applications\'][' . $i . '])">';
+                            echo $_SESSION["dataObject"]["applications"][$i]["name"];
+                            echo '</p>';
+                        }
+                    }
+                    else
+                    {
+                        echo "This ";
+                        echo $_SESSION["dataType"];
+                        echo " have no applications";
+                    }
                 }
             ?>
         </div>
