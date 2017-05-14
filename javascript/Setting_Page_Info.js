@@ -69,7 +69,6 @@ function updateGroupInfo(group)
 {
     var name=$("#name").val();
     var prio=$("#prio").val();
-
     /*Updates the php session */
     group["name"] = name;
     group["prio"] = prio;
@@ -105,7 +104,7 @@ function updateApplicationInfo(application)
     application["packageName"] = packageName;
     application["dataDir"] = dataDir;
     application["forceInstall"] = forceInstall;
-    var dataToSend = "dataObject="+JSON.stringify(application)+"&dataType=application";
+    var dataToSend = "dataObject="+JSON.stringify(application)+"&dataType=Application";
     objectToSessionObject(dataToSend);
     /*Updates the value in the database */
     var newValues = {};

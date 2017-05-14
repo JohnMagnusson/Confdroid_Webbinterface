@@ -48,5 +48,23 @@ function createApplication()
     data["name"] = document.getElementById("friendly_name").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    apiChangeData("Application", "POST", myJson);
+    apiChangeData("Application", "POST", myJson, function (status) {
+        printStatus(status);
+    });
+}
+/**
+ * Prints message depending on status call from API.
+ * @param status
+ */
+function printStatus(status)
+{
+    switch(status)
+    {
+        case 200:
+            alert("Created succesfully")
+            break;
+        default:
+            alert("Error, try again");
+            break;
+    }
 }
