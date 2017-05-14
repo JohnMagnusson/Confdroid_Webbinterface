@@ -36,7 +36,6 @@ function getDataFromAPI(searchType, searchValue, callback)
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
-
             switch(jqXHR["status"])
             {
                 case 403:
