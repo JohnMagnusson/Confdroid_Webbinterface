@@ -15,7 +15,6 @@ $(document).ready(function(){
 
 function logIn()
 {
-    console.log("hej");
     var username=$("#username").val();
     var password=$("#password").val();
     $.ajax({
