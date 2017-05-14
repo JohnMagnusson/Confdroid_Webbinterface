@@ -2,7 +2,6 @@
  * Created by Elias on 2017-05-09.
  */
 $(document).ready(function(){
-    console.log(dataTypeToAdd);
     document.getElementById(currentPage).classList.add("activeLi");
     if(document.getElementById('searchValue') != null) {
         document.getElementById('searchValue').addEventListener('keydown', function (e) {
@@ -24,28 +23,20 @@ function addSearch()
 
 function add()
 {
-    var uniqueValue;
-    switch(dataTypeToAdd)
-    {
-        case "Group":
-            uniqueValue = "id";
-            break;
-        case "Device":
-            uniqueValue = "imei";
-            break;
+    if(currentPage == "Add_New") {
+        if (document.getElementById("id") == null)
+            alert("Select!");
     }
-    if(document.getElementById(uniqueValue) == null)
-        alert("Select!");
     else {
         var type = dataType;
         type += "/";
-        type += dataObject["authToken"];
+        type += dataObject["id"];
         type += "/";
         type += dataTypeToAdd;
         type += "/";
-        type += document.getElementById(uniqueValue).innerText.split(" ")[1];
+        type += document.getElementById("id").innerText.split(" ")[1];
         console.log(type);
-        apiChangeData(type, "POST");
+        apiChangeData(type, "POST", null);
     }
 }
 
@@ -93,6 +84,9 @@ function printInfoOfObject(data, e)
         case "Device":
             printDeviceInformation(data, e);
             break;
+        case "Application":
+            printApplicationInformation(data, e);
+            break;
     }
 }
 
@@ -126,4 +120,30 @@ function printDeviceInformation(data, e)
     $("#createdDate").html('<b>Date created:</b> ' + data[e.target.id]["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
     $("#imei").html('<b>Imei:</b> ' + data[e.target.id]["imei"]);
+}
+
+function printApplicationInformation(data, e)
+{
+    var p = document.createElement("p");
+    p.id = "apkName";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "packageName";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "nrOfDevices";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "nrOfGroups";
+    document.getElementById("information").appendChild(p);
+    p.id = "nrOfUsers";
+    document.getElementById("information").appendChild(p);
+    p.id = "id";
+    document.getElementById("information").appendChild(p);
+    $("#apkName").html('<b>Apk Name:</b> ' + data["apkName"]);
+    $("#packageName").html('<b>Package Name:</b> ' + data["packageName"]);
+    $("#nrOfDevices").html('<b>Nr devices:</b> ' + data["devices"].length);
+    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + data["groups"].length);
+    $("#nrOfUsers").html('<b>Nr users in:</b> ' + data["users"].length);
+    $("#id").html('<b>Id:</b> ' + application["id"]);
 }

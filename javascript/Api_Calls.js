@@ -36,6 +36,7 @@ function getDataFromAPI(searchType, searchValue, callback)
             }
         },
         error: function( jqXHR, textStatus, errorThrown) {
+
             switch(jqXHR["status"])
             {
                 case 403:
@@ -73,7 +74,7 @@ function apiChangeData(apiType, restMethod, data)
             }
             // location.reload();
         },
-        error: function( jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             switch(jqXHR["status"])
             {
                 case 403:

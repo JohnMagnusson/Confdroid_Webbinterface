@@ -22,4 +22,6 @@ function printApplicationInfo(application)
     $("#nrOfUsers").html('<b>Nr users in:</b> ' + application["users"].length);
     $("#id").html('<b>Id:</b> ' + application["id"]);
     // document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User");};
+    // document.getElementById('addBtnInfo').onclick = function(){openSettingPage(application, null, "Application", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
+    // document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, application["name"], application["id"]);};
 }

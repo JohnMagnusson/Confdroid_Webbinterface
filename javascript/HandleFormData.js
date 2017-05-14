@@ -8,12 +8,12 @@ function handleForm()
     {
         case "Group":
             createGroup();
-            // addGroupToObject();
             break;
         case "User":
             createUser();
-            // addGroupToObject();
             break;
+        case "Application":
+            createApplication();
     }
 }
 
@@ -27,11 +27,6 @@ function createGroup()
     apiChangeData("Group", "POST", myJson);
 }
 
-function addGroupToObject()
-{
-
-}
-
 function createUser()
 {
     var data = {};
@@ -40,4 +35,18 @@ function createUser()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("User", "POST", myJson);
+}
+
+function createApplication()
+{
+    var data = {};
+    data["apkName"] = document.getElementById("apk_name").value;
+    data["apkURL"] = document.getElementById("apk_url").value;
+    data["forceInstall"] = document.getElementById("force_install").value;
+    data["packageName"] = document.getElementById("package_name").value;
+    data["dataDir"] = document.getElementById("data_dir").value;
+    data["name"] = document.getElementById("friendly_name").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    apiChangeData("Application", "POST", myJson);
 }

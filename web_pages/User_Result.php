@@ -93,9 +93,9 @@ else
                 <p id="authToken"></p>
             </div>
             <div id="settingsContainer" class="settingContainer">
-                <img src="../images/Add-icon-big.png" alt="Add-icon-big" class="infoImg">
+                <img src="../images/Add-icon-big.png" alt="Add-icon-big" class="infoImg" id="addBtnInfo">
                 <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg" id="settingBtnInfo">
-                <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg">
+                <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg" id="deleteBtnInfo">
             </div>
         </div>
     </div>

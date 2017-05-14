@@ -17,4 +17,6 @@ function printGroupInfo(group)
     $("#prio").html('<b>Prio:</b> ' + group["prio"]);
     $("#id").html('<b>Id:</b> ' + group["id"]);
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(group, "Group", null, "Setting_Page_Info.php?settingType=SQL");};
+    document.getElementById('addBtnInfo').onclick = function(){openSettingPage(group, null, "Group", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
+    document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, group["name"], group["id"]);};
 }

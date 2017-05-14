@@ -88,7 +88,7 @@ function createsContainerContent(parentId, data, url)
         document.getElementById(parentId).appendChild(div);
         trashCan.onclick = function (e)
         {
-            deleteElement(e, data);
+            deleteElement(e, data[e.target.id]["name"], data[e.target.id]["id"]);
         }
         settings.onclick = function (e) {
             getDataFromAPI(url.split("_")[0]+"/"+data[e.target.id]["id"],null,function (data, searchType) {     /*Gets data from the clicked element, then searches on the clicked element and uses a callback function to call on openSettingPage*/
@@ -106,26 +106,35 @@ function createsContainerContent(parentId, data, url)
  * Deletes clicked element (e).
  * @param e
  * @param data
- * @param uniqueValueForData
  */
-function deleteElement(e, data)
+function deleteElement(e, name, id)
 {
-    if(confirm("Are you sure you want to delete " + data[e.target.id]["name"] +"?"))
+    if(confirm("Are you sure you want to delete " + name +"?"))
     {
         var apiType;
-        if(document.getElementById("objectType") != null) {
+        if(document.getElementById("objectType") == null) {
+            apiType = activeType;
+            apiType += "/";
+            apiType += id;
+        }
+        else if(id == urlData && document.getElementById("objectType") != null) {
+            apiType = document.getElementById("objectType").innerHTML;
+            apiType += "/";
+            apiType += id;
+            // apiType += "/";
+            // apiType += e.target.parentNode.parentNode.parentNode.firstChild.nextSibling.innerHTML.slice(0, -1);
+            // apiType += "/";
+            // apiType += data[e.target.id]["id"];
+        }
+        else
+        {
             apiType = document.getElementById("objectType").innerHTML;
             apiType += "/";
             apiType += urlData;
             apiType += "/";
             apiType += e.target.parentNode.parentNode.parentNode.firstChild.nextSibling.innerHTML.slice(0, -1);
             apiType += "/";
-            apiType += data[e.target.id]["id"];
-        }
-        else {
-            apiType = activeType;
-            apiType += "/";
-            apiType += data[e.target.id]["id"];
+            apiType += id;
         }
         apiChangeData(apiType, "DELETE", null);
     }
@@ -146,11 +155,11 @@ function updateNav(liId)
     $( '#'+liId).last().addClass( "activeNav" );
     var url=window.location.href.split('/');
     var name=url[url.length-1];
-    var activeType = liId.split("li");
+    var activeType = liId.slice(2, liId.length);
     if(url[url.length-1].split("&")[1] != null)
-        url = url[url.length-1].split("=")[0]+"="+activeType[1]+"&"+url[url.length-1].split("&")[1];
+        url = url[url.length-1].split("=")[0]+"="+activeType+"&"+url[url.length-1].split("&")[1];
     else
-        url = url[url.length-1].split("=")[0]+"="+activeType[1];
+        url = url[url.length-1].split("=")[0]+"="+activeType;
     history.pushState({}, null, url);
     if(name.indexOf("Admin_Interface.php") >= 0)
     {
