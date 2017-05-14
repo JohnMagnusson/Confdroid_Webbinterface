@@ -42,7 +42,8 @@ function createApplication()
     var data = {};
     data["apkName"] = document.getElementById("apk_name").value;
     data["apkURL"] = document.getElementById("apk_url").value;
-    data["forceInstall"] = document.getElementById("force_install").value;
+    // console.log(document.getElementById("force_install").checked);
+    data["forceInstall"] = document.getElementById("force_install").checked;
     data["packageName"] = document.getElementById("package_name").value;
     data["dataDir"] = document.getElementById("data_dir").value;
     data["name"] = document.getElementById("friendly_name").value;
