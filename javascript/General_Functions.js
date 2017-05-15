@@ -6,11 +6,11 @@ $(document).ready(function(){
     var name=url[url.length-1];
     $("li").removeClass("activeNav");
     $( '#li'+activeType).last().addClass( "activeNav" );
-    window.onpopstate = function(event) {
+    window.onpopstate = function() {
         history.back();
     };
     document.getElementById('searchValue').addEventListener('keydown', function(e) {
-        if(e.keyCode == 13)
+        if(e.keyCode === 13)
         {
             e.preventDefault();
             search();
