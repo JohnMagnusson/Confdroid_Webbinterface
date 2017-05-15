@@ -53,7 +53,7 @@ else
 
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
         <div id="templateContainer">
-            <h2 class="optionTitle">Users</h2>
+            <h2 class="optionTitle" templateType="User">Users</h2>
             <div id="userDiv" class="infoTemplate">
             </div>
             <div id="imgContainerGroup" class="divImgAdd">
@@ -62,7 +62,7 @@ else
         </div>
 
         <div id="templateContainer">
-            <h2 class="optionTitle">Applications</h2>
+            <h2 class="optionTitle" templateType="Application">Applications</h2>
             <div id="applicationDiv" class="infoTemplate extraRightBorder">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">

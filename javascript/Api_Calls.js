@@ -56,13 +56,14 @@ function getDataFromAPI(searchType, searchValue, callback)
  */
 function apiChangeData(apiType, restMethod, data, printStatus)
 {
-    var url = "https://confdroid.brainstorm-labs.net/api/"+apiType.toLocaleLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
+    var url = "https://confdroid.brainstorm-labs.net/api/"+apiType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
     console.log(url);
     $.ajax({
         type: restMethod,
         url: url,
         data: data,
         success: function(data, textStatus, XHR){
+            console.log(XHR["responseText"]);
             console.log(data);
             console.log(XHR["status"]);
             console.log(textStatus);
@@ -75,9 +76,13 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                     alert("Success!");
                     break;
             }
-            location.reload();
+            // if(window.opener == null)
+            //     location.reload();
+            // else
+            //     window.opener.location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            console.log("RSPNTXT")
             console.log(jqXHR["responseText"]);
             // console.log(data);
             console.log(textStatus);

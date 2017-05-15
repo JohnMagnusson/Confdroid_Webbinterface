@@ -19,4 +19,10 @@ function printGroupInfo(group)
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(group, "Group", null, "Setting_Page_Info.php?settingType=SQL");};
     document.getElementById('addBtnInfo').onclick = function(){openSettingPage(group, null, "Group", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
     document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, group["name"], group["id"]);};
+    for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
+
+        document.getElementsByClassName("addIcon")[i].onclick = function (e) {
+            openSettingPage(group, "Group", e.target.parentNode.parentNode.firstChild.nextSibling.getAttribute("templateType"), "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false");
+        }
+    }
 }
