@@ -28,7 +28,7 @@ function printUserInfo(user)
     for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
 
         document.getElementsByClassName("addIcon")[i].onclick = function (e) {
-            openSettingPage(user, "User", e.target.parentNode.parentNode.firstChild.nextSibling.innerHTML.slice(0, -1), "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false");
+            openSettingPage(user, "User", e.target.parentNode.parentNode.firstChild.nextSibling.getAttribute("templateType"), "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false");
         }
     }
 }

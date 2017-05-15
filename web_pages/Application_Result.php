@@ -54,7 +54,7 @@ else
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
 
         <div id="templateContainer">
-            <h2 class="optionTitle">Groups</h2>
+            <h2 class="optionTitle" templateType="Group">Groups</h2>
             <div id="groupDiv" class="infoTemplate">
             </div>
             <div id="imgContainerGroup" class="divImgAdd">
@@ -63,7 +63,7 @@ else
         </div>
 
         <div id="templateContainer">
-            <h2 class="optionTitle">Users</h2>
+            <h2 class="optionTitle" templateType="User">Users</h2>
             <div id="userDiv" class="infoTemplate">
             </div>
             <div id="imgContainerGroup" class="divImgAdd">
@@ -72,7 +72,7 @@ else
         </div>
 
         <div id="templateContainer">
-            <h2 class="optionTitle">Devices</h2>
+            <h2 class="optionTitle" templateType="Device">Devices</h2>
             <div id="deviceDiv" class="infoTemplate extraRightBorder">
             </div>
             <div id="imgContainerGroup" class="divImgAdd extraRightBorder">

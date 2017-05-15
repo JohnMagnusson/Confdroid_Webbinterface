@@ -66,7 +66,7 @@ else if(isset($_GET["pageName"]) && isset($_SESSION["dataTypeToAdd"]) && isset($
     <nav>
         <ul id="menu" class="<?php if($_GET["onlyAddNewPage"] == "true"){print_r("hide");}?>">
             <a href="Add_Page.php?pageName=Add_Existing"><li id="Add_Existing">Add existing <?php print_r($_SESSION["dataTypeToAdd"]." to ".$_SESSION["dataObject"]["name"])?></li></a>
-            <a href="Add_Page.php?pageName=Add_New"><li id="Add_New">Add new <?php print_r($_SESSION["dataTypeToAdd"]);?></li></a>
+            <a href="Add_Page.php?pageName=Add_New"><li id="Add_New">Create new <?php print_r($_SESSION["dataTypeToAdd"]);?></li></a>
         </ul>
     </nav>
 

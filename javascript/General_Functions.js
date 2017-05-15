@@ -136,12 +136,19 @@ function deleteElement(e, name, id)
             apiType += "/";
             apiType += id;
         }
-        apiChangeData(apiType, "DELETE", null);
+        apiChangeData(apiType, "DELETE", null, function (status) {
+            printStatus(status);
+        });
     }
     else
     {
         console.log("Cancelled!");
     }
+}
+
+function printStatus(status)
+{
+    alert("Deleted");
 }
 
 /**
@@ -156,6 +163,7 @@ function updateNav(liId)
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     var activeType = liId.slice(2, liId.length);
+    changeLocation("Admin_Interface.php?activeType="+activeType);
     if(url[url.length-1].split("&")[1] != null)
         url = url[url.length-1].split("=")[0]+"="+activeType+"&"+url[url.length-1].split("&")[1];
     else
@@ -187,8 +195,10 @@ function openSettingPage(data, dataType, dataTypeToAdd, phpPageToOpen)
             // console.log(response);
         }
     });
-    href = window.open(phpPageToOpen,'Setting','left='+(parseInt(window.innerWidth) * 0.1)+',top='+(parseInt(window.innerHeight) * 0.05)+',width='+(parseInt(window.innerWidth) * 0.8)+',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
-        'resizable=1, status = 0, menubar = 0, location=0');
+    href = window.open(phpPageToOpen,'Setting','left='+(parseInt(window.innerWidth) * 0.1)+
+        ',top='+(parseInt(window.innerHeight) * 0.05)+',width='+(parseInt(window.innerWidth) * 0.8)+
+        ',height='+(parseInt(window.innerHeight) * 0.9)+',toolbar=0,'+
+        'resizable=no,status=0,menubar=0,location=0');
 }
 /**
  * Logs out the administrator.

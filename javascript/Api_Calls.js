@@ -76,9 +76,13 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                     alert("Success!");
                     break;
             }
-            // location.reload();
+            // if(window.opener == null)
+            //     location.reload();
+            // else
+            //     window.opener.location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            console.log("RSPNTXT")
             console.log(jqXHR["responseText"]);
             // console.log(data);
             console.log(textStatus);

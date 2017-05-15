@@ -25,6 +25,12 @@ function printApplicationInfo(application)
     $("#nrOfUsers").html('<b>Nr users in:</b> ' + application["users"].length);
     $("#id").html('<b>Id:</b> ' + application["id"]);
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(application, "Application", null, "Setting_Page_Info.php?settingType=SQL");};
-    // document.getElementById('addBtnInfo').onclick = function(){openSettingPage(application, null, "Application", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
-    // document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, application["name"], application["id"]);};
+    document.getElementById('addBtnInfo').onclick = function(){openSettingPage(application, null, "Application", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
+    document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, application["name"], application["id"]);};
+    for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
+
+        document.getElementsByClassName("addIcon")[i].onclick = function (e) {
+            openSettingPage(application, "Application", e.target.parentNode.parentNode.firstChild.nextSibling.getAttribute("templateType"), "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false");
+        }
+    }
 }

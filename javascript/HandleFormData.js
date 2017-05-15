@@ -14,6 +14,10 @@ function handleForm()
             break;
         case "Application":
             createApplication();
+            break;
+        case "Device":
+            createDevice();
+            break;
     }
 }
 
@@ -24,7 +28,9 @@ function createGroup()
     data["prio"] = document.getElementById("prio").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    apiChangeData("Group", "POST", myJson);
+    apiChangeData("Group", "POST", myJson, function (status) {
+        printStatus(status);
+    });
 }
 
 function createUser()
@@ -34,7 +40,9 @@ function createUser()
     data["email"] = document.getElementById("email").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    apiChangeData("User", "POST", myJson);
+    apiChangeData("User", "POST", myJson, function (status) {
+        printStatus(status);
+    });
 }
 
 function createApplication()
@@ -53,6 +61,19 @@ function createApplication()
         printStatus(status);
     });
 }
+
+function createDevice()
+{
+    var data = {};
+    data["name"] = document.getElementById("name").value;
+    data["imei"] = document.getElementById("imei").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    apiChangeData("Device", "POST", myJson, function (status) {
+        printStatus(status);
+    });
+}
+
 /**
  * Prints message depending on status call from API.
  * @param status

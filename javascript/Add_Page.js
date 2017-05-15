@@ -36,9 +36,7 @@ function add()
         type += "/";
         type += document.getElementById("id").innerText.split(" ")[1];
         console.log(type);
-        console.log("hej Elias2");
         apiChangeData(type, "POST", null, function (status){
-            console.log(status+ "hej");
             printStatus(status);
         });
     }
@@ -91,6 +89,9 @@ function printInfoOfObject(data, e)
         case "Application":
             printApplicationInformation(data, e);
             break;
+        case "User":
+            printUserInformation(data, e);
+            break;
     }
 }
 
@@ -128,6 +129,7 @@ function printDeviceInformation(data, e)
 
 function printApplicationInformation(data, e)
 {
+    console.log(data);
     var p = document.createElement("p");
     p.id = "apkName";
     document.getElementById("information").appendChild(p);
@@ -140,16 +142,46 @@ function printApplicationInformation(data, e)
     var p = document.createElement("p");
     p.id = "nrOfGroups";
     document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
     p.id = "nrOfUsers";
     document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
     p.id = "id";
     document.getElementById("information").appendChild(p);
-    $("#apkName").html('<b>Apk Name:</b> ' + data["apkName"]);
-    $("#packageName").html('<b>Package Name:</b> ' + data["packageName"]);
-    $("#nrOfDevices").html('<b>Nr devices:</b> ' + data["devices"].length);
-    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + data["groups"].length);
-    $("#nrOfUsers").html('<b>Nr users in:</b> ' + data["users"].length);
-    $("#id").html('<b>Id:</b> ' + application["id"]);
+    $("#apkName").html('<b>Apk Name:</b> ' + data[e.target.id]["apkName"]);
+    $("#packageName").html('<b>Package Name:</b> ' + data[e.target.id]["packageName"]);
+    $("#nrOfDevices").html('<b>Nr devices:</b> ' + data[e.target.id]["devices"].length);
+    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + data[e.target.id]["groups"].length);
+    $("#nrOfUsers").html('<b>Nr users in:</b> ' + data[e.target.id]["users"].length);
+    $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
+}
+
+function printUserInformation(data, e)
+{
+    var p = document.createElement("p");
+    p.id = "email";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "nrOfDevices";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "nrOfGroups";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "createdDate";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "id";
+    document.getElementById("information").appendChild(p);
+    var p = document.createElement("p");
+    p.id = "authToken";
+    document.getElementById("information").appendChild(p);
+    $("#email").html('<b>Email:</b> ' + data[e.target.id]["email"]);
+    $("#nrOfDevices").html('<b>Nr devices:</b> ' + data[e.target.id]["devices"].length);
+    $("#nrOfGroups").html('<b>Nr groups in:</b> ' + data[e.target.id]["groups"].length);
+    $("#createdDate").html('<b>Date created:</b> ' + data[e.target.id]["dateCreated"]);
+    $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
+    $("#authToken").html('<b>Authtoken:</b> ' + data[e.target.id]["authToken"]);
 }
 
 /**
