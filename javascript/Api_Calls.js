@@ -82,7 +82,6 @@ function apiChangeData(apiType, restMethod, data, printStatus)
             //     window.opener.location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log("RSPNTXT")
             console.log(jqXHR["responseText"]);
             // console.log(data);
             console.log(textStatus);

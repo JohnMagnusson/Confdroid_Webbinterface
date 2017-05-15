@@ -18,12 +18,11 @@ function updateSqlXmlMenu(e, settingType, application)
     e.target.classList.add("selectedApp");
 
     $("#settingContainer").empty();
-    console.log(application);
     if(application[settingType+ "_settings"].length >= 1)                   //Checks if the object have settings fo the application. If not displays a message.
     {
         for(var i = 0; i < application[settingType+ "_settings"].length; i++)
         {
-            createPTagsForData("settingContainer",application[settingType+ "_settings"][i], (settingType+i));
+            createPTagsForData("settingContainer",application[settingType+ "_settings"][i], settingType + ":"+application[settingType+ "_settings"][i]["id"]);
         }
     }
     else
@@ -76,7 +75,29 @@ function createPTagsForData(parentId, data, name)
     document.getElementById(parentId).appendChild(div);
     trashCan.onclick = function (e)
     {
-        alert("Clicked trashcan");
+        var apiType = "application/";
+        if(dataType == "Application")
+            var appId = dataObject["id"];
+        else
+            var appId = dataObject["applications"][document.getElementsByClassName("selectedApp")[0].id.split("app")[1]]["id"];
+        var lowerCaseSettingType = settingType.toLowerCase();
+        var setting = "/"+lowerCaseSettingType + "setting/";
+        var settingId = data["id"];
+        apiType = apiType + appId + setting + settingId;
+        if(confirm("Are you sure you want to delete " + settingType+":"+data["id"] + "?"))
+        {
+            //Delete
+            if(dataType == "Application")
+                dataObject[settingType+"_settings"].splice([trashCan.id.split("L")[1]],1);
+            else
+                dataObject["applications"][document.getElementsByClassName("selectedApp")[0].id.split("app")[1]][settingType+"_settings"].splice([trashCan.id.split("L")[1]],1);
+            var dataToUpdate = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType;
+            objectToSessionObject(dataToUpdate);            //Updates the php Session object
+            apiChangeData(apiType,"Delete",null, function (status) {
+                printStatus(status,dataType);
+            });
+            // window.location.reload();
+        }
     }
     p.onclick = function(e)
     {
@@ -111,13 +132,20 @@ function updateSetting()
     var setting = document.getElementsByClassName("selectedSetting")[0].id;
     var settingId = setting.substr(3);
     var settingType = setting.substr(0,3);
+
     if(settingType == "SQL")
     {
-        updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
+        if(dataType == "Application")
+            updateSqlSetting(dataObject[settingType+"_settings"], applicationId,settingId);
+        else
+            updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
     }
     else
     {
-        updateXmlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
+        if(dataType == "Application")
+            updateXmlSetting(dataObject[settingType+"_settings"], applicationId,settingId);
+        else
+            updateXmlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
     }
 }
 
@@ -132,8 +160,8 @@ function updateSqlSetting(sqlSettings, applicationId, settingId)
     var dbLocation = $("#dbLocationTxt").val();
     var query = $("#queryTxt").val();
     /*Updates the php session */
-    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["dblocation"] = dbLocation;
-    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["query"] = query;
+    sqlSettings[settingId]["dblocation"] = dbLocation;
+    sqlSettings[settingId]["query"] = query;
     var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType;
     objectToSessionObject(dataToSend);
     /*Updates the value in the database */
@@ -144,16 +172,21 @@ function updateSqlSetting(sqlSettings, applicationId, settingId)
         printStatus(status, "SQL");
     });
 }
-
+/**
+ * Updates xml setting and updates the php session object with the new data.
+ * @param xmlSettings
+ * @param applicationId
+ * @param settingId
+ */
 function updateXmlSetting(xmlSettings,applicationId, settingId)
 {
     var fileLocation = $("#fileLocationTxt").val();
     var regexp = $("#regexpTxt").val();
     var replaceWith = $("#replaceWithTxt").val();
     /*Updates the php session */
-    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["fileLocation"] = fileLocation;
-    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["regexp"] = regexp;
-    dataObject["applications"][applicationId][settingType+"_settings"][settingId]["replaceWith"] = replaceWith;
+    xmlSettings[settingId]["fileLocation"] = fileLocation;
+    xmlSettings[settingId]["regexp"] = regexp;
+    xmlSettings[settingId]["replaceWith"] = replaceWith;
     var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType;
     objectToSessionObject(dataToSend);
     /*Updates the value in the database */
@@ -182,7 +215,6 @@ function objectToSessionObject(dataToSend)
         }
     });
 }
-
 /**
  * Prints status of apiCalls in way that is suited for the page.
  * @param status
@@ -195,7 +227,7 @@ function printStatus(status, dataType)
             document.getElementById("errorField").innerText = dataType + " updated";
             break;
         default:
-            document.getElementById("errorField").value = "Error, try again";
+            document.getElementById("errorField").value = status;
             break;
     }
 }
