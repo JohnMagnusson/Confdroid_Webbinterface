@@ -3,6 +3,7 @@
 
 $('document').ready(function(){
     document.getElementById("li"+settingType).classList.add("activeSqlXml");
+    console.log(dataObject);
 });
 /**
  * Updates the menu to the left with names on the applications.
@@ -22,7 +23,7 @@ function updateSqlXmlMenu(e, settingType, application)
     {
         for(var i = 0; i < application[settingType+ "_settings"].length; i++)
         {
-            createPTagsForData("settingContainer",application[settingType+ "_settings"][i], settingType + ":"+application[settingType+ "_settings"][i]["id"]);
+            createPTagsForData("settingContainer",application[settingType+ "_settings"][i], application[settingType+ "_settings"][i]["name"],settingType + ":"+i);
         }
     }
     else
@@ -58,16 +59,16 @@ function updateTextArea(e,settingType,data)
  * @param data
  * @param name
  */
-function createPTagsForData(parentId, data, name)
+function createPTagsForData(parentId, data, name, id)
 {
     var div = document.createElement("div");
-    div.id = "dataDiv"+name;
+    div.id = "dataDiv"+id;
     var p = document.createElement("p");
     var trashCan = document.createElement("img");
-    trashCan.id = name;
+    trashCan.id = id;
     trashCan.src = "../images/trash-can-icon.png";
     trashCan.classList.add("trashCanImg");
-    p.id = name;
+    p.id = id;
     p.innerHTML = name;
     div.appendChild(trashCan);
     div.appendChild(p);
@@ -84,7 +85,7 @@ function createPTagsForData(parentId, data, name)
         var setting = "/"+lowerCaseSettingType + "setting/";
         var settingId = data["id"];
         apiType = apiType + appId + setting + settingId;
-        if(confirm("Are you sure you want to delete " + settingType+":"+data["id"] + "?"))
+        if(confirm("Are you sure you want to delete " + settingType+":"+data["name"] + "?"))
         {
             //Delete
             if(dataType == "Application")
@@ -127,11 +128,12 @@ function cleanTextArea(settingType)
 /*Data changing functions*/
 function updateSetting()
 {
-    var applicationId = document.getElementsByClassName("selectedApp")[0].id.substr(3);
+    var applicationId = document.getElementsByClassName("selectedApp")[0].id.split("app")[1];
     console.log(applicationId);
     var setting = document.getElementsByClassName("selectedSetting")[0].id;
-    var settingId = setting.substr(3);
-    var settingType = setting.substr(0,3);
+    var settingId = setting.split(":")[1];
+    console.log("SettingId: " + settingId);
+    var settingType = setting.split(":")[0];
 
     if(settingType == "SQL")
     {
@@ -184,6 +186,10 @@ function updateXmlSetting(xmlSettings,applicationId, settingId)
     var regexp = $("#regexpTxt").val();
     var replaceWith = $("#replaceWithTxt").val();
     /*Updates the php session */
+    console.log(dataObject);
+    console.log(xmlSettings);
+    console.log( xmlSettings[settingId]);
+    console.log(settingId);
     xmlSettings[settingId]["fileLocation"] = fileLocation;
     xmlSettings[settingId]["regexp"] = regexp;
     xmlSettings[settingId]["replaceWith"] = replaceWith;

@@ -111,7 +111,7 @@ a{
 }
 #settingMenu{                       /*Menu to the left where the user can choose which sql or xml to display in the textarea*/
     width: 15%;
-    height: 90%;
+    height: 80%;
     border-right: thin solid black;
     float: left;
 }
@@ -141,7 +141,7 @@ a{
 #settingMenuBtnDiv{                 /*Div that position the button in the left menu */
     float: left;
     width: 15%;
-    height: 10%;
+    height: 20%;
     border-right: thin solid black;
     text-align: center;
 }
@@ -185,4 +185,11 @@ textarea{
 /*Puts bold on selected app*/
 .selectedSetting{
     font-weight: bold;
+}
+.addIcon:hover{
+    cursor:pointer;
+    opacity: 0.7;
+}
+.addIcon:active{
+    opacity: 1;
 }
