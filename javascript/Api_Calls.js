@@ -63,7 +63,6 @@ function apiChangeData(apiType, restMethod, data, printStatus)
         url: url,
         data: data,
         success: function(data, textStatus, XHR){
-            console.log(XHR["responseText"]);
             console.log(data);
             console.log(XHR["status"]);
             console.log(textStatus);
@@ -76,7 +75,7 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                     alert("Success!");
                     break;
             }
-            // location.reload();
+            location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR["responseText"]);

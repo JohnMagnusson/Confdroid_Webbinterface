@@ -23,7 +23,6 @@ function printJSONtoJS($jsVarName, $phpObject)
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
-    echo "<script>console.log(dataObject);</script>";
     echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
     echo "<script>var settingType ='" . $_GET["settingType"] . "';\n</script>";
 }
