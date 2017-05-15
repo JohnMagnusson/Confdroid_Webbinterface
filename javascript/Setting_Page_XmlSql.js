@@ -113,7 +113,6 @@ function updateSetting()
     var settingType = setting.substr(0,3);
     if(settingType == "SQL")
     {
-        console.log(dataType);
         updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
     }
     else

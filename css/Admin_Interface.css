@@ -73,13 +73,13 @@ li:active{
 #searchContainer{
     float:left;
     height:100%;
-    width: 35%;
+    width: 30%;
 }
 #searchInfo{
-    height: 75%;
+    height: 100%;
     margin-top:  0.5%;
     border: thin black solid;
-    overflow: auto;
+    overflow-y: auto;
 }
 #resultContainer{                   /*Holds the templates that the information will be shown in */
     float: left;
@@ -134,6 +134,7 @@ li:active{
     float:left;
     margin-left:-1px;
     word-wrap: break-word;
+    overflow: auto;
 }
 .dataDiv{
     height:100%;

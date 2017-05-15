@@ -36,7 +36,11 @@ function add()
         type += "/";
         type += document.getElementById("id").innerText.split(" ")[1];
         console.log(type);
-        apiChangeData(type, "POST", null);
+        console.log("hej Elias2");
+        apiChangeData(type, "POST", null, function (status){
+            console.log(status+ "hej");
+            printStatus(status);
+        });
     }
 }
 
@@ -146,4 +150,21 @@ function printApplicationInformation(data, e)
     $("#nrOfGroups").html('<b>Nr groups in:</b> ' + data["groups"].length);
     $("#nrOfUsers").html('<b>Nr users in:</b> ' + data["users"].length);
     $("#id").html('<b>Id:</b> ' + application["id"]);
+}
+
+/**
+ * Prints message depending on status call from API.
+ * @param status
+ */
+function printStatus(status)
+{
+    switch(status)
+    {
+        case 200:
+            alert("Added succesfull")
+            break;
+        default:
+            alert("Error, try again");
+            break;
+    }
 }
