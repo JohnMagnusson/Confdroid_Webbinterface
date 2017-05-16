@@ -22,11 +22,7 @@ function getDataFromAPI(searchType, searchValue, callback)
         url: url,
         success: function(data){
             console.log(data);
-            if(data[0] == "Failed")
-            {
-                console.log("Didn't get any match");
-            }
-            else if(data[0] == "Not Authorized")
+            if(data[0] == "Not Authorized")
             {
                 console.log("Not authorized");
             }
@@ -82,7 +78,6 @@ function apiChangeData(apiType, restMethod, data, printStatus)
             //     window.opener.location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log("RSPNTXT")
             console.log(jqXHR["responseText"]);
             // console.log(data);
             console.log(textStatus);

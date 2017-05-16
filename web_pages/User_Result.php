@@ -16,7 +16,7 @@ else
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>User</title>
     <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
