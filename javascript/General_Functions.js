@@ -66,6 +66,18 @@ function search()
 function createsContainerContent(parentId, data, url)
 {
     $("#"+parentId).empty();
+    if(data.length == 0)
+    {
+        // var div = document.createElement("div");
+        // div.id = "dataDiv"+0;
+        var p = document.createElement("p");
+        p.id = 0;
+        p.style = "font-size:120%;margin-top:3%;margin-left:5%;";
+        p.innerHTML = "Nothing Found";
+        // div.appendChild(p);
+        // div.classList.add("templateText");
+        document.getElementById(parentId).appendChild(p);
+    }
     for(var i = 0; i < data.length; i++)
     {
         var div = document.createElement("div");
