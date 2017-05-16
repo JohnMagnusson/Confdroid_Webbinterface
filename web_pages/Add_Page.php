@@ -10,6 +10,7 @@ if(!isset($_SESSION))
 {
     session_start();
 }
+
 /**
  * Creates a javascriptObject from PhpJsonObject
  * @param $jsVarName
@@ -47,7 +48,7 @@ else if(isset($_GET["pageName"]) && isset($_SESSION["dataTypeToAdd"]) && isset($
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Add</title>
     <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Add_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>

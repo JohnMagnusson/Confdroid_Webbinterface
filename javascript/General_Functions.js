@@ -231,3 +231,12 @@ function logOut()
         }
     });
 }
+
+/**
+ * Changes the window location based on the param url.
+ * @param url
+ */
+function changeLocation(url)
+{
+    window.location.href = url;
+}

@@ -13,5 +13,11 @@
         case "Application":
             include "Forms/Application_Form.php";
             break;
+        case "SQL":
+            include "Forms/SQL_Form.php";
+            break;
+        case "XML":
+            include "Forms/XML_Form.php";
+            break;
     }
 ?>
