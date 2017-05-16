@@ -16,7 +16,14 @@ $(document).ready(function(){
 function addSearch()
 {
     $("#information").empty();
-    getDataFromAPI(dataTypeToAdd, document.getElementById("searchValue").value, function (data) {
+    var apiType;
+    if(dataTypeToAdd == "SQL")
+        apiType = "sqlsetting";
+    else if(dataTypeToAdd == "XML")
+        apiType = "xmlsetting";
+    else
+        apiType = dataTypeToAdd;
+    getDataFromAPI(apiType, document.getElementById("searchValue").value, function (data) {
         showData("searchResult", data);
     });
 }
@@ -32,7 +39,10 @@ function add()
         type += "/";
         type += dataObject["id"];
         type += "/";
-        type += dataTypeToAdd;
+        if(dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
+            type += dataTypeToAdd+"setting";
+        else
+            type += dataTypeToAdd;
         type += "/";
         type += document.getElementById("id").innerText.split(" ")[1];
         console.log(type);
@@ -91,6 +101,12 @@ function printInfoOfObject(data, e)
             break;
         case "User":
             printUserInformation(data, e);
+            break;
+        case "SQL":
+            printSqlInformation(data, e);
+            break;
+        case "XML":
+            printXmlInformation(data, e);
             break;
     }
 }
@@ -182,6 +198,22 @@ function printUserInformation(data, e)
     $("#createdDate").html('<b>Date created:</b> ' + data[e.target.id]["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
     $("#authToken").html('<b>Authtoken:</b> ' + data[e.target.id]["authToken"]);
+}
+
+function printSqlInformation(data, e)
+{
+    var p = document.createElement("p");
+    p.id = "id";
+    document.getElementById("information").appendChild(p);
+    $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
+}
+
+function printXmlInformation(data, e)
+{
+    var p = document.createElement("p");
+    p.id = "id";
+    document.getElementById("information").appendChild(p);
+    $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
 }
 
 /**

@@ -88,7 +88,7 @@ function createSql()
     data["query"] = document.getElementById("queryTxt").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    apiChangeData("sql", "POST", myJson, function (status) {
+    apiChangeData("sqlsetting", "POST", myJson, function (status) {
         printStatus(status);
     });
 }
@@ -102,7 +102,7 @@ function createXml()
     data["replaceWith"] = document.getElementById("replaceWithTxt").value;
     var myJson = JSON.stringify(data);
     console.log(myJson);
-    apiChangeData("sql", "POST", myJson, function (status) {
+    apiChangeData("xmlsetting", "POST", myJson, function (status) {
         printStatus(status);
     });
 }
