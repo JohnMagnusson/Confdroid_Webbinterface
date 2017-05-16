@@ -118,3 +118,31 @@ a{
     font-weight: bold;
     font-size:130%;
 }
+/*Css for XML and SQL form*/
+#dataContainer{
+    margin-left: 1.5%;
+    margin-top: 0.5%;
+}
+/*The different textArea divs that decides the size of the textAreas*/
+textarea{
+    width: 97%;
+    resize: none;
+}
+/*SQL teaxtareas*/
+#dbLocationTxt{
+    height: 15%;
+}
+#queryTxt{
+    height: 58%;
+}
+/*XML textAreas*/
+#fileLocationTxt{
+    height: 10%;
+}
+#regexpTxt{
+    height:24%;
+}
+#replaceWithTxt{
+    height: 33%;
+}
+/*End teaxtAreas */

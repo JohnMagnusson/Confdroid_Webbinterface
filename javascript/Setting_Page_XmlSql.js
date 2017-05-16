@@ -237,3 +237,12 @@ function printStatus(status, dataType)
             break;
     }
 }
+
+function redirectToAddPage(settingType)
+{
+    var url = "Add_Page.php?pageName=Add_Existing";
+    var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType;
+    console.log(dataToSend);
+    objectToSessionObject(dataToSend);
+    window.location.href = url;
+}

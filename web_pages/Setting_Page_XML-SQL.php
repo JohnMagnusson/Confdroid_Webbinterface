@@ -103,7 +103,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
         ?>
     </div>
     <div id="settingMenuBtnDiv">                <!--Container for the save button -->
-        <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
+        <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon" onclick="redirectToAddPage('<?php echo $_GET["settingType"]; ?>')">
         <p id="errorField"></p>
         <input type="button" value="Save" onclick="updateSetting()">
     </div>

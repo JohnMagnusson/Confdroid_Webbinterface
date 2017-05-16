@@ -18,6 +18,12 @@ function handleForm()
         case "Device":
             createDevice();
             break;
+        case "SQL":
+            createSql();
+            break;
+        case "XML":
+            createXml();
+            break;
     }
 }
 
@@ -70,6 +76,33 @@ function createDevice()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("Device", "POST", myJson, function (status) {
+        printStatus(status);
+    });
+}
+
+function createSql()
+{
+    var data = {};
+    data["name"] = document.getElementById("settingName").value;
+    data["dblocation"] = document.getElementById("dbLocationTxt").value;
+    data["query"] = document.getElementById("queryTxt").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    apiChangeData("sql", "POST", myJson, function (status) {
+        printStatus(status);
+    });
+}
+
+function createXml()
+{
+    var data = {};
+    data["name"] = document.getElementById("settingName").value;
+    data["fileLocation"] = document.getElementById("fileLocationTxt").value;
+    data["regexp"] = document.getElementById("regexpTxt").value;
+    data["replaceWith"] = document.getElementById("replaceWithTxt").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    apiChangeData("sql", "POST", myJson, function (status) {
         printStatus(status);
     });
 }

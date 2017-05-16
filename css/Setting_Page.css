@@ -153,6 +153,7 @@ a{
 /*The different textArea divs that decides the size of the textAreas*/
 textarea{
     width: 97%;
+    resize: none;
 }
 /*SQL teaxtareas*/
 #dbLocationTxt{
