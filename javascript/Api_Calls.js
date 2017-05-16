@@ -72,10 +72,7 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                     alert("Success!");
                     break;
             }
-            // if(window.opener == null)
-            //     location.reload();
-            // else
-            //     window.opener.location.reload();
+            printStatus(200);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR["responseText"]);

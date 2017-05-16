@@ -15,8 +15,8 @@ function printUserInfo(user)
     createsContainerContent("applicationDiv", user["applications"], url);
     /*Display all vital information about the user in the infoDiv */
     $("#objectType").html("User");
-    $("#name").html('<b>Name:</b> ' + user["name"]);
-    $("#email").html('<b>Email:</b> ' + user["email"]);
+    $("#name").html('<b>Name:</b> ' +  $($.parseHTML(user["name"])).text());
+    $("#email").html('<b>Email:</b> ' +  $($.parseHTML(user["email"])).text());
     $("#nrOfDevces").html('<b>Nr devices:</b> ' + user["devices"].length);
     $("#nrOfGroups").html('<b>Nr groups in:</b> ' + user["groups"].length);
     $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);

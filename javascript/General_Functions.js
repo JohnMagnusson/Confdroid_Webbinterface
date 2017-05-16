@@ -68,14 +68,10 @@ function createsContainerContent(parentId, data, url)
     $("#"+parentId).empty();
     if(data.length == 0)
     {
-        // var div = document.createElement("div");
-        // div.id = "dataDiv"+0;
         var p = document.createElement("p");
         p.id = 0;
         p.style = "font-size:120%;margin-top:3%;margin-left:5%;";
         p.innerHTML = "Nothing Found";
-        // div.appendChild(p);
-        // div.classList.add("templateText");
         document.getElementById(parentId).appendChild(p);
     }
     for(var i = 0; i < data.length; i++)
@@ -84,7 +80,7 @@ function createsContainerContent(parentId, data, url)
         div.id = "dataDiv"+i;
         var p = document.createElement("p");
         p.id = i;
-        p.innerHTML = data[i]["name"];
+        p.innerHTML = $($.parseHTML(data[i]["name"])).text();
         var trashCan = document.createElement("img");
         trashCan.id = i;
         trashCan.src = "../images/trash-can-icon.png";
@@ -149,7 +145,12 @@ function deleteElement(e, name, id)
             apiType += id;
         }
         apiChangeData(apiType, "DELETE", null, function (status) {
-            printStatus(status);
+            var sendTo;
+            if(e.target.id == "deleteBtnInfo")
+                sendTo = "Admin_Interface.php?activeType=User";
+            else
+                sendTo = null;
+            printStatus(status, sendTo);
         });
     }
     else
@@ -158,9 +159,17 @@ function deleteElement(e, name, id)
     }
 }
 
-function printStatus(status)
+function printStatus(status, sendTo)
 {
     alert("Deleted");
+    if(window.opener == null) {
+        if (sendTo == null)
+            location.reload();
+        else
+            location.href = sendTo;
+    }
+    else
+        window.opener.location.reload();
 }
 
 /**
@@ -176,15 +185,15 @@ function updateNav(liId)
     var name=url[url.length-1];
     var activeType = liId.slice(2, liId.length);
     changeLocation("Admin_Interface.php?activeType="+activeType);
-    if(url[url.length-1].split("&")[1] != null)
-        url = url[url.length-1].split("=")[0]+"="+activeType+"&"+url[url.length-1].split("&")[1];
-    else
-        url = url[url.length-1].split("=")[0]+"="+activeType;
-    history.pushState({}, null, url);
-    if(name.indexOf("Admin_Interface.php") >= 0)
-    {
-        search();
-    }
+    // if(url[url.length-1].split("&")[1] != null)
+    //     url = url[url.length-1].split("=")[0]+"="+activeType+"&"+url[url.length-1].split("&")[1];
+    // else
+    //     url = url[url.length-1].split("=")[0]+"="+activeType;
+    // history.pushState({}, null, url);
+    // if(name.indexOf("Admin_Interface.php") >= 0)
+    // {
+    //     search();
+    // }
 }
 /**
  * Open setting page.

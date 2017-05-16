@@ -13,9 +13,9 @@ function printGroupInfo(group)
     createsContainerContent("applicationDiv", group["applications"], url);
     /*Updates information */
     $("#objectType").html("Group");
-    $("#name").html('<b>Name:</b> ' + group["name"]);
-    $("#prio").html('<b>Prio:</b> ' + group["prio"]);
-    $("#id").html('<b>Id:</b> ' + group["id"]);
+    $("#name").html('<b>Name:</b> ' + $($.parseHTML(group["name"])).text());
+    $("#prio").html('<b>Prio:</b> ' + $($.parseHTML(group["prio"])).text());
+    $("#id").html('<b>Id:</b> ' + $($.parseHTML(group["id"])).text());
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(group, "Group", null, "Setting_Page_Info.php?settingType=SQL");};
     document.getElementById('addBtnInfo').onclick = function(){openSettingPage(group, null, "Group", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
     document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, group["name"], group["id"]);};

@@ -3,7 +3,7 @@
 /**
  * Interface for the admin to manage the system.
  */
-if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
+if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($_GET["data"]) && isset($_GET["activeType"]))
 {
     echo "<script>";
     echo "var urlData ='" . $_GET["data"] . "';";
