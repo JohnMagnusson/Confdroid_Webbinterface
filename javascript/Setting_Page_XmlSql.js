@@ -41,6 +41,7 @@ function updateTextArea(e,settingType,data)
         document.getElementsByClassName("selectedSetting")[0].classList.remove("selectedSetting");
     }
     e.target.classList.add("selectedSetting");
+    console.log("SettingType: " + settingType);
     if(settingType == "SQL")
     {
         document.getElementById("dbLocationTxt").innerHTML = data["dblocation"];
@@ -102,7 +103,7 @@ function createPTagsForData(parentId, data, name, id)
     }
     p.onclick = function(e)
     {
-        updateTextArea(e,name.substr(0,3), data);         //Substrings from position 1 -> 3;
+        updateTextArea(e,id.split(":")[0], data);
     };
 }
 /**
