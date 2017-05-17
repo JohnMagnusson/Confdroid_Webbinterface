@@ -93,7 +93,7 @@ function createPTagsForData(parentId, data, name, id)
         var setting = "/"+lowerCaseSettingType + "setting/";
         var settingId = data["id"];
         apiType = apiType + appId + setting + settingId;
-        if(confirm("Are you sure you want to delete " + settingType+":"+$($.parseHTML(data["name"]).text()) + "?"))
+        if(confirm("Are you sure you want to delete " + settingType+":"+$($.parseHTML(data["name"])).text() + "?"))
         {
             //Delete
             if(dataType === "Application")

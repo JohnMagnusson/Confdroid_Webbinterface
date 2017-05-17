@@ -14,8 +14,8 @@ function printDeviceInfo(device)
     var url = "Application_Result.php?activeType=Application&data=";
     createsContainerContent("applicationDiv", device["applications"], url);
     var url2 = "User_Result.php?activeType=User&data=";
-    if(device["user"] !== null)
-        createsContainerContent("userDiv", new Array(device["user"]), url2);
+
+    createsContainerContent("userDiv", new Array(device["user"]), url2);
 
     $("#objectType").html("Device");
     $("#name").html('<b>Name:</b> ' + $($.parseHTML(device["name"])).text());

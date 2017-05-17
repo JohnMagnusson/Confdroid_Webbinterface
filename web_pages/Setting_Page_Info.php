@@ -45,7 +45,7 @@ else
 <body>
 
 <header>
-    <h1>Confdroid Settings</h1>
+    <h1><?php echo $_SESSION["dataType"];?> settings</h1>
 </header>
 
 <nav>

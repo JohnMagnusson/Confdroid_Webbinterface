@@ -65,7 +65,7 @@ function search()
 function createsContainerContent(parentId, data, url)
 {
     $("#"+parentId).empty();
-    if(data.length === 0)
+    if(data.length === 0 || data[0] === null)
     {
         var p = document.createElement("p");
         p.id = 0;
@@ -73,40 +73,43 @@ function createsContainerContent(parentId, data, url)
         p.innerHTML = "Nothing Found";
         document.getElementById(parentId).appendChild(p);
     }
-    for(var i = 0; i < data.length; i++)
+    else
     {
-        var div = document.createElement("div");
-        div.id = "dataDiv"+i;
-        var p2 = document.createElement("p");
-        p2.id = i;
-        p2.innerHTML = $($.parseHTML(data[i]["name"])).text();
-        var trashCan = document.createElement("img");
-        trashCan.id = i;
-        trashCan.src = "../images/trash-can-icon.png";
-        trashCan.classList.add("img");
-        var settings = document.createElement("img");
-        settings.id = i;
-        settings.src = "../images/settings-icon.png";
-        settings.classList.add("img");
-        div.appendChild(trashCan);
-        div.appendChild(settings);
-        div.appendChild(p2);
-        div.classList.add("templateText");
-        document.getElementById(parentId).appendChild(div);
-        trashCan.onclick = function (e)
+        for(var i = 0; i < data.length; i++)
         {
-            deleteElement(e, data[e.target.id]["name"], data[e.target.id]["id"]);
-        };
-        settings.onclick = function (e) {
-            getDataFromAPI(url.split("_")[0]+"/"+data[e.target.id]["id"],null,function (data, searchType) {     /*Gets data from the clicked element, then searches on the clicked element and uses a callback function to call on openSettingPage*/
-                openSettingPage(data,searchType.split("/")[0], null,"Setting_Page_Info.php?settingType=SQL");
-            });
-        };
-        p2.onclick = function(e)
-        {
-            url+=data[e.target.id]["id"];
-            changeLocation(url)
-        };
+            var div = document.createElement("div");
+            div.id = "dataDiv"+i;
+            var p2 = document.createElement("p");
+            p2.id = i;
+            p2.innerHTML = $($.parseHTML(data[i]["name"])).text();
+            var trashCan = document.createElement("img");
+            trashCan.id = i;
+            trashCan.src = "../images/trash-can-icon.png";
+            trashCan.classList.add("img");
+            var settings = document.createElement("img");
+            settings.id = i;
+            settings.src = "../images/settings-icon.png";
+            settings.classList.add("img");
+            div.appendChild(trashCan);
+            div.appendChild(settings);
+            div.appendChild(p2);
+            div.classList.add("templateText");
+            document.getElementById(parentId).appendChild(div);
+            trashCan.onclick = function (e)
+            {
+                deleteElement(e, data[e.target.id]["name"], data[e.target.id]["id"]);
+            };
+            settings.onclick = function (e) {
+                getDataFromAPI(url.split("_")[0]+"/"+data[e.target.id]["id"],null,function (data, searchType) {     /*Gets data from the clicked element, then searches on the clicked element and uses a callback function to call on openSettingPage*/
+                    openSettingPage(data,searchType.split("/")[0], null,"Setting_Page_Info.php?settingType=SQL");
+                });
+            };
+            p2.onclick = function(e)
+            {
+                url+=data[e.target.id]["id"];
+                changeLocation(url)
+            };
+        }
     }
 }
 /**

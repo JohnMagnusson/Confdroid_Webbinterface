@@ -103,7 +103,7 @@ function showData(infoParentId, data)
  */
 function printInfoOfObject(data, e)
 {
-    if(document.getElementsByClassName("selected")[0] !== null) {
+    if(typeof document.getElementsByClassName("selected")[0] !== "undefined") {
         document.getElementsByClassName("selected")[0].classList.remove("selected");
     }
     e.target.classList.add("selected");
