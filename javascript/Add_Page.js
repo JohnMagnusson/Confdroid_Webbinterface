@@ -42,24 +42,33 @@ function add()
 {
     if(currentPage == "Add_Existing") {
         if (document.getElementById("id") == null)
-            alert("Select a "+dataTypeToAdd+" to add!");
-        else {
+            alert("Select!");
+    }
+    else {
+        if(typeof applicationId !== 'undefined')
+        {
+            var type = "Application";
+            type += "/";
+            type += dataObject["applications"][applicationId]["id"];
+        }
+        else
+        {
             var type = dataType;
             type += "/";
             type += dataObject["id"];
-            type += "/";
-            if (dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
-                type += dataTypeToAdd + "setting";
-            else
-                type += dataTypeToAdd;
-            type += "/";
-            type += document.getElementById("id").innerText.split(" ")[1];
-            console.log(type);
-            console.log("JKASHFKDJAGFKJHASDKJSAKJHDKSAFKJDGKFGDKFKJAHDKJSHAJDGJSAFJKASGLFJKGDAKJDGSJAD");
-            apiChangeData(type, "POST", null, function (status) {
-                printStatusAddPage(status);
-            });
         }
+
+        type += "/";
+        if(dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
+            type += dataTypeToAdd+"setting";
+        else
+            type += dataTypeToAdd;
+        type += "/";
+        type += document.getElementById("id").innerText.split(" ")[1];
+        console.log(type);
+        apiChangeData(type, "POST", null, function (status){
+            printStatus(status);
+        });
     }
 }
 
