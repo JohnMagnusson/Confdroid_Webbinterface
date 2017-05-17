@@ -64,7 +64,7 @@ function add()
             type += document.getElementById("id").innerText.split(" ")[1];
             console.log(type);
             apiChangeData(type, "POST", null, function (status) {
-                printStatus(status);
+                printStatusAddPage(status);
             });
         }
     }
@@ -294,4 +294,11 @@ function printStatusAddPage(status)
     }
     else
         window.opener.location.reload();
+}
+/**
+ * Redirects back to the settingpage
+ */
+function redirectToSettingpage()
+{
+    window.location.href = "Setting_Page_Info.php?settingType="+dataTypeToAdd;
 }

@@ -73,7 +73,7 @@ function createPTagsForData(parentId, data, name, id)
     trashCan.src = "../images/trash-can-icon.png";
     trashCan.classList.add("trashCanImg");
     p.id = id;
-    p.innerHTML = $($.parseHTML(name).text());
+    p.innerHTML = $($.parseHTML(name)).text();
     div.appendChild(trashCan);
     div.appendChild(p);
     div.classList.add("textSettingMenu");
@@ -247,7 +247,7 @@ function printStatus(status, dataType)
 function redirectToAddPage(settingType)
 {
     var applicationId = document.getElementsByClassName("selectedApp")[0].id.split("app")[1];
-    var url = "Add_Page.php?pageName=Add_Existing";
+    var url = "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false";
     if(dataType != "Application")
         var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType + "&applicationId="+applicationId;
     else
