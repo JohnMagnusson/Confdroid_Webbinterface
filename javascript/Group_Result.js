@@ -1,10 +1,14 @@
 /**
- * Class used to display group result on search.
+ * Class used to display information about a specific group.
  */
 $(document).ready(function () {
     getDataFromAPI("Group/"+urlData, null, function(data){printGroupInfo(data)});
 });
 
+/**
+ * Prints all the information about the group
+ * @param group
+ */
 function printGroupInfo(group)
 {
     var url = "User_Result.php?activeType=User&data=";

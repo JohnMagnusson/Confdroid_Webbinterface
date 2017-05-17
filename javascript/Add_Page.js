@@ -1,5 +1,7 @@
 /**
- * Created by Elias on 2017-05-09.
+ * Handles functions for the add popup page.
+ * It can add existing object (User, Device...) to another object
+ * It can search and show information
  */
 $(document).ready(function(){
     document.getElementById(currentPage).classList.add("activeLi");
@@ -11,8 +13,13 @@ $(document).ready(function(){
             }
         }, false);
     }
+    if(currentPage == "Add_Existing")
+        addSearch();
 });
 
+/**
+ * The search function for the add page.
+ */
 function addSearch()
 {
     $("#information").empty();
@@ -28,30 +35,39 @@ function addSearch()
     });
 }
 
+/**
+ * Adds an existing object (dataTypeToAdd) to another object (dataType)
+ */
 function add()
 {
-    if(currentPage == "Add_New") {
+    if(currentPage == "Add_Existing") {
         if (document.getElementById("id") == null)
-            alert("Select!");
-    }
-    else {
-        var type = dataType;
-        type += "/";
-        type += dataObject["id"];
-        type += "/";
-        if(dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
-            type += dataTypeToAdd+"setting";
-        else
-            type += dataTypeToAdd;
-        type += "/";
-        type += document.getElementById("id").innerText.split(" ")[1];
-        console.log(type);
-        apiChangeData(type, "POST", null, function (status){
-            printStatus(status);
-        });
+            alert("Select a "+dataTypeToAdd+" to add!");
+        else {
+            var type = dataType;
+            type += "/";
+            type += dataObject["id"];
+            type += "/";
+            if (dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
+                type += dataTypeToAdd + "setting";
+            else
+                type += dataTypeToAdd;
+            type += "/";
+            type += document.getElementById("id").innerText.split(" ")[1];
+            console.log(type);
+            console.log("JKASHFKDJAGFKJHASDKJSAKJHDKSAFKJDGKFGDKFKJAHDKJSHAJDGJSAFJKASGLFJKGDAKJDGSJAD");
+            apiChangeData(type, "POST", null, function (status) {
+                printStatusAddPage(status);
+            });
+        }
     }
 }
 
+/**
+ * Prints out the searched data
+ * @param infoParentId
+ * @param data
+ */
 function showData(infoParentId, data)
 {
     $("#"+infoParentId).empty();
@@ -72,6 +88,11 @@ function showData(infoParentId, data)
     }
 }
 
+/**
+ * Prints information about the selected object
+ * @param data
+ * @param e
+ */
 function printInfoOfObject(data, e)
 {
     if(document.getElementsByClassName("selected")[0] != null) {
@@ -111,6 +132,11 @@ function printInfoOfObject(data, e)
     }
 }
 
+/**
+ * Prints information about the selected group
+ * @param data
+ * @param e
+ */
 function printGroupInformation(data, e)
 {
     var p = document.createElement("p");
@@ -123,6 +149,11 @@ function printGroupInformation(data, e)
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
 }
 
+/**
+ * Prints information about the selected device
+ * @param data
+ * @param e
+ */
 function printDeviceInformation(data, e)
 {
     var p = document.createElement("p");
@@ -143,6 +174,11 @@ function printDeviceInformation(data, e)
     $("#imei").html('<b>Imei:</b> ' + data[e.target.id]["imei"]);
 }
 
+/**
+ * Prints information about the selected application
+ * @param data
+ * @param e
+ */
 function printApplicationInformation(data, e)
 {
     console.log(data);
@@ -172,6 +208,11 @@ function printApplicationInformation(data, e)
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
 }
 
+/**
+ * Prints information about the selected user
+ * @param data
+ * @param e
+ */
 function printUserInformation(data, e)
 {
     var p = document.createElement("p");
@@ -200,6 +241,11 @@ function printUserInformation(data, e)
     $("#authToken").html('<b>Authtoken:</b> ' + data[e.target.id]["authToken"]);
 }
 
+/**
+ * Prints information about the selected sql setting
+ * @param data
+ * @param e
+ */
 function printSqlInformation(data, e)
 {
     var p = document.createElement("p");
@@ -208,6 +254,11 @@ function printSqlInformation(data, e)
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
 }
 
+/**
+ * Prints information about the selected xml setting
+ * @param data
+ * @param e
+ */
 function printXmlInformation(data, e)
 {
     var p = document.createElement("p");
@@ -220,15 +271,20 @@ function printXmlInformation(data, e)
  * Prints message depending on status call from API.
  * @param status
  */
-function printStatus(status)
+function printStatusAddPage(status)
 {
     switch(status)
     {
-        case 200:
-            alert("Added succesfull")
+        case 201:
+            alert("Succesfully added "+document.getElementById("name").innerText.split("Name: ")[1]+" to "+dataObject["name"]);
             break;
         default:
             alert("Error, try again");
             break;
     }
+    if(window.opener == null) {
+        location.reload();
+    }
+    else
+        window.opener.location.reload();
 }

@@ -1,5 +1,5 @@
 /**
- * hello my name is jeff
+ * Functions for all _Result pages and Admin_Interface
  */
 $(document).ready(function(){
     var url=window.location.href.split('/');
@@ -117,7 +117,11 @@ function createsContainerContent(parentId, data, url)
  */
 function deleteElement(e, name, id)
 {
-    if(confirm("Are you sure you want to delete " + name +"?"))
+    var message = "Are you sure you want to delete " + name;
+    if(document.getElementById("name") != null)
+        message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
+    message += "?";
+    if(confirm(message))
     {
         var apiType;
         if(document.getElementById("objectType") == null) {
@@ -147,10 +151,10 @@ function deleteElement(e, name, id)
         apiChangeData(apiType, "DELETE", null, function (status) {
             var sendTo;
             if(e.target.id == "deleteBtnInfo")
-                sendTo = "Admin_Interface.php?activeType=User";
+                sendTo = "Admin_Interface.php?activeType="+activeType;
             else
                 sendTo = null;
-            printStatus(status, sendTo);
+            printStatus(status, sendTo, name);
         });
     }
     else
@@ -159,9 +163,23 @@ function deleteElement(e, name, id)
     }
 }
 
-function printStatus(status, sendTo)
+/**
+ * Prints message depending on status call from API.
+ */
+function printStatus(status, sendTo, name)
 {
-    alert("Deleted");
+    var message = "Successfully deleted "+name;
+    if(document.getElementById("name") != null)
+        message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
+    switch(status)
+    {
+        case 200:
+            alert(message);
+            break;
+        default:
+            alert("Error, try again");
+            break;
+    }
     if(window.opener == null) {
         if (sendTo == null)
             location.reload();

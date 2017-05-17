@@ -3,7 +3,7 @@
  */
 
 /**
- * Gets data from th api baed on the searchType and searchValue.
+ * Gets data from th api based on the searchType and searchValue.
  * Sends the the result to the param callback function.
  * @param searchType
  * @param searchValue
@@ -69,10 +69,12 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                     printStatus(200);
                     break;
                 case 201:
-                    alert("Success!");
+                    printStatus(201);
+                    break;
+                default:
+                    printStatus(200);
                     break;
             }
-            printStatus(200);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR["responseText"]);

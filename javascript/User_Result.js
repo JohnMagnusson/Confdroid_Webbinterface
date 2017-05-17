@@ -1,10 +1,14 @@
 /**
- * Created by Elias on 2017-05-02.
+ * Class used to display information about a specific user.
  */
 $(document).ready(function () {
     getDataFromAPI("User/"+urlData, null, function(data){printUserInfo(data)});
 });
 
+/**
+ * Prints all the information about the user
+ * @param user
+ */
 function printUserInfo(user)
 {
     var url = "Group_Result.php?activeType=Group&data=";

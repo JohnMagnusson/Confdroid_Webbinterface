@@ -1,10 +1,14 @@
 /**
- * Class used to display Device result on search.
+ * Class used to display information about a specific device.
  */
 $(document).ready(function () {
     getDataFromAPI("Device/"+urlData, null, function(data){printDeviceInfo(data)});
 });
 
+/**
+ * Prints all the information about the device
+ * @param device
+ */
 function printDeviceInfo(device)
 {
     var url = "Application_Result.php?activeType=Application&data=";

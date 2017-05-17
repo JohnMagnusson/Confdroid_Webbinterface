@@ -1,10 +1,14 @@
 /**
- * Class used to display Applicaiton result on search.
+ * Class used to display information about a specific application.
  */
 $(document).ready(function () {
     getDataFromAPI("Application/"+urlData, null, function(data){printApplicationInfo(data)});
 });
 
+/**
+ * Prints all the information about the application
+ * @param application
+ */
 function printApplicationInfo(application)
 {
     var url = "Group_Result.php?activeType=Group&data=";
