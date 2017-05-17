@@ -41,7 +41,7 @@ function createGroup()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("Group", "POST", myJson, function (status) {
-        printStatus(status);
+        printStatusHandleFormData(status);
     });
 }
 
@@ -56,7 +56,7 @@ function createUser()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("User", "POST", myJson, function (status) {
-        printStatus(status);
+        printStatusHandleFormData(status);
     });
 }
 
@@ -76,7 +76,7 @@ function createApplication()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("Application", "POST", myJson, function (status) {
-        printStatus(status);
+        printStatusHandleFormData(status);
     });
 }
 
@@ -91,7 +91,7 @@ function createDevice()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("Device", "POST", myJson, function (status) {
-        printStatus(status);
+        printStatusHandleFormData(status);
     });
 }
 
@@ -107,7 +107,7 @@ function createSql()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("sqlsetting", "POST", myJson, function (status) {
-        printStatus(status);
+        printStatusHandleFormData(status);
     });
 }
 
@@ -124,7 +124,7 @@ function createXml()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("xmlsetting", "POST", myJson, function (status) {
-        printStatus(status);
+        printStatusHandleFormData(status);
     });
 }
 
@@ -132,7 +132,7 @@ function createXml()
  * Prints message depending on status call from API.
  * @param status
  */
-function printStatus(status)
+function printStatusHandleFormData(status)
 {
     switch(status)
     {
@@ -141,6 +141,12 @@ function printStatus(status)
             break;
         case 201:
             alert("Successfully added "+dataTypeToAdd);
+            break;
+        case 404:
+            alert("This " + dataTypeToAdd + " doesn't exist anymore.");
+            break;
+        case 409:
+            alert("Some conflict happened");
             break;
         default:
             alert("Error, try again");

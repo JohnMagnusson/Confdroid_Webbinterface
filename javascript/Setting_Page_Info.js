@@ -36,7 +36,7 @@ function updateUserInfo(user){
     newValues["email"] = email;
     console.log(JSON.stringify(newValues));
     apiChangeData("user/"+user["id"],"PUT",JSON.stringify(newValues), function (status) {
-        printStatus(status);
+        printStatusSettingPageInfo(status);
     });
 }
 /**
@@ -58,7 +58,7 @@ function updateDeviceInfo(device)
     newValues["name"] = name;
     newValues["imei"] = imei;
     apiChangeData("device/"+device["id"],"PUT",JSON.stringify(newValues),function (status) {
-        printStatus(status);
+        printStatusSettingPageInfo(status);
     });
 }
 /**
@@ -80,7 +80,7 @@ function updateGroupInfo(group)
     newValues["name"] = name;
     newValues["prio"] = prio;
     apiChangeData("group/"+group["id"],"PUT",JSON.stringify(newValues),function (status) {
-        printStatus(status);
+        printStatusSettingPageInfo(status);
     });
 }
 
@@ -115,7 +115,7 @@ function updateApplicationInfo(application)
     newValues["dataDir"] = dataDir;
     newValues["forceInstall"] = forceInstall;
     apiChangeData("application/"+application["id"],"PUT",JSON.stringify(newValues),function (status) {
-        printStatus(status);
+        printStatusSettingPageInfo(status);
     });
 }
 
@@ -140,13 +140,16 @@ function objectToSessionObject(dataToSend)
  * Pritns status of apiCalls in way that is suited for the page.
  * @param status
  */
-function printStatus(status)
+function printStatusSettingPageInfo(status)
 {
     switch(status)
     {
         case 200:
             alert("Updated successfully");
             // document.getElementById("errorField").innerText = "Updated successful";
+            break;
+        case 404:
+            alert("This" + dataType + " doesn't exist anymore");
             break;
         default:
             alert("Error, try again");

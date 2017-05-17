@@ -71,8 +71,11 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                 case 201:
                     printStatus(201);
                     break;
+                case 204:
+                    printStatus(204);
+                    break;
                 default:
-                    printStatus(200);
+                    printStatus(900);
                     break;
             }
         },
@@ -86,8 +89,11 @@ function apiChangeData(apiType, restMethod, data, printStatus)
                 case 403:
                     window.location.replace("Login.php?timedout=true");
                     break;
+                case 404:
+                    printStatus(404);
+                    break;
                 case 409:
-                    alert("Some conflict happend");
+                    printStatus(409);
                     break;
                 default:
                     console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"]);

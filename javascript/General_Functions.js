@@ -118,7 +118,7 @@ function createsContainerContent(parentId, data, url)
 function deleteElement(e, name, id)
 {
     var message = "Are you sure you want to delete " + name;
-    if(document.getElementById("name") != null)
+    if(document.getElementById("name") != null && e.target.id != "deleteBtnInfo")
         message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
     message += "?";
     if(confirm(message))
@@ -154,7 +154,7 @@ function deleteElement(e, name, id)
                 sendTo = "Admin_Interface.php?activeType="+activeType;
             else
                 sendTo = null;
-            printStatus(status, sendTo, name);
+            printStatusGeneralFunctions(status, sendTo, name);
         });
     }
     else
@@ -166,7 +166,7 @@ function deleteElement(e, name, id)
 /**
  * Prints message depending on status call from API.
  */
-function printStatus(status, sendTo, name)
+function printStatusGeneralFunctions(status, sendTo, name)
 {
     var message = "Successfully deleted "+name;
     if(document.getElementById("name") != null)
@@ -174,6 +174,9 @@ function printStatus(status, sendTo, name)
     switch(status)
     {
         case 200:
+            alert(message);
+            break;
+        case 204:
             alert(message);
             break;
         default:

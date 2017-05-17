@@ -109,9 +109,8 @@ a{
 }
 
 .addButton{
-    position:fixed;
-    bottom: 10%;
-    right: 12%;
+    margin-top: 40%;
+    margin-left: 40%;
 }
 
 .selected{

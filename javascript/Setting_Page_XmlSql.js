@@ -99,7 +99,7 @@ function createPTagsForData(parentId, data, name, id)
             var dataToUpdate = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType;
             objectToSessionObject(dataToUpdate);            //Updates the php Session object
             apiChangeData(apiType,"Delete",null, function (status) {
-                printStatus(status,dataType);
+                printStatusSettingPageXmlSql(status,dataType);
             });
             // window.location.reload();
         }
@@ -177,7 +177,7 @@ function updateSqlSetting(sqlSettings, applicationId, settingId)
     newSqlSetting["dblocation"] = dbLocation;
     newSqlSetting["query"] = query;
     apiChangeData("sqlsetting/"+sqlSettings[settingId]["id"],"PUT",JSON.stringify(newSqlSetting),function (status) {
-        printStatus(status, "SQL");
+        printStatusSettingPageXmlSql(status, "SQL");
     });
 }
 /**
@@ -207,7 +207,7 @@ function updateXmlSetting(xmlSettings,applicationId, settingId)
     newXmlSetting["regexp"] = regexp;
     newXmlSetting["replaceWith"] = replaceWith;
     apiChangeData("xmlsetting/"+xmlSettings[settingId]["id"], "PUT",JSON.stringify(newXmlSetting),function (status) {
-        printStatus(status, "XML");
+        printStatusSettingPageXmlSql(status, "XML");
     });
 }
 
@@ -231,7 +231,7 @@ function objectToSessionObject(dataToSend)
  * Prints status of apiCalls in way that is suited for the page.
  * @param status
  */
-function printStatus(status, dataType)
+function printStatusSettingPageXmlSql(status, dataType)
 {
     switch(status)
     {

@@ -24,7 +24,6 @@ function printDeviceInfo(device)
     $("#id").html('<b>Id:</b> ' + $($.parseHTML(device["id"])).text());
     $("#imei").html('<b>Imei:</b> ' + $($.parseHTML(device["imei"])).text());
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(device, "Device", null, "Setting_Page_Info.php?settingType=SQL");};
-    document.getElementById('addBtnInfo').onclick = function(){openSettingPage(device, null, "Device", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
     document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, device["name"], device["id"]);};
     for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
 

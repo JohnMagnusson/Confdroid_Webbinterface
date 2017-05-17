@@ -64,7 +64,7 @@ function add()
             type += document.getElementById("id").innerText.split(" ")[1];
             console.log(type);
             apiChangeData(type, "POST", null, function (status) {
-                printStatus(status);
+                printStatusAddPage(status);
             });
         }
     }
@@ -282,8 +282,14 @@ function printStatusAddPage(status)
 {
     switch(status)
     {
+        case 200:
+            alert("Succesfully added "+document.getElementById("name").innerText.split("Name: ")[1]+" to "+dataObject["name"]);
+            break;
         case 201:
             alert("Succesfully added "+document.getElementById("name").innerText.split("Name: ")[1]+" to "+dataObject["name"]);
+            break;
+        case 404:
+            alert("This" + dataTypeToAdd + " doesn't exist anymore");
             break;
         default:
             alert("Error, try again");

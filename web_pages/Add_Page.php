@@ -67,7 +67,7 @@ if(isset($_SESSION["applicationId"]))               /*Special case if the user c
 <body>
 
     <header>
-        <h1>Confdroid Settings</h1>
+        <h1>Add <?php print_r($_SESSION["dataTypeToAdd"])?></h1>
     </header>
 
     <nav>

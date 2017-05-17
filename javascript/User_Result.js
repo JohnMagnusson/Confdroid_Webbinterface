@@ -27,7 +27,6 @@ function printUserInfo(user)
     $("#id").html('<b>Id:</b> ' + user["id"]);
     $("#authToken").html('<b>Authtoken:</b> ' + user["authToken"]);
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", null, 'Setting_Page_Info.php');};
-    document.getElementById('addBtnInfo').onclick = function(){openSettingPage(user, null, "User", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
     document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, user["name"], user["id"]);};
     for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
 
