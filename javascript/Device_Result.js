@@ -1,10 +1,14 @@
 /**
- * Class used to display Device result on search.
+ * Class used to display information about a specific device.
  */
 $(document).ready(function () {
     getDataFromAPI("Device/"+urlData, null, function(data){printDeviceInfo(data)});
 });
 
+/**
+ * Prints all the information about the device
+ * @param device
+ */
 function printDeviceInfo(device)
 {
     var url = "Application_Result.php?activeType=Application&data=";
@@ -14,11 +18,11 @@ function printDeviceInfo(device)
         createsContainerContent("userDiv", new Array(device["user"]), url);
 
     $("#objectType").html("Device");
-    $("#name").html('<b>Name:</b> ' + device["name"]);
+    $("#name").html('<b>Name:</b> ' + $($.parseHTML(device["name"])).text());
     $("#nrOfApplications").html('<b>Nr applications:</b> ' + device["applications"].length);
     $("#createdDate").html('<b>Date created:</b> ' + device["dateCreated"]);
-    $("#id").html('<b>Id:</b> ' + device["id"]);
-    $("#imei").html('<b>Imei:</b> ' + device["imei"]);
+    $("#id").html('<b>Id:</b> ' + $($.parseHTML(device["id"])).text());
+    $("#imei").html('<b>Imei:</b> ' + $($.parseHTML(device["imei"])).text());
     document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(device, "Device", null, "Setting_Page_Info.php?settingType=SQL");};
     document.getElementById('addBtnInfo').onclick = function(){openSettingPage(device, null, "Device", "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");};
     document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, device["name"], device["id"]);};

@@ -73,7 +73,7 @@ function createPTagsForData(parentId, data, name, id)
     trashCan.src = "../images/trash-can-icon.png";
     trashCan.classList.add("trashCanImg");
     p.id = id;
-    p.innerHTML = name;
+    p.innerHTML = $($.parseHTML(name).text());
     div.appendChild(trashCan);
     div.appendChild(p);
     div.classList.add("textSettingMenu");
@@ -89,7 +89,7 @@ function createPTagsForData(parentId, data, name, id)
         var setting = "/"+lowerCaseSettingType + "setting/";
         var settingId = data["id"];
         apiType = apiType + appId + setting + settingId;
-        if(confirm("Are you sure you want to delete " + settingType+":"+data["name"] + "?"))
+        if(confirm("Are you sure you want to delete " + settingType+":"+$($.parseHTML(data["name"]).text()) + "?"))
         {
             //Delete
             if(dataType == "Application")

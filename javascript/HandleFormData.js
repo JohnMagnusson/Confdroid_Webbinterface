@@ -1,7 +1,10 @@
 /**
- * Created by Elias on 2017-05-10.
+ * Functions to get data from an form and create an object from that data
  */
 
+/**
+ * Checks which object that is to be created
+ */
 function handleForm()
 {
     switch(dataTypeToAdd)
@@ -27,6 +30,9 @@ function handleForm()
     }
 }
 
+/**
+ * Creates a group with data from form
+ */
 function createGroup()
 {
     var data = {};
@@ -39,6 +45,9 @@ function createGroup()
     });
 }
 
+/**
+ * Creates a user with data from form
+ */
 function createUser()
 {
     var data = {};
@@ -51,6 +60,9 @@ function createUser()
     });
 }
 
+/**
+ * Creates a application with data from form
+ */
 function createApplication()
 {
     var data = {};
@@ -68,6 +80,9 @@ function createApplication()
     });
 }
 
+/**
+ * Creates a device with data from form
+ */
 function createDevice()
 {
     var data = {};
@@ -80,6 +95,9 @@ function createDevice()
     });
 }
 
+/**
+ * Creates a sql setting with data from form
+ */
 function createSql()
 {
     var data = {};
@@ -93,6 +111,9 @@ function createSql()
     });
 }
 
+/**
+ * Creates a xml setting with data from form
+ */
 function createXml()
 {
     var data = {};
@@ -116,10 +137,18 @@ function printStatus(status)
     switch(status)
     {
         case 200:
-            alert("Created succesfully")
+            alert("Succesfully created "+dataTypeToAdd);
+            break;
+        case 201:
+            alert("Successfully added "+dataTypeToAdd);
             break;
         default:
             alert("Error, try again");
             break;
     }
+    if(window.opener == null) {
+        location.reload();
+    }
+    else
+        window.opener.location.reload();
 }

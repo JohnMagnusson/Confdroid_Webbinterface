@@ -1,5 +1,5 @@
 /**
- * Javascript function for the search page.
+ * Functions for the admin interface page
  */
 $(document).ready(function () {
     var url=window.location.href.split('/');
@@ -12,7 +12,7 @@ $(document).ready(function () {
 });
 
 /**
- * Prints the data.
+ * Prints the searched data.
  * @param data
  * @param searchType
  */

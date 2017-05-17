@@ -1,10 +1,14 @@
 /**
- * Created by Elias on 2017-05-02.
+ * Class used to display information about a specific user.
  */
 $(document).ready(function () {
     getDataFromAPI("User/"+urlData, null, function(data){printUserInfo(data)});
 });
 
+/**
+ * Prints all the information about the user
+ * @param user
+ */
 function printUserInfo(user)
 {
     var url = "Group_Result.php?activeType=Group&data=";
@@ -15,8 +19,8 @@ function printUserInfo(user)
     createsContainerContent("applicationDiv", user["applications"], url);
     /*Display all vital information about the user in the infoDiv */
     $("#objectType").html("User");
-    $("#name").html('<b>Name:</b> ' + user["name"]);
-    $("#email").html('<b>Email:</b> ' + user["email"]);
+    $("#name").html('<b>Name:</b> ' +  $($.parseHTML(user["name"])).text());
+    $("#email").html('<b>Email:</b> ' +  $($.parseHTML(user["email"])).text());
     $("#nrOfDevces").html('<b>Nr devices:</b> ' + user["devices"].length);
     $("#nrOfGroups").html('<b>Nr groups in:</b> ' + user["groups"].length);
     $("#createdDate").html('<b>Date created:</b> ' + user["dateCreated"]);

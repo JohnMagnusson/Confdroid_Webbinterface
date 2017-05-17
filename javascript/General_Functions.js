@@ -1,5 +1,5 @@
 /**
- * hello my name is jeff
+ * Functions for all _Result pages and Admin_Interface
  */
 $(document).ready(function(){
     var url=window.location.href.split('/');
@@ -68,14 +68,10 @@ function createsContainerContent(parentId, data, url)
     $("#"+parentId).empty();
     if(data.length == 0)
     {
-        // var div = document.createElement("div");
-        // div.id = "dataDiv"+0;
         var p = document.createElement("p");
         p.id = 0;
         p.style = "font-size:120%;margin-top:3%;margin-left:5%;";
         p.innerHTML = "Nothing Found";
-        // div.appendChild(p);
-        // div.classList.add("templateText");
         document.getElementById(parentId).appendChild(p);
     }
     for(var i = 0; i < data.length; i++)
@@ -84,7 +80,7 @@ function createsContainerContent(parentId, data, url)
         div.id = "dataDiv"+i;
         var p = document.createElement("p");
         p.id = i;
-        p.innerHTML = data[i]["name"];
+        p.innerHTML = $($.parseHTML(data[i]["name"])).text();
         var trashCan = document.createElement("img");
         trashCan.id = i;
         trashCan.src = "../images/trash-can-icon.png";
@@ -121,7 +117,11 @@ function createsContainerContent(parentId, data, url)
  */
 function deleteElement(e, name, id)
 {
-    if(confirm("Are you sure you want to delete " + name +"?"))
+    var message = "Are you sure you want to delete " + name;
+    if(document.getElementById("name") != null)
+        message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
+    message += "?";
+    if(confirm(message))
     {
         var apiType;
         if(document.getElementById("objectType") == null) {
@@ -149,7 +149,12 @@ function deleteElement(e, name, id)
             apiType += id;
         }
         apiChangeData(apiType, "DELETE", null, function (status) {
-            printStatus(status);
+            var sendTo;
+            if(e.target.id == "deleteBtnInfo")
+                sendTo = "Admin_Interface.php?activeType="+activeType;
+            else
+                sendTo = null;
+            printStatus(status, sendTo, name);
         });
     }
     else
@@ -158,9 +163,31 @@ function deleteElement(e, name, id)
     }
 }
 
-function printStatus(status)
+/**
+ * Prints message depending on status call from API.
+ */
+function printStatus(status, sendTo, name)
 {
-    alert("Deleted");
+    var message = "Successfully deleted "+name;
+    if(document.getElementById("name") != null)
+        message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
+    switch(status)
+    {
+        case 200:
+            alert(message);
+            break;
+        default:
+            alert("Error, try again");
+            break;
+    }
+    if(window.opener == null) {
+        if (sendTo == null)
+            location.reload();
+        else
+            location.href = sendTo;
+    }
+    else
+        window.opener.location.reload();
 }
 
 /**
@@ -176,15 +203,15 @@ function updateNav(liId)
     var name=url[url.length-1];
     var activeType = liId.slice(2, liId.length);
     changeLocation("Admin_Interface.php?activeType="+activeType);
-    if(url[url.length-1].split("&")[1] != null)
-        url = url[url.length-1].split("=")[0]+"="+activeType+"&"+url[url.length-1].split("&")[1];
-    else
-        url = url[url.length-1].split("=")[0]+"="+activeType;
-    history.pushState({}, null, url);
-    if(name.indexOf("Admin_Interface.php") >= 0)
-    {
-        search();
-    }
+    // if(url[url.length-1].split("&")[1] != null)
+    //     url = url[url.length-1].split("=")[0]+"="+activeType+"&"+url[url.length-1].split("&")[1];
+    // else
+    //     url = url[url.length-1].split("=")[0]+"="+activeType;
+    // history.pushState({}, null, url);
+    // if(name.indexOf("Admin_Interface.php") >= 0)
+    // {
+    //     search();
+    // }
 }
 /**
  * Open setting page.

@@ -145,10 +145,17 @@ function printStatus(status)
     switch(status)
     {
         case 200:
-            document.getElementById("errorField").innerText = "Updated successful";
+            alert("Updated successfully");
+            // document.getElementById("errorField").innerText = "Updated successful";
             break;
         default:
-            document.getElementById("errorField").value = "Error, try again";
+            alert("Error, try again");
+            // document.getElementById("errorField").value = "Error, try again";
             break;
     }
+    if(window.opener == null) {
+        location.reload();
+    }
+    else
+        window.opener.location.reload();
 }

@@ -1,10 +1,14 @@
 /**
- * Class used to display Applicaiton result on search.
+ * Class used to display information about a specific application.
  */
 $(document).ready(function () {
     getDataFromAPI("Application/"+urlData, null, function(data){printApplicationInfo(data)});
 });
 
+/**
+ * Prints all the information about the application
+ * @param application
+ */
 function printApplicationInfo(application)
 {
     var url = "Group_Result.php?activeType=Group&data=";
@@ -14,12 +18,12 @@ function printApplicationInfo(application)
     url = "User_Result.php?activeType=User&data=";
     createsContainerContent("userDiv", application["users"], url);
     $("#objectType").html("Application");
-    $("#name").html('<b>Name:</b> ' + application["name"]);
-    $("#apkName").html('<b>Apk Name:</b> ' + application["apkName"]);
-    $("#apkURL").html('<b>APK Url:</b> ' + application["apkURL"]);
-    $("#packageName").html('<b>Package Name:</b> ' + application["packageName"]);
-    $("#dataDir").html('<b>Data dir:</b> ' + application["dataDir"]);
-    $("#forceInstall").html('<b>Force install:</b> ' + application["forceInstall"]);
+    $("#name").html('<b>Name:</b> ' + $($.parseHTML(application["name"])).text());
+    $("#apkName").html('<b>Apk Name:</b> ' + $($.parseHTML(application["apkName"])).text());
+    $("#apkURL").html('<b>APK Url:</b> ' + $($.parseHTML(application["apkURL"])).text());
+    $("#packageName").html('<b>Package Name:</b> ' + $($.parseHTML(application["packageName"])).text());
+    $("#dataDir").html('<b>Data dir:</b> ' + $($.parseHTML(application["dataDir"])).text());
+    $("#forceInstall").html('<b>Force install:</b> ' + $($.parseHTML(application["forceInstall"])).text());
     $("#nrOfDevices").html('<b>Nr devices:</b> ' + application["devices"].length);
     $("#nrOfGroups").html('<b>Nr groups in:</b> ' + application["groups"].length);
     $("#nrOfUsers").html('<b>Nr users in:</b> ' + application["users"].length);
