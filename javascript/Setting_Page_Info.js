@@ -156,7 +156,7 @@ function printStatusSettingPageInfo(status)
             // document.getElementById("errorField").value = "Error, try again";
             break;
     }
-    if(window.opener == null) {
+    if(window.opener === null) {
         location.reload();
     }
     else

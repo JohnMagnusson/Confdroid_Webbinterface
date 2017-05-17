@@ -1,11 +1,11 @@
 /**
  * Logs in the administrator with password and username.
  * Returns on fail: Failed to login
- * Returns on succes: authToken in JSON
+ * Returns on success: authToken in JSON
  */
 $(document).ready(function(){
     document.getElementById('password').addEventListener('keydown', function(e) {
-        if(e.keyCode == 13)
+        if(e.keyCode === 13)
         {
             e.preventDefault();
             logIn();
@@ -24,7 +24,7 @@ function logIn()
         success: function(admin){
             console.log(admin);
 
-            if(admin.Token!="Failed")
+            if(admin.Token!=="Failed")
             {
                 $("#add_err").html("Correct username and password");
                 $("#add_err").css('display', 'inline', 'important');

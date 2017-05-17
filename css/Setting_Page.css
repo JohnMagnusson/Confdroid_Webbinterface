@@ -2,7 +2,7 @@
 * Css for the setting page
 */
 *{
-    margin: 0px;
+    margin: 0;
 }
 body{
     color: black;
@@ -53,7 +53,6 @@ nav li:active{
     height: 24em;
     margin: auto;
     border: thin solid black;
-    margin-top: 0%;
 }
 a{
     text-decoration: none;
@@ -94,7 +93,6 @@ a{
     border-right: thin solid black;
     background-color: grey;
     margin-left: 5%;
-    margin-right:0%;
 }
 #sqlAndXmlMenu li:hover {
     background-color: rgba(188, 188, 199, 0.98);

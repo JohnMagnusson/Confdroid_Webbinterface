@@ -17,4 +17,3 @@ echo '<div id="manageableData">
         <p id="id">Id: ';echo $_SESSION["dataObject"]["id"]; echo'</p>
         <p id="authToken">Authtoken: ';echo $_SESSION["dataObject"]["authToken"]; echo'</p>
     </div>';
-?>

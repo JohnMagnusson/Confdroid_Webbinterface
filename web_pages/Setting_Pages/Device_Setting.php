@@ -15,4 +15,3 @@ echo '<div id="manageableData">
         <p id="dateJoined">Date joined: ';echo $_SESSION["dataObject"]["dateCreated"]; echo'</p>
         <p id="id">Id: ';echo $_SESSION["dataObject"]["id"]; echo'</p>
     </div>';
-?>

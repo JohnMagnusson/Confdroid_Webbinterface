@@ -18,4 +18,3 @@
         </div>
         <button class="addButton" onclick="add()">Add</button>
     ';
-?>

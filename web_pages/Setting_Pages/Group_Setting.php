@@ -15,4 +15,3 @@ echo '<div id="manageableData">
         <p id="nrDevices">Nr of applications: ';echo sizeof($_SESSION["dataObject"]["applications"]); echo '</p>
         <p id="id">Id: ';echo $_SESSION["dataObject"]["id"]; echo'</p>
     </div>';
-?>

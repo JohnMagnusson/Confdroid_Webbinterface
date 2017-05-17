@@ -9,4 +9,3 @@
             <input type="button" value="Add group" onclick="handleForm()">
         </form>
     ';
-?>

@@ -6,4 +6,3 @@ echo   '<p>Database Location:</p>
         <textarea id="dbLocationTxt"></textarea>
         <p>Query:</p>
         <textarea id="queryTxt"></textarea>';
-?>

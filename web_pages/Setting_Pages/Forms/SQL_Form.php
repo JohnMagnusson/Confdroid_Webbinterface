@@ -11,4 +11,3 @@ echo   '<div id="dataContainer">
         <textarea id="queryTxt"></textarea><br>
         <input type="button" value="Create setting" onclick="handleForm()">
         </div>';
-?>

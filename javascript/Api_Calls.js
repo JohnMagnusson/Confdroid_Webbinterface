@@ -12,7 +12,7 @@
 function getDataFromAPI(searchType, searchValue, callback)
 {
     var url;
-    if(searchValue == null)
+    if(searchValue === null)
         url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
     else
         url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie")+"&searchValue="+searchValue;
@@ -22,7 +22,7 @@ function getDataFromAPI(searchType, searchValue, callback)
         url: url,
         success: function(data){
             console.log(data);
-            if(data[0] == "Not Authorized")
+            if(data[0] === "Not Authorized")
             {
                 console.log("Not authorized");
             }
@@ -36,8 +36,10 @@ function getDataFromAPI(searchType, searchValue, callback)
             {
                 case 403:
                     window.location.replace("Login.php?timedout=true");
+                    break;
                 default:
                     console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
+                    break;
             }
         }
     });
@@ -49,6 +51,7 @@ function getDataFromAPI(searchType, searchValue, callback)
  * @param apiType
  * @param restMethod
  * @param data
+ * @param printStatus
  */
 function apiChangeData(apiType, restMethod, data, printStatus)
 {

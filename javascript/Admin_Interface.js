@@ -5,7 +5,7 @@ $(document).ready(function () {
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     if(name.indexOf("Admin_Interface.php") >= 0) {
-        document.getElementsByClassName("addIcon")[0].onclick = function (e) {
+        document.getElementsByClassName("addIcon")[0].onclick = function () {
             openSettingPage(null, null, activeType, "Add_Page.php?pageName=Add_New&onlyAddNewPage=true");
         }
     }

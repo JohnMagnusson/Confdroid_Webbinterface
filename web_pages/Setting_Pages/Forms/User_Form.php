@@ -9,4 +9,3 @@ echo
             <input type="button" value="Add user" onclick="handleForm()">
         </form>
     ';
-?>

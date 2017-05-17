@@ -8,4 +8,3 @@ echo '<p>FileLocation:</p>
       <textarea id="regexpTxt"></textarea>
       <p>ReplaceWith:</p>
       <textarea id="replaceWithTxt"></textarea>';
-?>

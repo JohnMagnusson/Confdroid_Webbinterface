@@ -1,5 +1,5 @@
 <?php
-//*Display the Device settings */
+//*Display the Application settings */
 echo '<div id="manageableData"> 
         <form id="formData">
             <p>Name:</p>
@@ -24,6 +24,5 @@ echo '<div id="manageableData">
         <p id="nrOfUsers">Nr of users: ';echo sizeof($_SESSION["dataObject"]["users"]); echo '</p>
         <p id="id">Id: ';echo $_SESSION["dataObject"]["id"]; echo'</p>
     </div>';
-?>
 
 

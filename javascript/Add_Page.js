@@ -5,15 +5,15 @@
  */
 $(document).ready(function(){
     document.getElementById(currentPage).classList.add("activeLi");
-    if(document.getElementById('searchValue') != null) {
+    if(document.getElementById('searchValue') !== null) {
         document.getElementById('searchValue').addEventListener('keydown', function (e) {
-            if (e.keyCode == 13) {
+            if (e.keyCode === 13) {
                 e.preventDefault();
                 addSearch();
             }
         }, false);
     }
-    if(currentPage == "Add_Existing")
+    if(currentPage === "Add_Existing")
         addSearch();
 });
 
@@ -24,9 +24,9 @@ function addSearch()
 {
     $("#information").empty();
     var apiType;
-    if(dataTypeToAdd == "SQL")
+    if(dataTypeToAdd === "SQL")
         apiType = "sqlsetting";
-    else if(dataTypeToAdd == "XML")
+    else if(dataTypeToAdd === "XML")
         apiType = "xmlsetting";
     else
         apiType = dataTypeToAdd;
@@ -40,23 +40,24 @@ function addSearch()
  */
 function add()
 {
-    if(currentPage == "Add_Existing") {
-        if (document.getElementById("id") == null)
+    if(currentPage === "Add_Existing") {
+        if (document.getElementById("id") === null)
             alert("Select a "+dataTypeToAdd+" to add!");
         else {
+            var type;
             if (typeof applicationId !== 'undefined') {
-                var type = "Application";
+                type = "Application";
                 type += "/";
                 type += dataObject["applications"][applicationId]["id"];
             }
             else {
-                var type = dataType;
+                type = dataType;
                 type += "/";
                 type += dataObject["id"];
             }
 
             type += "/";
-            if (dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
+            if (dataTypeToAdd === "SQL" || dataTypeToAdd === "XML")        //If the datatype is sql or xml then we need to add settings to the string.
                 type += dataTypeToAdd + "setting";
             else
                 type += dataTypeToAdd;
@@ -102,7 +103,7 @@ function showData(infoParentId, data)
  */
 function printInfoOfObject(data, e)
 {
-    if(document.getElementsByClassName("selected")[0] != null) {
+    if(document.getElementsByClassName("selected")[0] !== null) {
         document.getElementsByClassName("selected")[0].classList.remove("selected");
     }
     e.target.classList.add("selected");
@@ -149,9 +150,9 @@ function printGroupInformation(data, e)
     var p = document.createElement("p");
     p.id = "prio";
     document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "id";
-    document.getElementById("information").appendChild(p);
+    var p1 = document.createElement("p");
+    p1.id = "id";
+    document.getElementById("information").appendChild(p1);
     $("#prio").html('<b>Prio:</b> ' + data[e.target.id]["prio"]);
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
 }
@@ -166,15 +167,15 @@ function printDeviceInformation(data, e)
     var p = document.createElement("p");
     p.id = "nrOfApplications";
     document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "createdDate";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "id";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "imei";
-    document.getElementById("information").appendChild(p);
+    var p1 = document.createElement("p");
+    p1.id = "createdDate";
+    document.getElementById("information").appendChild(p1);
+    var p2 = document.createElement("p");
+    p2.id = "id";
+    document.getElementById("information").appendChild(p2);
+    var p3 = document.createElement("p");
+    p3.id = "imei";
+    document.getElementById("information").appendChild(p3);
     $("#nrOfApplications").html('<b>Nr applications:</b> ' + data[e.target.id]["applications"].length);
     $("#createdDate").html('<b>Date created:</b> ' + data[e.target.id]["dateCreated"]);
     $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
@@ -192,21 +193,21 @@ function printApplicationInformation(data, e)
     var p = document.createElement("p");
     p.id = "apkName";
     document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "packageName";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "nrOfDevices";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "nrOfGroups";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "nrOfUsers";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "id";
-    document.getElementById("information").appendChild(p);
+    var p1 = document.createElement("p");
+    p1.id = "packageName";
+    document.getElementById("information").appendChild(p1);
+    var p2 = document.createElement("p");
+    p2.id = "nrOfDevices";
+    document.getElementById("information").appendChild(p2);
+    var p3 = document.createElement("p");
+    p3.id = "nrOfGroups";
+    document.getElementById("information").appendChild(p3);
+    var p4 = document.createElement("p");
+    p4.id = "nrOfUsers";
+    document.getElementById("information").appendChild(p4);
+    var p5 = document.createElement("p");
+    p5.id = "id";
+    document.getElementById("information").appendChild(p5);
     $("#apkName").html('<b>Apk Name:</b> ' + data[e.target.id]["apkName"]);
     $("#packageName").html('<b>Package Name:</b> ' + data[e.target.id]["packageName"]);
     $("#nrOfDevices").html('<b>Nr devices:</b> ' + data[e.target.id]["devices"].length);
@@ -225,21 +226,21 @@ function printUserInformation(data, e)
     var p = document.createElement("p");
     p.id = "email";
     document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "nrOfDevices";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "nrOfGroups";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "createdDate";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "id";
-    document.getElementById("information").appendChild(p);
-    var p = document.createElement("p");
-    p.id = "authToken";
-    document.getElementById("information").appendChild(p);
+    var p1 = document.createElement("p");
+    p1.id = "nrOfDevices";
+    document.getElementById("information").appendChild(p1);
+    var p2 = document.createElement("p");
+    p2.id = "nrOfGroups";
+    document.getElementById("information").appendChild(p2);
+    var p3 = document.createElement("p");
+    p3.id = "createdDate";
+    document.getElementById("information").appendChild(p3);
+    var p4 = document.createElement("p");
+    p4.id = "id";
+    document.getElementById("information").appendChild(p4);
+    var p5 = document.createElement("p");
+    p5.id = "authToken";
+    document.getElementById("information").appendChild(p5);
     $("#email").html('<b>Email:</b> ' + data[e.target.id]["email"]);
     $("#nrOfDevices").html('<b>Nr devices:</b> ' + data[e.target.id]["devices"].length);
     $("#nrOfGroups").html('<b>Nr groups in:</b> ' + data[e.target.id]["groups"].length);
@@ -295,7 +296,7 @@ function printStatusAddPage(status)
             alert("Error, try again");
             break;
     }
-    if(window.opener == null) {
+    if(window.opener === null) {
         location.reload();
     }
     else

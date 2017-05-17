@@ -7,20 +7,21 @@ $('document').ready(function(){
 });
 /**
  * Updates the menu to the left with names on the applications.
+ * @param e
  * @param settingType
  * @param application
  */
 function updateSqlXmlMenu(e, settingType, application)
 {
     cleanTextArea(settingType);                                        /*Clear textAreas*/
-    if(document.getElementsByClassName("selectedApp")[0] != null) {    /*Puts selected class on click element*/
+    if(typeof document.getElementsByClassName("selectedApp")[0] !== "undefined") {    /*Puts selected class on click element*/
         document.getElementsByClassName("selectedApp")[0].classList.remove("selectedApp");
     }
     e.target.classList.add("selectedApp");
 
     $("#settingContainer").empty();
-    document.getElementById("addBtn").style.visibility = "visible"     /*Displays add button when user can add a setting */
-    if(application[settingType+ "_settings"].length >= 1)              //Checks if the object have settings fo the application. If not displays a message.
+    document.getElementById("addBtn").style.visibility = "visible";     /*Displays add button when user can add a setting */
+    if(application[settingType+ "_settings"].length >= 1)               //Checks if the object have settings fo the application. If not displays a message.
     {
         for(var i = 0; i < application[settingType+ "_settings"].length; i++)
         {
@@ -32,6 +33,7 @@ function updateSqlXmlMenu(e, settingType, application)
 }
 /**
  * Updates the teaxtAreas
+ * @param e
  * @param settingType, Decides which texAreas to target.
  * @param data, The data to paste in to textAreas.
  */
@@ -39,13 +41,13 @@ function updateTextArea(e,settingType,data)
 {
     cleanTextArea(settingType);                                            /*Clear textAreas*/
     document.getElementById("updateBtn").style.visibility = "visible";     /*Button that updates the settings is now displayed */
-    document.getElementById("addBtn").style.visibility = "visible"  /*Displays add button when user can add a setting */
-    if(document.getElementsByClassName("selectedSetting")[0] != null) {    /*Puts selected class on click element*/
+    document.getElementById("addBtn").style.visibility = "visible";        /*Displays add button when user can add a setting */
+    if(typeof document.getElementsByClassName("selectedSetting")[0] !== "undefined") {   /*Puts selected class on click element*/
         document.getElementsByClassName("selectedSetting")[0].classList.remove("selectedSetting");
     }
     e.target.classList.add("selectedSetting");
     console.log("SettingType: " + settingType);
-    if(settingType == "SQL")
+    if(settingType === "SQL")
     {
         document.getElementById("dbLocationTxt").innerHTML = data["dblocation"];
         document.getElementById("queryTxt").innerHTML = data["query"];
@@ -62,6 +64,7 @@ function updateTextArea(e,settingType,data)
  * @param parentId
  * @param data
  * @param name
+ * @param id
  */
 function createPTagsForData(parentId, data, name, id)
 {
@@ -78,13 +81,14 @@ function createPTagsForData(parentId, data, name, id)
     div.appendChild(p);
     div.classList.add("textSettingMenu");
     document.getElementById(parentId).appendChild(div);
-    trashCan.onclick = function (e)
+    trashCan.onclick = function ()
     {
         var apiType = "application/";
-        if(dataType == "Application")
-            var appId = dataObject["id"];
+        var appId;
+        if(dataType === "Application")
+            appId = dataObject["id"];
         else
-            var appId = dataObject["applications"][document.getElementsByClassName("selectedApp")[0].id.split("app")[1]]["id"];
+            appId = dataObject["applications"][document.getElementsByClassName("selectedApp")[0].id.split("app")[1]]["id"];
         var lowerCaseSettingType = settingType.toLowerCase();
         var setting = "/"+lowerCaseSettingType + "setting/";
         var settingId = data["id"];
@@ -92,7 +96,7 @@ function createPTagsForData(parentId, data, name, id)
         if(confirm("Are you sure you want to delete " + settingType+":"+$($.parseHTML(data["name"]).text()) + "?"))
         {
             //Delete
-            if(dataType == "Application")
+            if(dataType === "Application")
                 dataObject[settingType+"_settings"].splice([trashCan.id.split("L")[1]],1);
             else
                 dataObject["applications"][document.getElementsByClassName("selectedApp")[0].id.split("app")[1]][settingType+"_settings"].splice([trashCan.id.split("L")[1]],1);
@@ -101,9 +105,9 @@ function createPTagsForData(parentId, data, name, id)
             apiChangeData(apiType,"Delete",null, function (status) {
                 printStatusSettingPageXmlSql(status,dataType);
             });
-            // window.location.reload();
+            window.location.reload();
         }
-    }
+    };
     p.onclick = function(e)
     {
         updateTextArea(e,id.split(":")[0], data);
@@ -117,7 +121,7 @@ function cleanTextArea(settingType)
 {
     document.getElementById("addBtn").style.visibility = "hidden";
     document.getElementById("updateBtn").style.visibility = "hidden";
-    if(settingType == "SQL")
+    if(settingType === "SQL")
     {
         $("#dbLocationTxt").empty();
         $("#queryTxt").empty();
@@ -141,29 +145,28 @@ function updateSetting()
     console.log("SettingId: " + settingId);
     var settingType = setting.split(":")[0];
 
-    if(settingType == "SQL")
+    if(settingType === "SQL")
     {
-        if(dataType == "Application")
-            updateSqlSetting(dataObject[settingType+"_settings"], applicationId,settingId);
+        if(dataType === "Application")
+            updateSqlSetting(dataObject[settingType+"_settings"],settingId);
         else
-            updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
+            updateSqlSetting(dataObject["applications"][applicationId][settingType+"_settings"],settingId);
     }
     else
     {
-        if(dataType == "Application")
-            updateXmlSetting(dataObject[settingType+"_settings"], applicationId,settingId);
+        if(dataType === "Application")
+            updateXmlSetting(dataObject[settingType+"_settings"],settingId);
         else
-            updateXmlSetting(dataObject["applications"][applicationId][settingType+"_settings"], applicationId,settingId);
+            updateXmlSetting(dataObject["applications"][applicationId][settingType+"_settings"],settingId);
     }
 }
 
 /**
  * Updates sql setting and updates the php session object with the new data.
  * @param sqlSettings
- * @param applicationId
  * @param settingId
  */
-function updateSqlSetting(sqlSettings, applicationId, settingId)
+function updateSqlSetting(sqlSettings,settingId)
 {
     var dbLocation = $("#dbLocationTxt").val();
     var query = $("#queryTxt").val();
@@ -183,10 +186,9 @@ function updateSqlSetting(sqlSettings, applicationId, settingId)
 /**
  * Updates xml setting and updates the php session object with the new data.
  * @param xmlSettings
- * @param applicationId
  * @param settingId
  */
-function updateXmlSetting(xmlSettings,applicationId, settingId)
+function updateXmlSetting(xmlSettings, settingId)
 {
     var fileLocation = $("#fileLocationTxt").val();
     var regexp = $("#regexpTxt").val();
@@ -230,6 +232,7 @@ function objectToSessionObject(dataToSend)
 /**
  * Prints status of apiCalls in way that is suited for the page.
  * @param status
+ * @param dataType
  */
 function printStatusSettingPageXmlSql(status, dataType)
 {
@@ -248,10 +251,11 @@ function redirectToAddPage(settingType)
 {
     var applicationId = document.getElementsByClassName("selectedApp")[0].id.split("app")[1];
     var url = "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false";
-    if(dataType != "Application")
-        var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType + "&applicationId="+applicationId;
+    var dataToSend;
+    if(dataType !== "Application")
+        dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType + "&applicationId="+applicationId;
     else
-        var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType;
+        dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType;
     console.log(dataToSend);
     objectToSessionObject(dataToSend);
     window.location.href = url;

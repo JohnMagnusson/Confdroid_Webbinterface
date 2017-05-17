@@ -13,4 +13,3 @@ echo '<div id="dataContainer">
       <textarea id="replaceWithTxt"></textarea><br>
       <input type="button" value="Create setting" onclick="handleForm()">
       </div>';
-?>

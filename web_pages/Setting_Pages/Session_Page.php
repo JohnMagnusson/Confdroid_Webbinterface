@@ -1,4 +1,7 @@
 <?php
+/**
+ * Session_Page.php acts as a middle hand to cast $_Post to $_Session. This is needed to move dataObjects in an easy way.
+ */
 if(!isset($_SESSION))
 {
     session_start();

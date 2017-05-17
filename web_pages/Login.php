@@ -24,9 +24,9 @@
             <p id="add_err"></p>
             <form>
                 Username<br>
-                <input type="text" name="username" id="username"><br><br>
+                <input type="text" name="username" id="username" title="name"><br><br>
                 Password<br>
-                <input type="password" name="password" id="password"><br>
+                <input type="password" name="password" id="password" title="password"><br>
                 <input type="button" name="login" value="Login" id="login" onclick="logIn()" >
             </form>
         </div>

@@ -29,7 +29,6 @@ function handleForm()
             break;
     }
 }
-
 /**
  * Creates a group with data from form
  */
@@ -152,7 +151,7 @@ function printStatusHandleFormData(status)
             alert("Error, try again");
             break;
     }
-    if(window.opener == null) {
+    if(window.opener === null) {
         location.reload();
     }
     else

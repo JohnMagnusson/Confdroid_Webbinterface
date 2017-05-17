@@ -20,4 +20,3 @@
             include "Forms/XML_Form.php";
             break;
     }
-?>
