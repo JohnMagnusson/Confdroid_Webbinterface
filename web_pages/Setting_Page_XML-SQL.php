@@ -20,16 +20,13 @@ function printJSONtoJS($jsVarName, $phpObject)
     echo "var $jsVarName =JSON.parse(decodedData);\n";
     echo "</script>";
 }
-if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
+if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]) && $_GET["settingType"])
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
     echo "<script>var dataType ='" . $_SESSION["dataType"] . "';\n</script>";
     echo "<script>var settingType ='" . $_GET["settingType"] . "';\n</script>";
 }
-//else
-//    echo "<script>window.close();</script>";
-//if(!isset($_GET["settingType"]))            /*If the settingType is not set something is wrong and closes the popup */
-//    echo "<script>window.close();</script>";
+
 ?>
 <!DOCTYPE html>
 <html>
