@@ -12,6 +12,10 @@ if(isset($_POST["dataObject"]) && isset($_POST["dataType"]))
     {
         $_SESSION["dataTypeToAdd"] = $_POST["dataTypeToAdd"];
     }
+    if(isset($_POST["applicationId"]))                          /*Used when User,Device,Group shall add a sql/xml setting one of their applications.*/
+        $_SESSION["applicationId"] = $_POST["applicationId"];
+    else
+        unset($_SESSION["applicationId"]);                      /*If not used unset it*/
 }
 else
 {

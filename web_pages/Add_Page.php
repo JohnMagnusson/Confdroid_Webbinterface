@@ -25,7 +25,7 @@ function printJSONtoJS($jsVarName, $phpObject)
     echo "var $jsVarName =JSON.parse(decodedData);\n";
     echo "</script>";
 }
-if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"])/* && isset($_GET["onlyAddNewPage"])*/)
+if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
     echo "<script>";
@@ -39,6 +39,12 @@ else if(isset($_GET["pageName"]) && isset($_SESSION["dataTypeToAdd"]) && isset($
     echo "<script>";
     echo "var dataTypeToAdd ='" . $_SESSION["dataTypeToAdd"] . "';";
     echo "var currentPage ='" . $_GET["pageName"] . "';";
+    echo "</script>";
+}
+if(isset($_SESSION["applicationId"]))               /*Special case if the user comes not from applications.*/
+{
+    echo "<script>";
+    echo "var applicationId ='" . $_SESSION["applicationId"] ."';";
     echo "</script>";
 }
 
@@ -66,7 +72,12 @@ else if(isset($_GET["pageName"]) && isset($_SESSION["dataTypeToAdd"]) && isset($
 
     <nav>
         <ul id="menu" class="<?php if($_GET["onlyAddNewPage"] == "true"){print_r("hide");}?>">
-            <a href="Add_Page.php?pageName=Add_Existing"><li id="Add_Existing">Add existing <?php print_r($_SESSION["dataTypeToAdd"]." to ".$_SESSION["dataObject"]["name"])?></li></a>
+            <a href="Add_Page.php?pageName=Add_Existing"><li id="Add_Existing">Add existing <?php
+                    if(isset($_SESSION["applicationId"]))
+                        $name = $_SESSION["dataObject"]["applications"][$_SESSION["applicationId"]]["name"];
+                    else
+                        $name = $_SESSION["dataObject"]["name"];
+                    print_r($_SESSION["dataTypeToAdd"]." to ".$name)?></li></a>
             <a href="Add_Page.php?pageName=Add_New"><li id="Add_New">Create new <?php print_r($_SESSION["dataTypeToAdd"]);?></li></a>
         </ul>
     </nav>

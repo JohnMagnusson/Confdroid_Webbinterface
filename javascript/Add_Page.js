@@ -35,9 +35,19 @@ function add()
             alert("Select!");
     }
     else {
-        var type = dataType;
-        type += "/";
-        type += dataObject["id"];
+        if(typeof applicationId !== 'undefined')
+        {
+            var type = "Application";
+            type += "/";
+            type += dataObject["applications"][applicationId]["id"];
+        }
+        else
+        {
+            var type = dataType;
+            type += "/";
+            type += dataObject["id"];
+        }
+
         type += "/";
         if(dataTypeToAdd == "SQL" || dataTypeToAdd == "XML")        //If the datatype is sql or xml then we need to add settings to the string.
             type += dataTypeToAdd+"setting";

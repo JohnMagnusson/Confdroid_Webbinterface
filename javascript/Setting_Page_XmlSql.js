@@ -19,7 +19,8 @@ function updateSqlXmlMenu(e, settingType, application)
     e.target.classList.add("selectedApp");
 
     $("#settingContainer").empty();
-    if(application[settingType+ "_settings"].length >= 1)                   //Checks if the object have settings fo the application. If not displays a message.
+    document.getElementById("addBtn").style.visibility = "visible"     /*Displays add button when user can add a setting */
+    if(application[settingType+ "_settings"].length >= 1)              //Checks if the object have settings fo the application. If not displays a message.
     {
         for(var i = 0; i < application[settingType+ "_settings"].length; i++)
         {
@@ -37,6 +38,8 @@ function updateSqlXmlMenu(e, settingType, application)
 function updateTextArea(e,settingType,data)
 {
     cleanTextArea(settingType);                                            /*Clear textAreas*/
+    document.getElementById("updateBtn").style.visibility = "visible";     /*Button that updates the settings is now displayed */
+    document.getElementById("addBtn").style.visibility = "visible"  /*Displays add button when user can add a setting */
     if(document.getElementsByClassName("selectedSetting")[0] != null) {    /*Puts selected class on click element*/
         document.getElementsByClassName("selectedSetting")[0].classList.remove("selectedSetting");
     }
@@ -112,6 +115,8 @@ function createPTagsForData(parentId, data, name, id)
  */
 function cleanTextArea(settingType)
 {
+    document.getElementById("addBtn").style.visibility = "hidden";
+    document.getElementById("updateBtn").style.visibility = "hidden";
     if(settingType == "SQL")
     {
         $("#dbLocationTxt").empty();
@@ -241,8 +246,12 @@ function printStatus(status, dataType)
 
 function redirectToAddPage(settingType)
 {
+    var applicationId = document.getElementsByClassName("selectedApp")[0].id.split("app")[1];
     var url = "Add_Page.php?pageName=Add_Existing";
-    var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType;
+    if(dataType != "Application")
+        var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType + "&applicationId="+applicationId;
+    else
+        var dataToSend = "dataObject="+JSON.stringify(dataObject)+"&dataType="+dataType + "&dataTypeToAdd="+settingType;
     console.log(dataToSend);
     objectToSessionObject(dataToSend);
     window.location.href = url;
