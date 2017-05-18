@@ -11,7 +11,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($
     echo "</script>";
 }
 else
-    header("Location: Login.php?timedout=true");
+    header("Location: ../index.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>

@@ -120,6 +120,7 @@ function createsContainerContent(parentId, data, url)
  */
 function deleteElement(e, name, id)
 {
+    console.log(e.target.id);
     var message = "Are you sure you want to delete " + name;
     if(document.getElementById("name") !== null && e.target.id !== "deleteBtnInfo")
         message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
@@ -153,7 +154,7 @@ function deleteElement(e, name, id)
                 sendTo = "Admin_Interface.php?activeType="+activeType;
             else
                 sendTo = null;
-            printStatusGeneralFunctions(status, sendTo, name);
+            printStatusGeneralFunctions(status, sendTo, name, e);
         });
     }
     else
@@ -165,10 +166,10 @@ function deleteElement(e, name, id)
 /**
  * Prints message depending on status call from API.
  */
-function printStatusGeneralFunctions(status, sendTo, name)
+function printStatusGeneralFunctions(status, sendTo, name, e)
 {
     var message = "Successfully deleted "+name;
-    if(document.getElementById("name") !== null)
+    if(document.getElementById("name") !== null && e.target.id !== "deleteBtnInfo")
         message += " from "+document.getElementById("name").innerText.split("Name: ")[1];
     switch(status)
     {
@@ -240,12 +241,12 @@ function logOut()
 {
     $.ajax({
         type: "DELETE",
-        url: "https://confdroid.brainstorm-labs.net/api/admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
+        url: standardUrl+"admin/login.json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie"),
         success: function(data, textStatus, xhr){
             $.removeCookie("authCookie");
             $.removeCookie("adminIdCookie");
             $.removeCookie("userName");
-            window.location.replace("Login.php?loggedOut=true");
+            window.location.replace("../index.php?loggedOut=true");
         }
     });
 }

@@ -27,6 +27,9 @@ function handleForm()
         case "XML":
             createXml();
             break;
+        case "Variable":
+            createVariable();
+            break;
     }
 }
 /**
@@ -123,6 +126,20 @@ function createXml()
     var myJson = JSON.stringify(data);
     console.log(myJson);
     apiChangeData("xmlsetting", "POST", myJson, function (status) {
+        printStatusHandleFormData(status);
+    });
+}
+
+/**
+ * Creates a variable with data from form
+ */
+function createVariable()
+{
+    var data = {};
+    data["name"] = document.getElementById("name").value;
+    var myJson = JSON.stringify(data);
+    console.log(myJson);
+    apiChangeData("variable", "POST", myJson, function (status) {
         printStatusHandleFormData(status);
     });
 }

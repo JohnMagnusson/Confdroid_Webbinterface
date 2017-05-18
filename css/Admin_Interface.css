@@ -92,7 +92,7 @@ li:active{
 #infoContainer{                     /*Static container that always on the right side*/
     float: left;
     margin-top:3%;
-    width: 27%;
+    width: 25%;
     height: 100%;
 }
 #infoHolder{                        /*Inside the infoContainer and displays information of the chosen entity */
@@ -146,6 +146,12 @@ li:active{
     font-size: 200%;
 }
 
+.temporary{
+    /*font-size: 120%;*/
+    margin-left:5%;
+    margin-top:3%;
+}
+
 .templateText{
     font-size: 120%;
     cursor:pointer;
@@ -175,7 +181,7 @@ li:active{
 .addIcon{
     /*position:fixed;*/
     margin-top:3%;
-    margin-left:90%;
+    margin-left:85%;
 }
 
 .addIcon:hover{
@@ -185,14 +191,13 @@ li:active{
 
 #templateContainer{                     /*Container that have title and infoTemplate */
     float: left;
-    width: 30%;
+    width: 25%;
     height: 100%;
     word-wrap: break-word;
 }
 
 .infoTemplate{                          /*Info teamplate displays all data */
     height: 68%;
-    margin-top: 0.5%;
     border-left: solid black thin;
     border-top: solid black thin;
     overflow-y: auto;

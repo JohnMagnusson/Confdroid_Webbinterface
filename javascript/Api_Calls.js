@@ -9,13 +9,15 @@
  * @param searchValue
  * @param callback
  */
+var standardUrl = "https://confdroid.tutus.se/api/";
 function getDataFromAPI(searchType, searchValue, callback)
 {
     var url;
+    console.log($.cookie("authCookie"));
     if(searchValue === null)
-        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
+        url = standardUrl+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
     else
-        url = "https://confdroid.brainstorm-labs.net/api/"+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie")+"&searchValue="+searchValue;
+        url = standardUrl+searchType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie")+"&searchValue="+searchValue;
     console.log(url);
     $.ajax({
         type: "GET",
@@ -35,7 +37,7 @@ function getDataFromAPI(searchType, searchValue, callback)
             switch(jqXHR["status"])
             {
                 case 403:
-                    window.location.replace("Login.php?timedout=true");
+                    window.location.replace("../index.php?timedout=true");
                     break;
                 default:
                     console.log("Textstatus: " + textStatus + " ErrorThrown: " + errorThrown + " Status code: " + jqXHR["status"] + " Response text: " + jqXHR["responseText"]);
@@ -55,7 +57,7 @@ function getDataFromAPI(searchType, searchValue, callback)
  */
 function apiChangeData(apiType, restMethod, data, printStatus)
 {
-    var url = "https://confdroid.brainstorm-labs.net/api/"+apiType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
+    var url = standardUrl+apiType.toLowerCase()+".json?authToken="+$.cookie("authCookie")+"&id="+$.cookie("adminIdCookie");
     console.log(url);
     $.ajax({
         type: restMethod,
@@ -90,7 +92,7 @@ function apiChangeData(apiType, restMethod, data, printStatus)
             switch(jqXHR["status"])
             {
                 case 403:
-                    window.location.replace("Login.php?timedout=true");
+                    window.location.replace("../index.php?timedout=true");
                     break;
                 case 404:
                     printStatus(404);

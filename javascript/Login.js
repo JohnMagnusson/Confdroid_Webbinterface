@@ -17,9 +17,10 @@ function logIn()
 {
     var username=$("#username").val();
     var password=$("#password").val();
+
     $.ajax({
         type: "POST",
-        url: "https://confdroid.brainstorm-labs.net/api/admin/login.json",
+        url: standardUrl+"admin/login.json",
         data: "username="+username+"&password="+password,
         success: function(admin){
             console.log(admin);
@@ -28,10 +29,10 @@ function logIn()
             {
                 $("#add_err").html("Correct username and password");
                 $("#add_err").css('display', 'inline', 'important');
-                $.cookie("userName",username);
-                $.cookie("authCookie", admin.Token);
-                $.cookie("adminIdCookie", admin.id);
-                window.location.replace("/Confdroid_Webbinterface/web_pages/Admin_Interface.php?activeType=User");
+                $.cookie("userName",username, { path: '/' });
+                $.cookie("authCookie", admin.Token, { path: '/' });
+                $.cookie("adminIdCookie", admin.id, { path: '/' });
+                window.location.replace("web_pages/Admin_Interface.php?activeType=User");
             }
             else
             {

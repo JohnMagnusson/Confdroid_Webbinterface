@@ -10,7 +10,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($
     echo "</script>";
 }
 else
-    header("Location: Login.php?timedout=true");
+    header("Location: ../index.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,9 +71,18 @@ else
 
             <div id="templateContainer">
                 <h2 class="optionTitle" templateType="Application">Applications</h2>
-                <div id="applicationDiv" class="infoTemplate extraRightBorder">
+                <div id="applicationDiv" class="infoTemplate">
                 </div>
-                <div id="imgContainerGroup" class="divImgAdd extraRightBorder">
+                <div id="imgContainerGroup" class="divImgAdd">
+                    <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
+                </div>
+            </div>
+
+            <div id="templateContainer">
+                <h2 class="optionTitle" templateType="Variable">Variables</h2>
+                <div id="variableDiv" class="infoTemplate ">
+                </div>
+                <div id="imgContainerGroup" class="divImgAdd">
                     <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
                 </div>
             </div>

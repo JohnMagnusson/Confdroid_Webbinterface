@@ -10,10 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="../css/Login.css">        <!-- Adds css file -->
-    <script src="../javascript/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="../javascript/jquery.cookie.js"></script>
-    <script src="../javascript/Login.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/Login.css">        <!-- Adds css file -->
+    <script src="javascript/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="javascript/jquery.cookie.js"></script>
+    <script src="javascript/Login.js"></script>
+    <script src="javascript/Api_Calls.js"></script>
 </head>
 
 <body>

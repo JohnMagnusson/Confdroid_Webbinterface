@@ -3,6 +3,9 @@
  * It can add existing object (User, Device...) to another object
  * It can search and show information
  */
+
+var variableData;
+
 $(document).ready(function(){
     document.getElementById(currentPage).classList.add("activeLi");
     if(document.getElementById('searchValue') !== null) {
@@ -72,6 +75,35 @@ function add()
 }
 
 /**
+ * Adds an existing object (dataTypeToAdd) to another object (dataType)
+ */
+function addVariable()
+{
+    if(currentPage === "Add_Existing") {
+        if (variableData === null)
+            alert("Select a "+dataTypeToAdd+" to add!");
+        else {
+            var type;
+            type = dataType;
+            type += "/";
+            type += dataObject["id"];
+            type += "/";
+            type += dataTypeToAdd;
+            type += "/";
+            console.log(variableData);
+            type += variableData["id"];
+            console.log(type);
+            var data2 = {};
+            data2["value"] = document.getElementById("variableValue").value;
+            var myJson = JSON.stringify(data2);
+            apiChangeData(type, "POST", myJson, function (status) {
+                printStatusAddPage(status);
+            });
+        }
+    }
+}
+
+/**
  * Prints out the searched data
  * @param infoParentId
  * @param data
@@ -107,15 +139,19 @@ function printInfoOfObject(data, e)
         document.getElementsByClassName("selected")[0].classList.remove("selected");
     }
     e.target.classList.add("selected");
-    var h2 = document.createElement("h2");
-    h2.id = "objectType";
-    h2.style = "text-align:center";
-    document.getElementById("information").appendChild(h2);
-    var p = document.createElement("p");
-    p.id = "name";
-    document.getElementById("information").appendChild(p);
-    $("#objectType").html(dataTypeToAdd);
-    $("#name").html('<b>Name:</b> ' + data[e.target.id]["name"]);
+    if(dataTypeToAdd !== "Variable") {
+        var h2 = document.createElement("h2");
+        h2.id = "objectType";
+        h2.style = "text-align:center";
+        document.getElementById("information").appendChild(h2);
+        var p = document.createElement("p");
+        p.id = "name";
+        document.getElementById("information").appendChild(p);
+        $("#objectType").html(dataTypeToAdd);
+        $("#name").html('<b>Name:</b> ' + data[e.target.id]["name"]);
+    }
+    else
+        variableData = data[e.target.id];
 
     switch(dataTypeToAdd)
     {
@@ -136,6 +172,9 @@ function printInfoOfObject(data, e)
             break;
         case "XML":
             printXmlInformation(data, e);
+            break;
+        case "Variable":
+            printVariableInformation(data, e);
             break;
     }
 }
@@ -276,18 +315,40 @@ function printXmlInformation(data, e)
 }
 
 /**
+ * Prints information about the selected variable
+ * @param data
+ * @param e
+ */
+function printVariableInformation(data, e)
+{
+    // var form = document.createElement("form");
+    // var input = document.createElement("input");
+    // var p = document.createElement("p");
+    // p.innerText = "Value:";
+    // form.appendChild(p);
+    // form.appendChild(input);
+    // document.getElementById("information").appendChild(form);
+    // $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
+}
+
+/**
  * Prints message depending on status call from API.
  * @param status
  */
 function printStatusAddPage(status)
 {
+    var message;
+    if(dataTypeToAdd === "Variable")
+        message = "Successfully added "+variableData["name"]+" to "+dataObject["name"];
+    else
+        message = "Successfully added "+document.getElementById("name").innerText.split("Name: ")[1]+" to "+dataObject["name"];
     switch(status)
     {
         case 200:
-            alert("Succesfully added "+document.getElementById("name").innerText.split("Name: ")[1]+" to "+dataObject["name"]);
+            alert(message);
             break;
         case 201:
-            alert("Succesfully added "+document.getElementById("name").innerText.split("Name: ")[1]+" to "+dataObject["name"]);
+            alert(message);
             break;
         case 404:
             alert("This" + dataTypeToAdd + " doesn't exist anymore");

@@ -119,15 +119,14 @@ function createPTagsForData(parentId, data, name, id)
  */
 function cleanTextArea(settingType)
 {
+    console.log(document.getElementById("addBtn"));
     document.getElementById("addBtn").style.visibility = "hidden";
     document.getElementById("updateBtn").style.visibility = "hidden";
-    if(settingType === "SQL")
-    {
+    if (settingType === "SQL") {
         $("#dbLocationTxt").empty();
         $("#queryTxt").empty();
     }
-    else
-    {
+    else {
         $("#fileLocationTxt").empty();
         $("#regexpTxt").empty();
         $("#replaceWithTxt").empty();

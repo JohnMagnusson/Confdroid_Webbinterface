@@ -19,4 +19,7 @@
         case "XML":
             include "Forms/XML_Form.php";
             break;
+        case "Variable":
+            include "Forms/Variable_Form.php";
+            break;
     }

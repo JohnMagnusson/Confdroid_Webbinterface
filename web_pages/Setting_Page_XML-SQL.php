@@ -65,6 +65,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]) && $_GET["sett
                 if($_SESSION["dataType"] == "Application")
                 {
                     echo '<p id="app0" class="textSettingMenu" onclick="updateSqlXmlMenu(event, \''.$_GET["settingType"].'\',dataObject)">';
+                    echo '<script>$(\'document\').ready(function(){$(\'#app0\').click()});</script>';
                     echo $_SESSION["dataObject"]["name"];
                     echo '</p>';
                 }

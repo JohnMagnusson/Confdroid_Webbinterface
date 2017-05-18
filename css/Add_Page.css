@@ -113,6 +113,11 @@ a{
     margin-left: 40%;
 }
 
+.addButtonVariable{
+    margin-top: 35%;
+    margin-left: 65%;
+}
+
 .selected{
     font-weight: bold;
     font-size:130%;

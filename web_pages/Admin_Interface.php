@@ -10,7 +10,7 @@ if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
     session_start();
 }
 else
-    header("Location: Login.php?timedout=true");
+    header("Location: ../index.php?timedout=true");
 ?>
 <!DOCTYPE html>
 <html>
