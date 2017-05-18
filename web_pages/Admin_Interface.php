@@ -31,10 +31,12 @@ else
 
         <div id="searchField">
             <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
-
-            <input type="button" name="searchBtn" value="Search" onclick="search()">
+            <button name="searchBtn" onclick="search()">Search</button>
         </div>
-        <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
+        <div id="usernameDisplay">
+            <?php echo $_COOKIE["userName"];?>
+            <img src="../images/admin-icon.png" alt="admin-icon">
+        </div>
     </header>
 
     <nav>
@@ -44,7 +46,7 @@ else
             <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
             <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
         </ul>
-        <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
+        <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
     </nav>
 
     <div id="container">

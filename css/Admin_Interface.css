@@ -3,17 +3,21 @@
 }
 body{
     overflow: hidden;
+    background-color: rgba(221,223,232,0.98);
     color: black;
 }
 header{
     height: 3.5em;
+    background-color: #222121;
+    opacity: 0.8;
 }
 a{
-    color: black;
+    color: white;
     text-decoration: none;
+    text-shadow: 2px 2px 0px black; /* #329736*/
 }
 a:visited{
-    color: black;
+    color: white;
 }
 #headerTitle{                       /*Title of the website*/
     font-family: Arial Black;
@@ -31,8 +35,8 @@ a:visited{
     float: right;
     margin-top: 1.55em;
     margin-right: 2em;
-    width: 8%;
-    /*height: 20px;*/
+    width: 9%;
+    color: white;
     text-align: center;
 }
 #logout{                            /*Logout button div tag*/
@@ -41,28 +45,33 @@ a:visited{
     margin-right: 4.2em;
 }
 nav{                                /*Navigation field */
-    /*height: 1.7em;*/
-    border-bottom: solid 5px black;
+    background-color: #222121;
+    opacity: 0.8;
+    -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.3) ;
 }
 li{
-    display: inline;
+    display: inline-block;
     font-size: 1.4em;
+    color: white;
     padding-left: 0.8em;
     padding-right: 0.8em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
     margin-right: 1.65em;
     margin-left: -1em;
 }
 li:hover{
-    padding-bottom: 0.13em;
-    border-bottom: solid yellow thick;
+    background-color: white;
+    color: black;
     cursor: hand;
 }
 li:active{
     color: grey;
 }
 .activeNav{                         /*Shows which type the user want to see */
-    padding-bottom: 1px;
-    border-bottom: solid green 5px;
+    background-color: white;
+    color: black;
 }
 #container{                         /*Holds together all the templates*/
     font-family: helvetica,arial,sans-serif;
@@ -75,12 +84,37 @@ li:active{
     height:100%;
     width: 35%;
 }
+/*Button css */
+button{
+    color:black;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    /*border-radius:5px;*/
+    border:solid 1px lightgrey;
+    background:white;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 3px 0px lightgrey;
+    -moz-box-shadow: 0px 3px 0px lightgrey;
+    box-shadow: 0px 3px 0px lightgrey;
+}
+button:active{
+     -webkit-box-shadow: 0px 2px 0px lightgrey;
+     -moz-box-shadow: 0px 2px 0px lightgrey;
+     box-shadow: 0px 2px 0px lightgrey;
+     position:relative;
+     top:2px;
+ }
 #searchInfo{
     height: 68%;
     margin-top: 0.5%;
-    border: thin black solid;
-    border-bottom:none;
     overflow-y: auto;
+    background-color: white;
+    -webkit-box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 #resultContainer{                   /*Holds the templates that the information will be shown in */
     float: left;
@@ -92,30 +126,30 @@ li:active{
 #infoContainer{                     /*Static container that always on the right side*/
     float: left;
     margin-top:3%;
-    width: 25%;
+    width: 22%;
     height: 100%;
 }
 #infoHolder{                        /*Inside the infoContainer and displays information of the chosen entity */
-    height: 60%;
-    border-left: black solid thin;
-    border-right: black solid thin;
-    border-top: black solid thin;
+    height: 68%;
+    background-color: white;
     overflow-y: auto;
     word-wrap: break-word;
     padding-top: 1%;
     padding-left: 1%;
     font-size: 90%;
+    -webkit-box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 .settingContainer{
+    position: relative;
+    bottom: 2em;
     height: 30%;
-    border-left: black solid thin;
-    border-right: black solid thin;
-    border-bottom: black solid thin;
-    text-align: center;
+    text-align: right;
 }
 .infoImg{
-    margin-top: 3%;
-    margin-left: 3%;
+    margin-right: 3%;
     cursor: pointer;
 }
 .infoImg:hover{
@@ -139,7 +173,7 @@ li:active{
 }
 .dataDiv{
     height:100%;
-    border:thin solid black;
+    background-color: white;
 }
 
 .templateTitle{
@@ -179,9 +213,10 @@ li:active{
     opacity: 0.7;
 }
 .addIcon{
-    /*position:fixed;*/
-    margin-top:3%;
-    margin-left:85%;
+    position:relative;
+    bottom: 2em;
+    /*margin-top:3%;*/
+    margin-left:80%;
 }
 
 .addIcon:hover{
@@ -191,6 +226,7 @@ li:active{
 
 #templateContainer{                     /*Container that have title and infoTemplate */
     float: left;
+    margin-left: 1%;
     width: 25%;
     height: 100%;
     word-wrap: break-word;
@@ -198,17 +234,19 @@ li:active{
 
 .infoTemplate{                          /*Info teamplate displays all data */
     height: 68%;
-    border-left: solid black thin;
-    border-top: solid black thin;
+    background-color: white;
+    /*margin-left: 10%;*/
     overflow-y: auto;
     word-wrap: break-word;
     font-size: 90%;
+    -webkit-box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 .extraRightBorder{                      /*Extra rightborder clas for div */
-    border-right: solid thin black;
+    /*border-right: solid thin black;*/
 }
 .divImgAdd{                             /*The div where the add image is placed */
     height: 10%;
-    border-left: black solid thin;
-    /*text-align: right;*/
 }

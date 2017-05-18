@@ -46,7 +46,7 @@ else
             <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
             <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
         </ul>
-        <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
+        <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
     </nav>
 
     <div id="container">
@@ -83,8 +83,8 @@ else
                 <p id="imei"></p>
             </div>
             <div id="settingsContainer" class="settingContainer">
-                <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg" id="settingBtnInfo">
-                <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg" id="deleteBtnInfo">
+                <img src="../images/Settings-icon-medium.png" alt="Settings-icon-medium" class="infoImg" id="settingBtnInfo">
+                <img src="../images/Trash-can-icon-medium.png" alt="Trash-can-icon-medium" class="infoImg" id="deleteBtnInfo">
             </div>
         </div>
 

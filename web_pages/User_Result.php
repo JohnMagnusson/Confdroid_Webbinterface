@@ -32,8 +32,7 @@ else
 
         <div id="searchField">
             <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
-
-            <input type="button" name="searchBtn" value="Search" onclick="search()">
+            <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
         </div>
         <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
     </header>
@@ -102,8 +101,8 @@ else
                 <p id="authToken"></p>
             </div>
             <div id="settingsContainer" class="settingContainer">
-                <img src="../images/Settings-icon-big.png" alt="Settings-icon-big" class="infoImg" id="settingBtnInfo">
-                <img src="../images/Trash-can-icon-big.png" alt="Trash-can-icon-big" class="infoImg" id="deleteBtnInfo">
+                <img src="../images/Settings-icon-medium.png" alt="Settings-icon-medium" class="infoImg" id="settingBtnInfo">
+                <img src="../images/Trash-can-icon-medium.png" alt="Trash-can-icon-medium" class="infoImg" id="deleteBtnInfo">
             </div>
         </div>
     </div>
