@@ -6,48 +6,53 @@
 }
 body{
     overflow: hidden;
+    background-color: rgba(221,223,232,0.98);
     color: black;
 }
 header{                                 /*header is the top of the page contains the logo*/
     height: 2.3em;
     text-align: center;
+    background-color: #222121;
+    opacity: 0.8;
 }
 
 nav{                                    /*Nav is the navigation menu*/
-    border-bottom: thin solid black;
+    background-color: #222121;
+    opacity: 0.8;
+    -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.3) ;
     height: 2.5em;
-    width: 100%;
     text-align: center;
+}
+h1{
+    color: white;
+    text-shadow: 2px 2px 0px black;
 }
 nav ul{
     text-decoration: none;
 }
 nav li{
-    position: relative;
-    top:0.96em;
-    display: inline;
+    display: inline-block;
     font-size: 120%;
-    padding-left: 2.5%;
-    padding-top: 1%;
-    padding-right: 2.5%;
-    border-left: thin solid black;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    background-color: grey;
-    margin-left: 5%;
-    margin-right: 5%;
+    color: white;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    margin-right: 1.65em;
+    margin-left: -1em;
+    margin-top: 0.15em;
 }
 nav li:hover{
-    background-color: rgba(188,188,199,0.98);
+    background-color: white;
+    color: black;
 }
 nav li:active{
-    color: white;
+    color: grey;
 }
 .activeLi{
-    padding-left: 3%;
-    padding-top: 1.2%;
-    padding-right: 3%;
-    background-color: rgba(188,188,199,0.98);
+    background-color: white;
+    color: black;
 }
 a{
     text-decoration: none;
@@ -66,8 +71,12 @@ a{
     width: 80%;
     height: 25em;
     margin: auto;
-    border: thin solid black;
     margin-top: 6%;
+    background-color: white;
+    -webkit-box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 #searchResultContainer{
     float:left;
@@ -81,6 +90,8 @@ a{
     margin-top:  0.5%;
     border: thin black solid;
     overflow:auto;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 #infoContainer{                     /*Static container that always on the right side*/
     float: left;
@@ -97,6 +108,8 @@ a{
     padding-top: 1%;
     padding-left: 1%;
     font-size: 90%;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 
 .templateText:hover{
@@ -149,4 +162,29 @@ textarea{
 #replaceWithTxt{
     height: 33%;
 }
+#formData{
+    margin-left: 1%;
+}
 /*End teaxtAreas */
+/*Button css */
+button{
+    color:black;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    /*border-radius:5px;*/
+    border:solid 1px lightgrey;
+    background:white;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 6px 0px lightgrey;
+    -moz-box-shadow: 0px 6px 0px lightgrey;
+    box-shadow: 0px 6px 0px lightgrey;
+}
+button:active{
+    -webkit-box-shadow: 0px 3px 0px lightgrey;
+    -moz-box-shadow: 0px 3px 0px lightgrey;
+    box-shadow: 0px 3px 0px lightgrey;
+    position:relative;
+    top:3px;
+}

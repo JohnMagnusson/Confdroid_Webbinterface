@@ -4,7 +4,7 @@ echo '
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
 
-        <input type="button" name="searchBtn" value="Search" onclick="addSearch()">
+       <button name="searchBtn" onclick="addSearch()">Search</button>
     </div>
     <div id="searchResultContainer">
         <h2 class="optionTitle">';echo $_SESSION["dataTypeToAdd"]; echo's</h2>

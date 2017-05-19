@@ -6,7 +6,7 @@ echo '<div id="manageableData">
             <input type="text" id="name" value="';echo $_SESSION["dataObject"]["name"]; echo '"><br>
             <p>Prio:</p>
             <input type="text" id="prio" value="';echo $_SESSION["dataObject"]["prio"]; echo'"><br><br>
-            <input type="button" value="Update information" onclick="changeObjectData()">
+            <button value="Update information" onclick="changeObjectData()">Update information</button>
             <p id="errorField"></p>
         </form>
     </div>

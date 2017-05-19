@@ -11,5 +11,5 @@ echo '<div id="dataContainer">
       <textarea id="regexpTxt"></textarea>
       <p>ReplaceWith:</p>
       <textarea id="replaceWithTxt"></textarea><br>
-      <input type="button" value="Create setting" onclick="handleForm()">
+      <button onclick="handleForm()">Create setting</button>
       </div>';

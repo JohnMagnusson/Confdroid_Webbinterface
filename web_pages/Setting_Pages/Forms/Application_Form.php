@@ -14,7 +14,7 @@ echo
             <input type="text" id="data_dir"><br>
             <p>Friendly Name:</p>
             <input type="text" id="friendly_name"><br><br>
-            <input type="button" value="Add application" onclick="handleForm()">
+            <button onclick="handleForm()">Add application</button>
         </form>
     ';
 ?>

@@ -43,7 +43,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]) && $_GET["sett
 <body>
 
 <header>
-    <h1>Confdroid Settings</h1>
+    <h1><?php echo $_GET["settingType"];?> Settings</h1>
 </header>
 
 <nav>
@@ -103,7 +103,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]) && $_GET["sett
     <div id="settingMenuBtnDiv">                <!--Container for the save button -->
         <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon" id="addBtn" style="visibility: hidden" onclick="redirectToAddPage('<?php echo $_GET["settingType"]; ?>')">
         <p id="errorField"></p>
-        <input type="button" value="Save" style="visibility: hidden" id="updateBtn" onclick="updateSetting()">
+        <button style="visibility: hidden" id="updateBtn" onclick="updateSetting()">Save</button>
     </div>
 </div>
 </body>
