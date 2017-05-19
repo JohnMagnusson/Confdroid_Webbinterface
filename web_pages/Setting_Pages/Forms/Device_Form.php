@@ -6,6 +6,6 @@ echo
             <input type="text" id="name"><br>
             <p>Imei:</p>
             <input type="number" id="imei"><br><br>
-            <input type="button" value="Add device" onclick="handleForm()">
+            <button onclick="handleForm()">Add device</button>
         </form>
     ';

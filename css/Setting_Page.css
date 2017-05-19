@@ -5,54 +5,62 @@
     margin: 0;
 }
 body{
+    background-color: rgba(221,223,232,0.98);
     color: black;
 }
 header{                                 /*header is the top of the page contains the logo*/
     height: 2.3em;
     text-align: center;
+    background-color: #222121;
+    opacity: 0.8;
 }
 nav{                                    /*Nav is the navigation menu*/
-    border-bottom: thin solid black;
+    background-color: #222121;
+    opacity: 0.8;
+    -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.3) ;
     height: 2.5em;
-    width: 100%;
     text-align: center;
+}
+h1{
+    color: white;
+    text-shadow: 2px 2px 0px black;
 }
 nav ul{
     text-decoration: none;
 }
 nav li{
-    position: relative;
-    top:0.96em;
-    display: inline;
+    display: inline-block;
     font-size: 120%;
-    padding-left: 2.5%;
-    padding-top: 1%;
-    padding-right: 2.5%;
-    border-left: thin solid black;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    background-color: grey;
-    margin-left: 5%;
-    margin-right: 5%;
+    color: white;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    margin-right: 1.65em;
+    margin-left: -1em;
+    margin-top: 0.15em;
 }
 nav li:hover{
-    background-color: rgba(188,188,199,0.98);
+    background-color: white;
+    color: black;
 }
 nav li:active{
-    color: white;
+    color: grey;
 }
 .activeLi{
-    padding-left: 3%;
-    padding-top: 1.2%;
-    padding-right: 3%;
-    background-color: rgba(188,188,199,0.98);
+    background-color: white;
+    color: black;
 }
-
 #container{                 /*Big rectangular div that all the elements except header and nav is put in */
     width: 87%;
     height: 24em;
     margin: auto;
-    border: thin solid black;
+    background-color: white;
+    -webkit-box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 a{
     text-decoration: none;
@@ -81,31 +89,32 @@ a{
 }
 #sqlAndXmlMenu li{          /*Li in the sqlAndXMlMenu*/
     position: relative;
-    top:0.89em;
-    left: 5%;
-    display: inline;
-    font-size: 100%;
-    padding-left: 1.5%;
-    padding-top: 0.25%;
-    padding-right: 1.5%;
-    border-left: thin solid black;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    background-color: grey;
-    margin-left: 5%;
+    left:6%;
+    display: inline-block;
+    color: black;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.42em;
+    padding-bottom: 0.42em;
+
 }
 #sqlAndXmlMenu li:hover {
-    background-color: rgba(188, 188, 199, 0.98);
+    background-color: #222121;
+    opacity: 0.8;
+    color: white;
     cursor: pointer;
 }
 #sqlAndXmlMenu li:active{
     color: white;
 }
 #sqlAndXmlMenu .activeSqlXml{              /*Display the menu the uer is currently in */
-    background-color: rgba(188,188,199,0.98);;
-    padding-left: 1.75%;
-    padding-top: 0.4%;
-    padding-right: 1.75%;
+    background-color: #222121;
+    opacity: 0.8;
+    color: white;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
 }
 #settingMenu{                       /*Menu to the left where the user can choose which sql or xml to display in the textarea*/
     width: 15%;
@@ -114,12 +123,14 @@ a{
     float: left;
 }
 #applicationContainer{              /*Displays the applications with xml or sql setting */
+    margin-left: 1%;
     width: 95%;
     height: 49%;
     overflow: auto;
     border-bottom: thin solid black;
 }
 #settingContainer{                  /*Display which setting to choose*/
+    margin-left: 1%;
     width: 95%;
     height: 49%;
     overflow: auto;
@@ -152,6 +163,8 @@ a{
 textarea{
     width: 97%;
     resize: none;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 /*SQL teaxtareas*/
 #dbLocationTxt{
@@ -191,4 +204,25 @@ textarea{
 }
 .addIcon:active{
     opacity: 1;
+}
+/*Button css */
+button{
+    color:black;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    border:solid 1px lightgrey;
+    background:white;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 6px 0px lightgrey;
+    -moz-box-shadow: 0px 6px 0px lightgrey;
+    box-shadow: 0px 6px 0px lightgrey;
+}
+button:active{
+    -webkit-box-shadow: 0px 3px 0px lightgrey;
+    -moz-box-shadow: 0px 3px 0px lightgrey;
+    box-shadow: 0px 3px 0px lightgrey;
+    position:relative;
+    top:3px;
 }

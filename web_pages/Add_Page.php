@@ -74,7 +74,7 @@ if(isset($_SESSION["applicationId"]))               /*Special case if the user c
         <ul id="menu" class="<?php if($_GET["onlyAddNewPage"] == "true"){print_r("hide");}?>">
             <?php
                 if($_SESSION["dataTypeToAdd"] == "SQL" || $_SESSION["dataTypeToAdd"] == "XML")
-                    echo'<input type="button" id="backBtn" value="<== Back to '. $_SESSION["dataType"] .'" onclick="redirectToSettingpage()">';
+                    echo'<button id="backBtn" onclick="redirectToSettingpage()"><== Back to '. $_SESSION["dataType"] .'</button>';
             ?>
 
             <a href="Add_Page.php?pageName=Add_Existing"><li id="Add_Existing">Add existing

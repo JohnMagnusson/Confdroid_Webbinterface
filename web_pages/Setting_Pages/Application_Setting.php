@@ -15,7 +15,7 @@ echo '<div id="manageableData">
             <p>Force install:</p>
             <input type="text" id="forceInstall" value="';echo $_SESSION["dataObject"]["forceInstall"]; echo'"><br><br>
             <p id="errorField"></p>
-            <input type="button" value="Update information" onclick="changeObjectData()">
+            <button value="Update information" onclick="changeObjectData()">Update information</button>
         </form>
     </div>
     <div id="staticData">

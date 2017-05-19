@@ -1,17 +1,22 @@
 body{
-
+    background-color: rgba(221,223,232,0.98);
+    opacity: 0.8;
 }
 #container{
-    width: 500px;
-    height: 250px;
+    width: 50%;
+    height: 16em;
     margin: auto;
-    background-color: aliceblue;
-    /*text-align: center;*/
+    background-color: white;
+    -webkit-box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 }
 #loginContainer{
     width: 250px;
     height: 150px;
     margin: auto;
+
 
 }
 .text_align_center{
@@ -19,4 +24,26 @@ body{
 }
 #add_err{
     display: none;
+}
+/*Button css */
+button{
+    color:black;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    /*border-radius:5px;*/
+    border:solid 1px lightgrey;
+    background:white;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 6px 0px lightgrey;
+    -moz-box-shadow: 0px 6px 0px lightgrey;
+    box-shadow: 0px 6px 0px lightgrey;
+}
+button:active{
+    -webkit-box-shadow: 0px 3px 0px lightgrey;
+    -moz-box-shadow: 0px 3px 0px lightgrey;
+    box-shadow: 0px 3px 0px lightgrey;
+    position:relative;
+    top:3px;
 }

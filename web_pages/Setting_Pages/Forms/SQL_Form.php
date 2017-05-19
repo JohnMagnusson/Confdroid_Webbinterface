@@ -9,5 +9,5 @@ echo   '<div id="dataContainer">
         <textarea id="dbLocationTxt"></textarea>
         <p>Query:</p>
         <textarea id="queryTxt"></textarea><br>
-        <input type="button" value="Create setting" onclick="handleForm()">
+        <button onclick="handleForm()">Create setting</button>
         </div>';

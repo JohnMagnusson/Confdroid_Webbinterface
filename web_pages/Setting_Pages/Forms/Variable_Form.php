@@ -4,6 +4,6 @@ echo
         <form id="formData">
             <p>Name:</p>
             <input type="text" id="name"><br><br>
-            <input type="button" value="Add variable" onclick="handleForm()">
+            <button onclick="handleForm()">Add variable</button>
         </form>
     ';
