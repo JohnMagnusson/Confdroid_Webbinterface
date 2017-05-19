@@ -13,11 +13,13 @@ $(document).ready(function(){
     }, false);
 });
 
+/**
+ * Logs in the admin and creates cookies that stores authToken, adminId and username.
+ */
 function logIn()
 {
     var username=$("#username").val();
     var password=$("#password").val();
-
     $.ajax({
         type: "POST",
         url: standardUrl+"admin/login.json",
@@ -25,7 +27,7 @@ function logIn()
         success: function(admin){
             console.log(admin);
 
-            if(admin.Token!=="Failed")
+            if(admin !== "")
             {
                 $("#add_err").html("Correct username and password");
                 $("#add_err").css('display', 'inline', 'important');

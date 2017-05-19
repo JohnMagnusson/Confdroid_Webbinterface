@@ -146,14 +146,12 @@ function printStatusSettingPageInfo(status)
     {
         case 200:
             alert("Updated successfully");
-            // document.getElementById("errorField").innerText = "Updated successful";
             break;
         case 404:
             alert("This" + dataType + " doesn't exist anymore");
             break;
         default:
             alert("Error, try again");
-            // document.getElementById("errorField").value = "Error, try again";
             break;
     }
     if(window.opener === null) {

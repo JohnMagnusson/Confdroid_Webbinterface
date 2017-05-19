@@ -315,23 +315,6 @@ function printXmlInformation(data, e)
 }
 
 /**
- * Prints information about the selected variable
- * @param data
- * @param e
- */
-function printVariableInformation(data, e)
-{
-    // var form = document.createElement("form");
-    // var input = document.createElement("input");
-    // var p = document.createElement("p");
-    // p.innerText = "Value:";
-    // form.appendChild(p);
-    // form.appendChild(input);
-    // document.getElementById("information").appendChild(form);
-    // $("#id").html('<b>Id:</b> ' + data[e.target.id]["id"]);
-}
-
-/**
  * Prints message depending on status call from API.
  * @param status
  */

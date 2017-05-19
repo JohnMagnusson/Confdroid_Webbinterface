@@ -45,5 +45,5 @@ button:active{
     -moz-box-shadow: 0px 3px 0px lightgrey;
     box-shadow: 0px 3px 0px lightgrey;
     position:relative;
-    top:3px;
+    top:2px;
 }

@@ -32,7 +32,7 @@ function updateSqlXmlMenu(e, settingType, application)
         document.getElementById("settingContainer").innerHTML = "No Setting for this application";
 }
 /**
- * Updates the teaxtAreas
+ * Updates the textAreas
  * @param e
  * @param settingType, Decides which texAreas to target.
  * @param data, The data to paste in to textAreas.
@@ -60,7 +60,7 @@ function updateTextArea(e,settingType,data)
     }
 }
 /**
- * Creates a div, p tag and a thrashcan picture for text.
+ * Creates a div, p tag and a trashcan picture for text.
  * @param parentId
  * @param data
  * @param name
