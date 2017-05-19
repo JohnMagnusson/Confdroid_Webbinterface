@@ -17,7 +17,8 @@ function printUserInfo(user)
     createsContainerContent("deviceDiv", user["devices"], url);
     url = "Application_Result.php?activeType=Application&data=";
     createsContainerContent("applicationDiv", user["applications"], url);
-    createsContentForVariableContainer("variableDiv", user["variables"]);
+    url = "Variable_Result.php?activeType=Variable&data=";
+    createsContainerContent("variableDiv", user["variables"]);
     /*Display all vital information about the user in the infoDiv */
     $("#objectType").html("User");
     $("#name").html('<b>Name:</b> ' +  $($.parseHTML(user["name"])).text());
