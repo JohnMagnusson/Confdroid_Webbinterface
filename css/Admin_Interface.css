@@ -186,6 +186,11 @@ button:active{
     margin-top:3%;
 }
 
+.temporary:hover>img{
+    visibility: visible;
+    cursor: pointer;
+}
+
 .templateText{
     font-size: 120%;
     cursor:pointer;

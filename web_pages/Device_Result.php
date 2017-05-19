@@ -47,6 +47,7 @@ else
             <li id="liGroup"  onclick="updateNav('liGroup')">Group</li>
             <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
             <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
+            <li id="liVariable" onclick="updateNav('liVariable')">Variable</li>
         </ul>
         <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
     </nav>
