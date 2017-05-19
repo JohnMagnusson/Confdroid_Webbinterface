@@ -17,7 +17,7 @@ else
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Device</title>
+    <title>Device-Confdroid</title>
     <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
@@ -33,10 +33,12 @@ else
 
         <div id="searchField">
             <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
-
-            <input type="button" name="searchBtn" value="Search" onclick="search()">
+            <button name="searchBtn" onclick="search()">Search</button>
         </div>
-        <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
+        <div id="usernameDisplay">
+            <?php echo $_COOKIE["userName"];?>
+            <img src="../images/admin-icon.png" alt="admin-icon">
+        </div>
     </header>
 
     <nav>

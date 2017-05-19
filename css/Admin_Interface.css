@@ -227,7 +227,7 @@ button:active{
 #templateContainer{                     /*Container that have title and infoTemplate */
     float: left;
     margin-left: 1%;
-    width: 25%;
+    width: 23%;
     height: 100%;
     word-wrap: break-word;
 }

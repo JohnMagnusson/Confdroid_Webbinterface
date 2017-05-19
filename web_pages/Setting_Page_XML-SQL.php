@@ -32,7 +32,7 @@ if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]) && $_GET["sett
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Setting Page</title>
+    <title>Setting Page-Confdroid</title>
     <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Setting_Page.css">
     <script type="text/javascript" src="../javascript/jquery-3.2.0.min.js"></script>

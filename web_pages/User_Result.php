@@ -16,7 +16,7 @@ else
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
+    <title>User-Confdroid</title>
     <link rel="icon" href="../images/BrowserIcon.ico">
     <link rel="stylesheet" type="text/css" href="../css/Admin_Interface.css">        <!-- Adds css file -->
     <script src="../javascript/jquery-3.2.0.min.js"></script>
@@ -32,9 +32,12 @@ else
 
         <div id="searchField">
             <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
-            <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
+            <button name="searchBtn" onclick="search()">Search</button>
         </div>
-        <div id="usernameDisplay"><?php echo $_COOKIE["userName"];?></div>
+        <div id="usernameDisplay">
+            <?php echo $_COOKIE["userName"];?>
+            <img src="../images/admin-icon.png" alt="admin-icon">
+        </div>
     </header>
 
     <nav>
@@ -44,7 +47,7 @@ else
             <li id="liDevice" onclick="updateNav('liDevice')">Device</li>
             <li id="liApplication" onclick="updateNav('liApplication')">Application</li>
         </ul>
-        <input type="button" id="logout" name="logoutBtn" value="Logout" onclick="logOut()">
+        <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
     </nav>
 
     <div id="container">
