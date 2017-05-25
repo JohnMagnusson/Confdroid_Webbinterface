@@ -4,13 +4,13 @@ echo '<div id="manageableData">
         <p>Name:</p>
         <input type="text" id="name" value="';echo $_SESSION["dataObject"]["name"]; echo '"><br>
         <p>Apk Name:</p>
-        <input type="text" id="apkName" value="';echo $_SESSION["dataObject"]["apkName"]; echo'"><br><br>
+        <input type="text" id="apkName" value="';echo $_SESSION["dataObject"]["apkName"]; echo'"><br>
         <p>Apk Url:</p>
-        <input type="text" id="apkURL" value="';echo $_SESSION["dataObject"]["apkURL"]; echo'"><br><br>
+        <input type="text" id="apkURL" value="';echo $_SESSION["dataObject"]["apkURL"]; echo'"><br>
         <p>Package name:</p>
-        <input type="text" id="packageName" value="';echo $_SESSION["dataObject"]["packageName"]; echo'"><br><br>
+        <input type="text" id="packageName" value="';echo $_SESSION["dataObject"]["packageName"]; echo'"><br>
         <p>Dara dir:</p>
-        <input type="text" id="dataDir" value="';echo $_SESSION["dataObject"]["dataDir"]; echo'"><br><br>
+        <input type="text" id="dataDir" value="';echo $_SESSION["dataObject"]["dataDir"]; echo'"><br>
         <p>Force install:</p>
         <input type="text" id="forceInstall" value="';echo $_SESSION["dataObject"]["forceInstall"]; echo'"><br><br>
         <p id="errorField"></p>
