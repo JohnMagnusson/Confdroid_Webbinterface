@@ -24,7 +24,7 @@ function logIn()
         data: "username="+username+"&password="+password,
         success: function(admin){
             console.log(admin);
-            
+
             $.cookie("userName",username, { path: '/' });
             $.cookie("authCookie", admin.Token, { path: '/' });
             $.cookie("adminIdCookie", admin.id, { path: '/' });
