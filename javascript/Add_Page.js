@@ -90,7 +90,6 @@ function addVariable()
             type += "/";
             type += dataTypeToAdd;
             type += "/";
-            console.log(variableData);
             type += variableData["id"];
             console.log(type);
             var data2 = {};
