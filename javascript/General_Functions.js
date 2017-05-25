@@ -100,8 +100,12 @@ function createsContainerContent(parentId, data, url)
                 deleteElement(e, data[e.target.id]["name"], data[e.target.id]["id"]);
             };
             settings.onclick = function (e) {
+                console.log(url);
                 getDataFromAPI(url.split("_")[0]+"/"+data[e.target.id]["id"],null,function (data, searchType) {     /*Gets data from the clicked element, then searches on the clicked element and uses a callback function to call on openSettingPage*/
-                    openSettingPage(data,searchType.split("/")[0], null,"Setting_Page_Info.php?settingType=SQL");
+                    if(searchType.split("/")[0] === "Variable")
+                        openSettingPage(data,searchType.split("/")[0], null,"Setting_Page_Info.php?settingType=SQL&hiddenMenu=true");
+                    else
+                        openSettingPage(data,searchType.split("/")[0], null,"Setting_Page_Info.php?settingType=SQL");
                 });
             };
             p2.onclick = function(e)

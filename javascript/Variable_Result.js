@@ -17,12 +17,12 @@ function printVariableInfo(variable)
     $("#name").html('<b>Name:</b> ' +  $($.parseHTML(variable["name"])).text());
     $("#nrOfUsers").html('<b>Nr Users:</b> ' + variable["userValues"].length);
     $("#id").html('<b>Id:</b> ' + variable["id"]);
-    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(user, "User", null, 'Setting_Page_Info.php');};
-    document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, user["name"], user["id"]);};
+    document.getElementById('settingBtnInfo').onclick = function(){openSettingPage(variable, "Variable", null, 'Setting_Page_Info.php?hiddenMenu=true');};
+    document.getElementById('deleteBtnInfo').onclick = function(e){deleteElement(e, variable["name"], variable["id"]);};
     for (var i = 0; i < document.getElementsByClassName("addIcon").length; i++) {
 
         document.getElementsByClassName("addIcon")[i].onclick = function (e) {
-            openSettingPage(user, "User", e.target.parentNode.parentNode.firstChild.nextSibling.getAttribute("templateType"), "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false");
+            openSettingPage(variable, "Variable", e.target.parentNode.parentNode.firstChild.nextSibling.getAttribute("templateType"), "Add_Page.php?pageName=Add_Existing&onlyAddNewPage=false");
         }
     }
 }

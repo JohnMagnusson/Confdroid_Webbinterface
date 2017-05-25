@@ -50,8 +50,13 @@ else
 
 <nav>
     <ul id="menu">
-        <a href="Setting_Page_Info.php"><li class="activeLi">Information</li></a>
-        <a href="Setting_Page_XML-SQL.php?settingType=SQL"><li>SQL/XML Settings</li></a>
+        <?php
+        if(!isset($_GET["hiddenMenu"]))
+        {
+            echo '<a href="Setting_Page_Info.php"><li class="activeLi">Information</li></a>';
+            echo '<a href="Setting_Page_XML-SQL.php?settingType=SQL"><li>SQL/XML Settings</li></a>';
+        }
+        ?>
     </ul>
 </nav>
 <div id="sqlAndXmlMenu"></div>
@@ -70,6 +75,9 @@ else
             break;
         case"Application";
             include 'Setting_Pages/Application_Setting.php';
+            break;
+        case"Variable";
+            include 'Setting_Pages/Variable_Setting.php';
             break;
     }
     ?>

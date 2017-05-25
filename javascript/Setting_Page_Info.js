@@ -12,8 +12,11 @@ function changeObjectData()
         case"Group":
             updateGroupInfo(dataObject);
             break;
-         case"Application":
-             updateApplicationInfo(dataObject);
+        case"Application":
+            updateApplicationInfo(dataObject);
+            break;
+        case"Variable":
+            updateVariableInfo(dataObject);
             break;
     }
 }
@@ -29,6 +32,19 @@ function updateUserInfo(user){
     /*Updates the php session */
     user["name"] = name;
     user["email"] = email;
+    for(var i = 0; i < dataObject["variables"].length; i++)
+    {
+        var variable = dataObject["variables"][i];
+        // console.log(variable);
+        user[variable["name"]] = $("#"+variable["name"]).val();
+        var variableNewValue = {};
+        variableNewValue["value"] = $("#"+variable["name"]).val();
+        console.log("user/"+user["id"]+"/variable/"+variable["id"]);
+        console.log(JSON.stringify(variableNewValue));
+        apiChangeData("user/"+user["id"]+"/variable/"+variable["id"],"PUT",JSON.stringify(variableNewValue), function (status) {
+
+        });
+    }
     var dataToSend = "dataObject="+JSON.stringify(user)+"&dataType=User";
     objectToSessionObject(dataToSend);
     /*Updates the value in the database */
@@ -119,6 +135,22 @@ function updateApplicationInfo(application)
     });
 }
 
+function updateVariableInfo(variable)
+{
+    var name=$("#name").val();
+    /*Updates the php session */
+    variable["name"] = name;
+    console.log(JSON.stringify(variable));
+    var dataToSend = "dataObject="+JSON.stringify(variable)+"&dataType=Variable";
+    objectToSessionObject(dataToSend);
+    /*Updates the value in the database */
+    var newValues = {};
+    newValues["name"] = name;
+    apiChangeData("variable/"+variable["id"],"PUT",JSON.stringify(newValues),function (status) {
+        printStatusSettingPageInfo(status);
+    });
+}
+
 /**
  * Post data to Session_Page.php that converts the post object to session object.
  * The data is split and stored in $_Session["dataObject"] and $_Session["dataType"].
@@ -156,9 +188,9 @@ function printStatusSettingPageInfo(status)
             // document.getElementById("errorField").value = "Error, try again";
             break;
     }
-    if(window.opener === null) {
-        location.reload();
-    }
-    else
-        window.opener.location.reload();
+    // if(window.opener === null) {
+    //     location.reload();
+    // }
+    // else
+    //     window.opener.location.reload();
 }

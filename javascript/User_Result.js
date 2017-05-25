@@ -18,7 +18,7 @@ function printUserInfo(user)
     url = "Application_Result.php?activeType=Application&data=";
     createsContainerContent("applicationDiv", user["applications"], url);
     url = "Variable_Result.php?activeType=Variable&data=";
-    createsContainerContent("variableDiv", user["variables"]);
+    createsContainerContent("variableDiv", user["variables"], url);
     /*Display all vital information about the user in the infoDiv */
     $("#objectType").html("User");
     $("#name").html('<b>Name:</b> ' +  $($.parseHTML(user["name"])).text());
