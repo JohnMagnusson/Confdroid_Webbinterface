@@ -27,7 +27,7 @@
             <input type="text" name="username" id="username" title="name"><br><br>
             Password<br>
             <input type="password" name="password" id="password" title="password"><br><br>
-            <button name="login" id="login" onclick="logIn()">Login</button>
+            <button name="login" id="login" onclick="logIn()" >Login</button>
         </div>
 
     </div>
