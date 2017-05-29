@@ -2,7 +2,7 @@ body{
     background-color: rgba(221,223,232,0.98);
     opacity: 0.8;
 }
-#container{
+#container{                         /*The big container for the page*/
     width: 50%;
     height: 16em;
     margin: auto;
@@ -12,7 +12,7 @@ body{
     -webkit-border-radius: 6px;
     border-radius: 6px;
 }
-#loginContainer{
+#loginContainer{                    /*Contains the login form*/
     width: 250px;
     height: 150px;
     margin: auto;
@@ -22,7 +22,7 @@ body{
 .text_align_center{
     text-align: center;
 }
-#add_err{
+#add_err{                           /*shows error message if you used an incorrect login*/
     display: none;
 }
 /*Button css */

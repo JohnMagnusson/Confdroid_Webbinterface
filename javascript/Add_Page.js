@@ -9,6 +9,7 @@ var variableData;
 $(document).ready(function(){
     document.getElementById(currentPage).classList.add("activeLi");
     if(document.getElementById('searchValue') !== null) {
+        // Makes it so that when you press the enter key when in the searchfield, it doesnt reload page, instead it makes a search
         document.getElementById('searchValue').addEventListener('keydown', function (e) {
             if (e.keyCode === 13) {
                 e.preventDefault();
@@ -26,7 +27,7 @@ $(document).ready(function(){
 function addSearch()
 {
     $("#information").empty();
-    var apiType;
+    var apiType;                //the resource identifier so the api knows what to search for
     if(dataTypeToAdd === "SQL")
         apiType = "sqlsetting";
     else if(dataTypeToAdd === "XML")
@@ -47,7 +48,7 @@ function add()
         if (document.getElementById("id") === null)
             alert("Select a "+dataTypeToAdd+" to add!");
         else {
-            var type;
+            var type;                       //the resource identifier so the api knows what to add
             if (typeof applicationId !== 'undefined') {
                 type = "Application";
                 type += "/";
@@ -83,7 +84,7 @@ function addVariable()
         if (variableData === null)
             alert("Select a "+dataTypeToAdd+" to add!");
         else {
-            var type;
+            var type;                       //the resource identifier so the api knows what to add
             type = dataType;
             type += "/";
             type += dataObject["id"];
@@ -137,7 +138,7 @@ function printInfoOfObject(data, e)
     if(typeof document.getElementsByClassName("selected")[0] !== "undefined") {
         document.getElementsByClassName("selected")[0].classList.remove("selected");
     }
-    e.target.classList.add("selected");
+    e.target.classList.add("selected");             //Makes the clicked one "selected"
     if(dataTypeToAdd !== "Variable") {
         var h2 = document.createElement("h2");
         h2.id = "objectType";

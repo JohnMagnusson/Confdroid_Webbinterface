@@ -2,6 +2,7 @@
  * Api_Calls have functions to communicate with the API
  */
 
+var standardUrl = "https://confdroid.tutus.se/api/";
 /**
  * Gets data from th api based on the searchType and searchValue.
  * Sends the the result to the param callback function.
@@ -9,7 +10,6 @@
  * @param searchValue
  * @param callback
  */
-var standardUrl = "https://confdroid.tutus.se/api/";
 function getDataFromAPI(searchType, searchValue, callback)
 {
     var url;

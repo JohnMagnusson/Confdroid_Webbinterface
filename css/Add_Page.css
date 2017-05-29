@@ -50,7 +50,7 @@ nav li:hover{
 nav li:active{
     color: grey;
 }
-.activeLi{
+.activeLi{                      /* activeLi is the selected nav option */
     background-color: white;
     color: black;
 }
@@ -67,7 +67,7 @@ a{
     float: left;
     margin-top: -2em;
 }
-#container{                 /*Big rectangular div that all the elements except header is put in */
+#container{                         /*Big rectangular div that all the elements except header is put in */
     width: 80%;
     height: 25em;
     margin: auto;
@@ -78,14 +78,15 @@ a{
     -webkit-border-radius: 6px;
     border-radius: 6px;
 }
-#searchResultContainer{
+
+#searchResultContainer{             /*Container for the search result and the title for it*/
     float:left;
     height:100%;
     width:25%;
     margin-left: 1%;
     margin-top: 1%;
 }
-#searchResult{
+#searchResult{                      /*Contains all of the results*/
     height: 85%;
     margin-top:  0.5%;
     border: thin black solid;
@@ -131,7 +132,7 @@ a{
     margin-left: 65%;
 }
 
-.selected{
+.selected{                  /*The selected object*/
     font-weight: bold;
     font-size:130%;
 }

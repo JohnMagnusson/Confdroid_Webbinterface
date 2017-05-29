@@ -5,10 +5,11 @@ $(document).ready(function(){
     var url=window.location.href.split('/');
     var name=url[url.length-1];
     $("li").removeClass("activeNav");
-    $( '#li'+activeType).last().addClass( "activeNav" );
-    window.onpopstate = function() {
+    $( '#li'+activeType).last().addClass( "activeNav" );            //Makes activeType the new activeNav option
+    window.onpopstate = function() {                                //Goes back one page when back button is clicked
         history.back();
     };
+    // Makes it so that when you press the enter key when in the searchfield, it doesnt reload page, instead it makes a search
     document.getElementById('searchValue').addEventListener('keydown', function(e) {
         if(e.keyCode === 13)
         {
@@ -16,6 +17,7 @@ $(document).ready(function(){
             search();
         }
     }, false);
+    //Makes an search for all objects of the activeNav immediately when entering the page.
     if(name.indexOf("searchValue") >= 0)
     {
         search();
@@ -35,6 +37,7 @@ function search()
     var searchValue = document.getElementById("searchValue").value;
     var url=window.location.href.split('/');
     var name=url[url.length-1];
+    //If a search has been made from another page than admin_interface the url will contain the searchvalue for admin_interface to get
     if(name.indexOf("Admin_Interface.php") < 0)
     {
         var url2 = "Admin_Interface.php?activeType="+$("#menu").find(".activeNav")[0].innerText+"&searchValue="+encodeURIComponent(searchValue)+"&searchType="+searchType;
@@ -194,7 +197,7 @@ function printStatusGeneralFunctions(status, sendTo, name, e)
             location.href = sendTo;
     }
     else
-        window.opener.location.reload();
+        window.opener.location.reload();                //Reloads the page that opened up the popup page
 }
 
 /**

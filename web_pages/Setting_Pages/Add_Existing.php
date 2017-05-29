@@ -12,6 +12,7 @@ echo '
         </div>
     </div>
     ';
+    //If the dataTypeToAdd is variable it looks a little bit different
     if($_SESSION["dataTypeToAdd"] !== "Variable") {
         echo '
             <div id = "infoContainer" >
