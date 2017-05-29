@@ -78,7 +78,7 @@ li:active{
     margin: auto;
     height: 100%;
 }
-#searchContainer{
+#searchContainer{                  /*Container for the search template */
     float:left;
     height:100%;
     width: 35%;
@@ -105,7 +105,7 @@ button:active{
      position:relative;
      top:2px;
  }
-#searchInfo{
+#searchInfo{                        /*Search info is displayed in this template */
     height: 68%;
     margin-top: 0.5%;
     overflow-y: auto;
@@ -163,7 +163,7 @@ button:active{
     font-size: 1.5em;
 }
 
-.template{
+.template{                          /*Standard generated template class */
     height:100%;
     width:20%;
     float:left;
@@ -181,7 +181,6 @@ button:active{
 }
 
 .temporary{
-    /*font-size: 120%;*/
     margin-left:5%;
     margin-top:3%;
 }
@@ -191,7 +190,7 @@ button:active{
     cursor: pointer;
 }
 
-.templateText{
+.templateText{                  /*Class for handling links of the loaded objects*/
     font-size: 120%;
     cursor:pointer;
     margin-left:5%;
@@ -207,7 +206,7 @@ button:active{
 .templateText>p:active{
     color:rgba(218,218,229,0.98);
 }
-.img{
+.img{                          /*Sets style on the small img icons for each found object*/
     float:right;
     margin-top:2%;
     margin-right:2%;
@@ -217,10 +216,9 @@ button:active{
 {
     opacity: 0.7;
 }
-.addIcon{
+.addIcon{                     /*Class for the add button down in each template*/
     position:relative;
     bottom: 2em;
-    /*margin-top:3%;*/
     margin-left:80%;
 }
 
@@ -237,7 +235,7 @@ button:active{
     word-wrap: break-word;
 }
 
-.infoTemplate{                          /*Info teamplate displays all data */
+.infoTemplate{                          /*Info template displays all data */
     height: 68%;
     background-color: white;
     overflow-y: auto;
@@ -247,9 +245,6 @@ button:active{
     box-shadow: 1px 1px 9px 0 rgba(122,132,140,0.91) ;
     -webkit-border-radius: 6px;
     border-radius: 6px;
-}
-.extraRightBorder{                      /*Extra rightborder clas for div */
-    /*border-right: solid thin black;*/
 }
 .divImgAdd{                             /*The div where the add image is placed */
     height: 10%;

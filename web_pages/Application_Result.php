@@ -3,6 +3,7 @@
 /**
  * Interface for the admin to manage the system.
  */
+/* Checks if cookies are set and necessary get variables*/
 if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($_GET["data"]) && isset($_GET["activeType"]))
 {
     echo "<script>";
@@ -30,7 +31,6 @@ else
 <body>
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
-
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
         <button name="searchBtn" onclick="search()">Search</button>
@@ -40,7 +40,6 @@ else
         <img src="../images/admin-icon.png" alt="admin-icon">
     </div>
 </header>
-
 <nav>
     <ul id="menu">
         <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
@@ -51,11 +50,8 @@ else
     </ul>
     <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
 </nav>
-
 <div id="container">
-
     <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
-
         <div id="templateContainer">
             <h2 class="optionTitle" templateType="Group">Groups</h2>
             <div id="groupDiv" class="infoTemplate">
@@ -64,7 +60,6 @@ else
                 <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
-
         <div id="templateContainer">
             <h2 class="optionTitle" templateType="User">Users</h2>
             <div id="userDiv" class="infoTemplate">
@@ -73,7 +68,6 @@ else
                 <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
-
         <div id="templateContainer">
             <h2 class="optionTitle" templateType="Device">Devices</h2>
             <div id="deviceDiv" class="infoTemplate extraRightBorder">
@@ -83,7 +77,6 @@ else
             </div>
         </div>
     </div>
-
     <div id="infoContainer">            <!-- Static info container -->
         <h2 class="optionTitle">Information</h2>
         <div id="infoHolder">           <!-- All info is printed inside this div -->

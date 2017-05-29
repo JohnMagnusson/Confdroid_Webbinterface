@@ -22,6 +22,7 @@ function printJSONtoJS($jsVarName, $phpObject)
     echo "var $jsVarName =JSON.parse(decodedData);\n";
     echo "</script>";
 }
+/* Checks if session variables are set*/
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
@@ -62,8 +63,8 @@ else
 <div id="sqlAndXmlMenu"></div>
 <div id="container">
     <?php
-    switch ($_SESSION["dataType"])                   /*Depending of the dataType then shall the page look diffrent. DataType is decided when the user clicks the setting icon.*/
-    {
+    switch ($_SESSION["dataType"]) /*Depending of the dataType then shall the page look different. */
+    {                              /*DataType is decided when the user clicks the setting icon.*/
         case"User";
             include 'Setting_Pages/User_Setting.php';
             break;

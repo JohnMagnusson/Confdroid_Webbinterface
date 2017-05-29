@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Elias
- * Date: 2017-05-09
- * Time: 14:59
- */
 /*Starts session if not already started */
 if(!isset($_SESSION))
 {
     session_start();
 }
-
 /**
  * Creates a javascriptObject from PhpJsonObject
  * @param $jsVarName
@@ -25,6 +18,7 @@ function printJSONtoJS($jsVarName, $phpObject)
     echo "var $jsVarName =JSON.parse(decodedData);\n";
     echo "</script>";
 }
+/* Depending from where a object shall be created from then different variables are needed*/
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]))
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);
@@ -47,8 +41,6 @@ if(isset($_SESSION["applicationId"]))               /*Special case if the user c
     echo "var applicationId ='" . $_SESSION["applicationId"] ."';";
     echo "</script>";
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -87,13 +79,10 @@ if(isset($_SESSION["applicationId"]))               /*Special case if the user c
             <a href="Add_Page.php?pageName=Add_New"><li id="Add_New">Create new <?php print_r($_SESSION["dataTypeToAdd"]);?></li></a>
         </ul>
     </nav>
-
     <div id="container">
         <?php include 'Setting_Pages/'.$_GET["pageName"].'.php';?>
     </div>
-
 </body>
-
 </html>
 
 

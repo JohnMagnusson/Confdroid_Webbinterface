@@ -35,7 +35,6 @@ function updateUserInfo(user){
     for(var i = 0; i < dataObject["variables"].length; i++)
     {
         var variable = dataObject["variables"][i];
-        // console.log(variable);
         user[variable["name"]] = $("#"+variable["name"]).val();
         var variableNewValue = {};
         variableNewValue["value"] = $("#"+variable["name"]).val();
@@ -154,6 +153,8 @@ function updateVariableInfo(variable)
 /**
  * Post data to Session_Page.php that converts the post object to session object.
  * The data is split and stored in $_Session["dataObject"] and $_Session["dataType"].
+ * The data is stored in $_Session["dataObject"].
+ * Datatype of the dataObject is stored in $_Session["dataType"].
  * @param dataToSend
  */
 function objectToSessionObject(dataToSend)
@@ -169,7 +170,7 @@ function objectToSessionObject(dataToSend)
 }
 
 /**
- * Pritns status of apiCalls in way that is suited for the page.
+ * Prints status of apiCalls in way that is suited for the page.
  * @param status
  */
 function printStatusSettingPageInfo(status)
@@ -186,9 +187,4 @@ function printStatusSettingPageInfo(status)
             alert("Error, try again");
             break;
     }
-    // if(window.opener === null) {
-    //     location.reload();
-    // }
-    // else
-    //     window.opener.location.reload();
 }
