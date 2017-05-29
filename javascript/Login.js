@@ -1,7 +1,5 @@
 /**
  * Logs in the administrator with password and username.
- * Returns on fail: Failed to login
- * Returns on success: authToken in JSON
  */
 $(document).ready(function(){
     document.getElementById('password').addEventListener('keydown', function(e) {
@@ -14,12 +12,14 @@ $(document).ready(function(){
 });
 
 /**
- * Logs in the admin and creates cookies that stores authToken, adminId and username.
+ * Log in function.
+ * Takes values from the html forms.
  */
 function logIn()
 {
     var username=$("#username").val();
     var password=$("#password").val();
+
     $.ajax({
         type: "POST",
         url: standardUrl+"admin/login.json",

@@ -2,6 +2,7 @@
 /**
  * Interface for the admin to manage the system.
  */
+/* Checks if cookies are set*/
 if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]))
 {
     echo "<script>";
@@ -28,7 +29,6 @@ else
 <body>
     <header>
         <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
-
         <div id="searchField">
             <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
             <button name="searchBtn" onclick="search()">Search</button>
@@ -38,7 +38,6 @@ else
             <img src="../images/admin-icon.png" alt="admin-icon">
         </div>
     </header>
-
     <nav>
         <ul id="menu">
             <li class="activeNav" id="liUser" onclick="updateNav('liUser')">User</li>
@@ -49,7 +48,6 @@ else
         </ul>
         <button id="logout" name="logoutBtn" onclick="logOut()">Logout</button>
     </nav>
-
     <div id="container">
         <div id="resultContainer">          <!-- Result on searches will be displayed in here. In generated templates based on search-->
             <div id="searchContainer">
@@ -61,11 +59,8 @@ else
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
-
 </html>
 
 

@@ -20,6 +20,7 @@ function printJSONtoJS($jsVarName, $phpObject)
     echo "var $jsVarName =JSON.parse(decodedData);\n";
     echo "</script>";
 }
+/* Checks if sessions variables are set and necessary get variables*/
 if(isset($_SESSION["dataObject"]) && isset($_SESSION["dataType"]) && $_GET["settingType"])
 {
     printJSONtoJS("dataObject",$_SESSION["dataObject"]);

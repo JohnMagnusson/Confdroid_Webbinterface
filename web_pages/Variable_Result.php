@@ -2,6 +2,7 @@
 /**
  * Interface for the admin to manage the system.
  */
+/* Checks if cookies are set and necessary get variables*/
 if (isset($_COOKIE["authCookie"]) && isset($_COOKIE["adminIdCookie"]) && isset($_GET["data"]) && isset($_GET["activeType"]))
 {
     echo "<script>";
@@ -29,7 +30,6 @@ else
 <body>
 <header>
     <h1 id="headerTitle"><a href="Admin_Interface.php?activeType=User">Confdroid</a></h1>
-
     <div id="searchField">
         <input type="search" id="searchValue" name="searchValue" placeholder="Search..">
         <button name="searchBtn" onclick="search()">Search</button>
@@ -39,7 +39,6 @@ else
         <img src="../images/admin-icon.png" alt="admin-icon">
     </div>
 </header>
-
 <nav>
     <ul id="menu">
         <li id="liUser" onclick="updateNav('liUser')">User</li>
@@ -62,9 +61,7 @@ else
                 <img src="../images/Add-icon.png" alt="Add-icon" class="addIcon">
             </div>
         </div>
-
     </div>
-
     <div id="infoContainer">            <!-- Static info container -->
         <h2 class="optionTitle">Information</h2>
         <div id="infoHolder">           <!-- All info is printed inside this div -->

@@ -1,8 +1,5 @@
 <!-- Login class. The Administrator enter username and password. -->
 <?php
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +15,6 @@
 </head>
 
 <body>
-
     <div id="container">
         <h1 class="text_align_center">Login to Confdroid</h1>
         <div id="loginContainer">
@@ -29,8 +25,6 @@
             <input type="password" name="password" id="password" title="password"><br><br>
             <button name="login" id="login" onclick="logIn()" >Login</button>
         </div>
-
     </div>
-
 </body>
 </html>

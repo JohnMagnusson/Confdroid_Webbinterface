@@ -13,7 +13,7 @@ $('document').ready(function(){
  */
 function updateSqlXmlMenu(e, settingType, application)
 {
-    cleanTextArea(settingType);                                        /*Clear textAreas*/
+    cleanTextArea(settingType);                                                       /*Clear textAreas*/
     if(typeof document.getElementsByClassName("selectedApp")[0] !== "undefined") {    /*Puts selected class on click element*/
         document.getElementsByClassName("selectedApp")[0].classList.remove("selectedApp");
     }
@@ -245,7 +245,10 @@ function printStatusSettingPageXmlSql(status, dataType)
             break;
     }
 }
-
+/**
+ * Redirects the user from settingPage to addPage
+ * @param settingType
+ */
 function redirectToAddPage(settingType)
 {
     var applicationId = document.getElementsByClassName("selectedApp")[0].id.split("app")[1];
