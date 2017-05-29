@@ -37,6 +37,10 @@ function printData(data, searchType)
             url = "Application_Result.php?activeType=Application&data=";
             activeType = "Application";
             break;
+        case "Variable":
+            url = "Variable_Result.php?activeType=Variable&data=";
+            activeType = "Application";
+            break;
     }
     createsContainerContent("searchInfo", data, url);
 }

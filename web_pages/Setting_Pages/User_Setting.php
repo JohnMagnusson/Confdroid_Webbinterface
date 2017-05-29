@@ -1,14 +1,22 @@
 <?php
 /*Display the User settings */
 echo '<div id="manageableData"> 
-        <form id="formData">
-            <p>Name:</p>
-            <input type="text" id="name" value="';echo $_SESSION["dataObject"]["name"]; echo '"><br>
-            <p>E-mail:</p>
-            <input type="text" id="email" value="';echo $_SESSION["dataObject"]["email"]; echo'"><br><br>
-            <button value="Update information" onclick="changeObjectData()">Update information</button>
-            <p id="errorField"></p>
-        </form>
+        <p>Name:</p>
+        <input type="text" id="name" value="';echo $_SESSION["dataObject"]["name"]; echo '"><br>
+        <p>E-mail:</p>
+        <input type="text" id="email" value="';echo $_SESSION["dataObject"]["email"]; echo'"><br>
+        ';
+            for($i = 0; $i < sizeof($_SESSION["dataObject"]["variables"]); $i++)
+            {
+                $variable = $_SESSION["dataObject"]["variables"][$i];
+                echo'
+                <p>'; echo $variable["name"]; echo'</p>
+                <input type="text" id="';echo $variable["name"];echo'" value="';echo $variable["value"]; echo'"><br>';
+            }
+        echo'
+        <br>
+        <button value="Update information" onclick="changeObjectData()">Update information</button>
+        <p id="errorField"></p>
     </div>
     <div id="staticData">
         <p id="nrDevices">Nr of devices registered: ';echo sizeof($_SESSION["dataObject"]["devices"]); echo '</p>

@@ -90,7 +90,6 @@ function addVariable()
             type += "/";
             type += dataTypeToAdd;
             type += "/";
-            console.log(variableData);
             type += variableData["id"];
             console.log(type);
             var data2 = {};
@@ -150,8 +149,13 @@ function printInfoOfObject(data, e)
         $("#objectType").html(dataTypeToAdd);
         $("#name").html('<b>Name:</b> ' + data[e.target.id]["name"]);
     }
-    else
+    else {
         variableData = data[e.target.id];
+        if(typeof variableData["userValues"][dataObject["id"]] !== "undefined")
+            document.getElementById("variableValue").value = variableData["userValues"][dataObject["id"]];
+        else
+            document.getElementById("variableValue").value = "";
+    }
 
     switch(dataTypeToAdd)
     {
