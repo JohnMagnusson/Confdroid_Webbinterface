@@ -1,7 +1,6 @@
 <?php
 //*Display the Application settings */
 echo '<div id="manageableData"> 
-        <form id="formData">
             <p>Name:</p>
             <input type="text" id="name" value="';echo $_SESSION["dataObject"]["name"]; echo '"><br>
             <p>Apk Name:</p>
@@ -16,7 +15,6 @@ echo '<div id="manageableData">
             <input type="text" id="forceInstall" value="';echo $_SESSION["dataObject"]["forceInstall"]; echo'"><br><br>
             <p id="errorField"></p>
             <button value="Update information" onclick="changeObjectData()">Update information</button>
-        </form>
     </div>
     <div id="staticData">
         <p id="nrOfDevices">Nr of devices: ';echo sizeof($_SESSION["dataObject"]["devices"]); echo '</p>
